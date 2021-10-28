@@ -7,7 +7,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "cat.coprnic.roger.fonts_terrassa"
+        applicationId "cat.copernic.projecte.fonts_terrassa"
         minSdk 21
         targetSdk 31
         versionCode 1
