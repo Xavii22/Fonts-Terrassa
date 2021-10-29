@@ -6,15 +6,15 @@
         android:id="@+id/list"
         android:icon="@drawable/ic_list"
         android:title="@string/llista"
-        app:cnb_iconColor="@color/home" />
+        app:cnb_iconColor="@color/bn_list" />
     <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_map"
         android:title="@string/mapa"
-        app:cnb_iconColor="@color/like" />
+        app:cnb_iconColor="@color/bn_map" />
     <item
         android:id="@+id/info"
         android:icon="@drawable/ic_info"
         android:title="@string/info"
-        app:cnb_iconColor="@color/search" />
+        app:cnb_iconColor="@color/bn_info" />
 </menu>
