@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/map">
+
+    <fragment
+        android:id="@+id/info"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/list"
+        android:name="cat.copernic.projecte.fonts_terrassa.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" />
+    <fragment
+        android:id="@+id/map"
+        android:name="cat.copernic.projecte.fonts_terrassa.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_map_to_info"
+            app:destination="@id/info" />
+        <action
+            android:id="@+id/action_map_to_list"
+            app:destination="@id/list" />
+    </fragment>
+</navigation>
