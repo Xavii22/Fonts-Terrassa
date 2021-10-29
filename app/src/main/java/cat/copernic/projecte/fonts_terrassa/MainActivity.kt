@@ -1,4 +1,4 @@
-package cat.coprnic.roger.fonts_terrassa
+package cat.copernic.projecte.fonts_terrassa
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
