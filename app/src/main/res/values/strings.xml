@@ -3,6 +3,13 @@
     <string name="mapa">mapa</string>
     <string name="llista">llista</string>
     <string name="info">info</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="info_title">Informació</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fonts_boca">Fonts de beure</string>
+    <string name="fonts_boca_singulars">Fonts de beure singulars</string>
+    <string name="fonts_ornamentals">Fonts ornamentals</string>
+    <string name="fonts_naturals">Fonts naturals (sense garantia sanitària)</string>
+    <string name="fonts_gossos">Fonts de gossos</string>
+    <string name="login_admin">Botó inici de sessió administradors</string>
+
 </resources>
