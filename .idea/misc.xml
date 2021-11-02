@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/drawable/ic_home.xml" value="0.290625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/drawable/ic_info.xml" value="0.290625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/drawable/ic_security.xml" value="0.290625" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_info.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_info.xml" value="0.264" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_list.xml" value="0.264" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_map.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
