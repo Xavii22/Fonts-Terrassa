@@ -3,28 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/map">
+    app:startDestination="@id/fragment_map">
 
     <fragment
-        android:id="@+id/info"
+        android:id="@+id/fragment_info"
         android:name="cat.copernic.projecte.fonts_terrassa.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
-        android:id="@+id/list"
+        android:id="@+id/fragment_list"
         android:name="cat.copernic.projecte.fonts_terrassa.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" />
     <fragment
-        android:id="@+id/map"
+        android:id="@+id/fragment_map"
         android:name="cat.copernic.projecte.fonts_terrassa.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
-        <action
-            android:id="@+id/action_map_to_info"
-            app:destination="@id/info" />
-        <action
-            android:id="@+id/action_map_to_list"
-            app:destination="@id/list" />
-    </fragment>
+        tools:layout="@layout/fragment_map" />
 </navigation>

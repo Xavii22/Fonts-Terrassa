@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListFragment">
+    android:fillViewport="true"
+    tools:context="cat.copernic.projecte.fonts_terrassa.ListFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
