@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
@@ -10,101 +11,112 @@
         android:id="@+id/btn_boca"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="60dp"
         android:background="#FFFFFF"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="0dp"
+        android:gravity="center"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/fonts_boca"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nom_font"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="146dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_boca_singular"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="120dp"
         android:background="#FFFFFF"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="0dp"
+        android:gravity="center"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/fonts_boca"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nom_font"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="206dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_ornamental"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="180dp"
         android:background="#FFFFFF"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="0dp"
+        android:gravity="center"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/fonts_boca"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nom_font"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="266dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_natural"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="240dp"
         android:background="#FFFFFF"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="0dp"
+        android:gravity="center"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/fonts_boca"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nom_font"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="326dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_gos"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="300dp"
         android:background="#FFFFFF"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="0dp"
+        android:gravity="center"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/fonts_boca"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nom_font"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="386dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/txt_nom_font"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="63dp"
         android:text="@string/info_title"
         android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="54dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_login_admin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/btn_login_admin"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="48dp"
         android:background="#fff"
-        android:src="@drawable/ic_security"
         android:contentDescription="@string/login_admin"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="48dp" />
+        android:src="@drawable/ic_security"
+        app:layout_constraintStart_toEndOf="@+id/txt_nom_font"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

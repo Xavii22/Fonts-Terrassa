@@ -19,5 +19,14 @@
         android:id="@+id/fragment_map"
         android:name="cat.copernic.projecte.fonts_terrassa.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_fragment_map_to_fragment_list"
+            app:destination="@id/fragment_list" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewFontFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.viewFontFragment"
+        android:label="fragment_view_font"
+        tools:layout="@layout/fragment_view_font" />
 </navigation>
