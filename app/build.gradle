@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
 }
+apply plugin: "androidx.navigation.safeargs"
 
 apply plugin: 'kotlin-android-extensions'
 
