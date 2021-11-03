@@ -11,5 +11,20 @@
     <string name="fonts_naturals">Fonts naturals (sense garantia sanitària)</string>
     <string name="fonts_gossos">Fonts de gossos</string>
     <string name="login_admin">Botó inici de sessió administradors</string>
-
+    <string name="ajuntament">Ajuntament de Terrassa</string>
+    <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
+    <string name="version">Versió de l\'aplicació: 1.0.0</string>
+    <string name="compilation">Versió de compilació: 2021020717</string>
+    <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
+    <string name="language">Idioma</string>
+    <string name="unit">Unitat</string>
+    <string-array name="spinner_language">
+        <item>Català</item>
+        <item>Castellà</item>
+        <item>Anglès</item>
+    </string-array>
+    <string-array name="spinner_unit">
+        <item>Km</item>
+        <item>Mi</item>
+    </string-array>
 </resources>

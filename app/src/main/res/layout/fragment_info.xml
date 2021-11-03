@@ -1,110 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoFragment">
 
+    <TextView
+        android:id="@+id/txt_terrassa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="221dp"
+        android:text="@string/ajuntament"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/txt_oat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="157dp"
+        android:text="@string/oat"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/txt_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="207dp"
+        android:text="@string/version"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_oat" />
+
+    <TextView
+        android:id="@+id/txt_compilation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="152dp"
+        android:text="@string/compilation"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_version" />
+
+    <TextView
+        android:id="@+id/txt_autors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/autors"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_compilation" />
+
     <Button
         android:id="@+id/btn_boca"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="40dp"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
         android:text="@string/fonts_boca"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="146dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btn_boca_singular"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="120dp"
+        android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="40dp"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
-        android:text="@string/fonts_boca"
+        android:text="@string/fonts_boca_singulars"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="206dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btn_ornamental"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
-        android:drawableStart="@drawable/ic_home"
+        android:layout_marginTop="180dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@android:color/transparent"
+        android:drawablePadding="40dp"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
-        android:text="@string/fonts_boca"
+        android:text="@string/fonts_ornamentals"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="266dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btn_natural"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="240dp"
+        android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="40dp"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
-        android:text="@string/fonts_boca"
+        android:text="@string/fonts_naturals"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="326dp" />
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btn_gos"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
+        android:layout_marginTop="300dp"
+        android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="40dp"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
         android:paddingEnd="0dp"
-        android:text="@string/fonts_boca"
+        android:text="@string/fonts_gossos"
         android:textColor="#000"
-        android:drawablePadding="0dp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="386dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="45dp"
         android:text="@string/info_title"
         android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="54dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_login_admin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_login_admin"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="55dp"
         android:background="#fff"
-        android:src="@drawable/ic_security"
         android:contentDescription="@string/login_admin"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="48dp" />
+        android:src="@drawable/ic_security"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="24dp"
+        android:entries="@array/spinner_language"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_language"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="52dp"
+        android:entries="@array/spinner_unit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/txt_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="381dp"
+        android:layout_marginEnd="278dp"
+        android:text="@string/language"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="96dp"
+        android:text="@string/unit"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_language"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gos" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
