@@ -11,20 +11,20 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/myNavHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="411dp"
+            android:layout_width="match_parent"
             android:layout_height="679dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/navigation"
             tools:ignore="MissingConstraints" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="680dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/bottom_menu" />
 
         <!--<com.ismaeldivita.chipnavigation.ChipNavigationBar
