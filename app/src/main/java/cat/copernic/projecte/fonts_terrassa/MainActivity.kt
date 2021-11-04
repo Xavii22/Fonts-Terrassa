@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.navBar.setOnItemSelectedListener { id ->
+        /*binding.navBar.setOnItemSelectedListener { id ->
             when(id){
                 R.id.fragment_list -> ListFragment()
                 R.id.fragment_map -> MapFragment()
                 R.id.fragment_info -> InfoFragment()
             }
-        }
+        }*/
     }
 
     override fun onSupportNavigateUp(): Boolean {
