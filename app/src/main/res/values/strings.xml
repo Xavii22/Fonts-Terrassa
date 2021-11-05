@@ -27,4 +27,12 @@
         <item>Km</item>
         <item>Mi</item>
     </string-array>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+    varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,
+    mollis pretium quam. Mauris aliquet a ante rutrum interdum. Suspendisse ut est blandit,
+    consectetur elit vel, aliquam massa.
+    Etiam dignissim convallis tempor. Sed vulputate felis
+    non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
+    ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
+    Curabitur in cursus neque.</string>
 </resources>
