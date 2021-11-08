@@ -8,17 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentEvaluateBinding
 
-class ListFragment : Fragment() {
+class EvaluateFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentListBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_list, container, false)
+        val binding: FragmentEvaluateBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_evaluate, container, false)
 
-        binding.cardView.setOnClickListener{
-            findNavController().navigate(ListFragmentDirections.actionFragmentListToViewFontFragment())
+        binding.imageButton2.setOnClickListener{
+            findNavController().navigate(EvaluateFragmentDirections.actionEvaluateFragment3ToFragmentMap2())
         }
 
         return binding.root
