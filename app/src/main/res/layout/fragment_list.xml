@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context="cat.copernic.projecte.fonts_terrassa.ListFragment">
+    tools:context=".ListFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

@@ -9,12 +9,20 @@
         android:id="@+id/fragment_info"
         android:name="cat.copernic.projecte.fonts_terrassa.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_fragment_info_to_infoGosFragment"
+            app:destination="@id/fragment_gos" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_list"
         android:name="cat.copernic.projecte.fonts_terrassa.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_fragment_list_to_viewFontFragment"
+            app:destination="@id/viewFontFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_map"
         android:name="cat.copernic.projecte.fonts_terrassa.MapFragment"
@@ -23,10 +31,22 @@
         <action
             android:id="@+id/action_fragment_map_to_fragment_list"
             app:destination="@id/fragment_list" />
+        <action
+            android:id="@+id/action_fragment_map_to_fragment_info"
+            app:destination="@id/fragment_info" />
     </fragment>
     <fragment
         android:id="@+id/viewFontFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.viewFontFragment"
         android:label="fragment_view_font"
         tools:layout="@layout/fragment_view_font" />
+    <fragment
+        android:id="@+id/fragment_gos"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoGosFragment"
+        android:label="InfoGosFragment" />
+    <fragment
+        android:id="@+id/infoBeureFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoBeureFragment"
+        android:label="fragment_info_singular"
+        tools:layout="@layout/fragment_info_singular" />
 </navigation>

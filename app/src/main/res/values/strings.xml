@@ -10,7 +10,7 @@
     <string name="fonts_ornamentals">Fonts ornamentals</string>
     <string name="fonts_naturals">Fonts naturals (sense garantia sanitària)</string>
     <string name="fonts_gossos">Fonts de gossos</string>
-    <string name="login_admin">Botó inici de sessió administradors</string>
+    <string name="admin">Administrador</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>
     <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
     <string name="version">Versió de l\'aplicació: 1.0.0</string>
@@ -27,4 +27,13 @@
         <item>Km</item>
         <item>Mi</item>
     </string-array>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+    varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,
+    mollis pretium quam. Mauris aliquet a ante rutrum interdum. Suspendisse ut est blandit,
+    consectetur elit vel, aliquam massa.
+    Etiam dignissim convallis tempor. Sed vulputate felis
+    non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
+    ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
+    Curabitur in cursus neque.</string>
+
 </resources>
