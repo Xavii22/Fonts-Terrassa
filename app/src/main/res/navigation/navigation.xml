@@ -41,8 +41,49 @@
             app:destination="@id/fragment_map" />
     </fragment>
     <fragment
-        android:id="@+id/infoFragment"
+        android:id="@+id/fragment_info"
         android:name="cat.copernic.projecte.fonts_terrassa.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_fragment_info_to_infoBeureFragment"
+            app:destination="@id/fragment_info_beure" />
+        <action
+            android:id="@+id/action_fragment_info_to_infoSingularFragment"
+            app:destination="@id/fragment_info_singular" />
+        <action
+            android:id="@+id/action_fragment_info_to_infoOrnamentalFragment"
+            app:destination="@id/fragment_info_ornamental" />
+        <action
+            android:id="@+id/action_fragment_info_to_infoNaturalFragment"
+            app:destination="@id/fragment_info_natural" />
+        <action
+            android:id="@+id/action_fragment_info_to_infoGosFragment"
+            app:destination="@id/fragment_info_gos" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_info_beure"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoBeureFragment"
+        android:label="fragment_info_beure"
+        tools:layout="@layout/fragment_info_beure" />
+    <fragment
+        android:id="@+id/fragment_info_singular"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoSingularFragment"
+        android:label="fragment_info_singular"
+        tools:layout="@layout/fragment_info_singular" />
+    <fragment
+        android:id="@+id/fragment_info_ornamental"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoOrnamentalFragment"
+        android:label="fragment_info_ornamental"
+        tools:layout="@layout/fragment_info_ornamental" />
+    <fragment
+        android:id="@+id/fragment_info_natural"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoNaturalFragment"
+        android:label="fragment_info_natural"
+        tools:layout="@layout/fragment_info_natural" />
+    <fragment
+        android:id="@+id/fragment_info_gos"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoGosFragment"
+        android:label="fragment_info_gos"
+        tools:layout="@layout/fragment_info_gos" />
 </navigation>
