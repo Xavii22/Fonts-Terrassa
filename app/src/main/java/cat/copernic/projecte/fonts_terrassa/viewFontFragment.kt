@@ -18,7 +18,7 @@ class viewFontFragment : Fragment() {
             inflater, R.layout.fragment_view_font, container, false)
 
         binding.btnTestWater.setOnClickListener{
-            findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToEvaluateFragment3())
+            findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToEvaluateFragment())
         }
 
         return binding.root

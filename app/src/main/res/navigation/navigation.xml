@@ -29,16 +29,8 @@
         android:label="fragment_view_font"
         tools:layout="@layout/fragment_view_font" >
         <action
-            android:id="@+id/action_viewFontFragment_to_evaluateFragment3"
-            app:destination="@id/evaluateFragment3" />
-    </fragment>
-    <fragment
-        android:id="@+id/evaluateFragment3"
-        android:name="cat.copernic.projecte.fonts_terrassa.EvaluateFragment"
-        android:label="EvaluateFragment" >
-        <action
-            android:id="@+id/action_evaluateFragment3_to_fragment_map2"
-            app:destination="@id/fragment_map" />
+            android:id="@+id/action_viewFontFragment_to_evaluateFragment"
+            app:destination="@id/evaluateFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_info"
@@ -86,4 +78,13 @@
         android:name="cat.copernic.projecte.fonts_terrassa.InfoGosFragment"
         android:label="fragment_info_gos"
         tools:layout="@layout/fragment_info_gos" />
+    <fragment
+        android:id="@+id/evaluateFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.EvaluateFragment"
+        android:label="fragment_evaluate"
+        tools:layout="@layout/fragment_evaluate" >
+        <action
+            android:id="@+id/action_evaluateFragment_to_viewFontFragment"
+            app:destination="@id/viewFontFragment" />
+    </fragment>
 </navigation>
