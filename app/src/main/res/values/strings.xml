@@ -42,6 +42,13 @@
         <item>Tipus ASC</item>
         <item>Tipus DESC</item>
     </string-array>
+    <string-array name="spinner_testOneToFive">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
     varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,
     mollis pretium quam. Mauris aliquet a ante rutrum interdum. Suspendisse ut est blandit,
