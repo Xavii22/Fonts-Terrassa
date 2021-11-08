@@ -18,7 +18,7 @@ class EvaluateFragment : Fragment() {
             inflater, R.layout.fragment_evaluate, container, false)
 
         binding.imageButton2.setOnClickListener{
-            findNavController().navigate(EvaluateFragmentDirections.actionEvaluateFragment3ToFragmentMap2())
+            findNavController().navigate(EvaluateFragmentDirections.actionEvaluateFragmentToViewFontFragment())
         }
 
         return binding.root
