@@ -6,27 +6,43 @@
     app:startDestination="@id/fragment_map">
 
     <fragment
-        android:id="@+id/fragment_info"
-        android:name="cat.copernic.projecte.fonts_terrassa.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
-    <fragment
         android:id="@+id/fragment_list"
         android:name="cat.copernic.projecte.fonts_terrassa.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_fragment_list_to_viewFontFragment"
+            app:destination="@id/viewFontFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_map"
         android:name="cat.copernic.projecte.fonts_terrassa.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" >
         <action
-            android:id="@+id/action_fragment_map_to_fragment_list"
-            app:destination="@id/fragment_list" />
+            android:id="@+id/action_fragment_map_to_viewFontFragment2"
+            app:destination="@id/viewFontFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewFontFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.viewFontFragment"
         android:label="fragment_view_font"
-        tools:layout="@layout/fragment_view_font" />
+        tools:layout="@layout/fragment_view_font" >
+        <action
+            android:id="@+id/action_viewFontFragment_to_evaluateFragment3"
+            app:destination="@id/evaluateFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/evaluateFragment3"
+        android:name="cat.copernic.projecte.fonts_terrassa.EvaluateFragment"
+        android:label="EvaluateFragment" >
+        <action
+            android:id="@+id/action_evaluateFragment3_to_fragment_map2"
+            app:destination="@id/fragment_map" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>

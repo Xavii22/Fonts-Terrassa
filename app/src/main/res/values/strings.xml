@@ -27,4 +27,19 @@
         <item>Km</item>
         <item>Mi</item>
     </string-array>
+    <string-array name="spinner_filter">
+        <item>Fonts 1</item>
+        <item>Fonts 2</item>
+        <item>Fonts 3</item>
+        <item>Fonts 4</item>
+        <item>Fonts 5</item>
+    </string-array>
+    <string-array name="spinner_order">
+        <item>Nom ASC</item>
+        <item>Nom DESC</item>
+        <item>Distancia ASC</item>
+        <item>Distancia DESC</item>
+        <item>Tipus ASC</item>
+        <item>Tipus DESC</item>
+    </string-array>
 </resources>
