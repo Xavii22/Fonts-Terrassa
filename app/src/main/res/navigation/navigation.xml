@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_fragment_info_to_infoGosFragment"
             app:destination="@id/fragment_info_gos" />
+        <action
+            android:id="@+id/action_fragment_info_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_info_beure"
@@ -86,5 +89,19 @@
         <action
             android:id="@+id/action_evaluateFragment_to_viewFontFragment"
             app:destination="@id/viewFontFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.Login2Fragment"
+        android:label="fragment_login2"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
 </navigation>
