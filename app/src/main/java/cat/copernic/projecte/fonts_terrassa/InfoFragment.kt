@@ -15,6 +15,9 @@ class InfoFragment : Fragment() {
         val binding: FragmentInfoBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_info, container, false)
 
+        binding.btnLoginAdmin.setOnClickListener {
+            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToLoginFragment())
+        }
         binding.btnBeure.setOnClickListener {
             findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoBeureFragment())
         }

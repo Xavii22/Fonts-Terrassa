@@ -18,6 +18,11 @@
     <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
     <string name="language">Idioma</string>
     <string name="unit">Unitat</string>
+    <string name="admin">Administrador</string>
+    <string name="email">Correu electrònic</string>
+    <string name="password">Contrasenya</string>
+    <string name="restore">Has oblidat la contrasenya?</string>
+    <string name="login">Iniciar sessió</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Castellà</item>

@@ -1,4 +1,3 @@
-
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
