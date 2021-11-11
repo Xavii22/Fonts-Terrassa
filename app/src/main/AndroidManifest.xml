@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fonts_Terrassa">
         <activity
-            android:name=".AdminActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+
     </application>
 
 </manifest>
