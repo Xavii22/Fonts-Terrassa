@@ -17,6 +17,6 @@ class AdminFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_info_beure, container, false)
+        return inflater.inflate(R.layout.fragment_admin, container, false)
     }
 }

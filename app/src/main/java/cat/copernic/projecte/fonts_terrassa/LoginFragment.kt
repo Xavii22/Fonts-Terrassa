@@ -1,6 +1,5 @@
 package cat.copernic.projecte.fonts_terrassa
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class Login2Fragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -26,14 +27,18 @@ class Login2Fragment : Fragment() {
         return binding.root
     }
 
+
+
     private fun setup(){
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
         binding.loginButton.setOnClickListener{
             if(binding.emailEditText.text.isNotEmpty()&& binding.passwordEditText.text.isNotEmpty()){
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.emailEditText.toString()
-                    ,binding.passwordEditText.toString()).addOnCompleteListener{
+                auth.signInWithEmailAndPassword(binding.emailEditText.text.toString()
+                    ,binding.passwordEditText.text.toString()
+                ).addOnCompleteListener{
+                    Log.d("prova", it.exception?.printStackTrace().toString())
                     if(it.isSuccessful) {
-                        Log.d("Prova completada", binding.emailEditText.text.toString())
-                        Log.d("Prova completada", binding.passwordEditText.text.toString())
                         showHome()
                     }
                 }
