@@ -8,7 +8,7 @@
         android:title="@string/llista"
         app:cnb_iconColor="@color/bn_list" />
     <item
-        android:id="@+id/fragment_map"
+        android:id="@+id/fragment_maps"
         android:icon="@drawable/ic_map"
         android:title="@string/mapa"
         app:cnb_iconColor="@color/bn_map" />
