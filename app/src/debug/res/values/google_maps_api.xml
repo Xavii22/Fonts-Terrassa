@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=49:27:47:49:16:1D:C4:0A:6E:44:B2:3D:FF:23:5F:70:9E:CA:CF:1C%3Bcat.copernic.projecte.fonts_terrassa
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    cat.copernic.projecte.fonts_terrassa
+
+    SHA-1 certificate fingerprint:
+    49:27:47:49:16:1D:C4:0A:6E:44:B2:3D:FF:23:5F:70:9E:CA:CF:1C
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyC3XBPVIevFsIagDaZWJa6nAlr_Hs4YXu4</string>
+</resources>
