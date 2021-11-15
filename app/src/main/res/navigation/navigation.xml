@@ -15,15 +15,6 @@
             app:destination="@id/viewFontFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fragment_map"
-        android:name="cat.copernic.projecte.fonts_terrassa.MapFragment"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
-        <action
-            android:id="@+id/action_fragment_map_to_viewFontFragment2"
-            app:destination="@id/viewFontFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/viewFontFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.viewFontFragment"
         android:label="fragment_view_font"
@@ -94,7 +85,11 @@
         android:id="@+id/adminFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.AdminFragment"
         android:label="fragment_admin"
-        tools:layout="@layout/fragment_admin" />
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_editFontFragment"
+            app:destination="@id/editFontFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.Login2Fragment"
@@ -109,4 +104,13 @@
         android:name="cat.copernic.projecte.fonts_terrassa.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/editFontFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.EditFontFragment"
+        android:label="fragment_edit_font"
+        tools:layout="@layout/fragment_edit_font" >
+        <action
+            android:id="@+id/action_editFontFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
 </navigation>

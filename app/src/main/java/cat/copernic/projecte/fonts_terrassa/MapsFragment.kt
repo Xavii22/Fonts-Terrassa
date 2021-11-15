@@ -1,5 +1,10 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -15,8 +20,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MapsFragment : Fragment() {
+
+    private val db= FirebaseFirestore.getInstance()
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -28,14 +36,23 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val pos = LatLng(41.56321391021604, 2.010025253878396)
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(pos)
-                .title("Font 1")
-        )
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(pos))
-        googleMap.moveCamera(CameraUpdateFactory.zoomTo(14.0f))
+
+        val mapPos = LatLng(41.56321391021604, 2.010025253878396)
+
+        db.collection("fonts").whereEqualTo("type", 1).get().addOnSuccessListener{ documents ->
+            for (document in documents) {
+                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .title(document.get("name").toString())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_font))
+                )
+            }
+        }
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
     }
 
     override fun onCreateView(
