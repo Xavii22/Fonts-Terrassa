@@ -23,6 +23,8 @@
     <string name="password">Contrasenya</string>
     <string name="restore">Has oblidat la contrasenya?</string>
     <string name="login">Iniciar sessió</string>
+    <string name="recordar">Has oblidat la contrasenya?</string>
+    <string name="enviar">Enviar</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Castellà</item>

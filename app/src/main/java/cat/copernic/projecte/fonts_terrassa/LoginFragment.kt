@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class Login2Fragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -24,6 +22,10 @@ class Login2Fragment : Fragment() {
         super.onCreate(savedInstanceState)
         setup()
 
+        binding.textviewContrasenya.setOnClickListener{
+            findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToContrasenyaFragment())
+        }
+
         return binding.root
     }
 
@@ -33,20 +35,19 @@ class Login2Fragment : Fragment() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
         binding.loginButton.setOnClickListener{
-            if(binding.emailEditText.text.isNotEmpty()&& binding.passwordEditText.text.isNotEmpty()){
                 auth.signInWithEmailAndPassword(binding.emailEditText.text.toString()
                     ,binding.passwordEditText.text.toString()
                 ).addOnCompleteListener{
-                    Log.d("prova", it.exception?.printStackTrace().toString())
                     if(it.isSuccessful) {
+                        auth.signOut()
                         showHome()
                     }
                 }
-            }
         }
     }
 
     private fun showHome(){
         findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToAdminFragment())
+
     }
 }

@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentAdminBinding
 
 enum class tipusProveidor(){
     BASIC
@@ -12,11 +15,16 @@ enum class tipusProveidor(){
 
 class AdminFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
 
-        return inflater.inflate(R.layout.fragment_admin, container, false)
+        val binding: FragmentAdminBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_admin, container, false)
+
+        binding.sessionCloseButton.setOnClickListener{
+            findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToLoginFragment())
+        }
+
+        return binding.root
     }
 }
