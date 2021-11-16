@@ -11,6 +11,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentEditFontBinding
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -25,6 +29,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MapsFragment : Fragment() {
 
     private val db= FirebaseFirestore.getInstance()
+    private lateinit var binding: FragmentMapsBinding
+    private var mapType = 0
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -53,6 +59,19 @@ class MapsFragment : Fragment() {
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
+        googleMap.setOnInfoWindowClickListener {
+            findNavController().navigate(MapsFragmentDirections.actionFragmentMapsToViewFontFragment())
+        }
+
+            binding.btnChangeMap.setOnClickListener{
+                if(mapType == 0){
+                    googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
+                    mapType = 1
+                }else{
+                    googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
+                    mapType = 0
+                }
+            }
     }
 
     override fun onCreateView(
@@ -60,7 +79,9 @@ class MapsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_maps, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
