@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_adminFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_registerUserFragment"
+            app:destination="@id/registerUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -116,4 +119,13 @@
         android:name="cat.copernic.projecte.fonts_terrassa.ContrasenyaFragment"
         android:label="fragment_contrasenya"
         tools:layout="@layout/fragment_contrasenya" />
+    <fragment
+        android:id="@+id/registerUserFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.RegisterUserFragment"
+        android:label="fragment_register_user"
+        tools:layout="@layout/fragment_register_user" >
+        <action
+            android:id="@+id/action_registerUserFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
 </navigation>

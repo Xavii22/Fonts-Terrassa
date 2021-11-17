@@ -25,6 +25,11 @@
     <string name="login">Iniciar sessió</string>
     <string name="recordar">Has oblidat la contrasenya?</string>
     <string name="enviar">Enviar</string>
+    <string name="register">Registrar</string>
+    <string name="registerAdmin">Registrar administrador</string>
+    <string name="username">Nom</string>
+    <string name="surname">Cognoms</string>
+    <string name="repeatPassword">Repetir contrasenya</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Castellà</item>
@@ -64,4 +69,5 @@
     non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
     ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
     Curabitur in cursus neque.</string>
+    <string name="accedir">Accedir</string>
 </resources>

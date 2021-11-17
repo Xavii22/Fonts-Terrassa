@@ -9,10 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentAdminBinding
 
-enum class tipusProveidor(){
-    BASIC
-}
-
 class AdminFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +19,10 @@ class AdminFragment : Fragment() {
 
         binding.sessionCloseButton.setOnClickListener{
             findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToLoginFragment())
+        }
+
+        binding.adminUsers.setOnClickListener {
+            findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToRegisterUserFragment())
         }
 
         return binding.root
