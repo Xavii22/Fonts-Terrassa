@@ -1,10 +1,4 @@
 package cat.copernic.projecte.fonts_terrassa
-
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -33,17 +27,6 @@ class MapsFragment : Fragment() {
     private var mapType = 0
 
     private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-
-        val mapPos = LatLng(41.56321391021604, 2.010025253878396)
 
         db.collection("fonts").whereEqualTo("type", 1).get().addOnSuccessListener{ documents ->
             for (document in documents) {
@@ -57,6 +40,7 @@ class MapsFragment : Fragment() {
             }
         }
 
+        val mapPos = LatLng(41.56321391021604, 2.010025253878396)
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
         googleMap.setOnInfoWindowClickListener {
