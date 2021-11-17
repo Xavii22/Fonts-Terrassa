@@ -22,12 +22,9 @@ class RegisterUserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding: FragmentRegisterUserBinding = DataBindingUtil.inflate(
-            inflater,
+        binding = DataBindingUtil.inflate(inflater,
             cat.copernic.projecte.fonts_terrassa.R.layout.fragment_register_user,
-            container,
-            false
-        )
+            container,false)
         super.onCreate(savedInstanceState)
         setup()
 

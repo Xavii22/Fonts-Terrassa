@@ -25,6 +25,10 @@ class AdminFragment : Fragment() {
             findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToRegisterUserFragment())
         }
 
+        binding.adminFonts.setOnClickListener {
+            findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToEditFontFragment())
+        }
+
         return binding.root
     }
 }
