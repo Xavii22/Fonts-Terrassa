@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_adminFragment_to_registerUserFragment"
             app:destination="@id/registerUserFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_editFontFragment"
+            app:destination="@id/editFontFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -126,6 +129,24 @@
         tools:layout="@layout/fragment_register_user" >
         <action
             android:id="@+id/action_registerUserFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_viewFontFragment"
+            app:destination="@id/viewFontFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFontFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.EditFontFragment"
+        android:label="fragment_edit_font"
+        tools:layout="@layout/fragment_edit_font" >
+        <action
+            android:id="@+id/action_editFontFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
     </fragment>
 </navigation>

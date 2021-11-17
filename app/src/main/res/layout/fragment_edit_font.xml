@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".EditFontFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_titol_accesibilitat2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="232dp"
+            android:text="Accesibilitat"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/img_accesibilitat"
+            app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
+        <ImageView
+            android:id="@+id/img_latLon"
+            android:layout_width="47dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
+        <TextView
+            android:id="@+id/txt_informacio"
+            android:layout_width="287dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="20dp"
+            android:text="Aqui tenim tota l'informació de la font que es vulgui afegir des de l'administració."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_titol_informacio" />
+
+        <ImageView
+            android:id="@+id/img_accesibilitat"
+            android:layout_width="47dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="225dp"
+            android:src="@drawable/ic_baseline_emoji_people_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
+        <ImageView
+            android:id="@+id/img_info"
+            android:layout_width="50dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="310dp"
+            android:src="@drawable/ic_baseline_info_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
+        <EditText
+            android:id="@+id/txt_nom_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:minWidth="48dp"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/img_font"
+            android:layout_width="61dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_nom_font"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txt_titol_accesibilitat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="47dp"
+            android:text="Coordenades de la font"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/img_accesibilitat"
+            app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
+        <TextView
+            android:id="@+id/txt_titol_informacio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="323dp"
+            android:text="Informació"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/img_info"
+            app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
+        <EditText
+            android:id="@+id/editLat"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="lat"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <EditText
+            android:id="@+id/editLon"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="lon"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Latitude"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_latLon" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="15dp"
+            android:text="Longitude"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_latLon" />
+
+        <ImageButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:src="@drawable/ic_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
