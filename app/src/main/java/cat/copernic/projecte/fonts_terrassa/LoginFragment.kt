@@ -35,12 +35,14 @@ class Login2Fragment : Fragment() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
         binding.loginButton.setOnClickListener {
-            auth.signInWithEmailAndPassword(
-                binding.emailEditText.text.toString(), binding.passwordEditText.text.toString()
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    auth.signOut()
-                    showHome()
+            if(binding.emailEditText.text.toString().isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()){
+                auth.signInWithEmailAndPassword(
+                    binding.emailEditText.text.toString(), binding.passwordEditText.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        auth.signOut()
+                        showHome()
+                    }
                 }
             }
         }

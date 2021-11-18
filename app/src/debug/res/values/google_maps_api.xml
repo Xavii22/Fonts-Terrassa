@@ -12,7 +12,13 @@
     cat.copernic.projecte.fonts_terrassa
 
     SHA-1 certificate fingerprint:
-    49:27:47:49:16:1D:C4:0A:6E:44:B2:3D:FF:23:5F:70:9E:CA:CF:1C
+    //Clau Roger
+    - SHA1: 49:27:47:49:16:1D:C4:0A:6E:44:B2:3D:FF:23:5F:70:9E:CA:CF:1C
+    - MAPS KEY: AIzaSyC3XBPVIevFsIagDaZWJa6nAlr_Hs4YXu4
+
+    //Clau Xavi
+    - SHA1: 22:77:10:01:7a:6a:f5:12:fc:e4:96:c0:e8:d8:fe:f6:04:61:6f:33
+    - MAPS KEY: AIzaSyCVLV591qBv5BZkPx4Nsf_WoIoUD86pOKc
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key

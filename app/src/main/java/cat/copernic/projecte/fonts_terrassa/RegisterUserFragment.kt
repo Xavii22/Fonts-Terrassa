@@ -35,18 +35,21 @@ class RegisterUserFragment : Fragment() {
 
         binding.registerButton.setOnClickListener {
 
-            if (binding.passwordEditText.text.toString() == binding.repeatEditText.text.toString()) {
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-                    binding.emailEditText.text.toString(),
-                    binding.passwordEditText.text.toString()
-                ).addOnCompleteListener {
+            if(binding.emailEditText.text.toString().isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
+                && binding.repeatEditText.text.toString().isNotEmpty()) {
+                if (binding.passwordEditText.text.toString() == binding.repeatEditText.text.toString()) {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                        binding.emailEditText.text.toString(),
+                        binding.passwordEditText.text.toString()
+                    ).addOnCompleteListener {
 
-                    if (it.isSuccessful) {
-                        showHome()
+                        if (it.isSuccessful) {
+                            showHome()
+                        }
                     }
+                } else {
+                    contrasenyaRepetida()
                 }
-            } else {
-                contrasenyaRepetida()
             }
         }
     }
