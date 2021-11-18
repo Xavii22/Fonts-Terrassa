@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_list.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/item_font_list.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/activity_splash_screen.xml" value="0.14375" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/fragment_info.xml" value="0.2" />

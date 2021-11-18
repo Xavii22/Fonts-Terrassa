@@ -1,4 +1,4 @@
-plugins {
+    plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.android.gms:play-services-basement:17.6.0'
     implementation 'com.google.firebase:firebase-firestore:24.0.0'
+    implementation 'io.coil-kt:coil:0.11.0'
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.android.gms:play-services-maps:18.0.0'
     testImplementation 'junit:junit:4.13.2'
