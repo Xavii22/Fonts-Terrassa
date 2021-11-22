@@ -13,10 +13,12 @@ import com.google.firebase.auth.FirebaseAuth
 
 import android.R
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentInfoBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterUserFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterUserBinding
+    private val db= FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +46,11 @@ class RegisterUserFragment : Fragment() {
                     ).addOnCompleteListener {
 
                         if (it.isSuccessful) {
+                            //Save email to database
+                            db.collection("users").document(binding.emailEditText.text.toString())
+                                .set(hashMapOf(
+                                    "email" to binding.emailEditText.text.toString()
+                                ))
                             showHome()
                         }
                     }
