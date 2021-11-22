@@ -32,8 +32,19 @@
             android:id="@+id/action_fragment_map_to_fragment_list"
             app:destination="@id/fragment_list" />
         <action
+<<<<<<< Updated upstream
             android:id="@+id/action_fragment_map_to_fragment_info"
             app:destination="@id/fragment_info" />
+=======
+            android:id="@+id/action_adminFragment_to_registerUserFragment"
+            app:destination="@id/registerUserFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_editFontFragment"
+            app:destination="@id/editFontFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_fontAdminListFragment"
+            app:destination="@id/fontAdminListFragment" />
+>>>>>>> Stashed changes
     </fragment>
     <fragment
         android:id="@+id/viewFontFragment"
@@ -45,8 +56,24 @@
         android:name="cat.copernic.projecte.fonts_terrassa.InfoGosFragment"
         android:label="InfoGosFragment" />
     <fragment
+<<<<<<< Updated upstream
         android:id="@+id/infoBeureFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.InfoBeureFragment"
         android:label="fragment_info_singular"
         tools:layout="@layout/fragment_info_singular" />
+=======
+        android:id="@+id/editFontFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.EditFontFragment"
+        android:label="fragment_edit_font"
+        tools:layout="@layout/fragment_edit_font" >
+        <action
+            android:id="@+id/action_editFontFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fontAdminListFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.FontAdminListFragment"
+        android:label="fragment_font_admin_list"
+        tools:layout="@layout/fragment_font_admin_list" />
+>>>>>>> Stashed changes
 </navigation>

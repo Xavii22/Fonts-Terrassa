@@ -35,5 +35,16 @@
     non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
     ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
     Curabitur in cursus neque.</string>
+<<<<<<< Updated upstream
 
+=======
+    <string name="accedir">Accedir</string>
+    <string name="crear_usuaris">Crear Usuaris</string>
+    <string name="crear_fonts">Crear Fonts</string>
+    <string name="administrar_fonts">Administrar Fonts</string>
+    <string name="administrar_usuaris">Administrar Usuaris</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="tancar_sessi">Tancar sessió</string>
+    <string name="buscar">Buscar</string>
+>>>>>>> Stashed changes
 </resources>
