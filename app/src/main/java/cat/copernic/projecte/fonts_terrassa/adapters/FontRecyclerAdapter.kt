@@ -4,9 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.projecte.fonts_terrassa.EvaluateFragmentDirections
+import cat.copernic.projecte.fonts_terrassa.ListFragmentDirections
+import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
+import android.os.Bundle
+import androidx.navigation.findNavController
 
 
 class FontRecyclerAdapter: RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
@@ -42,7 +48,12 @@ class FontRecyclerAdapter: RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>(
 
         //estamblim un listener
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, fonts[position].fontName, Toast.LENGTH_LONG).show()
+            val bundle = Bundle()
+            bundle.putSerializable("font_name", fonts[position].fontName)
+            bundle.putSerializable("font_lat", fonts[position].lat.toString())
+            bundle.putSerializable("font_lon", fonts[position].lon.toString())
+            holder.itemView.findNavController().navigate(
+                R.id.action_fragment_list_to_viewFontFragment, bundle)
         }
     }
 

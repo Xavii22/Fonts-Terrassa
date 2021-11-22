@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentViewFontBinding
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
+import kotlinx.android.synthetic.main.fragment_edit_font.*
 
 
 class viewFontFragment : Fragment() {
@@ -24,8 +26,11 @@ class viewFontFragment : Fragment() {
             findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToEvaluateFragment())
         }
 
+        binding.txtNomFont.text = arguments?.getString("font_name")
+
         binding.btnGoToMaps.setOnClickListener{
-            val gmmIntentUri: Uri = Uri.parse("geo:0,0?q=41.5805282,2.022369")
+            val fontPos = "geo:0,0?q=" + arguments?.getString("font_lat") + "," + arguments?.getString("font_lon")
+            val gmmIntentUri: Uri = Uri.parse(fontPos)
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
