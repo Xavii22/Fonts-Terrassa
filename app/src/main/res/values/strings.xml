@@ -10,7 +10,7 @@
     <string name="fonts_ornamentals">Fonts ornamentals</string>
     <string name="fonts_naturals">Fonts naturals (sense garantia sanitària)</string>
     <string name="fonts_gossos">Fonts de gossos</string>
-    <string name="admin">Administrador</string>
+    <string name="login_admin">Botó inici de sessió administradors</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>
     <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
     <string name="version">Versió de l\'aplicació: 1.0.0</string>
@@ -18,6 +18,18 @@
     <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
     <string name="language">Idioma</string>
     <string name="unit">Unitat</string>
+    <string name="admin">Administrador</string>
+    <string name="email">Correu electrònic</string>
+    <string name="password">Contrasenya</string>
+    <string name="restore">Has oblidat la contrasenya?</string>
+    <string name="login">Iniciar sessió</string>
+    <string name="recordar">Has oblidat la contrasenya?</string>
+    <string name="enviar">Enviar</string>
+    <string name="register">Registrar</string>
+    <string name="registerAdmin">Registrar administrador</string>
+    <string name="username">Nom</string>
+    <string name="surname">Cognoms</string>
+    <string name="repeatPassword">Repetir contrasenya</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Castellà</item>
@@ -27,6 +39,28 @@
         <item>Km</item>
         <item>Mi</item>
     </string-array>
+    <string-array name="spinner_filter">
+        <item>Fonts 1</item>
+        <item>Fonts 2</item>
+        <item>Fonts 3</item>
+        <item>Fonts 4</item>
+        <item>Fonts 5</item>
+    </string-array>
+    <string-array name="spinner_order">
+        <item>Nom ASC</item>
+        <item>Nom DESC</item>
+        <item>Distancia ASC</item>
+        <item>Distancia DESC</item>
+        <item>Tipus ASC</item>
+        <item>Tipus DESC</item>
+    </string-array>
+    <string-array name="spinner_testOneToFive">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
     varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,
     mollis pretium quam. Mauris aliquet a ante rutrum interdum. Suspendisse ut est blandit,
@@ -35,16 +69,5 @@
     non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
     ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
     Curabitur in cursus neque.</string>
-<<<<<<< Updated upstream
-
-=======
     <string name="accedir">Accedir</string>
-    <string name="crear_usuaris">Crear Usuaris</string>
-    <string name="crear_fonts">Crear Fonts</string>
-    <string name="administrar_fonts">Administrar Fonts</string>
-    <string name="administrar_usuaris">Administrar Usuaris</string>
-    <string name="admin_dashboard">Admin Dashboard</string>
-    <string name="tancar_sessi">Tancar sessió</string>
-    <string name="buscar">Buscar</string>
->>>>>>> Stashed changes
 </resources>

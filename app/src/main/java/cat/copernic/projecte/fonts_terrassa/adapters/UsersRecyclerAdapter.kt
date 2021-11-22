@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListBinding
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemUserListBinding
 import cat.copernic.projecte.fonts_terrassa.models.User
 

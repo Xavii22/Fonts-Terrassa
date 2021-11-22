@@ -59,9 +59,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/blue_oat"
+                    android:backgroundTint="@color/bn_info"
                     android:background="@drawable/mybutton"
-                    android:text="@string/recuperar_contrasenya" />
+                    android:text="Recuperar contrasenya" />
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

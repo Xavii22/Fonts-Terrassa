@@ -14,7 +14,7 @@ import cat.copernic.projecte.fonts_terrassa.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class usersAdminListFragment : Fragment() {
+class UsersAdminListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
     private val myAdapter: UsersRecyclerAdapter = UsersRecyclerAdapter()
@@ -23,7 +23,7 @@ class usersAdminListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
+    
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_users_admin_list, container, false)
 
