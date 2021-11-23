@@ -74,6 +74,19 @@
         android:id="@+id/fontAdminListFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.FontAdminListFragment"
         android:label="fragment_font_admin_list"
+<<<<<<< Updated upstream
         tools:layout="@layout/fragment_font_admin_list" />
+>>>>>>> Stashed changes
+=======
+        tools:layout="@layout/fragment_font_admin_list" >
+        <action
+            android:id="@+id/action_fontAdminListFragment_to_editFontFragment"
+            app:destination="@id/editFontFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersAdminListFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.UsersAdminListFragment"
+        android:label="fragment_users_admin_list"
+        tools:layout="@layout/fragment_users_admin_list" />
 >>>>>>> Stashed changes
 </navigation>

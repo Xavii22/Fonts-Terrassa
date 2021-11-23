@@ -5,18 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
+import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import android.os.Bundle
 import androidx.navigation.findNavController
-import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
 
-class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
-    private var fontsAdmin: MutableList<Font> = ArrayList()
+
+class FontRecyclerAdapter : RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
+    private var fonts: MutableList<Font> = ArrayList()
     lateinit var context: Context
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
-    fun fontsAdminRecyclerAdapter(fontsList: MutableList<Font>, contxt: Context) {
-        this.fontsAdmin = fontsList
+    fun fontsRecyclerAdapter(fontsList: MutableList<Font>, contxt: Context) {
+        this.fonts = fontsList
         this.context = contxt
     }
 
@@ -24,7 +25,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(
-            ItemFontListAdminBinding.inflate(
+            ItemFontListBinding.inflate(
                 layoutInflater, parent, false
             )
         )
@@ -34,31 +35,30 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder) {
-            with(fontsAdmin[position]) {
+            with(fonts[position]) {
                 binding.txtFont.text = this.fontName
             }
         }
-        val item = fontsAdmin[position]
+        val item = fonts[position]
         holder.bind(item)
 
         //estamblim un listener
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
-            bundle.putSerializable("font_name", fontsAdmin[position].fontName)
-            bundle.putSerializable("font_lat", fontsAdmin[position].lat.toString())
-            bundle.putSerializable("font_lon", fontsAdmin[position].lon.toString())
+            bundle.putSerializable("font_name", fonts[position].fontName)
+            bundle.putSerializable("font_lat", fonts[position].lat.toString())
+            bundle.putSerializable("font_lon", fonts[position].lon.toString())
             holder.itemView.findNavController().navigate(
-                R.id.action_fontAdminListFragment_to_editFontFragment, bundle
+                R.id.action_fragment_list_to_viewFontFragment, bundle
             )
         }
     }
 
     override fun getItemCount(): Int {
-        return fontsAdmin.size
+        return fonts.size
     }
 
-    class ViewHolder(val binding: ItemFontListAdminBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding: ItemFontListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(font: Font) {
 

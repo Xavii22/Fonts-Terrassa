@@ -5,6 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< Updated upstream
+=======
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentViewFontBinding
+import android.content.Intent
+import android.net.Uri
+>>>>>>> Stashed changes
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +25,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class viewFontFragment : Fragment() {
+<<<<<<< Updated upstream
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -26,9 +35,23 @@ class viewFontFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+=======
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        val binding: FragmentViewFontBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_view_font, container, false
+        )
+
+        binding.btnTestWater.setOnClickListener {
+            findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToEvaluateFragment())
+>>>>>>> Stashed changes
         }
     }
 
+<<<<<<< Updated upstream
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +59,18 @@ class viewFontFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_font, container, false)
     }
+=======
+        binding.txtNomFont.text = arguments?.getString("font_name")
+
+        binding.btnGoToMaps.setOnClickListener {
+            val fontPos =
+                "geo:0,0?q=" + arguments?.getString("font_lat") + "," + arguments?.getString("font_lon")
+            val gmmIntentUri: Uri = Uri.parse(fontPos)
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+>>>>>>> Stashed changes
 
     companion object {
         /**
