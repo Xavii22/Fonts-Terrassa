@@ -1,32 +1,29 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
+import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ListFragment : Fragment() {
+class FontAdminListFragment : Fragment() {
 
-    private lateinit var binding: FragmentListBinding
-    private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter()
+    private lateinit var binding: FragmentFontAdminListBinding
+    private val myAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter()
     private val db = FirebaseFirestore.getInstance()
     private var fonts: ArrayList<Font> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-       binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_list, container, false)
-
-
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_font_admin_list, container, false)
 
         db.collection("fonts").whereEqualTo("type", 1)
             .get()
@@ -40,7 +37,7 @@ class ListFragment : Fragment() {
                 }
                 binding.rvFonts.setHasFixedSize(true)
                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                context?.let { myAdapter.fontsAdminRecyclerAdapter(fonts, it) }
                 binding.rvFonts.adapter = myAdapter
             }
 

@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_admin.xml" value="0.27025641025641023" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_contrasenya.xml" value="0.14375" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_evaluate.xml" value="0.14375" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_font_admin_list.xml" value="0.27025641025641023" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_list.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_recuperar.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/fragment_users_admin_list.xml" value="0.14375" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-mapalogin/app/src/main/res/layout/item_font_list.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/activity_splash_screen.xml" value="0.14375" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/fragment_info.xml" value="0.2" />
@@ -28,29 +36,36 @@
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa2/app/src/main/res/layout/fragment_info_beure.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa2/app/src/main/res/menu/bottom_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/drawable/ic_home.xml" value="0.290625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/drawable/ic_pos.xml" value="0.290625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/drawable/ic_send.xml" value="0.290625" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/activity_admin.xml" value="0.264" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/activity_splash_screen.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_admin.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_contrasenya.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_edit_font.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_evaluate.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_info.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_list.xml" value="0.14375" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_login.xml" value="0.264" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_list.xml" value="0.4" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_login2.xml" value="0.1" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_maps.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_register_user.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/layout/fragment_view_font.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/menu/bottom_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/login_terrassa/app/src/main/res/mipmap-anydpi-v26/logo_fonts_terrassa.xml" value="0.290625" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/fragment_evaluate.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/fragment_info_beure.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/drawable/ic_pos.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/drawable/ic_save.xml" value="0.2703125" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/drawable/selector.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/fragment_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/fragment_users_admin_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/item_font_list.xml" value="0.4" />
+        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/layout/item_user_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa-master/app/src/main/res/menu/bottom_menu.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_edit_font.xml" value="0.1453125" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_evaluate.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_list.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_map.xml" value="0.1453125" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_maps.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/layout/fragment_view_font.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/rpuig/AndroidStudioProjects/fonts-terrassa/app/src/main/res/mipmap-anydpi-v26/logo_fonts_terrassa.xml" value="0.14635416666666667" />
       </map>
     </option>
   </component>

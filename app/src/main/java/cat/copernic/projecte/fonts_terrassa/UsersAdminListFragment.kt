@@ -9,13 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.projecte.fonts_terrassa.adapters.UsersRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentUsersAdminListBinding
+import cat.copernic.projecte.fonts_terrassa.models.Font
 import cat.copernic.projecte.fonts_terrassa.models.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class UsersAdminListFragment : Fragment() {
 
-    private lateinit var binding: FragmentUsersAdminListBinding
+    private lateinit var binding: FragmentListBinding
     private val myAdapter: UsersRecyclerAdapter = UsersRecyclerAdapter()
     private val db = FirebaseFirestore.getInstance()
     private var users: ArrayList<User> = arrayListOf()
@@ -36,10 +37,10 @@ class UsersAdminListFragment : Fragment() {
                         document.get("email").toString())
                     )
                 }
-                binding.rvUsers.setHasFixedSize(true)
-                binding.rvUsers.layoutManager = LinearLayoutManager(context)
+                binding.rvFonts.setHasFixedSize(true)
+                binding.rvFonts.layoutManager = LinearLayoutManager(context)
                 context?.let { myAdapter.UsersRecyclerAdapter(users, it) }
-                binding.rvUsers.adapter = myAdapter
+                binding.rvFonts.adapter = myAdapter
             }
 
         return binding.root

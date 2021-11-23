@@ -10,35 +10,37 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class Login2Fragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_login, container, false)
+            inflater, R.layout.fragment_login, container, false
+        )
         super.onCreate(savedInstanceState)
         setup()
+
+        binding.textviewContrasenya.setOnClickListener {
+            findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToContrasenyaFragment())
+        }
 
         return binding.root
     }
 
-
-
-    private fun setup(){
+    private fun setup() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-        binding.loginButton.setOnClickListener{
-            if(binding.emailEditText.text.isNotEmpty()&& binding.passwordEditText.text.isNotEmpty()){
-                auth.signInWithEmailAndPassword(binding.emailEditText.text.toString()
-                    ,binding.passwordEditText.text.toString()
-                ).addOnCompleteListener{
-                    Log.d("prova", it.exception?.printStackTrace().toString())
-                    if(it.isSuccessful) {
+        binding.loginButton.setOnClickListener {
+            if(binding.emailEditText.text.toString().isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()){
+                auth.signInWithEmailAndPassword(
+                    binding.emailEditText.text.toString(), binding.passwordEditText.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        auth.signOut()
                         showHome()
                     }
                 }
@@ -46,7 +48,8 @@ class Login2Fragment : Fragment() {
         }
     }
 
-    private fun showHome(){
+    private fun showHome() {
         findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToAdminFragment())
     }
+
 }

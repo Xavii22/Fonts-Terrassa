@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentEditFontBinding
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -44,18 +43,18 @@ class MapsFragment : Fragment() {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
         googleMap.setOnInfoWindowClickListener {
-            findNavController().navigate(MapsFragmentDirections.actionFragmentMapsToViewFontFragment())
+            findNavController().navigate(MapsFragmentDirections.actionMapsFragmentToViewFontFragment())
         }
 
-            binding.btnChangeMap.setOnClickListener{
-                if(mapType == 0){
-                    googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
-                    mapType = 1
-                }else{
-                    googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
-                    mapType = 0
-                }
+        binding.btnChangeMap.setOnClickListener{
+            if(mapType == 0){
+                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
+                mapType = 1
+            }else{
+                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
+                mapType = 0
             }
+        }
     }
 
     override fun onCreateView(
