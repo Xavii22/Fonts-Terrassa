@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.projecte.fonts_terrassa.adapters.UsersRecyclerAdapter
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentAdminBinding
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import cat.copernic.projecte.fonts_terrassa.models.User
@@ -18,14 +16,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class UsersAdminListFragment : Fragment() {
 
-    private lateinit var binding: FragmentFontAdminListBinding
+    private lateinit var binding: FragmentListBinding
     private val myAdapter: UsersRecyclerAdapter = UsersRecyclerAdapter()
     private val db = FirebaseFirestore.getInstance()
     private var users: ArrayList<User> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
+    
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_users_admin_list, container, false)
 

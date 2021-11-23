@@ -3,7 +3,11 @@ package cat.copernic.projecte.fonts_terrassa.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.projecte.fonts_terrassa.EvaluateFragmentDirections
+import cat.copernic.projecte.fonts_terrassa.ListFragmentDirections
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
@@ -11,7 +15,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 
 
-class FontRecyclerAdapter : RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
+class FontRecyclerAdapter: RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
     private var fonts: MutableList<Font> = ArrayList()
     lateinit var context: Context
 
@@ -49,14 +53,15 @@ class FontRecyclerAdapter : RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>
             bundle.putSerializable("font_lat", fonts[position].lat.toString())
             bundle.putSerializable("font_lon", fonts[position].lon.toString())
             holder.itemView.findNavController().navigate(
-                R.id.action_fragment_list_to_viewFontFragment, bundle
-            )
+                R.id.action_fragment_list_to_viewFontFragment, bundle)
         }
     }
+
 
     override fun getItemCount(): Int {
         return fonts.size
     }
+
 
     class ViewHolder(val binding: ItemFontListBinding) : RecyclerView.ViewHolder(binding.root) {
 

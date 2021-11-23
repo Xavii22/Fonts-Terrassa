@@ -1,4 +1,3 @@
-
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
@@ -14,19 +13,22 @@ class InfoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val binding: FragmentInfoBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_map, container, false)
+            inflater, R.layout.fragment_info, container, false)
 
-        binding.btnBeure.setOnClickListener {
-            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoGosFragment())
+        binding.btnLoginAdmin.setOnClickListener {
+            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToLoginFragment())
         }
-        binding.btnBeureSingular.setOnClickListener {
-            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoGosFragment())
+        binding.btnBeure.setOnClickListener {
+            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoBeureFragment())
+        }
+        binding.btnSingular.setOnClickListener {
+            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoSingularFragment())
         }
         binding.btnOrnamental.setOnClickListener {
-            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoGosFragment())
+            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoOrnamentalFragment())
         }
         binding.btnNatural.setOnClickListener {
-            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoGosFragment())
+            findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoNaturalFragment())
         }
 
         binding.btnGos.setOnClickListener {

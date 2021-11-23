@@ -35,7 +35,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="@string/buscar"
+                android:hint="Buscar"
                 android:inputType="textPersonName" />
 
             <Spinner

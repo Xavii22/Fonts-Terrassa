@@ -25,7 +25,7 @@ class AdminFragment : Fragment() {
         }
 
         binding.adminUsers.setOnClickListener {
-            //findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToRegisterUserFragment())
+            findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToUsersAdminListFragment())
         }
 
         binding.createFonts.setOnClickListener {

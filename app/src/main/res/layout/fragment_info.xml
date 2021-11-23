@@ -27,13 +27,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="41dp"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="157dp"
             android:text="@string/oat"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_terrassa" />
 
         <TextView
             android:id="@+id/txt_version"
@@ -49,55 +49,40 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_oat" />
 
         <TextView
-            android:id="@+id/txt_compilation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="41dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="152dp"
-            android:text="@string/compilation"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_version" />
-
-        <TextView
             android:id="@+id/txt_autors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="41dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="135dp"
-            android:layout_marginBottom="16dp"
             android:text="@string/autors"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_compilation" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_version" />
 
         <Button
             android:id="@+id/btn_beure"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="15dp"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_home"
             android:drawablePadding="40dp"
             android:gravity="center_vertical"
             android:paddingStart="50dp"
             android:paddingEnd="0dp"
-            android:text="@string/fonts_boca_singulars"
+            android:text="@string/fonts_boca"
+            android:inputType="textCapSentences"
             android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
-            android:id="@+id/btn_beure_singular"
+            android:id="@+id/btn_singular"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="120dp"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_home"
             android:drawablePadding="40dp"
@@ -105,16 +90,16 @@
             android:paddingStart="50dp"
             android:paddingEnd="0dp"
             android:text="@string/fonts_boca_singulars"
+            android:inputType="textCapSentences"
             android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_beure" />
 
         <Button
             android:id="@+id/btn_ornamental"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="180dp"
             android:background="@android:color/transparent"
             android:drawableStart="@android:color/transparent"
             android:drawablePadding="40dp"
@@ -122,16 +107,16 @@
             android:paddingStart="50dp"
             android:paddingEnd="0dp"
             android:text="@string/fonts_ornamentals"
+            android:inputType="textCapSentences"
             android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_singular" />
 
         <Button
             android:id="@+id/btn_natural"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="240dp"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_home"
             android:drawablePadding="40dp"
@@ -139,17 +124,17 @@
             android:paddingStart="50dp"
             android:paddingEnd="0dp"
             android:text="@string/fonts_naturals"
+            android:inputType="textCapSentences"
             android:textColor="#000"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_ornamental" />
 
         <Button
             android:id="@+id/btn_gos"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="300dp"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_home"
             android:drawablePadding="40dp"
@@ -157,10 +142,11 @@
             android:paddingStart="50dp"
             android:paddingEnd="0dp"
             android:text="@string/fonts_gossos"
+            android:inputType="textCapSentences"
             android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_natural" />
 
         <TextView
             android:id="@+id/textView2"
@@ -170,7 +156,8 @@
             android:layout_marginTop="54dp"
             android:layout_marginEnd="45dp"
             android:text="@string/info_title"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="28sp"
             app:layout_constraintEnd_toStartOf="@+id/btn_login_admin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -183,7 +170,7 @@
             android:layout_marginTop="48dp"
             android:layout_marginEnd="55dp"
             android:background="#fff"
-            android:contentDescription="@string/admin"
+            android:contentDescription="@string/login_admin"
             android:src="@drawable/ic_security"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -217,13 +204,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="88dp"
-            android:layout_marginTop="381dp"
+            android:layout_marginTop="21dp"
             android:layout_marginEnd="278dp"
             android:text="@string/language"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_gos" />
 
         <TextView
             android:id="@+id/textView"
