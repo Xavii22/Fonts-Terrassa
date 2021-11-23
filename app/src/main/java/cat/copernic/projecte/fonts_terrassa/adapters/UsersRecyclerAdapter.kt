@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemUserListBinding
 import cat.copernic.projecte.fonts_terrassa.models.User
+import com.google.firebase.firestore.FirebaseFirestore
 
 
-class UsersRecyclerAdapter: RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolder>() {
+class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolder>() {
     private var users: MutableList<User> = ArrayList()
     lateinit var context: Context
+    private val db = FirebaseFirestore.getInstance()
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
     fun UsersRecyclerAdapter(usersList: MutableList<User>, contxt: Context) {
@@ -33,7 +35,7 @@ class UsersRecyclerAdapter: RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolder
 
         with(holder) {
             with(users[position]) {
-                binding.txtUser.text = this.useremail
+                binding.txtUser.text = this.email
             }
         }
         val item = users[position]
@@ -41,7 +43,8 @@ class UsersRecyclerAdapter: RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolder
 
         //estamblim un listener
         holder.itemView.setOnClickListener {
-            //Action here
+            db.collection("users").document(users[position].email).delete()
+            //Delete user
         }
     }
 
@@ -53,7 +56,7 @@ class UsersRecyclerAdapter: RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolder
 
     class ViewHolder(val binding: ItemUserListBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(font: User) {
+        fun bind(users: User) {
 
         }
     }
