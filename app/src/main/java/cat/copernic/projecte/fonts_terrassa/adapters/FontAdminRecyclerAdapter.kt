@@ -48,7 +48,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
             bundle.putSerializable("font_lat", fontsAdmin[position].lat.toString())
             bundle.putSerializable("font_lon", fontsAdmin[position].lon.toString())
             holder.itemView.findNavController().navigate(
-                R.id.action_fontAdminListFragment_to_editFontFragment, bundle
+                R.id.action_fontAdminListFragment_to_editFontFragment2, bundle
             )
         }
     }
