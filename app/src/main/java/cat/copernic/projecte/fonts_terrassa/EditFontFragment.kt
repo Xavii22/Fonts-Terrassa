@@ -22,6 +22,7 @@ class EditFontFragment : Fragment() {
             inflater, R.layout.fragment_edit_font, container, false)
 
         binding.txtNomFont.setText(arguments?.getString("font_name"))
+        oldFontName = binding.txtNomFont.text.toString()
         binding.editLat.setText(arguments?.getString("font_lat"))
         binding.editLon.setText(arguments?.getString("font_lon"))
 
