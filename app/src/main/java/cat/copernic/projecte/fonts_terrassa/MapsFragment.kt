@@ -15,7 +15,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -34,7 +33,55 @@ class MapsFragment : Fragment() {
                     MarkerOptions()
                         .position(pos)
                         .title(document.get("name").toString())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_font))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_1))
+                )
+            }
+        }
+
+        db.collection("fonts").whereEqualTo("type", 2).get().addOnSuccessListener{ documents ->
+            for (document in documents) {
+                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .title(document.get("name").toString())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_2))
+                )
+            }
+        }
+
+        db.collection("fonts").whereEqualTo("type", 3).get().addOnSuccessListener{ documents ->
+            for (document in documents) {
+                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .title(document.get("name").toString())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_5))
+                )
+            }
+        }
+
+        db.collection("fonts").whereEqualTo("type", 4).get().addOnSuccessListener{ documents ->
+            for (document in documents) {
+                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .title(document.get("name").toString())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_3))
+                )
+            }
+        }
+
+        db.collection("fonts").whereEqualTo("type", 5).get().addOnSuccessListener{ documents ->
+            for (document in documents) {
+                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .title(document.get("name").toString())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_4))
                 )
             }
         }
