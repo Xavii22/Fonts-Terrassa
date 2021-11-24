@@ -13,7 +13,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
             android:layout_height="82dp"
-            android:background="#FFB03C"
+            android:background="#1361FF"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,27 +28,10 @@
                 android:entries="@array/spinner_order"
                 android:spinnerMode="dropdown" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="127dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:ems="10"
-                android:hint="Buscar"
-                android:inputType="textPersonName" />
-
-            <Spinner
-                android:id="@+id/spinner_filter"
-                android:layout_width="119dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:entries="@array/spinner_filter" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFonts"
+            android:id="@+id/rvUsers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="90dp"

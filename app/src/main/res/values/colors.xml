@@ -10,5 +10,6 @@
     <color name="bn_list">#1b658c</color>
     <color name="bn_map">#a26caa</color>
     <color name="bn_info">#40996c</color>
+    <color name="mycolor">#808080</color>
 
 </resources>
