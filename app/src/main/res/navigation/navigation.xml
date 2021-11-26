@@ -111,14 +111,9 @@
             android:id="@+id/action_loginFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_contrasenyaFragment"
-            app:destination="@id/contrasenyaFragment" />
+            android:id="@+id/action_loginFragment_to_recuperarFragment"
+            app:destination="@id/recuperarFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/contrasenyaFragment"
-        android:name="cat.copernic.projecte.fonts_terrassa.ContrasenyaFragment"
-        android:label="fragment_contrasenya"
-        tools:layout="@layout/fragment_contrasenya" />
     <fragment
         android:id="@+id/registerUserFragment"
         android:name="cat.copernic.projecte.fonts_terrassa.RegisterUserFragment"
@@ -160,4 +155,9 @@
         android:name="cat.copernic.projecte.fonts_terrassa.UsersAdminListFragment"
         android:label="fragment_users_admin_list"
         tools:layout="@layout/fragment_users_admin_list" />
+    <fragment
+        android:id="@+id/recuperarFragment"
+        android:name="cat.copernic.projecte.fonts_terrassa.RecuperarFragment"
+        android:label="fragment_recuperar"
+        tools:layout="@layout/fragment_recuperar" />
 </navigation>

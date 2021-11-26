@@ -1,7 +1,6 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,7 @@ class Login2Fragment : Fragment() {
         setup()
 
         binding.textviewContrasenya.setOnClickListener {
-            findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToContrasenyaFragment())
+            findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToRecuperarFragment())
         }
 
         return binding.root

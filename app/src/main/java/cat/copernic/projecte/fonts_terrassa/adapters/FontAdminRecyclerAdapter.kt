@@ -30,7 +30,6 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         )
     }
 
-    //Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder) {
