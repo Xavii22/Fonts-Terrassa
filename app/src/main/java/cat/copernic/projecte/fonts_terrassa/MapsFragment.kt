@@ -1,10 +1,13 @@
 package cat.copernic.projecte.fonts_terrassa
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding

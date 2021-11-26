@@ -1,6 +1,7 @@
 package cat.copernic.projecte.fonts_terrassa.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +36,20 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
 
         with(holder) {
             with(users[position]) {
-                binding.txtUser.text = this.email
+                db.collection("users")
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            if (document.get("email").toString() == users[position].email) {
+                                if (document.get("active").toString().toBoolean()) {
+                                    binding.txtUser.text = this.email
+                                }else{
+                                    binding.txtUser.text = this.email
+                                    binding.cardViewUser.setCardBackgroundColor(Color.LTGRAY)
+                                }
+                            }
+                        }
+                    }
             }
         }
         val item = users[position]
@@ -43,8 +57,33 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
 
         //estamblim un listener
         holder.itemView.setOnClickListener {
-            db.collection("users").document(users[position].email).delete()
-            //Delete user
+            db.collection("users")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        if (document.get("email").toString() == users[position].email) {
+                            if (document.get("active").toString().toBoolean()) {
+                                db.collection("users").document(users[position].email).delete()
+                                db.collection("users").document(users[position].email)
+                                    .set(
+                                        hashMapOf(
+                                            "email" to users[position].email,
+                                            "active" to false
+                                        )
+                                    )
+                            } else {
+                                db.collection("users").document(users[position].email).delete()
+                                db.collection("users").document(users[position].email)
+                                    .set(
+                                        hashMapOf(
+                                            "email" to users[position].email,
+                                            "active" to true
+                                        )
+                                    )
+                            }
+                        }
+                    }
+                }
         }
     }
 

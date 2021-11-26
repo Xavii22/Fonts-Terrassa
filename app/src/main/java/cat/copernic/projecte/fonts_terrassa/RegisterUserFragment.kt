@@ -12,6 +12,7 @@ import cat.copernic.projecte.fonts_terrassa.databinding.FragmentRegisterUserBind
 import com.google.firebase.auth.FirebaseAuth
 
 import android.R
+import android.util.Log
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentInfoBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -30,6 +31,10 @@ class RegisterUserFragment : Fragment() {
         super.onCreate(savedInstanceState)
         setup()
 
+        binding.btnBack.setOnClickListener{
+            findNavController().navigate(RegisterUserFragmentDirections.actionRegisterUserFragmentToAdminFragment())
+        }
+
         return binding.root
     }
 
@@ -37,8 +42,10 @@ class RegisterUserFragment : Fragment() {
 
         binding.registerButton.setOnClickListener {
 
-            if(binding.emailEditText.text.toString().isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
-                && binding.repeatEditText.text.toString().isNotEmpty()) {
+            if (binding.emailEditText.text.toString()
+                    .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
+                && binding.repeatEditText.text.toString().isNotEmpty()
+            ) {
                 if (binding.passwordEditText.text.toString() == binding.repeatEditText.text.toString()) {
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                         binding.emailEditText.text.toString(),
@@ -48,40 +55,44 @@ class RegisterUserFragment : Fragment() {
                         if (it.isSuccessful) {
                             //Save email to database
                             db.collection("users").document(binding.emailEditText.text.toString())
-                                .set(hashMapOf(
-                                    "email" to binding.emailEditText.text.toString()
-                                ))
+                                .set(
+                                    hashMapOf(
+                                        "email" to binding.emailEditText.text.toString(),
+                                        "active" to true
+                                    )
+                                )
+                            //Go to Dashboard
                             showHome()
+                        } else {
+                            showAlertExist()
                         }
                     }
                 } else {
-                    contrasenyaRepetida()
+                    showAlertDifPass()
                 }
             }
         }
     }
 
-    private fun showHome() {
-        findNavController().navigate(RegisterUserFragmentDirections.actionRegisterUserFragmentToAdminFragment())
+    private fun showAlertExist(){
+        val objectAlerDialog = android.app.AlertDialog.Builder(context)
+        objectAlerDialog.setTitle("ERROR")
+        objectAlerDialog.setMessage("El correu introduit ja existeix a la base de dades")
+        objectAlerDialog.setPositiveButton("Acceptar",null)
+        var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
     }
 
-    private fun contrasenyaRepetida() {
-        val builder1 = AlertDialog.Builder(
-            requireContext()
-        )
-        builder1.setMessage("Contrasenya repetida")
-        builder1.setCancelable(true)
+    private fun showAlertDifPass(){
+        val objectAlerDialog = android.app.AlertDialog.Builder(context)
+        objectAlerDialog.setTitle("ERROR")
+        objectAlerDialog.setMessage("Les contrasenyes introduides no son iguals")
+        objectAlerDialog.setPositiveButton("Acceptar",null)
+        var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
+    }
 
-        builder1.setPositiveButton(
-            "Yes"
-        ) { dialog, id -> dialog.cancel() }
-
-        builder1.setNegativeButton(
-            "No"
-        ) { dialog, id -> dialog.cancel() }
-
-        val alert11 = builder1.create()
-        alert11.show()
-
+    private fun showHome() {
+        findNavController().navigate(RegisterUserFragmentDirections.actionRegisterUserFragmentToAdminFragment())
     }
 }
