@@ -21,22 +21,21 @@
 
             <Spinner
                 android:id="@+id/spinner_order"
-                android:layout_width="119dp"
+                android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="15dp"
                 android:entries="@array/spinner_order"
                 android:spinnerMode="dropdown" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="127dp"
+            <SearchView
+                android:id="@+id/svFonts"
+                android:layout_width="160dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
-                android:ems="10"
-                android:hint="Buscar"
-                android:inputType="textPersonName" />
+                app:iconifiedByDefault="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryHint="Buscar" />
 
             <Spinner
                 android:id="@+id/spinner_filter"
@@ -44,6 +43,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
                 android:entries="@array/spinner_filter" />
         </LinearLayout>
 
@@ -58,4 +58,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-

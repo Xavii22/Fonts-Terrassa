@@ -29,7 +29,7 @@
                 android:spinnerMode="dropdown" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/searchViewFont"
                 android:layout_width="127dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="5dp"

@@ -30,6 +30,8 @@
     <string name="username">Nom</string>
     <string name="surname">Cognoms</string>
     <string name="repeatPassword">Repetir contrasenya</string>
+    <string name="Error_pujar_foto">ERROR AL PUJAR LA FOTO</string>
+    <string name="Exit_pujar_foto">EXIT AL PUJAR LA FOTO</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Castellà</item>
@@ -40,11 +42,11 @@
         <item>Mi</item>
     </string-array>
     <string-array name="spinner_filter">
-        <item>Fonts 1</item>
-        <item>Fonts 2</item>
-        <item>Fonts 3</item>
-        <item>Fonts 4</item>
-        <item>Fonts 5</item>
+        <item>Fonts de beure</item>
+        <item>Fonts de beure singulars</item>
+        <item>Fonts ornamentals</item>
+        <item>Fonts naturals</item>
+        <item>Fonts de gossos</item>
     </string-array>
     <string-array name="spinner_order">
         <item>Nom ASC</item>

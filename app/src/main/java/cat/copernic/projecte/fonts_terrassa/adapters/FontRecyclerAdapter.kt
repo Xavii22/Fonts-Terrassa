@@ -3,21 +3,28 @@ package cat.copernic.projecte.fonts_terrassa.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.projecte.fonts_terrassa.EvaluateFragmentDirections
-import cat.copernic.projecte.fonts_terrassa.ListFragmentDirections
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import android.os.Bundle
 import androidx.navigation.findNavController
+import kotlin.collections.ArrayList
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
-
-class FontRecyclerAdapter: RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
+class FontRecyclerAdapter:
+    RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
     private var fonts: MutableList<Font> = ArrayList()
+    private lateinit var fontsOriginal: MutableList<Font>
+
     lateinit var context: Context
+
+    init {
+
+        //fontsOriginal.addAll(fonts)
+    }
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
     fun fontsRecyclerAdapter(fontsList: MutableList<Font>, contxt: Context) {
@@ -41,6 +48,7 @@ class FontRecyclerAdapter: RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>(
         with(holder) {
             with(fonts[position]) {
                 binding.txtFont.text = this.fontName
+                this.fontName?.let { descarregarImatgeGlide(context, it)}
             }
         }
         val item = fonts[position]
@@ -52,21 +60,59 @@ class FontRecyclerAdapter: RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>(
             bundle.putSerializable("font_name", fonts[position].fontName)
             bundle.putSerializable("font_lat", fonts[position].lat.toString())
             bundle.putSerializable("font_lon", fonts[position].lon.toString())
+            bundle.putSerializable("font_info", fonts[position].info)
             holder.itemView.findNavController().navigate(
-                R.id.action_fragment_list_to_viewFontFragment, bundle)
+                R.id.action_fragment_list_to_viewFontFragment, bundle
+            )
         }
     }
-
 
     override fun getItemCount(): Int {
         return fonts.size
     }
-
 
     class ViewHolder(val binding: ItemFontListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(font: Font) {
 
         }
+
+        private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
+        fun descarregarImatgeGlide(view: Context, fontId:String){
+            val imgPath = "images/" + fontId + ".jpg"
+            val imageRef = storageRef.child(imgPath)
+            imageRef.downloadUrl.addOnSuccessListener { url ->
+
+                Glide.with(view)
+                    .load(url.toString())
+                    .centerInside()
+                    .placeholder((R.drawable.loading))
+                    .error(R.drawable.ic_noimage)
+                    .into(binding.imageView)
+
+            }.addOnFailureListener{
+                binding.imageView.setImageResource(R.drawable.ic_noimage)
+            }
+        }
     }
+/*
+    fun filtrat(txtBuscar: String?) {
+        val longitud = txtBuscar?.length
+
+        if (longitud == 0) {
+            fonts.clear()
+            fonts.addAll(fontsOriginal)
+        } else {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                MutableList<Font> fontsCol
+                //fonts.stream().filter(fonts -> fonts == fonts.get().fontName)
+            } else {
+                for (Font in fonts) {
+                    if () {
+
+                    }
+                }
+            }
+        }
+    }*/
 }

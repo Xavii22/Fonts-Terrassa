@@ -43,6 +43,7 @@ class FontAdminListFragment : Fragment() {
                             document.get("name").toString(),
                             document.get("lat").toString().toDouble(),
                             document.get("lon").toString().toDouble(),
+                            document.get("info").toString(),
                             1
                         )
                     )
@@ -53,10 +54,7 @@ class FontAdminListFragment : Fragment() {
                 binding.rvFonts.adapter = myAdapter
             }
         /*
-        binding2.imageView2.setOnClickListener{
-            db.collection("fonts").document("font1")
-                .delete()
-        }
+        DELETE FONT ON CLICK RIGHT OF THE CARD
         */
 
         ItemFontListAdmin()

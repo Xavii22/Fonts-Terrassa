@@ -9,6 +9,9 @@ import cat.copernic.projecte.fonts_terrassa.models.Font
 import android.os.Bundle
 import androidx.navigation.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
     private var fontsAdmin: MutableList<Font> = ArrayList()
@@ -35,6 +38,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         with(holder) {
             with(fontsAdmin[position]) {
                 binding.txtFont.text = this.fontName
+                this.fontName?.let { descarregarImatgeGlide(context, it) }
             }
         }
         val item = fontsAdmin[position]
@@ -46,6 +50,8 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
             bundle.putSerializable("font_name", fontsAdmin[position].fontName)
             bundle.putSerializable("font_lat", fontsAdmin[position].lat.toString())
             bundle.putSerializable("font_lon", fontsAdmin[position].lon.toString())
+            bundle.putSerializable("font_info", fontsAdmin[position].info)
+            bundle.putSerializable("font_type", fontsAdmin[position].type)
             holder.itemView.findNavController().navigate(
                 R.id.action_fontAdminListFragment_to_editFontFragment2, bundle
             )
@@ -61,6 +67,24 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
 
         fun bind(font: Font) {
 
+        }
+
+        private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
+        fun descarregarImatgeGlide(view: Context, fontId:String){
+            val imgPath = "images/" + fontId + ".jpg"
+            val imageRef = storageRef.child(imgPath)
+            imageRef.downloadUrl.addOnSuccessListener { url ->
+
+                Glide.with(view)
+                    .load(url.toString())
+                    .centerInside()
+                    .placeholder((R.drawable.loading))
+                    .error(R.drawable.ic_noimage)
+                    .into(binding.imageView)
+
+            }.addOnFailureListener{
+                binding.imageView.setImageResource(R.drawable.ic_noimage)
+            }
         }
     }
 }
