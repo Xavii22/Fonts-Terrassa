@@ -17,18 +17,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Spinner
-                android:id="@+id/spinner_order"
-                android:layout_width="119dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="15dp"
-                android:entries="@array/spinner_order"
-                android:spinnerMode="dropdown" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUsers"
