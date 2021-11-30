@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_viewFontFragment_to_evaluateFragment"
             app:destination="@id/evaluateFragment" />
+        <action
+            android:id="@+id/action_viewFontFragment_to_fragment_list"
+            app:destination="@id/fragment_list" />
     </fragment>
     <fragment
         android:id="@+id/fragment_info"
