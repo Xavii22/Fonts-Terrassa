@@ -131,7 +131,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 ) {
                     when (binding.spinnerFilter.selectedItem.toString()) {
                         "Fonts de beure" ->
-                            db.collection("fonts")
+                            db.collection("fonts").whereEqualTo("type", 1)
                                 .get()
                                 .addOnSuccessListener { documents ->
                                     fonts.clear()
