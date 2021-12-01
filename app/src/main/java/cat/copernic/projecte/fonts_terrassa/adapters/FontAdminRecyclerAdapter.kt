@@ -1,9 +1,7 @@
 package cat.copernic.projecte.fonts_terrassa.adapters
 
-import android.content.ContentValues
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -51,7 +49,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         holder.bind(item)
 
         //Listener Delete Button
-        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.imageView2)
+        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont)
         deleteBtn.setOnClickListener {
             db.collection("fonts").document(fontsAdmin[position].name)
                 .delete()
