@@ -31,42 +31,42 @@
                     android:id="@+id/imageView"
                     android:layout_width="56dp"
                     android:layout_height="60dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="250dp"
+                    android:layout_marginStart="15dp"
                     android:src="@drawable/ic_noimage"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteFont"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txt_font"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_width="180dp"
+                    android:layout_height="54dp"
+                    android:gravity="center_vertical"
                     android:maxWidth="200dp"
                     android:text="Font 1"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/btnDeleteFont"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.448" />
 
                 <ImageView
                     android:id="@+id/btnDeleteFont"
                     android:layout_width="46dp"
                     android:layout_height="44dp"
-                    android:layout_marginStart="300dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
                     android:src="@drawable/ic_baseline_location_on_24"
+                    app:layout_constraintBottom_toTopOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:text="28KM"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"

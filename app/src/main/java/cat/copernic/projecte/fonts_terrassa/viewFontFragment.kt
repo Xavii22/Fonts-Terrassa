@@ -31,6 +31,7 @@ class viewFontFragment : Fragment() {
         }
 
         binding.txtNomFont.text = arguments?.getString("font_name")
+        binding.txtInformacio.text = arguments?.getString("font_info")
 
         binding.btnGoToMaps.setOnClickListener{
             val fontPos = "geo:0,0?q=" + arguments?.getString("font_lat") + "," + arguments?.getString("font_lon")
