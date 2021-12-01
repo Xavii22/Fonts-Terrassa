@@ -26,6 +26,10 @@ class viewFontFragment : Fragment() {
             findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToEvaluateFragment())
         }
 
+        binding.btnBack.setOnClickListener{
+            findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToFragmentList())
+        }
+
         binding.txtNomFont.text = arguments?.getString("font_name")
 
         binding.btnGoToMaps.setOnClickListener{

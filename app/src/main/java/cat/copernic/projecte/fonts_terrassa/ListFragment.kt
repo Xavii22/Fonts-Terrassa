@@ -11,16 +11,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import android.view.*
 import kotlin.collections.ArrayList
 import android.widget.AdapterView
-import java.util.*
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 
-class ListFragment : Fragment(){
+class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var binding: FragmentListBinding
     private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter()
     private val db = FirebaseFirestore.getInstance()
     private var fonts: ArrayList<Font> = arrayListOf()
-    private var tempFonts: ArrayList<Font> = arrayListOf()
     var txtBuscar: SearchView? = null
 
     override fun onCreateView(
@@ -32,7 +30,7 @@ class ListFragment : Fragment(){
             inflater, R.layout.fragment_list, container, false
         )
 
-        //txtBuscar = binding.svFonts
+        txtBuscar = binding.svFonts
 
         /*
         db.collection("fonts")
@@ -53,8 +51,7 @@ class ListFragment : Fragment(){
                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
                 context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
                 binding.rvFonts.adapter = myAdapter
-            }
-        )*/
+            }*/
 
         binding.spinnerOrder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -77,9 +74,8 @@ class ListFragment : Fragment(){
                                 }
                                 binding.rvFonts.setHasFixedSize(true)
                                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                context?.let { myAdapter.fontsRecyclerAdapter(tempFonts, it) }
+                                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
                                 binding.rvFonts.adapter = myAdapter
-                                tempFonts.addAll(fonts)
                             }
                     "Nom DESC" ->
                         db.collection("fonts")
@@ -135,7 +131,7 @@ class ListFragment : Fragment(){
                 ) {
                     when (binding.spinnerFilter.selectedItem.toString()) {
                         "Fonts de beure" ->
-                            db.collection("fonts")
+                            db.collection("fonts").whereEqualTo("type", 1)
                                 .get()
                                 .addOnSuccessListener { documents ->
                                     fonts.clear()
@@ -152,9 +148,9 @@ class ListFragment : Fragment(){
                                     }
                                     binding.rvFonts.setHasFixedSize(true)
                                     binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(tempFonts, it) }
+                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
                                     binding.rvFonts.adapter = myAdapter
-                                    tempFonts.addAll(fonts)
+
                                 }
                         "Fonts de beure singulars" ->
                             db.collection("fonts").whereEqualTo("type", 2)
@@ -244,16 +240,20 @@ class ListFragment : Fragment(){
                 }
             }
 
+        txtBuscar!!.setOnQueryTextListener(this)
+
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
-
-        super.onCreateOptionsMenu(menu, inflater)
+    override fun onQueryTextSubmit(p0: String?): Boolean {
+        TODO("Not yet implemented")
     }
 
-/*
+    override fun onQueryTextChange(p0: String?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    /*
     binding.svFonts.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
         androidx.appcompat.widget.SearchView.OnQueryTextListener {
         override fun onQueryTextChange(p0: String?): Boolean {
@@ -295,4 +295,5 @@ class ListFragment : Fragment(){
         return false
     }
 */
+
 }
