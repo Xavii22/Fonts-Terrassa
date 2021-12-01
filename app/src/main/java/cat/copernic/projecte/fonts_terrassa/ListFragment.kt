@@ -253,4 +253,47 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         TODO("Not yet implemented")
     }
 
+    /*
+    binding.svFonts.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+        androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        override fun onQueryTextChange(p0: String?): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun onQueryTextSubmit(newText: String?): Boolean {
+            tempFonts.clear()
+            val searchText = newText!!.lowercase(Locale.getDefault())
+
+            if (searchText.isNotEmpty()) {
+                fonts.forEach {
+                    if(it.heading.lowercase(Locale.getDefault()).contains(searchText)) {
+                        tempFonts.add(it)
+                    }
+                }
+                binding.rvFonts.adapter!!.notifyDataSetChanged()
+            }else{
+                tempFonts.clear()
+                tempFonts.addAll(fonts)
+                binding.rvFonts.adapter!!.notifyDataSetChanged()
+            }
+
+            return false
+        }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        binding.svFonts.clearFocus()
+/*
+        if (fonts.contains(query)) {
+            fonts.filtrat.filter(query)
+        }*/
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        //fonts.filtrat.filter(newText)
+        return false
+    }
+*/
+
 }
