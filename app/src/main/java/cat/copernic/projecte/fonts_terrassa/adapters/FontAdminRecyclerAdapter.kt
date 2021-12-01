@@ -1,21 +1,27 @@
 package cat.copernic.projecte.fonts_terrassa.adapters
 
+import android.content.ContentValues
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
-import cat.copernic.projecte.fonts_terrassa.models.Font
-import android.os.Bundle
-import androidx.navigation.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
+import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
 class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
     private var fontsAdmin: MutableList<Font> = ArrayList()
     lateinit var context: Context
+    private val db = FirebaseFirestore.getInstance()
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
     fun fontsAdminRecyclerAdapter(fontsList: MutableList<Font>, contxt: Context) {
@@ -44,6 +50,18 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         val item = fontsAdmin[position]
         holder.bind(item)
 
+        //Listener Delete Button
+        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.imageView2)
+        deleteBtn.setOnClickListener {
+            db.collection("fonts").document(fontsAdmin[position].name)
+                .delete()
+                .addOnSuccessListener {
+                    Toast.makeText(context,"Font eliminada correctament", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener { e ->
+                    Toast.makeText(context,"ERROR en eliminar la font", Toast.LENGTH_SHORT).show()
+                }
+        }
+
         //estamblim un listener
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
@@ -70,7 +88,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         }
 
         private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-        fun descarregarImatgeGlide(view: Context, fontId:String){
+        fun descarregarImatgeGlide(view: Context, fontId: String) {
             val imgPath = "images/" + fontId + ".jpg"
             val imageRef = storageRef.child(imgPath)
             imageRef.downloadUrl.addOnSuccessListener { url ->
@@ -82,7 +100,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                     .error(R.drawable.ic_noimage)
                     .into(binding.imageView)
 
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 binding.imageView.setImageResource(R.drawable.ic_noimage)
             }
         }
