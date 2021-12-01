@@ -11,14 +11,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 import android.view.*
 import kotlin.collections.ArrayList
 import android.widget.AdapterView
-import android.widget.SearchView
+import java.util.*
+import androidx.appcompat.widget.SearchView
 
-class ListFragment : Fragment(), SearchView.OnQueryTextListener {
+class ListFragment : Fragment(){
 
     private lateinit var binding: FragmentListBinding
     private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter()
     private val db = FirebaseFirestore.getInstance()
     private var fonts: ArrayList<Font> = arrayListOf()
+    private var tempFonts: ArrayList<Font> = arrayListOf()
     var txtBuscar: SearchView? = null
 
     override fun onCreateView(
@@ -30,7 +32,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             inflater, R.layout.fragment_list, container, false
         )
 
-        txtBuscar = binding.svFonts
+        //txtBuscar = binding.svFonts
 
         /*
         db.collection("fonts")
@@ -51,7 +53,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
                 context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
                 binding.rvFonts.adapter = myAdapter
-            }*/
+            }
+        )*/
 
         binding.spinnerOrder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -74,8 +77,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                                 }
                                 binding.rvFonts.setHasFixedSize(true)
                                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                                context?.let { myAdapter.fontsRecyclerAdapter(tempFonts, it) }
                                 binding.rvFonts.adapter = myAdapter
+                                tempFonts.addAll(fonts)
                             }
                     "Nom DESC" ->
                         db.collection("fonts")
@@ -148,9 +152,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                                     }
                                     binding.rvFonts.setHasFixedSize(true)
                                     binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                                    context?.let { myAdapter.fontsRecyclerAdapter(tempFonts, it) }
                                     binding.rvFonts.adapter = myAdapter
-
+                                    tempFonts.addAll(fonts)
                                 }
                         "Fonts de beure singulars" ->
                             db.collection("fonts").whereEqualTo("type", 2)
@@ -240,17 +244,55 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
             }
 
-        txtBuscar!!.setOnQueryTextListener(this)
-
         return binding.root
     }
 
-    override fun onQueryTextSubmit(p0: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onQueryTextChange(p0: String?): Boolean {
-        TODO("Not yet implemented")
+/*
+    binding.svFonts.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+        androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        override fun onQueryTextChange(p0: String?): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun onQueryTextSubmit(newText: String?): Boolean {
+            tempFonts.clear()
+            val searchText = newText!!.lowercase(Locale.getDefault())
+
+            if (searchText.isNotEmpty()) {
+                fonts.forEach {
+                    if(it.heading.lowercase(Locale.getDefault()).contains(searchText)) {
+                        tempFonts.add(it)
+                    }
+                }
+                binding.rvFonts.adapter!!.notifyDataSetChanged()
+            }else{
+                tempFonts.clear()
+                tempFonts.addAll(fonts)
+                binding.rvFonts.adapter!!.notifyDataSetChanged()
+            }
+
+            return false
+        }
     }
 
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        binding.svFonts.clearFocus()
+/*
+        if (fonts.contains(query)) {
+            fonts.filtrat.filter(query)
+        }*/
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        //fonts.filtrat.filter(newText)
+        return false
+    }
+*/
 }

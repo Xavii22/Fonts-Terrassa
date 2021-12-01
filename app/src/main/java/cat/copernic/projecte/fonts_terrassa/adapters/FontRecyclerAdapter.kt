@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class FontRecyclerAdapter:
+class FontRecyclerAdapter :
     RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
     private var fonts: MutableList<Font> = ArrayList()
     private lateinit var fontsOriginal: MutableList<Font>
@@ -48,13 +48,13 @@ class FontRecyclerAdapter:
         with(holder) {
             with(fonts[position]) {
                 binding.txtFont.text = this.fontName
-                this.fontName?.let { descarregarImatgeGlide(context, it)}
+                this.fontName?.let { descarregarImatgeGlide(context, it) }
             }
         }
         val item = fonts[position]
         holder.bind(item)
 
-        //estamblim un listener
+        //establim un listener
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable("font_name", fonts[position].fontName)
@@ -78,7 +78,7 @@ class FontRecyclerAdapter:
         }
 
         private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
-        fun descarregarImatgeGlide(view: Context, fontId:String){
+        fun descarregarImatgeGlide(view: Context, fontId: String) {
             val imgPath = "images/" + fontId + ".jpg"
             val imageRef = storageRef.child(imgPath)
             imageRef.downloadUrl.addOnSuccessListener { url ->
@@ -90,28 +90,35 @@ class FontRecyclerAdapter:
                     .error(R.drawable.ic_noimage)
                     .into(binding.imageView)
 
-            }.addOnFailureListener{
+            }.addOnFailureListener {
                 binding.imageView.setImageResource(R.drawable.ic_noimage)
             }
         }
     }
 /*
-    fun filtrat(txtBuscar: String?) {
-        val longitud = txtBuscar?.length
-
-        if (longitud == 0) {
-            fonts.clear()
-            fonts.addAll(fontsOriginal)
-        } else {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                MutableList<Font> fontsCol
-                //fonts.stream().filter(fonts -> fonts == fonts.get().fontName)
-            } else {
-                for (Font in fonts) {
-                    if () {
-
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    countryFilterList = countryList as ArrayList<Font>
+                } else {
+                    val resultList = ArrayList<Font>()
+                    for (row in countryList) {
+                        if (row.name.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                            resultList.add(row)
+                        }
                     }
+                    countryFilterList = resultList
                 }
+                val filterResults = FilterResults()
+                filterResults.values = countryFilterList
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                countryFilterList = results?.values as ArrayList<Font>
+                notifyDataSetChanged()
             }
         }
     }*/
