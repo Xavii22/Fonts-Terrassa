@@ -12,13 +12,16 @@ import android.view.*
 import kotlin.collections.ArrayList
 import android.widget.AdapterView
 import android.widget.SearchView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var binding: FragmentListBinding
-    private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter()
-    private val db = FirebaseFirestore.getInstance()
-    private var fonts: ArrayList<Font> = arrayListOf()
+    private val ViewModel: ListViewModel by viewModels()
     var txtBuscar: SearchView? = null
 
     override fun onCreateView(
@@ -31,6 +34,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         )
 
         txtBuscar = binding.svFonts
+
 
         /*
         db.collection("fonts")
@@ -66,53 +70,22 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             ) {
                 when (binding.spinnerOrder.selectedItem.toString()) {
                     "Nom ASC" ->
-                        db.collection("fonts")
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    fonts.sortBy { it.fontName }
-                                }
-                                binding.rvFonts.setHasFixedSize(true)
-                                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                binding.rvFonts.adapter = myAdapter
-                            }
+                        context?.let {
+                            ViewModel.sortFontNameASC(binding, it)
+                        }
+
                     "Nom DESC" ->
-                        db.collection("fonts")
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    fonts.sortByDescending { it.fontName }
-                                }
-                                binding.rvFonts.setHasFixedSize(true)
-                                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                binding.rvFonts.adapter = myAdapter
-                            }
+                        context?.let {
+                            ViewModel.sortFontNameDESC(binding, it)
+                        }
                     "Tipus ASC" ->
-                        db.collection("fonts")
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    fonts.sortBy { it.fontType }
-                                }
-                                binding.rvFonts.setHasFixedSize(true)
-                                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                binding.rvFonts.adapter = myAdapter
-                            }
+                        context?.let {
+                            ViewModel.sortFontTypeASC(binding, it)
+                        }
                     "Tipus DESC" ->
-                        db.collection("fonts")
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    fonts.sortByDescending { it.fontType }
-                                }
-                                binding.rvFonts.setHasFixedSize(true)
-                                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                binding.rvFonts.adapter = myAdapter
-                            }
+                        context?.let {
+                            ViewModel.sortFontTypeDESC(binding, it)
+                        }
                 }
             }
         }
@@ -131,111 +104,15 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 ) {
                     when (binding.spinnerFilter.selectedItem.toString()) {
                         "Fonts de beure" ->
-                            db.collection("fonts").whereEqualTo("type", 1)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    fonts.clear()
-                                    for (document in documents) {
-                                        fonts.add(
-                                            Font(
-                                                document.get("name").toString(),
-                                                document.get("lat").toString().toDouble(),
-                                                document.get("lon").toString().toDouble(),
-                                                document.get("info").toString(),
-                                                1
-                                            )
-                                        )
-                                    }
-                                    binding.rvFonts.setHasFixedSize(true)
-                                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                    binding.rvFonts.adapter = myAdapter
-
-                                }
+                            context?.let { ViewModel.filterFontsByType(binding, it, 1) }
                         "Fonts de beure singulars" ->
-                            db.collection("fonts").whereEqualTo("type", 2)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    fonts.clear()
-                                    for (document in documents) {
-                                        fonts.add(
-                                            Font(
-                                                document.get("name").toString(),
-                                                document.get("lat").toString().toDouble(),
-                                                document.get("lon").toString().toDouble(),
-                                                document.get("info").toString(),
-                                                2
-                                            )
-                                        )
-                                    }
-                                    binding.rvFonts.setHasFixedSize(true)
-                                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                    binding.rvFonts.adapter = myAdapter
-                                }
+                            context?.let { ViewModel.filterFontsByType(binding, it, 2) }
                         "Fonts ornamentals" ->
-                            db.collection("fonts").whereEqualTo("type", 3)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    fonts.clear()
-                                    for (document in documents) {
-                                        fonts.add(
-                                            Font(
-                                                document.get("name").toString(),
-                                                document.get("lat").toString().toDouble(),
-                                                document.get("lon").toString().toDouble(),
-                                                document.get("info").toString(),
-                                                3
-                                            )
-                                        )
-                                    }
-                                    binding.rvFonts.setHasFixedSize(true)
-                                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                    binding.rvFonts.adapter = myAdapter
-                                }
+                            context?.let { ViewModel.filterFontsByType(binding, it, 3) }
                         "Fonts naturals" ->
-                            db.collection("fonts").whereEqualTo("type", 4)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    fonts.clear()
-                                    for (document in documents) {
-                                        fonts.add(
-                                            Font(
-                                                document.get("name").toString(),
-                                                document.get("lat").toString().toDouble(),
-                                                document.get("lon").toString().toDouble(),
-                                                document.get("info").toString(),
-                                                4
-                                            )
-                                        )
-                                    }
-                                    binding.rvFonts.setHasFixedSize(true)
-                                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                    binding.rvFonts.adapter = myAdapter
-                                }
+                            context?.let { ViewModel.filterFontsByType(binding, it, 4) }
                         "Fonts de gossos" ->
-                            db.collection("fonts").whereEqualTo("type", 5)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    fonts.clear()
-                                    for (document in documents) {
-                                        fonts.add(
-                                            Font(
-                                                document.get("name").toString(),
-                                                document.get("lat").toString().toDouble(),
-                                                document.get("lon").toString().toDouble(),
-                                                document.get("info").toString(),
-                                                5
-                                            )
-                                        )
-                                    }
-                                    binding.rvFonts.setHasFixedSize(true)
-                                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                                    context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                                    binding.rvFonts.adapter = myAdapter
-                                }
+                            context?.let { ViewModel.filterFontsByType(binding, it, 5) }
                     }
                 }
             }
