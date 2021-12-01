@@ -2,9 +2,14 @@ package cat.copernic.projecte.fonts_terrassa.adapters
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemUserListBinding
 import cat.copernic.projecte.fonts_terrassa.models.User
 import com.google.firebase.firestore.FirebaseFirestore
@@ -45,6 +50,7 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                     binding.txtUser.text = this.email
                                 }else{
                                     binding.txtUser.text = this.email
+                                    binding.btnDelete.setImageResource(R.drawable.ic_person_add)
                                     binding.cardViewUser.setCardBackgroundColor(Color.LTGRAY)
                                 }
                             }
@@ -55,8 +61,9 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
         val item = users[position]
         holder.bind(item)
 
-        //estamblim un listener
-        holder.itemView.setOnClickListener {
+        //Listener Disable Button
+        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.btnDelete)
+        deleteBtn.setOnClickListener {
             db.collection("users")
                 .get()
                 .addOnSuccessListener { documents ->

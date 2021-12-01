@@ -92,8 +92,6 @@ class FontAdminListFragment : Fragment() {
                 }
             }
 
-        ItemFontListAdmin()
-
         return binding.root
     }
 
