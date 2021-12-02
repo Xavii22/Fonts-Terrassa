@@ -1,12 +1,12 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentEditFontBinding
-import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -63,13 +62,14 @@ class EditFontFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener {
-            //Back to admin panel
-            findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
+            if (loseChanges()) {
+                findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
+            }
         }
 
         binding.btnRemoveImg.setOnClickListener {
             //Delete Image
-            if(hasImage) {
+            if (hasImage) {
                 deleteImage(binding.txtNomFont.text.toString())
                 hasImage = false
             }
@@ -80,17 +80,17 @@ class EditFontFragment : Fragment() {
             if (binding.txtNomFont.text.isNotEmpty() and binding.editLat.text.isNotEmpty() and binding.editLon.text.isNotEmpty()) {
                 //Delete old image
                 deleteImage(oldFontName)
-                if(hasImage) {
+                if (hasImage) {
                     //Upload image
                     pujarImatge(binding.txtNomFont.text.toString())
                 }
 
-                if(binding.txtNomFont.text.toString() != oldFontName){
+                if (binding.txtNomFont.text.toString() != oldFontName) {
                     db.collection("fonts")
                         .get()
                         .addOnSuccessListener { documents ->
                             for (document in documents) {
-                                if(document.get("name") == oldFontName){
+                                if (document.get("name") == oldFontName) {
                                     db.collection("fonts").document(oldFontName).delete()
                                 }
                             }
@@ -104,7 +104,7 @@ class EditFontFragment : Fragment() {
                             "lon" to binding.editLon.text.toString().toDouble(),
                             "name" to binding.txtNomFont.text.toString(),
                             "info" to binding.txtInformacio.text.toString(),
-                            "type" to binding.spinnerType.selectedItemPosition+1
+                            "type" to binding.spinnerType.selectedItemPosition + 1
                         )
                     )
                 findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
@@ -177,5 +177,20 @@ class EditFontFragment : Fragment() {
         }.addOnFailureListener {
             // Filed to remove the image
         }
+    }
+
+    private fun loseChanges(): Boolean {
+        var isAccepted = false
+        val objectAlerDialog = AlertDialog.Builder(context)
+        objectAlerDialog.setTitle("Advertencia")
+        objectAlerDialog.setMessage("Si surts es perdràn els canvis...")
+        objectAlerDialog.setPositiveButton("Acceptar i sortir") { dialog, which ->
+            isAccepted = true
+        }
+        objectAlerDialog.setNegativeButton("Seguir editant", null)
+        var alertDialog: AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
+
+        return isAccepted
     }
 }
