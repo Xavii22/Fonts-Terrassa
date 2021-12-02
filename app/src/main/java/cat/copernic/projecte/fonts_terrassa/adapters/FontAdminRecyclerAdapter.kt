@@ -1,6 +1,10 @@
 package cat.copernic.projecte.fonts_terrassa.adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -46,6 +50,26 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
             }
             //Listener Delete Button
             holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {
+                val objectAlerDialog = AlertDialog.Builder(context)
+                objectAlerDialog.setTitle("Confirmació")
+                objectAlerDialog.setMessage("Eliminar Font")
+                objectAlerDialog.setPositiveButton("Acceptar"){dialog, which ->
+                    db.collection("fonts").document(fontsAdmin[position].name)
+                        .delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(context,"Font eliminada correctament", Toast.LENGTH_SHORT).show()
+
+                        }.addOnFailureListener { e ->
+                            Toast.makeText(context,"ERROR en eliminar la font", Toast.LENGTH_SHORT).show()
+                        }
+                    fontsAdmin[position].fontName?.let { it1 -> deleteImage(it1) }
+                }
+                objectAlerDialog.setNegativeButton("Descartar"){dialog, which ->
+                    Toast.makeText(context,"La font no s'ha eliminat", Toast.LENGTH_SHORT).show()
+                }
+                var alertDialog: AlertDialog = objectAlerDialog.create()
+                alertDialog.show()
+                /*
                 db.collection("fonts").document(fontsAdmin[position].name)
                     .delete()
                     .addOnSuccessListener {
@@ -55,6 +79,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                         Toast.makeText(context,"ERROR en eliminar la font", Toast.LENGTH_SHORT).show()
                     }
                 fontsAdmin[position].fontName?.let { it1 -> deleteImage(it1) }
+                 */
             }
         }
         val item = fontsAdmin[position]
