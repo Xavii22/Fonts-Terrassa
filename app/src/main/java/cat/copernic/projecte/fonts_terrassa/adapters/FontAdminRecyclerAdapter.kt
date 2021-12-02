@@ -44,21 +44,21 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                 binding.txtFont.text = this.fontName
                 this.fontName?.let { descarregarImatgeGlide(context, it) }
             }
+            //Listener Delete Button
+            holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {
+                db.collection("fonts").document(fontsAdmin[position].name)
+                    .delete()
+                    .addOnSuccessListener {
+                        Toast.makeText(context,"Font eliminada correctament", Toast.LENGTH_SHORT).show()
+
+                    }.addOnFailureListener { e ->
+                        Toast.makeText(context,"ERROR en eliminar la font", Toast.LENGTH_SHORT).show()
+                    }
+                fontsAdmin[position].fontName?.let { it1 -> deleteImage(it1) }
+            }
         }
         val item = fontsAdmin[position]
         holder.bind(item)
-
-        //Listener Delete Button
-        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont)
-        deleteBtn.setOnClickListener {
-            db.collection("fonts").document(fontsAdmin[position].name)
-                .delete()
-                .addOnSuccessListener {
-                    Toast.makeText(context,"Font eliminada correctament", Toast.LENGTH_SHORT).show()
-                }.addOnFailureListener { e ->
-                    Toast.makeText(context,"ERROR en eliminar la font", Toast.LENGTH_SHORT).show()
-                }
-        }
 
         //estamblim un listener
         holder.itemView.setOnClickListener {
@@ -100,6 +100,15 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
 
             }.addOnFailureListener {
                 binding.imageView.setImageResource(R.drawable.ic_noimage)
+            }
+        }
+        fun deleteImage(fontId: String) {
+            val imgPath = "images/" + fontId + ".jpg"
+            val imageRef = storageRef.child(imgPath)
+            imageRef.delete().addOnSuccessListener {
+                // File deleted successfully
+            }.addOnFailureListener {
+                // Filed to remove the image
             }
         }
     }

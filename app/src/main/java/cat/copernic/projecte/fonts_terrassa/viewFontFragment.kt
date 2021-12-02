@@ -12,21 +12,21 @@ import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentViewFontBinding
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.fragment_view_font.*
 
 
 class viewFontFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var storageRef: StorageReference
-    private lateinit var binding: viewFontFragment
+    private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
+    private lateinit var binding: FragmentViewFontBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentViewFontBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_view_font, container, false
         )
 
@@ -64,14 +64,6 @@ class viewFontFragment : Fragment() {
                     }
                 }
             }
-        /*
-            binding.btnGoToMaps.setOnClickListener {
-                val gmmIntentUri: Uri = Uri.parse(fontPos)
-                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                mapIntent.setPackage("com.google.android.apps.maps")
-                startActivity(mapIntent)
-            }
-        }*/
 
         if (fontName != null) {
             descarregarImatgeGlide(fontName)
@@ -90,10 +82,10 @@ class viewFontFragment : Fragment() {
                 .centerInside()
                 .placeholder((R.drawable.loading))
                 .error(R.drawable.ic_noimage)
-                .into(binding.img_font)
+                .into(binding.imgFont)
 
         }.addOnFailureListener {
-            binding.img_font.setImageResource(R.drawable.ic_noimage)
+            binding.imgFont.setImageResource(R.drawable.ic_noimage)
         }
     }
 }
