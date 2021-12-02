@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,9 +63,7 @@ class EditFontFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener {
-            if (loseChanges()) {
-                findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
-            }
+            loseChanges()
         }
 
         binding.btnRemoveImg.setOnClickListener {
@@ -107,7 +106,7 @@ class EditFontFragment : Fragment() {
                             "type" to binding.spinnerType.selectedItemPosition + 1
                         )
                     )
-                findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
+                findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
             }
         }
 
@@ -179,18 +178,16 @@ class EditFontFragment : Fragment() {
         }
     }
 
-    private fun loseChanges(): Boolean {
-        var isAccepted = false
+    private fun loseChanges() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle("Advertencia")
         objectAlerDialog.setMessage("Si surts es perdràn els canvis...")
         objectAlerDialog.setPositiveButton("Acceptar i sortir") { dialog, which ->
-            isAccepted = true
+            //Go to AdminListView
+            findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
         }
         objectAlerDialog.setNegativeButton("Seguir editant", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
-
-        return isAccepted
     }
 }

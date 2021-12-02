@@ -141,8 +141,8 @@
         android:label="fragment_edit_font"
         tools:layout="@layout/fragment_edit_font" >
         <action
-            android:id="@+id/action_editFontFragment_to_adminFragment"
-            app:destination="@id/adminFragment" />
+            android:id="@+id/action_editFontFragment_to_fontAdminListFragment"
+            app:destination="@id/fontAdminListFragment" />
     </fragment>
     <fragment
         android:id="@+id/fontAdminListFragment"
