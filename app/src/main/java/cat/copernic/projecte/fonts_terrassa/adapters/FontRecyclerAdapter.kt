@@ -58,9 +58,6 @@ class FontRecyclerAdapter :
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable("font_name", fonts[position].fontName)
-            bundle.putSerializable("font_lat", fonts[position].lat.toString())
-            bundle.putSerializable("font_lon", fonts[position].lon.toString())
-            bundle.putSerializable("font_info", fonts[position].info)
             holder.itemView.findNavController().navigate(
                 R.id.action_fragment_list_to_viewFontFragment, bundle
             )

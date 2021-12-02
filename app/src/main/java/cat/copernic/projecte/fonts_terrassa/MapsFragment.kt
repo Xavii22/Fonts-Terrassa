@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
 
@@ -93,7 +94,9 @@ class MapsFragment : Fragment() {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
         googleMap.setOnInfoWindowClickListener {
-            findNavController().navigate(MapsFragmentDirections.actionMapsFragmentToViewFontFragment())
+            val bundle = Bundle()
+            bundle.putSerializable("font_name", it.title)
+            findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment, bundle)
         }
 
         binding.btnChangeMap.setOnClickListener{
