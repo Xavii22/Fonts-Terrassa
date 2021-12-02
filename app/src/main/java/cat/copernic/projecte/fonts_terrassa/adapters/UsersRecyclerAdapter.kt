@@ -2,18 +2,14 @@ package cat.copernic.projecte.fonts_terrassa.adapters
 
 import android.content.Context
 import android.graphics.Color
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemUserListBinding
 import cat.copernic.projecte.fonts_terrassa.models.User
 import com.google.firebase.firestore.FirebaseFirestore
-
 
 class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolder>() {
     private var users: MutableList<User> = ArrayList()
@@ -48,7 +44,7 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                             if (document.get("email").toString() == users[position].email) {
                                 if (document.get("active").toString().toBoolean()) {
                                     binding.txtUser.text = this.email
-                                }else{
+                                } else {
                                     binding.txtUser.text = this.email
                                     binding.btnDelete.setImageResource(R.drawable.ic_person_add)
                                     binding.cardViewUser.setCardBackgroundColor(Color.LTGRAY)
@@ -93,7 +89,6 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                 }
         }
     }
-
 
     override fun getItemCount(): Int {
         return users.size

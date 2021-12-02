@@ -28,7 +28,6 @@ class UsersAdminListFragment : Fragment() {
             inflater, R.layout.fragment_users_admin_list, container, false
         )
 
-
         db.collection("users")
             .get()
             .addOnSuccessListener { documents ->
@@ -44,6 +43,7 @@ class UsersAdminListFragment : Fragment() {
                 context?.let { myAdapter.UsersRecyclerAdapter(users, it) }
                 binding.rvUsers.adapter = myAdapter
             }
+
 
         return binding.root
     }

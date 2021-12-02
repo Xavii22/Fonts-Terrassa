@@ -49,8 +49,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         holder.bind(item)
 
         //Listener Delete Button
-        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont)
-        deleteBtn.setOnClickListener {
+            holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {
             db.collection("fonts").document(fontsAdmin[position].name)
                 .delete()
                 .addOnSuccessListener {

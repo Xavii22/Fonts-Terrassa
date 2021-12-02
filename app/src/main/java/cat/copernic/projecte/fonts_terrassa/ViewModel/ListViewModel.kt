@@ -8,7 +8,7 @@ import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ListViewModel: ViewModel() {
+class ListViewModel : ViewModel() {
 
     private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter()
     private var fonts: ArrayList<Font> = arrayListOf()
@@ -70,27 +70,44 @@ class ListViewModel: ViewModel() {
             }
     }
 
-    fun filterFontsByType(binding: FragmentListBinding, context: Context, type: Int) {
-        db.collection("fonts").whereEqualTo("type", type)
-            .get()
-            .addOnSuccessListener { documents ->
-                fonts.clear()
-                for (document in documents) {
-                    fonts.add(
-                        Font(
-                            document.get("name").toString(),
-                            document.get("lat").toString().toDouble(),
-                            document.get("lon").toString().toDouble(),
-                            document.get("info").toString(),
-                            type
+    fun filterFontsByType(
+        binding: FragmentListBinding,
+        context: Context,
+        fontEnabled: ArrayList<Int>
+    ) {
+        for (i in fontEnabled) {
+            db.collection("fonts").whereEqualTo("type", i)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        fonts.add(
+                            Font(
+                                document.get("name").toString(),
+                                document.get("lat").toString().toDouble(),
+                                document.get("lon").toString().toDouble(),
+                                document.get("info").toString(),
+                                i
+                            )
                         )
-                    )
+                    }
+                    binding.rvFonts.setHasFixedSize(true)
+                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
+                    context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                    binding.rvFonts.adapter = myAdapter
                 }
+        }
+
+    }
+
+    fun clearFontsByType(binding: FragmentListBinding, context: Context) {
+        db.collection("fonts")
+            .get()
+            .addOnSuccessListener {
+                fonts.clear()
                 binding.rvFonts.setHasFixedSize(true)
                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
                 binding.rvFonts.adapter = myAdapter
-
             }
     }
 }
