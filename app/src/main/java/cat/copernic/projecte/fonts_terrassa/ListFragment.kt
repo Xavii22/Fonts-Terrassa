@@ -1,21 +1,17 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
-import cat.copernic.projecte.fonts_terrassa.models.Font
-import com.google.firebase.firestore.FirebaseFirestore
 import android.view.*
 import kotlin.collections.ArrayList
 import android.widget.AdapterView
+import android.widget.ImageView
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -23,6 +19,13 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentListBinding
     private val ViewModel: ListViewModel by viewModels()
     var txtBuscar: SearchView? = null
+    var fontsArray = arrayOf(
+        "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
+        "Font naturals", "Fonts de gossos"
+    )
+    lateinit var imageView: ImageView
+    lateinit var selectedFont: BooleanArray
+    private var fontList: ArrayList<Int> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,28 +37,42 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         )
 
         txtBuscar = binding.svFonts
+        imageView = binding.imageView
+        selectedFont = BooleanArray(fontsArray.size)
 
+        for (j in 0..4) {
+            selectedFont[j] = true
 
-        /*
-        db.collection("fonts")
-            .get()
-            .addOnSuccessListener { documents ->
-                fonts.clear()
-                for (document in documents) {
-                    fonts.add(
-                        Font(
-                            document.get("name").toString(),
-                            document.get("lat").toString().toDouble(),
-                            document.get("lon").toString().toDouble(),
-                            document.get("type").toString().toInt()
-                        )
-                    )
+        }
+
+        context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+
+        imageView.setOnClickListener {
+
+            fontList.clear()
+
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Seleccionar tipus de font")
+
+            context?.let { ViewModel.clearFontsByType(binding, it) }
+            builder.setCancelable(false)
+            builder.setMultiChoiceItems(
+                fontsArray, selectedFont
+            ) { dialogInterface, i, b ->
+                if (b) {
+                    fontList.add(i)
+                    fontList.sort()
+                } else {
+                    fontList.remove(i)
                 }
-                binding.rvFonts.setHasFixedSize(true)
-                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                context?.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                binding.rvFonts.adapter = myAdapter
-            }*/
+            }
+            builder.setPositiveButton(
+                "Acceptar"
+            ) { dialogInterface, i ->
+                context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+            }
+            builder.show()
+        }
 
         binding.spinnerOrder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -73,7 +90,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                         context?.let {
                             ViewModel.sortFontNameASC(binding, it)
                         }
-
                     "Nom DESC" ->
                         context?.let {
                             ViewModel.sortFontNameDESC(binding, it)
@@ -89,34 +105,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
             }
         }
-
-        binding.spinnerFilter.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    when (binding.spinnerFilter.selectedItem.toString()) {
-                        "Fonts de beure" ->
-                            context?.let { ViewModel.filterFontsByType(binding, it, 1) }
-                        "Fonts de beure singulars" ->
-                            context?.let { ViewModel.filterFontsByType(binding, it, 2) }
-                        "Fonts ornamentals" ->
-                            context?.let { ViewModel.filterFontsByType(binding, it, 3) }
-                        "Fonts naturals" ->
-                            context?.let { ViewModel.filterFontsByType(binding, it, 4) }
-                        "Fonts de gossos" ->
-                            context?.let { ViewModel.filterFontsByType(binding, it, 5) }
-                    }
-                }
-            }
-
         txtBuscar!!.setOnQueryTextListener(this)
 
         return binding.root

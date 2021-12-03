@@ -8,15 +8,8 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListAdminViewModel
-import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
-import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
-import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
-import cat.copernic.projecte.fonts_terrassa.models.Font
-import com.google.firebase.firestore.FirebaseFirestore
 
 class FontAdminListFragment : Fragment() {
 
