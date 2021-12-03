@@ -9,74 +9,78 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="409dp"
-            android:layout_height="82dp"
-            android:background="#FFB03C"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <Spinner
-                android:id="@+id/spinner_order"
-                android:layout_width="100dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="15dp"
-                android:entries="@array/spinner_order"
-                android:spinnerMode="dropdown" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="409dp"
+                android:layout_height="82dp"
+                android:background="#FFB03C"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <SearchView
-                android:id="@+id/svFonts"
-                android:layout_width="220dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                app:iconifiedByDefault="false"
-                app:layout_constraintTop_toTopOf="parent"
-                app:queryHint="Buscar" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="16dp"
-                tools:context=".MainActivity">
+                    <Spinner
+                        android:id="@+id/spinner_order"
+                        android:layout_width="123dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="50dp"
+                        android:entries="@array/spinner_order"
+                        android:spinnerMode="dropdown"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/svFonts"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:adjustViewBounds="true"
-                    android:drawablePadding="16dp"
-                    android:hint="Tipus font"
-                    android:padding="12dp"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_filter"
-                    app:drawableRightCompat="@android:drawable/arrow_down_float" />
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="61dp"
+                        android:layout_height="57dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="50dp"
+                        android:adjustViewBounds="true"
+                        android:drawablePadding="16dp"
+                        android:hint="Tipus font"
+                        android:padding="12dp"
+                        android:scaleType="center"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        android:src="@drawable/ic_filter"
+                        app:drawableRightCompat="@android:drawable/arrow_down_float"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </RelativeLayout>
-            <!--<Spinner
-                android:id="@+id/spinner_filter"
-                android:layout_width="119dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="10dp"
-                android:entries="@array/spinner_filter" />-->
+                    <SearchView
+                        android:id="@+id/svFonts"
+                        android:layout_width="110dp"
+                        android:layout_height="49dp"
+                        app:iconifiedByDefault="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView"
+                        app:layout_constraintStart_toEndOf="@+id/spinner_order"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:queryHint="Buscar">
 
+                    </SearchView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFonts"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="90dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
