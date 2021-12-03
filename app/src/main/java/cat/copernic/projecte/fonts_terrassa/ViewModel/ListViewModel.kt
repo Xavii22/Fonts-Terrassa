@@ -73,10 +73,17 @@ class ListViewModel : ViewModel() {
     fun filterFontsByType(
         binding: FragmentListBinding,
         context: Context,
-        fontEnabled: ArrayList<Int>
+        fontEnabled: BooleanArray
     ) {
-        for (i in fontEnabled) {
-            db.collection("fonts").whereEqualTo("type", i)
+       var fontType: Int = -1
+        for (i in 0..4) {
+            when (fontEnabled[i]) {
+                true ->
+                    fontType = i + 1
+                false ->
+                    fontType = -1
+            }
+            db.collection("fonts").whereEqualTo("type", fontType)
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
@@ -86,7 +93,7 @@ class ListViewModel : ViewModel() {
                                 document.get("lat").toString().toDouble(),
                                 document.get("lon").toString().toDouble(),
                                 document.get("info").toString(),
-                                i
+                                fontType
                             )
                         )
                     }

@@ -26,7 +26,6 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     lateinit var imageView: ImageView
     lateinit var selectedFont: BooleanArray
     private var fontList: ArrayList<Int> = ArrayList()
-    private var fontEnabled: ArrayList<Int> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,14 +41,16 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         selectedFont = BooleanArray(fontsArray.size)
 
         for (j in 0..4) {
-            fontEnabled.add(j + 1)
             selectedFont[j] = true
 
         }
-        context?.let { ViewModel.filterFontsByType(binding, it, fontEnabled) }
+
+        context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
 
         imageView.setOnClickListener {
+
             fontList.clear()
+
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle("Seleccionar tipus de font")
 
@@ -68,16 +69,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             builder.setPositiveButton(
                 "Acceptar"
             ) { dialogInterface, i ->
-                var fontEnabled: ArrayList<Int> = arrayListOf()
-                for (j in fontList) {
-                    fontEnabled.add(j + 1)
-                }
-                context?.let { ViewModel.filterFontsByType(binding, it, fontEnabled) }
-            }
-            builder.setNegativeButton(
-                "Cancelar"
-            ) { dialogInterface, i ->
-                dialogInterface.dismiss()
+                context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
             }
             builder.show()
         }
