@@ -92,31 +92,4 @@ class FontRecyclerAdapter :
             }
         }
     }
-/*
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charSearch = constraint.toString()
-                if (charSearch.isEmpty()) {
-                    countryFilterList = countryList as ArrayList<Font>
-                } else {
-                    val resultList = ArrayList<Font>()
-                    for (row in countryList) {
-                        if (row.name.toLowerCase().contains(constraint.toString().toLowerCase())) {
-                            resultList.add(row)
-                        }
-                    }
-                    countryFilterList = resultList
-                }
-                val filterResults = FilterResults()
-                filterResults.values = countryFilterList
-                return filterResults
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                countryFilterList = results?.values as ArrayList<Font>
-                notifyDataSetChanged()
-            }
-        }
-    }*/
 }

@@ -103,7 +103,6 @@ class ListViewModel : ViewModel() {
                     binding.rvFonts.adapter = myAdapter
                 }
         }
-
     }
 
     fun clearFontsByType(binding: FragmentListBinding, context: Context) {

@@ -58,17 +58,12 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             builder.setCancelable(false)
             builder.setMultiChoiceItems(
                 fontsArray, selectedFont
-            ) { dialogInterface, i, b ->
-                if (b) {
-                    fontList.add(i)
-                    fontList.sort()
-                } else {
-                    fontList.remove(i)
-                }
+            ) { _, _, _ ->
+
             }
             builder.setPositiveButton(
                 "Acceptar"
-            ) { dialogInterface, i ->
+            ) { _, _ ->
                 context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
             }
             builder.show()
