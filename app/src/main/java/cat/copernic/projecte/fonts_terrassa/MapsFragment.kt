@@ -1,5 +1,6 @@
 package cat.copernic.projecte.fonts_terrassa
 import android.Manifest
+import android.app.AlertDialog
 import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 
@@ -7,8 +8,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
@@ -27,69 +30,21 @@ class MapsFragment : Fragment() {
     private val db= FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentMapsBinding
     private var mapType = 0
+    var fontsArray = arrayOf(
+        "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
+        "Font naturals", "Fonts de gossos"
+    )
+    lateinit var selectedFont: BooleanArray
 
     private val callback = OnMapReadyCallback { googleMap ->
 
-        db.collection("fonts").whereEqualTo("type", 1).get().addOnSuccessListener{ documents ->
-            for (document in documents) {
-                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(pos)
-                        .title(document.get("name").toString())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_1))
-                )
-            }
+        selectedFont = BooleanArray(fontsArray.size)
+
+        for (j in 0..4) {
+            selectedFont[j] = true
         }
 
-        db.collection("fonts").whereEqualTo("type", 2).get().addOnSuccessListener{ documents ->
-            for (document in documents) {
-                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(pos)
-                        .title(document.get("name").toString())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_2))
-                )
-            }
-        }
-
-        db.collection("fonts").whereEqualTo("type", 3).get().addOnSuccessListener{ documents ->
-            for (document in documents) {
-                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(pos)
-                        .title(document.get("name").toString())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_5))
-                )
-            }
-        }
-
-        db.collection("fonts").whereEqualTo("type", 4).get().addOnSuccessListener{ documents ->
-            for (document in documents) {
-                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(pos)
-                        .title(document.get("name").toString())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_3))
-                )
-            }
-        }
-
-        db.collection("fonts").whereEqualTo("type", 5).get().addOnSuccessListener{ documents ->
-            for (document in documents) {
-                val pos = LatLng(document.get("lat").toString().toDouble(), document.get("lon").toString().toDouble())
-                googleMap.addMarker(
-                    MarkerOptions()
-                        .position(pos)
-                        .title(document.get("name").toString())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_4))
-                )
-            }
-        }
-
+        loadMap(googleMap)
         val mapPos = LatLng(41.56321391021604, 2.010025253878396)
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
@@ -97,6 +52,28 @@ class MapsFragment : Fragment() {
             val bundle = Bundle()
             bundle.putSerializable("font_name", it.title)
             findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment, bundle)
+        }
+
+        binding.btnFilter.setOnClickListener{
+
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Seleccionar tipus de font")
+
+            googleMap.clear()
+
+            //ClearFontsByType
+            builder.setCancelable(false)
+            builder.setMultiChoiceItems(
+                fontsArray, selectedFont
+            ) { _, _, _ ->
+
+            }
+            builder.setPositiveButton(
+                "Acceptar"
+            ) { dialogInterface, i ->
+                loadMap(googleMap)
+            }
+            builder.show()
         }
 
         binding.btnChangeMap.setOnClickListener{
@@ -124,5 +101,88 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+
+    fun loadMap(googleMap: GoogleMap){
+        if(selectedFont[0]) {
+            db.collection("fonts").whereEqualTo("type", 1).get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val pos = LatLng(
+                        document.get("lat").toString().toDouble(),
+                        document.get("lon").toString().toDouble()
+                    )
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(pos)
+                            .title(document.get("name").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_1))
+                    )
+                }
+            }
+        }
+        if(selectedFont[1]) {
+            db.collection("fonts").whereEqualTo("type", 2).get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val pos = LatLng(
+                        document.get("lat").toString().toDouble(),
+                        document.get("lon").toString().toDouble()
+                    )
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(pos)
+                            .title(document.get("name").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_2))
+                    )
+                }
+            }
+        }
+        if(selectedFont[2]) {
+            db.collection("fonts").whereEqualTo("type", 3).get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val pos = LatLng(
+                        document.get("lat").toString().toDouble(),
+                        document.get("lon").toString().toDouble()
+                    )
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(pos)
+                            .title(document.get("name").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_3))
+                    )
+                }
+            }
+        }
+        if(selectedFont[3]) {
+            db.collection("fonts").whereEqualTo("type", 4).get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val pos = LatLng(
+                        document.get("lat").toString().toDouble(),
+                        document.get("lon").toString().toDouble()
+                    )
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(pos)
+                            .title(document.get("name").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_4))
+                    )
+                }
+            }
+        }
+        if(selectedFont[4]) {
+            db.collection("fonts").whereEqualTo("type", 5).get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val pos = LatLng(
+                        document.get("lat").toString().toDouble(),
+                        document.get("lon").toString().toDouble()
+                    )
+                    googleMap.addMarker(
+                        MarkerOptions()
+                            .position(pos)
+                            .title(document.get("name").toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_5))
+                    )
+                }
+            }
+        }
     }
 }
