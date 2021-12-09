@@ -87,7 +87,6 @@ class ListFragment : Fragment() {
                     "Nom ASC" ->
                         context?.let {
                             ViewModel.sortFontNameASC(binding, it)
-
                         }
                     "Nom DESC" ->
                         context?.let {
