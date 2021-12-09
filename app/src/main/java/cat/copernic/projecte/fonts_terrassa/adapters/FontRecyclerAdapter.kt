@@ -64,7 +64,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         //establim un listener
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
-            bundle.putSerializable("font_name", fonts[position].fontName)
+            bundle.putSerializable("fontId", fonts[position].fontId)
             bundle.putSerializable("font_type", item.fontType)
 
             holder.itemView.findNavController().navigate(

@@ -7,7 +7,6 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +25,7 @@ import java.io.ByteArrayOutputStream
 class EditFontFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
-    private var oldFontName = ""
+    private var oldFontId = ""
     private var hasImage = false
     private lateinit var imageView: ImageView
     private lateinit var storageRef: StorageReference
@@ -48,11 +47,13 @@ class EditFontFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_font, container, false)
 
+        binding.inputIdFont.setText(arguments?.getString("id_font"))
         binding.txtNomFont.setText(arguments?.getString("font_name"))
-        oldFontName = binding.txtNomFont.text.toString()
+        oldFontId = binding.inputIdFont.text.toString()
         binding.editLat.setText(arguments?.getString("font_lat"))
         binding.editLon.setText(arguments?.getString("font_lon"))
         binding.txtInformacio.setText(arguments?.getString("font_info"))
+        binding.editAdreca.setText(arguments?.getString("font_adreca"))
         (arguments?.getInt("font_type"))?.minus(1)?.let { binding.spinnerType.setSelection(it) }
 
         imageView = binding.imgFont
@@ -69,48 +70,68 @@ class EditFontFragment : Fragment() {
         binding.btnRemoveImg.setOnClickListener {
             //Delete Image
             if (hasImage) {
-                deleteImage(binding.txtNomFont.text.toString())
+                deleteImage(binding.inputIdFont.text.toString())
                 hasImage = false
             }
         }
 
         binding.btnSave.setOnClickListener {
             //Save font data
-            if (binding.txtNomFont.text.isNotEmpty() and binding.editLat.text.isNotEmpty() and binding.editLon.text.isNotEmpty()) {
-                //Delete old image
-                deleteImage(oldFontName)
-                if (hasImage) {
-                    //Upload image
-                    pujarImatge(binding.txtNomFont.text.toString())
-                }
-
-                if (binding.txtNomFont.text.toString() != oldFontName) {
-                    db.collection("fonts")
-                        .get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                if (document.get("name") == oldFontName) {
-                                    db.collection("fonts").document(oldFontName).delete()
-                                }
+            if (binding.inputIdFont.text.isNotEmpty() and binding.txtNomFont.text.isNotEmpty() and binding.editLat.text.isNotEmpty() and binding.editLon.text.isNotEmpty()) {
+                db.collection("fonts")
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        var fontIdFound = false
+                        val myId = binding.inputIdFont.text
+                        for (document in documents) {
+                            if (document.get("id") == myId) {
+                                fontIdFound = true
                             }
                         }
-                }
+                        if (!fontIdFound) {
+                            //Delete old image
+                            deleteImage(oldFontId)
+                            if (hasImage) {
+                                //Upload image
+                                pujarImatge(binding.inputIdFont.text.toString())
+                            }
 
-                db.collection("fonts").document(binding.txtNomFont.text.toString())
-                    .set(
-                        hashMapOf(
-                            "lat" to binding.editLat.text.toString().toDouble(),
-                            "lon" to binding.editLon.text.toString().toDouble(),
-                            "name" to binding.txtNomFont.text.toString(),
-                            "info" to binding.txtInformacio.text.toString(),
-                            "type" to binding.spinnerType.selectedItemPosition + 1
-                        )
-                    )
-                findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
+                            if (binding.inputIdFont.text.toString() != oldFontId) {
+                                db.collection("fonts")
+                                    .get()
+                                    .addOnSuccessListener { documents ->
+                                        for (document in documents) {
+                                            if (document.get("id") == oldFontId) {
+                                                db.collection("fonts").document(oldFontId)
+                                                    .delete()
+                                            }
+                                        }
+                                    }
+                            }
+
+                            db.collection("fonts").document(binding.inputIdFont.text.toString())
+                                .set(
+                                    hashMapOf(
+                                        "lat" to binding.editLat.text.toString().toDouble(),
+                                        "lon" to binding.editLon.text.toString().toDouble(),
+                                        "id" to binding.inputIdFont.text.toString(),
+                                        "name" to binding.txtNomFont.text.toString(),
+                                        "info" to binding.txtInformacio.text.toString(),
+                                        "address" to binding.editAdreca.text.toString(),
+                                        "type" to binding.spinnerType.selectedItemPosition + 1
+                                    )
+                                )
+                            findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
+                        }else{
+                            //Error ja existeix una font amb aquest ID
+                        }
+                    }
+            }else{
+                //Error camps buits
             }
         }
 
-        descarregarImatgeGlide(oldFontName)
+        descarregarImatgeGlide(oldFontId)
 
         return binding.root
     }
@@ -172,10 +193,10 @@ class EditFontFragment : Fragment() {
         val imageRef = storageRef.child(imgPath)
         imageRef.delete().addOnSuccessListener {
             // File deleted successfully
-            binding.imgFont.setImageResource(R.drawable.ic_noimage)
         }.addOnFailureListener {
             // Filed to remove the image
         }
+        binding.imgFont.setImageResource(R.drawable.ic_noimage)
     }
 
     private fun loseChanges() {

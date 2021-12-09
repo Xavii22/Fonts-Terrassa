@@ -89,11 +89,13 @@ class ListAdminViewModel: ViewModel() {
                     for (document in documents) {
                         fonts.add(
                             Font(
+                                document.get("id").toString(),
                                 document.get("name").toString(),
                                 document.get("lat").toString().toDouble(),
                                 document.get("lon").toString().toDouble(),
                                 document.get("info").toString(),
-                                fontType
+                                fontType,
+                                document.get("address").toString()
                             )
                         )
                     }
