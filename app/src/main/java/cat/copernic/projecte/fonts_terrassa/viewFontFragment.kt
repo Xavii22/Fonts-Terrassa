@@ -40,7 +40,7 @@ class viewFontFragment : Fragment() {
             findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToFragmentList())
         }
 
-        val fontName = arguments?.getString("font_name")
+        val fontId = arguments?.getString("fontId")
         when (arguments?.getInt("tipus_font")) {
             1 -> binding.tipusFontTxt.text =
                 (context?.getString(R.string.fonts_boca) ?: 1) as CharSequence?
@@ -60,9 +60,16 @@ class viewFontFragment : Fragment() {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    if (fontName == document.get("name").toString()) {
+                    if (fontId == document.get("id").toString()) {
                         binding.txtNomFont.text = document.get("name").toString()
                         binding.txtInformacio.text = document.get("info").toString()
+                        when(document.get("type")){
+                            1 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca)
+                            2 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca_singulars)
+                            3 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_ornamentals)
+                            4 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_naturals)
+                            5 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_gossos)
+                        }
                         binding.btnGoToMaps.setOnClickListener {
                             val latitude = document.get("lat").toString().toDouble()
                             val longitude = document.get("lon").toString().toDouble()
@@ -80,8 +87,8 @@ class viewFontFragment : Fragment() {
                 }
             }
 
-        if (fontName != null) {
-            descarregarImatgeGlide(fontName)
+        if (fontId != null) {
+            descarregarImatgeGlide(fontId)
         }
 
         return binding.root

@@ -51,7 +51,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                 objectAlerDialog.setTitle("Confirmació")
                 objectAlerDialog.setMessage("Eliminar Font")
                 objectAlerDialog.setPositiveButton("Acceptar") { dialog, which ->
-                    db.collection("fonts").document(fontsAdmin[position].name)
+                    db.collection("fonts").document(fontsAdmin[position].id)
                         .delete()
                         .addOnSuccessListener {
                             Toast.makeText(
@@ -64,7 +64,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                             Toast.makeText(context, "ERROR en eliminar la font", Toast.LENGTH_SHORT)
                                 .show()
                         }
-                    fontsAdmin[position].fontName?.let { it1 -> deleteImage(it1) }
+                    fontsAdmin[position].fontId?.let { it1 -> deleteImage(it1) }
                 }
                 objectAlerDialog.setNegativeButton("Descartar") { dialog, which ->
                     Toast.makeText(context, "La font no s'ha eliminat", Toast.LENGTH_SHORT).show()
@@ -79,10 +79,12 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         //estamblim un listener
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
+            bundle.putSerializable("id_font", fontsAdmin[position].fontId)
             bundle.putSerializable("font_name", fontsAdmin[position].fontName)
             bundle.putSerializable("font_lat", fontsAdmin[position].lat.toString())
             bundle.putSerializable("font_lon", fontsAdmin[position].lon.toString())
             bundle.putSerializable("font_info", fontsAdmin[position].info)
+            bundle.putSerializable("font_adreca", fontsAdmin[position].adreca)
             bundle.putSerializable("font_type", fontsAdmin[position].type)
             holder.itemView.findNavController().navigate(
                 R.id.action_fontAdminListFragment_to_editFontFragment2, bundle
