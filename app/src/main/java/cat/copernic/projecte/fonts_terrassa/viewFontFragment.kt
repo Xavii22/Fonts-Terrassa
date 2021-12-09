@@ -3,6 +3,7 @@ package cat.copernic.projecte.fonts_terrassa
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.main.fragment_view_font.*
 
 
 class viewFontFragment : Fragment() {
@@ -39,6 +41,20 @@ class viewFontFragment : Fragment() {
         }
 
         val fontName = arguments?.getString("font_name")
+        when (arguments?.getInt("tipus_font")) {
+            1 -> binding.tipusFontTxt.text =
+                (context?.getString(R.string.fonts_boca) ?: 1) as CharSequence?
+            2 -> binding.tipusFontTxt.text =
+                (context?.getString(R.string.fonts_boca_singulars) ?: 2) as CharSequence?
+            3 -> binding.tipusFontTxt.text =
+                (context?.getString(R.string.fonts_ornamentals) ?: 3) as CharSequence?
+            4 -> binding.tipusFontTxt.text =
+                (context?.getString(R.string.fonts_naturals) ?: 4) as CharSequence?
+            5 -> binding.tipusFontTxt.text =
+                (context?.getString(R.string.fonts_gossos) ?: 5) as CharSequence?
+
+        }
+
 
         db.collection("fonts")
             .get()
@@ -47,7 +63,6 @@ class viewFontFragment : Fragment() {
                     if (fontName == document.get("name").toString()) {
                         binding.txtNomFont.text = document.get("name").toString()
                         binding.txtInformacio.text = document.get("info").toString()
-
                         binding.btnGoToMaps.setOnClickListener {
                             val latitude = document.get("lat").toString().toDouble()
                             val longitude = document.get("lon").toString().toDouble()

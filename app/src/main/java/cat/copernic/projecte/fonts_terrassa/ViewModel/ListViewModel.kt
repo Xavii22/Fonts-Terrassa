@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ListViewModel : ViewModel() {
 
-    private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter()
+    private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter(arrayListOf())
     private var fonts: ArrayList<Font> = arrayListOf()
     private val db = FirebaseFirestore.getInstance()
 
@@ -115,5 +115,9 @@ class ListViewModel : ViewModel() {
                 context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
                 binding.rvFonts.adapter = myAdapter
             }
+    }
+
+    fun getFonts(): ArrayList<Font> {
+        return fonts
     }
 }

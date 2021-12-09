@@ -1,5 +1,6 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -10,16 +11,20 @@ import android.view.*
 import kotlin.collections.ArrayList
 import android.widget.AdapterView
 import android.widget.ImageView
-import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
+import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
+import cat.copernic.projecte.fonts_terrassa.models.Font
 
-class ListFragment : Fragment(), SearchView.OnQueryTextListener {
+class ListFragment : Fragment() {
+
+    private var fonts: ArrayList<Font> = arrayListOf()
+    private var matchedFonts: ArrayList<Font> = arrayListOf()
+    private var fontAdapter: FontRecyclerAdapter = FontRecyclerAdapter(fonts)
 
     private lateinit var binding: FragmentListBinding
     private val ViewModel: ListViewModel by viewModels()
-    var txtBuscar: SearchView? = null
-    var fontsArray = arrayOf(
+    private var fontsArray = arrayOf(
         "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
         "Font naturals", "Fonts de gossos"
     )
@@ -36,13 +41,11 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             inflater, R.layout.fragment_list, container, false
         )
 
-        txtBuscar = binding.svFonts
         imageView = binding.imageView
         selectedFont = BooleanArray(fontsArray.size)
 
         for (j in 0..4) {
             selectedFont[j] = true
-
         }
 
         context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
@@ -84,6 +87,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                     "Nom ASC" ->
                         context?.let {
                             ViewModel.sortFontNameASC(binding, it)
+
                         }
                     "Nom DESC" ->
                         context?.let {
@@ -100,60 +104,68 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
             }
         }
-        txtBuscar!!.setOnQueryTextListener(this)
+
+        initRecyclerView()
+        performSearch()
 
         return binding.root
     }
 
-    override fun onQueryTextSubmit(p0: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun onResume() {
+        initRecyclerView()
+        super.onResume()
     }
 
-    override fun onQueryTextChange(p0: String?): Boolean {
-        TODO("Not yet implemented")
-    }
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initRecyclerView() {
 
-    /*
-    binding.svFonts.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
-        androidx.appcompat.widget.SearchView.OnQueryTextListener {
-        override fun onQueryTextChange(p0: String?): Boolean {
-            TODO("Not yet implemented")
+        fonts = ViewModel.getFonts()
+
+        fontAdapter = FontRecyclerAdapter(fonts).also {
+            binding.rvFonts.adapter = it
+            binding.rvFonts.adapter!!.notifyDataSetChanged()
         }
+        binding.svFonts.isSubmitButtonEnabled = true
+    }
 
-        override fun onQueryTextSubmit(newText: String?): Boolean {
-            tempFonts.clear()
-            val searchText = newText!!.lowercase(Locale.getDefault())
-
-            if (searchText.isNotEmpty()) {
-                fonts.forEach {
-                    if(it.heading.lowercase(Locale.getDefault()).contains(searchText)) {
-                        tempFonts.add(it)
-                    }
-                }
-                binding.rvFonts.adapter!!.notifyDataSetChanged()
-            }else{
-                tempFonts.clear()
-                tempFonts.addAll(fonts)
-                binding.rvFonts.adapter!!.notifyDataSetChanged()
+    private fun performSearch() {
+        binding.svFonts.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+                return true
             }
 
-            return false
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
+                return true
+            }
+        })
+    }
+
+    private fun search(text: String?) {
+        matchedFonts = arrayListOf()
+
+        text?.let {
+            fonts.forEach { font ->
+                if (font.name.contains(text, true)
+                ) {
+                    matchedFonts.add(font)
+                    updateRecyclerView()
+                }
+            }
+            if (matchedFonts.isEmpty()) {
+                Log.d("buit", "esta buit")
+            }
+            updateRecyclerView()
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        binding.svFonts.clearFocus()
-/*
-        if (fonts.contains(query)) {
-            fonts.filtrat.filter(query)
-        }*/
-        return false
+    private fun updateRecyclerView() {
+        binding.rvFonts.apply {
+            //fontAdapter.fonts.clear()
+            //fontAdapter.fonts.addAll(matchedFonts)
+            fontAdapter.fonts = matchedFonts
+            fontAdapter.notifyDataSetChanged()
+        }
     }
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-        //fonts.filtrat.filter(newText)
-        return false
-    }
-*/
-
 }
