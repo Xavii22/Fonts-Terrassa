@@ -14,8 +14,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
-import java.util.logging.Filter
-import java.util.logging.LogRecord
 import kotlin.collections.ArrayList
 
 class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
@@ -24,9 +22,8 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
     //var fonts: ArrayList<Font> = ArrayList()
     //var fontsFiltered: ArrayList<Font> = ArrayList()
     val initialFontList = ArrayList<Font>().apply {
-        fonts?.let { addAll(it) }
+        addAll(fonts)
     }
-    var onItemClick: ((Font) -> Unit)? = null
     lateinit var context: Context
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
@@ -81,6 +78,16 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
 
         fun bind(font: Font) {
             binding.txtFont.text = font.name.trim()
+            binding.txtCarrer.text = font.adreca.trim()
+
+            Log.d("tipusf", font.type.toString())
+            when (font.type) {
+                1 -> binding.imageView2.setImageResource(R.drawable.gota_1)
+                2 -> binding.imageView2.setImageResource(R.drawable.gota_2)
+                3 -> binding.imageView2.setImageResource(R.drawable.gota_3)
+                4 -> binding.imageView2.setImageResource(R.drawable.gota_4)
+                5 -> binding.imageView2.setImageResource(R.drawable.gota_5)
+            }
         }
 
         private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
