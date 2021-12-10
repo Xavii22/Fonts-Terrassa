@@ -68,17 +68,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_informacio" />
 
-        <Button
-            android:id="@+id/btn_testWater"
-            android:layout_width="72dp"
-            android:layout_height="102dp"
-            android:layout_marginTop="2dp"
-            android:text="CHECK"
-            app:layout_constraintBottom_toBottomOf="@+id/star_transperencia_5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/star_olor_5"
-            app:layout_constraintTop_toTopOf="@+id/star_gust_5" />
-
         <ImageView
             android:id="@+id/img_accesibilitat"
             android:layout_width="47dp"
@@ -325,6 +314,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_informacio" />
+
+        <ImageView
+            android:id="@+id/btn_testWater"
+            android:layout_width="69dp"
+            android:layout_height="70dp"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/ic_checkquality"
+            app:layout_constraintBottom_toBottomOf="@+id/star_transperencia_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/star_olor_5"
+            app:layout_constraintTop_toTopOf="@+id/star_gust_5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

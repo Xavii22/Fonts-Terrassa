@@ -108,11 +108,11 @@ class viewFontFragment : Fragment() {
                         transperenciaTotal += document.get("transperencia").toString().toInt()
                     }
                 }
-                setGustAvg(gustTotal/contador)
-                setOlorAvg(olorTotal/contador)
-                setTrasperenciaAvg(transperenciaTotal/contador)
-
-
+                if(contador != 0){
+                    setGustAvg(gustTotal/contador)
+                    setOlorAvg(olorTotal/contador)
+                    setTrasperenciaAvg(transperenciaTotal/contador)
+                }
             }
 
         if (fontId != null) {
