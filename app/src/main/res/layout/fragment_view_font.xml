@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="135dp"
             android:layout_marginTop="102dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_trasperencia"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:layout_marginTop="102dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_trasperencia"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="135dp"
             android:layout_marginTop="62dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_olor"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:layout_marginTop="62dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_olor"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="75dp"
             android:layout_marginTop="62dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_olor"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="135dp"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txtgust"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txtgust"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="75dp"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txtgust"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -252,7 +252,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txtgust"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -262,7 +262,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="62dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_olor"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -272,7 +272,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="102dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_trasperencia"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -282,7 +282,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="75dp"
             android:layout_marginTop="102dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_trasperencia"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -292,7 +292,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:layout_marginTop="102dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_trasperencia"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -302,7 +302,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:layout_marginTop="62dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txt_olor"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -312,7 +312,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_star_border_24"
+            android:src="@drawable/ic_starempty"
             app:layout_constraintStart_toEndOf="@+id/txtgust"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 

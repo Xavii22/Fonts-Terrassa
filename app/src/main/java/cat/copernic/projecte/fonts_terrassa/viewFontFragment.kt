@@ -1,6 +1,7 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -32,15 +33,18 @@ class viewFontFragment : Fragment() {
             inflater, R.layout.fragment_view_font, container, false
         )
 
+        val fontId = arguments?.getString("fontId")
+
         binding.btnTestWater.setOnClickListener {
-            findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToEvaluateFragment())
+            val bundle = Bundle()
+            bundle.putSerializable("fontId", fontId)
+            findNavController().navigate(R.id.action_viewFontFragment_to_evaluateFragment, bundle)
         }
 
         binding.btnBack.setOnClickListener {
             findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToFragmentList())
         }
 
-        val fontId = arguments?.getString("fontId")
         when (arguments?.getInt("tipus_font")) {
             1 -> binding.tipusFontTxt.text =
                 (context?.getString(R.string.fonts_boca) ?: 1) as CharSequence?
@@ -87,6 +91,30 @@ class viewFontFragment : Fragment() {
                 }
             }
 
+        //Valoracions Avg
+        var gustTotal = 0
+        var olorTotal = 0
+        var transperenciaTotal = 0
+        var contador = 0
+
+        db.collection("valoracions")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    if(document.get("font") == fontId){
+                        contador++
+                        gustTotal += document.get("gust").toString().toInt()
+                        olorTotal += document.get("olor").toString().toInt()
+                        transperenciaTotal += document.get("transperencia").toString().toInt()
+                    }
+                }
+                setGustAvg(gustTotal/contador)
+                setOlorAvg(olorTotal/contador)
+                setTrasperenciaAvg(transperenciaTotal/contador)
+
+
+            }
+
         if (fontId != null) {
             descarregarImatgeGlide(fontId)
         }
@@ -108,6 +136,96 @@ class viewFontFragment : Fragment() {
 
         }.addOnFailureListener {
             binding.imgFont.setImageResource(R.drawable.ic_noimage)
+        }
+    }
+
+    private fun setGustAvg(gustAvg: Int){
+        when(gustAvg){
+            1 ->{
+                binding.starGust1.setImageResource(R.drawable.ic_starcomplete)
+            }
+            2 -> {
+                binding.starGust1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust2.setImageResource(R.drawable.ic_starcomplete)
+            }
+            3 -> {
+                binding.starGust1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust3.setImageResource(R.drawable.ic_starcomplete)
+            }
+            4 -> {
+                binding.starGust1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust3.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust4.setImageResource(R.drawable.ic_starcomplete)
+            }
+            5 -> {
+                binding.starGust1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust3.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust4.setImageResource(R.drawable.ic_starcomplete)
+                binding.starGust5.setImageResource(R.drawable.ic_starcomplete)
+            }
+        }
+    }
+
+    private fun setOlorAvg(olorAvg: Int){
+        when(olorAvg){
+            1 ->{
+                binding.starOlor1.setImageResource(R.drawable.ic_starcomplete)
+            }
+            2 -> {
+                binding.starOlor1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor2.setImageResource(R.drawable.ic_starcomplete)
+            }
+            3 -> {
+                binding.starOlor1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor3.setImageResource(R.drawable.ic_starcomplete)
+            }
+            4 -> {
+                binding.starOlor1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor3.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor4.setImageResource(R.drawable.ic_starcomplete)
+            }
+            5 -> {
+                binding.starOlor1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor3.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor4.setImageResource(R.drawable.ic_starcomplete)
+                binding.starOlor5.setImageResource(R.drawable.ic_starcomplete)
+            }
+        }
+    }
+
+    private fun setTrasperenciaAvg(transperenciaAvg: Int){
+        when(transperenciaAvg){
+            1 ->{
+                binding.starTransperencia1.setImageResource(R.drawable.ic_starcomplete)
+            }
+            2 -> {
+                binding.starTransperencia1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia2.setImageResource(R.drawable.ic_starcomplete)
+            }
+            3 -> {
+                binding.starTransperencia1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia3.setImageResource(R.drawable.ic_starcomplete)
+            }
+            4 -> {
+                binding.starTransperencia1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia3.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia4.setImageResource(R.drawable.ic_starcomplete)
+            }
+            5 -> {
+                binding.starTransperencia1.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia2.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia3.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia4.setImageResource(R.drawable.ic_starcomplete)
+                binding.starTransperencia5.setImageResource(R.drawable.ic_starcomplete)
+            }
         }
     }
 }
