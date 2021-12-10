@@ -49,9 +49,19 @@ class MapsFragment : Fragment() {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
         googleMap.setOnInfoWindowClickListener {
-            val bundle = Bundle()
-            bundle.putSerializable("font_name", it.title)
-            findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment, bundle)
+            var fontId = ""
+            db.collection("fonts")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        if(document.get("name") == it.title){
+                            fontId = document.get("id").toString()
+                        }
+                }
+                    val bundle = Bundle()
+                    bundle.putSerializable("fontId", fontId)
+                    findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment, bundle)
+            }
         }
 
         binding.btnFilter.setOnClickListener{
