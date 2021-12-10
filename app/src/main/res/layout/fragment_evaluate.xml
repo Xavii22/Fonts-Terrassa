@@ -6,8 +6,108 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout3"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="720dp">
+
+        <ImageView
+            android:id="@+id/star_transperencia_val1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/test_transperencia" />
+
+        <ImageView
+            android:id="@+id/star_transperencia_val3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_transperencia_val2"
+            app:layout_constraintTop_toBottomOf="@+id/test_transperencia" />
+
+        <ImageView
+            android:id="@+id/star_transperencia_val2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_transperencia_val1"
+            app:layout_constraintTop_toBottomOf="@+id/test_transperencia" />
+
+        <ImageView
+            android:id="@+id/star_transperencia_val4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_transperencia_val3"
+            app:layout_constraintTop_toBottomOf="@+id/test_transperencia" />
+
+        <ImageView
+            android:id="@+id/star_transperencia_val5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_transperencia_val4"
+            app:layout_constraintTop_toBottomOf="@+id/test_transperencia" />
+
+        <ImageView
+            android:id="@+id/star_olor_val1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/test_olor" />
+
+        <ImageView
+            android:id="@+id/star_olor_val2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_olor_val1"
+            app:layout_constraintTop_toBottomOf="@+id/test_olor" />
+
+        <ImageView
+            android:id="@+id/star_olor_val3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_olor_val2"
+            app:layout_constraintTop_toBottomOf="@+id/test_olor" />
+
+        <ImageView
+            android:id="@+id/star_olor_val4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_olor_val3"
+            app:layout_constraintTop_toBottomOf="@+id/test_olor" />
+
+        <ImageView
+            android:id="@+id/star_olor_val5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_starempty"
+            app:layout_constraintStart_toEndOf="@+id/star_olor_val4"
+            app:layout_constraintTop_toBottomOf="@+id/test_olor" />
 
         <ImageView
             android:id="@+id/star_gust_val3"
@@ -94,8 +194,8 @@
 
         <TextView
             android:id="@+id/test_transperencia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="357dp"
+            android:layout_height="58dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="100dp"
             android:text="3. Puntua la transperencia de l'aigua de l'1 al 5"
@@ -103,24 +203,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/test_olor" />
 
-        <Spinner
-            android:id="@+id/spinner_olor"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
-            android:entries="@array/spinner_testOneToFive"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/test_olor" />
-
-        <Spinner
-            android:id="@+id/spinner_transperencia"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
-            android:entries="@array/spinner_testOneToFive"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/test_transperencia" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

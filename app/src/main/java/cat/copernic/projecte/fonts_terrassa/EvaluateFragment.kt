@@ -67,19 +67,102 @@ class EvaluateFragment : Fragment() {
             binding.starGustVal5.setImageResource(R.drawable.ic_starcomplete)
         }
 
+        //Valorar Olor
+        var olorValue = 0
+        binding.starOlorVal1.setOnClickListener{
+            olorValue = 1
+            binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal2.setImageResource(R.drawable.ic_starempty)
+            binding.starOlorVal3.setImageResource(R.drawable.ic_starempty)
+            binding.starOlorVal4.setImageResource(R.drawable.ic_starempty)
+            binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starOlorVal2.setOnClickListener{
+            olorValue = 2
+            binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal3.setImageResource(R.drawable.ic_starempty)
+            binding.starOlorVal4.setImageResource(R.drawable.ic_starempty)
+            binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starOlorVal3.setOnClickListener{
+            olorValue = 3
+            binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal3.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal4.setImageResource(R.drawable.ic_starempty)
+            binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starOlorVal4.setOnClickListener{
+            olorValue = 4
+            binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal3.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal4.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starOlorVal5.setOnClickListener{
+            olorValue = 5
+            binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal3.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal4.setImageResource(R.drawable.ic_starcomplete)
+            binding.starOlorVal5.setImageResource(R.drawable.ic_starcomplete)
+        }
+
+        //Valorar Transperencia
+        var transperenciaValue = 0
+        binding.starTransperenciaVal1.setOnClickListener{
+            transperenciaValue = 1
+            binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starempty)
+            binding.starTransperenciaVal3.setImageResource(R.drawable.ic_starempty)
+            binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starempty)
+            binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starTransperenciaVal2.setOnClickListener{
+            transperenciaValue = 2
+            binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal3.setImageResource(R.drawable.ic_starempty)
+            binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starempty)
+            binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starTransperenciaVal3.setOnClickListener{
+            transperenciaValue = 3
+            binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal3.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starempty)
+            binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starTransperenciaVal4.setOnClickListener{
+            transperenciaValue = 4
+            binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal3.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
+        }
+        binding.starTransperenciaVal5.setOnClickListener{
+            transperenciaValue = 5
+            binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal3.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starcomplete)
+            binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starcomplete)
+        }
+
         binding.btnEvaluate.setOnClickListener {
-            if (gustValue != 0) {
-                binding.spinnerOlor.selectedItem.toString()
-                binding.spinnerTransperencia.selectedItem.toString()
+            if (gustValue != 0 || olorValue != 0 || transperenciaValue != 0) {
                 //Send values to DB
                 db.collection("valoracions").document()
                     .set(
                         hashMapOf(
                             "font" to fontId,
                             "gust" to gustValue,
-                            "olor" to binding.spinnerOlor.selectedItem.toString().toInt(),
-                            "transperencia" to binding.spinnerTransperencia.selectedItem.toString()
-                                .toInt()
+                            "olor" to olorValue,
+                            "transperencia" to transperenciaValue
                         )
                     )
                 //Show Snackbar
@@ -91,7 +174,7 @@ class EvaluateFragment : Fragment() {
                     ).show()
                 }
 
-                //GO to viewFont
+                //Go to viewFont
                 val bundle = Bundle()
                 bundle.putSerializable("fontId", fontId)
                 findNavController().navigate(R.id.action_evaluateFragment_to_viewFontFragment,
