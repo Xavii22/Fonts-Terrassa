@@ -1,9 +1,6 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        setContentView(binding.root)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
@@ -31,32 +29,58 @@ class MainActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString("message", "hola firebase")
         analytics.logEvent("Initscreen", bundle)
+        /*
+        //var tasca1: Job? = null
 
+        /*tasca1 = crearCorrutina(
+            10
+        )*/
 
+        tasca1.let {
+            tasca1?.cancel().apply { //Si cancelem l'execució de la tasca 1...
+                //Creem un Toast perquè en mostri un missatge durant un temps
+                Toast.makeText(
+                    this@MainActivity, //Context del Toast
+                    "Corrutina 1 cancelada!!", //Missatge que mostrarà el Toast
+                    Toast.LENGTH_SHORT //Temps curt
+                ).show()
+            }
+        }
+
+        //var tasca2: Job? = null
+
+        /*tasca2 = crearCorrutina(
+            20
+        )*/
+
+        tasca2.let {
+            tasca2?.cancel().apply { //Si cancelem l'execució de la tasca 2...
+                Toast.makeText(
+                    this@MainActivity,
+                    "Corrutina 2 cancelada!!",
+                    Toast.LENGTH_LONG //Temps llarg
+                ).show()
+            }
+        }
+*/
     }
-/*
-    private fun crearCorrutina(durada: Int, inici: Button, cancelar: Button, progres: ProgressBar) = GlobalScope.launch(
-        Dispatchers.Main) {
-        inici.isEnabled = false
-        cancelar.isEnabled = true
-        progres.progress = 0
+    /*
+    private fun crearCorrutina(durada: Int) = GlobalScope.launch(
+        Dispatchers.Main
+    ) {
 
         withContext(Dispatchers.IO) {
             var comptador = 0
             while (comptador < durada) {
-                if(suspensio((durada * 50).toLong())) {
+                if (suspensio((durada * 50).toLong())) {
                     comptador++
-                    progres.progress = (comptador * 100) / durada
                 }
             }
         }
 
-        inici.isEnabled = true
-        cancelar.isEnabled = false
-        progres.progress = 0
         Toast.makeText(
             this@MainActivity,
-            "${inici.text} Finalitzada!!",
+            "Finalitzada!!",
             Toast.LENGTH_SHORT
         ).show()
     }

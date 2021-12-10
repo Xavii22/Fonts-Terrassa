@@ -128,7 +128,8 @@ class ListFragment : Fragment() {
     }
 
     private fun performSearch() {
-        binding.svFonts.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+        binding.svFonts.setOnQueryTextListener(object :
+            android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 search(query)
                 return true
