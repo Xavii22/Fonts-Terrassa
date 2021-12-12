@@ -2,9 +2,11 @@ package cat.copernic.projecte.fonts_terrassa
 import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
+import android.location.Location
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,8 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -25,7 +29,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 
-class MapsFragment : Fragment() {
+class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private val db= FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentMapsBinding
@@ -36,8 +40,10 @@ class MapsFragment : Fragment() {
     )
     lateinit var selectedFont: BooleanArray
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val callback = OnMapReadyCallback { googleMap ->
 
+        onMapReady(googleMap)
         selectedFont = BooleanArray(fontsArray.size)
 
         for (j in 0..4) {
@@ -100,7 +106,7 @@ class MapsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_maps, container, false)
@@ -194,5 +200,34 @@ class MapsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onMapReady(myMap: GoogleMap) {
+        if (context?.let {
+                ActivityCompat.checkSelfPermission(it,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+            } != PackageManager.PERMISSION_GRANTED && context?.let {
+                ActivityCompat.checkSelfPermission(
+                    it,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)
+            } != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        myMap.isMyLocationEnabled = true
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                val mapPos = location?.let { LatLng(it.latitude, location.longitude) }
+                mapPos?.let { CameraUpdateFactory.newLatLng(it) }?.let { myMap.moveCamera(it) }
+                myMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
+            }
     }
 }
