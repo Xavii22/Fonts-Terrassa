@@ -1,17 +1,16 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import cat.copernic.projecte.fonts_terrassa.databinding.ActivityMainBinding
 import com.google.firebase.analytics.FirebaseAnalytics
-import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +31,15 @@ class MainActivity : AppCompatActivity() {
         bundle.putString("message", "hola firebase")
         analytics.logEvent("Initscreen", bundle)
 
-
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+            return
+        }
     }
 /*
     private fun crearCorrutina(durada: Int, inici: Button, cancelar: Button, progres: ProgressBar) = GlobalScope.launch(
