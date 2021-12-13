@@ -47,7 +47,7 @@ class ListViewModel : ViewModel() {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    fonts.sortBy { it.fontType }
+                    fonts.sortByDescending { it.fontLat }
                 }
                 binding.rvFonts.setHasFixedSize(true)
                 binding.rvFonts.layoutManager = LinearLayoutManager(context)
@@ -61,7 +61,7 @@ class ListViewModel : ViewModel() {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    fonts.sortBy { it.fontType }
+                    fonts.sortBy { it.fontLat }
                 }
                 binding.rvFonts.setHasFixedSize(true)
                 binding.rvFonts.layoutManager = LinearLayoutManager(context)

@@ -92,6 +92,14 @@ class ListFragment : Fragment() {
                         context?.let {
                             ViewModel.sortFontNameDESC(binding, it)
                         }
+                    "Distancia ASC" ->
+                        context?.let {
+                            ViewModel.sortFontLocationASC(binding, it)
+                        }
+                    "Distancia DESC" ->
+                        context?.let {
+                            ViewModel.sortFontLocationDESC(binding, it)
+                        }
                     "Tipus ASC" ->
                         context?.let {
                             ViewModel.sortFontTypeASC(binding, it)
