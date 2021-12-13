@@ -70,16 +70,16 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:src="@drawable/ic_baseline_location_on_24"
-                    app:layout_constraintBottom_toTopOf="@+id/textView4"
+                    app:layout_constraintBottom_toTopOf="@+id/txt_distance"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/txt_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="28KM"
+                    android:text="0 Km"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/btnDeleteFont"
