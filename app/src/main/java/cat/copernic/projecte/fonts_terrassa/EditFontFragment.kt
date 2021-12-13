@@ -90,7 +90,7 @@ class EditFontFragment : Fragment() {
                         }
                         if (!fontIdFound) {
                             //Delete old image
-                            deleteImage(oldFontId)
+                            deleteImageBeforeUploading(oldFontId)
                             if (hasImage) {
                                 //Upload image
                                 pujarImatge(binding.inputIdFont.text.toString())
@@ -197,6 +197,16 @@ class EditFontFragment : Fragment() {
             // Filed to remove the image
         }
         binding.imgFont.setImageResource(R.drawable.ic_noimage)
+    }
+
+    private fun deleteImageBeforeUploading(fontId: String) {
+        val imgPath = "images/" + fontId + ".jpg"
+        val imageRef = storageRef.child(imgPath)
+        imageRef.delete().addOnSuccessListener {
+            // File deleted successfully
+        }.addOnFailureListener {
+            // Filed to remove the image
+        }
     }
 
     private fun loseChanges() {
