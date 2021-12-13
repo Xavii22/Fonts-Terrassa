@@ -87,7 +87,6 @@ class ListFragment : Fragment() {
                     "Nom ASC" ->
                         context?.let {
                             ViewModel.sortFontNameASC(binding, it)
-
                         }
                     "Nom DESC" ->
                         context?.let {
@@ -118,7 +117,6 @@ class ListFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
-
         fonts = ViewModel.getFonts()
 
         fontAdapter = FontRecyclerAdapter(fonts).also {
@@ -129,7 +127,8 @@ class ListFragment : Fragment() {
     }
 
     private fun performSearch() {
-        binding.svFonts.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+        binding.svFonts.setOnQueryTextListener(object :
+            android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 search(query)
                 return true

@@ -1,14 +1,14 @@
 package cat.copernic.projecte.fonts_terrassa
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentRecuperarBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -35,9 +35,21 @@ class RecuperarFragment : Fragment() {
                 Firebase.auth.sendPasswordResetEmail(emailAddress)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Log.d(TAG, "Email sent.")
+                            view?.let { it1 ->
+                                Snackbar.make(
+                                    it1,
+                                    "Missatge enviat",
+                                    BaseTransientBottomBar.LENGTH_SHORT
+                                ).show()
+                            }
                         } else {
-                            Log.d(TAG, "Email NOT sent.")
+                            view?.let { it1 ->
+                                Snackbar.make(
+                                    it1,
+                                    "Correu incorrecte",
+                                    BaseTransientBottomBar.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                     }
             }

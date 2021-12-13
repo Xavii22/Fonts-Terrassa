@@ -39,17 +39,29 @@
 
                 <TextView
                     android:id="@+id/txt_font"
-                    android:layout_width="180dp"
-                    android:layout_height="54dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="37dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:maxWidth="200dp"
                     android:text="Font 1"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_carrer"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:maxWidth="200dp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/btnDeleteFont"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.448" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_font" />
 
                 <ImageView
                     android:id="@+id/btnDeleteFont"
@@ -73,6 +85,15 @@
                     app:layout_constraintEnd_toEndOf="@+id/btnDeleteFont"
                     app:layout_constraintStart_toStartOf="@+id/btnDeleteFont"
                     app:layout_constraintTop_toBottomOf="@+id/btnDeleteFont" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="49dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintStart_toEndOf="@+id/txt_font"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/gota_1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

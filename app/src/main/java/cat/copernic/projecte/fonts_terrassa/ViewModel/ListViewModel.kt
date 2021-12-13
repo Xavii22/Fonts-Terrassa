@@ -75,7 +75,7 @@ class ListViewModel : ViewModel() {
         context: Context,
         fontEnabled: BooleanArray
     ) {
-       var fontType: Int = -1
+        var fontType: Int = -1
         for (i in 0..4) {
             when (fontEnabled[i]) {
                 true ->
