@@ -13,26 +13,19 @@ import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.util.*
 import kotlin.collections.ArrayList
 
 class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
     RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
 
-    //var fonts: ArrayList<Font> = ArrayList()
-    //var fontsFiltered: ArrayList<Font> = ArrayList()
-    val initialFontList = ArrayList<Font>().apply {
-        addAll(fonts)
-    }
     lateinit var context: Context
+    private lateinit var arrayTypeFonts: Array<Int>
 
-    //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
     fun fontsRecyclerAdapter(fontsList: ArrayList<Font>, contxt: Context) {
         this.fonts = fontsList
         this.context = contxt
     }
 
-    //és l'encarregat de retornar el ViewHolder ja configurat
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(
@@ -42,7 +35,6 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         )
     }
 
-    //Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(
             fonts[position]
@@ -58,7 +50,6 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         val item = fonts[position]
         holder.bind(item)
 
-        //establim un listener
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable("fontId", fonts[position].fontId)
@@ -79,6 +70,10 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         fun bind(font: Font) {
             binding.txtFont.text = font.name.trim()
             binding.txtCarrer.text = font.adreca.trim()
+
+            for (i in 0..4) {
+
+            }
 
             Log.d("tipusf", font.type.toString())
             when (font.type) {
@@ -109,34 +104,4 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         }
     }
 
-    fun getFilter(): android.widget.Filter {
-        return fontFilter
-    }
-
-    private val fontFilter = object : android.widget.Filter() {
-        override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val filteredList: ArrayList<Font> = ArrayList()
-            if (constraint == null || constraint.isEmpty()) {
-                initialFontList.let { filteredList.addAll(it) }
-            } else {
-                val query = constraint.toString().trim().lowercase(Locale.getDefault())
-                initialFontList.forEach {
-                    if (it.name.lowercase(Locale.ROOT).contains(query)) {
-                        filteredList.add(it)
-                    }
-                }
-            }
-            val results = FilterResults()
-            results.values = filteredList
-            return results
-        }
-
-        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            if (results?.values is ArrayList<*>) {
-                fonts.clear()
-                fonts.addAll(results.values as ArrayList<Font>)
-                notifyDataSetChanged()
-            }
-        }
-    }
 }

@@ -42,6 +42,34 @@ class ListViewModel : ViewModel() {
             }
     }
 
+    fun sortFontLocationASC(binding: FragmentListBinding, context: Context) {
+        db.collection("fonts")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    fonts.sortBy { it.fontType }
+                }
+                binding.rvFonts.setHasFixedSize(true)
+                binding.rvFonts.layoutManager = LinearLayoutManager(context)
+                context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                binding.rvFonts.adapter = myAdapter
+            }
+    }
+
+    fun sortFontLocationDESC(binding: FragmentListBinding, context: Context) {
+        db.collection("fonts")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    fonts.sortBy { it.fontType }
+                }
+                binding.rvFonts.setHasFixedSize(true)
+                binding.rvFonts.layoutManager = LinearLayoutManager(context)
+                context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                binding.rvFonts.adapter = myAdapter
+            }
+    }
+
     fun sortFontTypeASC(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -70,6 +98,23 @@ class ListViewModel : ViewModel() {
             }
     }
 
+    fun getFontType(
+        fontEnabled: BooleanArray
+    ): Array<Int> {
+        var fontsType: Array<Int> = arrayOf(5)
+        var fontType: Int = -1
+        for (i in 0..4) {
+            when (fontEnabled[i]) {
+                true ->
+                    fontType = i + 1
+                false ->
+                    fontType = -1
+            }
+            fontsType[i] = fontType
+        }
+        return fontsType
+    }
+
     fun filterFontsByType(
         binding: FragmentListBinding,
         context: Context,
@@ -80,6 +125,7 @@ class ListViewModel : ViewModel() {
             when (fontEnabled[i]) {
                 true ->
                     fontType = i + 1
+
                 false ->
                     fontType = -1
             }

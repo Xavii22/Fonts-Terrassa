@@ -26,7 +26,7 @@ class ListFragment : Fragment() {
     private val ViewModel: ListViewModel by viewModels()
     private var fontsArray = arrayOf(
         "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
-        "Font naturals", "Fonts de gossos"
+        "Fonts naturals", "Fonts de gossos"
     )
     lateinit var imageView: ImageView
     lateinit var selectedFont: BooleanArray
