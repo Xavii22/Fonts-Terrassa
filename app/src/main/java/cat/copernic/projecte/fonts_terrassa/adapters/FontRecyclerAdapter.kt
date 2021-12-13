@@ -30,7 +30,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
     val initialFontList = ArrayList<Font>().apply {
         addAll(fonts)
     }
-    lateinit var context: Context
+    var context: Context? = null
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
     fun fontsRecyclerAdapter(fontsList: ArrayList<Font>, contxt: Context) {
@@ -57,7 +57,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         with(holder) {
             with(fonts[position]) {
                 binding.txtFont.text = this.fontName
-                this.fontName?.let { descarregarImatgeGlide(context, it) }
+                this.fontName?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
             }
         }
 
@@ -86,7 +86,10 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         fun bind(font: Font) {
             binding.txtFont.text = font.name.trim()
             binding.txtCarrer.text = font.adreca.trim()
-            this@FontRecyclerAdapter.calculateDistance(font.lat, font.lon, binding)
+            context?.let {
+                this@FontRecyclerAdapter.calculateDistance(font.lat, font.lon, binding,
+                    it)
+            }
 
             Log.d("tipusf", font.type.toString())
             when (font.type) {
@@ -149,12 +152,12 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
     }
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    fun calculateDistance(lat: Double, lon: Double, binding: ItemFontListBinding) {
+    fun calculateDistance(lat: Double, lon: Double, binding: ItemFontListBinding, mycontext: Context) {
         lateinit var myActualPos: Location
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
-        if (ActivityCompat.checkSelfPermission(context,
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(mycontext)
+        if (ActivityCompat.checkSelfPermission(mycontext,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                context,
+                mycontext,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
         ) {
 

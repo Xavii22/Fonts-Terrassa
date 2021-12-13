@@ -19,7 +19,7 @@ import com.google.firebase.storage.StorageReference
 
 class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
     private var fontsAdmin: MutableList<Font> = ArrayList()
-    lateinit var context: Context
+    var context: Context? = null
     private val db = FirebaseFirestore.getInstance()
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
@@ -43,7 +43,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         with(holder) {
             with(fontsAdmin[position]) {
                 binding.txtFont.text = this.fontName
-                this.fontName?.let { descarregarImatgeGlide(context, it) }
+                this.fontName?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
             }
             //Listener Delete Button
             holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {
