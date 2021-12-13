@@ -43,7 +43,7 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         with(holder) {
             with(fontsAdmin[position]) {
                 binding.txtFont.text = this.fontName
-                this.fontName?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
+                this.fontId?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
             }
             //Listener Delete Button
             holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {

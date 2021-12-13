@@ -57,7 +57,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         with(holder) {
             with(fonts[position]) {
                 binding.txtFont.text = this.fontName
-                this.fontName?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
+                this.fontId ?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
             }
         }
 
