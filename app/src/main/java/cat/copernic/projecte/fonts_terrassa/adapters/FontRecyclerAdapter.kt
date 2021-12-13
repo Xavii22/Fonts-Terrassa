@@ -119,7 +119,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
             if (constraint == null || constraint.isEmpty()) {
                 initialFontList.let { filteredList.addAll(it) }
             } else {
-                val query = constraint.toString().trim().toLowerCase()
+                val query = constraint.toString().trim().lowercase(Locale.getDefault())
                 initialFontList.forEach {
                     if (it.name.lowercase(Locale.ROOT).contains(query)) {
                         filteredList.add(it)

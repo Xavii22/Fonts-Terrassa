@@ -117,7 +117,6 @@ class ListFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
-
         fonts = ViewModel.getFonts()
 
         fontAdapter = FontRecyclerAdapter(fonts).also {

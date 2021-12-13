@@ -47,9 +47,10 @@
 
                     <Spinner
                         android:id="@+id/spinner_order"
-                        android:layout_width="35dp"
+                        android:layout_width="34dp"
                         android:layout_height="53dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="14dp"
+                        android:background="@null"
                         android:entries="@array/spinner_order"
                         android:spinnerMode="dropdown"
                         app:layout_constraintBottom_toBottomOf="parent"

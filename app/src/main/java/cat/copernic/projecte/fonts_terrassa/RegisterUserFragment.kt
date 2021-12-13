@@ -1,37 +1,46 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentRegisterUserBinding
 import com.google.firebase.auth.FirebaseAuth
 
-import android.R
-import android.util.Log
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentInfoBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterUserFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterUserBinding
-    private val db= FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+    private val CHANNEL_ID = "channel_id_example_01"
+    private val notificacioId = 101
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater,
-            cat.copernic.projecte.fonts_terrassa.R.layout.fragment_register_user,
-            container,false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_register_user,
+            container, false
+        )
         super.onCreate(savedInstanceState)
         setup()
 
-        binding.btnBack.setOnClickListener{
+        binding.btnBack.setOnClickListener {
             findNavController().navigate(RegisterUserFragmentDirections.actionRegisterUserFragmentToAdminFragment())
         }
 
@@ -53,7 +62,7 @@ class RegisterUserFragment : Fragment() {
                     ).addOnCompleteListener {
 
                         if (it.isSuccessful) {
-                            //Save email to database
+                            creacioCanalNotificacio()
                             db.collection("users").document(binding.emailEditText.text.toString())
                                 .set(
                                     hashMapOf(
@@ -61,7 +70,7 @@ class RegisterUserFragment : Fragment() {
                                         "active" to true
                                     )
                                 )
-                            //Go to Dashboard
+                            enviarNotificacio()
                             showHome()
                         } else {
                             showAlertExist()
@@ -74,25 +83,63 @@ class RegisterUserFragment : Fragment() {
         }
     }
 
-    private fun showAlertExist(){
+    private fun showAlertExist() {
         val objectAlerDialog = android.app.AlertDialog.Builder(context)
         objectAlerDialog.setTitle("ERROR")
         objectAlerDialog.setMessage("El correu introduit ja existeix a la base de dades")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
+        objectAlerDialog.setPositiveButton("Acceptar", null)
         var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
-    private fun showAlertDifPass(){
+    private fun showAlertDifPass() {
         val objectAlerDialog = android.app.AlertDialog.Builder(context)
         objectAlerDialog.setTitle("ERROR")
         objectAlerDialog.setMessage("Les contrasenyes introduides no son iguals")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
+        objectAlerDialog.setPositiveButton("Acceptar", null)
         var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
     private fun showHome() {
         findNavController().navigate(RegisterUserFragmentDirections.actionRegisterUserFragmentToAdminFragment())
+    }
+
+    private fun creacioCanalNotificacio() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val nom = "Titol de la notificació"
+            val descripcio = "Descripció notificació."
+            val importancia = NotificationManager.IMPORTANCE_DEFAULT
+            val canal = NotificationChannel(CHANNEL_ID, nom, importancia)
+            canal.description = descripcio
+
+            val notificationManager: NotificationManager =
+                requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(canal)
+        }
+    }
+
+    private fun enviarNotificacio() {
+        val resultIntent: Intent = Intent(context, RegisterUserFragment::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+        val resultPendingIntent = PendingIntent.getActivity(
+            context, 0, resultIntent, 0
+        )
+
+        val mBuilder = context?.let {
+            NotificationCompat.Builder(it, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo_fonts_2)
+                .setContentTitle("Fonts Terrassa")
+                .setContentText("Administrador creat correctament.")
+                .setContentIntent(resultPendingIntent)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        }
+
+        if (mBuilder != null) {
+            context?.let { NotificationManagerCompat.from(it) }?.notify(notificacioId, mBuilder.build())
+        }
     }
 }
