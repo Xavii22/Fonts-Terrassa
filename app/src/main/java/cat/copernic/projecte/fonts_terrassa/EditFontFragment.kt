@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentEditFontBinding
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -73,6 +75,11 @@ class EditFontFragment : Fragment() {
                 deleteImage(binding.inputIdFont.text.toString())
                 hasImage = false
             }
+            Snackbar.make(
+                binding.frameLayout,
+                "Imatge eliminada correctament, recorda guardar canvis",
+                BaseTransientBottomBar.LENGTH_SHORT
+            ).show()
         }
 
         binding.btnSave.setOnClickListener {
@@ -161,6 +168,11 @@ class EditFontFragment : Fragment() {
             val data = result.data?.data
             binding?.imgFont?.setImageURI(data)
             hasImage = true
+            Snackbar.make(
+                binding.frameLayout,
+                "Imatge pujada correctament, recorda guardar canvis",
+                BaseTransientBottomBar.LENGTH_SHORT
+            ).show()
         }
     }
 
