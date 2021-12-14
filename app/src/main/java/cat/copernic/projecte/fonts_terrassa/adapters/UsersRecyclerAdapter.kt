@@ -51,43 +51,48 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                 }
                             }
                         }
+                        //Listener Disable/Enable Button
+                        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.btnDelete)
+                        deleteBtn.setOnClickListener {
+                            db.collection("users")
+                                .get()
+                                .addOnSuccessListener { documents ->
+                                    for (document in documents) {
+                                        if (document.get("email").toString() == users[position].email) {
+                                            if (document.get("active").toString().toBoolean()) {
+                                                db.collection("users").document(users[position].email).delete()
+                                                db.collection("users").document(users[position].email)
+                                                    .set(
+                                                        hashMapOf(
+                                                            "email" to users[position].email,
+                                                            "active" to false
+                                                        )
+                                                    )
+                                                binding.txtUser.text = this.email
+                                                binding.btnDelete.setImageResource(R.drawable.ic_person_add)
+                                                binding.cardViewUser.setCardBackgroundColor(Color.LTGRAY)
+                                            } else {
+                                                db.collection("users").document(users[position].email).delete()
+                                                db.collection("users").document(users[position].email)
+                                                    .set(
+                                                        hashMapOf(
+                                                            "email" to users[position].email,
+                                                            "active" to true
+                                                        )
+                                                    )
+                                                binding.txtUser.text = this.email
+                                                binding.btnDelete.setImageResource(R.drawable.ic_person_remove)
+                                                binding.cardViewUser.setCardBackgroundColor(Color.WHITE)
+                                            }
+                                        }
+                                    }
+                                }
+                        }
                     }
             }
         }
         val item = users[position]
         holder.bind(item)
-
-        //Listener Disable Button
-        val deleteBtn = holder.itemView.findViewById<ImageView>(R.id.btnDelete)
-        deleteBtn.setOnClickListener {
-            db.collection("users")
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        if (document.get("email").toString() == users[position].email) {
-                            if (document.get("active").toString().toBoolean()) {
-                                db.collection("users").document(users[position].email).delete()
-                                db.collection("users").document(users[position].email)
-                                    .set(
-                                        hashMapOf(
-                                            "email" to users[position].email,
-                                            "active" to false
-                                        )
-                                    )
-                            } else {
-                                db.collection("users").document(users[position].email).delete()
-                                db.collection("users").document(users[position].email)
-                                    .set(
-                                        hashMapOf(
-                                            "email" to users[position].email,
-                                            "active" to true
-                                        )
-                                    )
-                            }
-                        }
-                    }
-                }
-        }
     }
 
     override fun getItemCount(): Int {
