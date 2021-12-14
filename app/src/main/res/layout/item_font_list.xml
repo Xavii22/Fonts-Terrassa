@@ -52,13 +52,15 @@
 
                 <TextView
                     android:id="@+id/txt_carrer"
-                    android:layout_width="133dp"
-                    android:layout_height="22dp"
+                    android:layout_width="126dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"
                     android:maxWidth="200dp"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/txt_font" />
 
@@ -89,11 +91,12 @@
                     android:id="@+id/imageView2"
                     android:layout_width="49dp"
                     android:layout_height="49dp"
-                    android:layout_marginEnd="40dp"
+                    android:layout_marginEnd="10dp"
                     android:scaleX="2"
                     android:scaleY="2"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteFont"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_distance"
+                    app:layout_constraintStart_toEndOf="@+id/txt_carrer"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.407" />
             </androidx.constraintlayout.widget.ConstraintLayout>

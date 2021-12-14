@@ -32,6 +32,7 @@
                         android:layout_width="61dp"
                         android:layout_height="57dp"
                         android:layout_centerInParent="true"
+                        android:layout_marginStart="20dp"
                         android:adjustViewBounds="true"
                         android:drawablePadding="16dp"
                         android:hint="Tipus font"
@@ -47,14 +48,14 @@
 
                     <Spinner
                         android:id="@+id/spinner_order"
-                        android:layout_width="30dp"
-                        android:layout_height="53dp"
-                        android:layout_marginStart="14dp"
+                        android:layout_width="31dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:entries="@array/spinner_order"
                         android:spinnerMode="dropdown"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/imageViewSort"
+                        app:layout_constraintStart_toStartOf="@+id/imageViewSort"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.517" />
 
@@ -63,6 +64,7 @@
                         android:layout_width="61dp"
                         android:layout_height="57dp"
                         android:layout_centerInParent="true"
+                        android:layout_marginEnd="20dp"
                         android:adjustViewBounds="true"
                         android:drawablePadding="16dp"
                         android:hint="Tipus font"
@@ -78,12 +80,12 @@
 
                     <SearchView
                         android:id="@+id/svFonts"
-                        android:layout_width="220dp"
-                        android:layout_height="49dp"
+                        android:layout_width="193dp"
+                        android:layout_height="54dp"
                         app:iconifiedByDefault="false"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView"
-                        app:layout_constraintStart_toEndOf="@+id/spinner_order"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewSort"
                         app:layout_constraintTop_toTopOf="parent"
                         app:queryHint="Buscar" />
 

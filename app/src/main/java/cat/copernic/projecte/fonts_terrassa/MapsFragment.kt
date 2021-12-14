@@ -92,6 +92,14 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             ) { dialogInterface, i ->
                 loadMap(googleMap)
             }
+            builder.setNeutralButton(
+                "Seleccionar-ho tot"
+            ) { _, _ ->
+                for (j in 0..4) {
+                    selectedFont[j] = true
+                }
+                loadMap(googleMap)
+            }
             builder.show()
         }
 

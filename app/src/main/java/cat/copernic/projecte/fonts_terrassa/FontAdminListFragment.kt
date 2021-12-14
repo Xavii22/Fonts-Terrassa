@@ -74,6 +74,14 @@ class FontAdminListFragment : Fragment() {
             ) { _, _ ->
                 context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
             }
+            builder.setNeutralButton(
+                "Seleccionar-ho tot"
+            ) { _, _ ->
+                for (j in 0..4) {
+                    selectedFont[j] = true
+                }
+                context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+            }
             builder.show()
         }
 
