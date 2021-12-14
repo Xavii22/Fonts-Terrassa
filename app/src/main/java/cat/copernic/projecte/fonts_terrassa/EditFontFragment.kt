@@ -123,17 +123,35 @@ class EditFontFragment : Fragment() {
                                 )
                             findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
                         }else{
-                            //Error ja existeix una font amb aquest ID
+                            showAlertIdExist()
                         }
                     }
             }else{
-                //Error camps buits
+                showBlankFields()
             }
         }
 
         descarregarImatgeGlide(oldFontId)
 
         return binding.root
+    }
+
+    private fun showAlertIdExist(){
+        val objectAlerDialog = AlertDialog.Builder(context)
+        objectAlerDialog.setTitle("ERROR")
+        objectAlerDialog.setMessage("L'ID de la font intrdoduit ja existeix")
+        objectAlerDialog.setPositiveButton("Acceptar",null)
+        var alertDialog: AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
+    }
+
+    private fun showBlankFields(){
+        val objectAlerDialog = AlertDialog.Builder(context)
+        objectAlerDialog.setTitle("ERROR")
+        objectAlerDialog.setMessage("Hi ha un o mes camps obligatoris no omplerts, revisa l'Identificador, el nom i/o les coordenades")
+        objectAlerDialog.setPositiveButton("Acceptar",null)
+        var alertDialog: AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
     }
 
     private val startForActivityGallery = registerForActivityResult(
