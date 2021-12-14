@@ -89,7 +89,7 @@ class EditFontFragment : Fragment() {
                     .get()
                     .addOnSuccessListener { documents ->
                         var fontIdFound = false
-                        val myId = binding.inputIdFont.text
+                        val myId = binding.inputIdFont.text.toString()
                         for (document in documents) {
                             if (document.get("id") == myId) {
                                 fontIdFound = true
