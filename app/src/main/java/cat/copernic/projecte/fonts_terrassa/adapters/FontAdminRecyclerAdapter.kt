@@ -1,6 +1,5 @@
 package cat.copernic.projecte.fonts_terrassa.adapters
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
@@ -11,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.projecte.fonts_terrassa.FontAdminListFragment
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
@@ -40,7 +40,6 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         )
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder) {
@@ -62,6 +61,8 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                                 "Font eliminada correctament",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            fontsAdmin.removeAt(position)
+                            notifyDataSetChanged()
                         }.addOnFailureListener { e ->
                             Toast.makeText(context, "ERROR en eliminar la font", Toast.LENGTH_SHORT)
                                 .show()
@@ -73,7 +74,6 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                 }
                 var alertDialog: AlertDialog = objectAlerDialog.create()
                 alertDialog.show()
-                notifyDataSetChanged()
             }
         }
         val item = fontsAdmin[position]
@@ -99,20 +99,19 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         return fontsAdmin.size
     }
 
-    class ViewHolder(val binding: ItemFontListAdminBinding) :
+    inner class ViewHolder(val binding: ItemFontListAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(font: Font) {
             binding.txtFont.text = font.name.trim()
 
-            Log.d("tipusf", font.type.toString())
-            /*when (font.type) {
+            when (font.type) {
                 1 -> context?.let { descarregarImatgeGlide2(it, "gota_1") }
                 2 -> context?.let { descarregarImatgeGlide2(it, "gota_2") }
                 3 -> context?.let { descarregarImatgeGlide2(it, "gota_3") }
                 4 -> context?.let { descarregarImatgeGlide2(it, "gota_4") }
                 5 -> context?.let { descarregarImatgeGlide2(it, "gota_5") }
-            }*/
+            }
         }
 
         fun descarregarImatgeGlide2(view: Context, fontId: String) {
