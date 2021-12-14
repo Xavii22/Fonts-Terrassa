@@ -64,7 +64,7 @@ class EditFontFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener {
-            loseChanges()
+            findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
         }
 
         binding.btnRemoveImg.setOnClickListener {
@@ -207,18 +207,5 @@ class EditFontFragment : Fragment() {
         }.addOnFailureListener {
             // Filed to remove the image
         }
-    }
-
-    private fun loseChanges() {
-        val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("Advertencia")
-        objectAlerDialog.setMessage("Si surts es perdràn els canvis...")
-        objectAlerDialog.setPositiveButton("Acceptar i sortir") { dialog, which ->
-            //Go to AdminListView
-            findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
-        }
-        objectAlerDialog.setNegativeButton("Seguir editant", null)
-        var alertDialog: AlertDialog = objectAlerDialog.create()
-        alertDialog.show()
     }
 }

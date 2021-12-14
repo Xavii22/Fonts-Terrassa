@@ -142,7 +142,8 @@
         tools:layout="@layout/fragment_edit_font" >
         <action
             android:id="@+id/action_editFontFragment_to_fontAdminListFragment"
-            app:destination="@id/fontAdminListFragment" />
+            app:destination="@id/fontAdminListFragment"
+            app:popUpTo="@id/adminFragment" />
     </fragment>
     <fragment
         android:id="@+id/fontAdminListFragment"
