@@ -2,6 +2,7 @@ package cat.copernic.projecte.fonts_terrassa
 import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import androidx.fragment.app.Fragment
 
@@ -12,6 +13,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
@@ -96,9 +99,25 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             if(mapType == 0){
                 googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
                 mapType = 1
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                        it2)
+                }
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnFilter.drawable,
+                        it2)
+                }
             }else{
                 googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
                 mapType = 0
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                        it2)
+                }
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnFilter.drawable,
+                        it2)
+                }
             }
         }
     }
@@ -132,6 +151,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             .position(pos)
                             .title(document.get("name").toString())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_1))
+                            .anchor(0.5F, 0.5F)
                     )
                 }
             }
@@ -148,6 +168,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             .position(pos)
                             .title(document.get("name").toString())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_2))
+                            .anchor(0.5F, 0.5F)
                     )
                 }
             }
@@ -164,6 +185,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             .position(pos)
                             .title(document.get("name").toString())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_3))
+                            .anchor(0.5F, 0.5F)
                     )
                 }
             }
@@ -180,6 +202,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             .position(pos)
                             .title(document.get("name").toString())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_4))
+                            .anchor(0.5F, 0.5F)
                     )
                 }
             }
@@ -196,6 +219,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             .position(pos)
                             .title(document.get("name").toString())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_5))
+                            .anchor(0.5F, 0.5F)
                     )
                 }
             }
