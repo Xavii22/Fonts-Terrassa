@@ -56,6 +56,12 @@
         <item>Tipus ASC</item>
         <item>Tipus DESC</item>
     </string-array>
+    <string-array name="spinner_order_admin">
+        <item>Nom ASC</item>
+        <item>Nom DESC</item>
+        <item>Tipus ASC</item>
+        <item>Tipus DESC</item>
+    </string-array>
     <string-array name="spinner_testOneToFive">
         <item>1</item>
         <item>2</item>

@@ -12,10 +12,14 @@ import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class Login2Fragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private val db= FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,28 +42,15 @@ class Login2Fragment : Fragment() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
         binding.loginButton.setOnClickListener {
-            if(binding.emailEditText.text.toString().isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()){
+            if (binding.emailEditText.text.toString()
+                    .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
+            ) {
                 auth.signInWithEmailAndPassword(
                     binding.emailEditText.text.toString(), binding.passwordEditText.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        db.collection("users")
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    if (document.get("email").toString() == binding.emailEditText.text.toString()) {
-                                        if (document.get("active").toString().toBoolean()) {
-                                            //USER IS ACTIVE
-                                            auth.signOut()
-                                            showHome()
-                                        }else{
-                                            //USER IS INACTIVE
-                                            showAlertInactive()
-                                        }
-                                    }
-                                }
-                            }
-                    }else{
+                        crearCorrutina()
+                    } else {
                         showAlertIncorrect()
                     }
                 }
@@ -67,26 +58,55 @@ class Login2Fragment : Fragment() {
         }
     }
 
-    private fun showAlertInactive(){
+    private fun showAlertInactive() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle("ERROR")
         objectAlerDialog.setMessage("Usuari inactiu")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
+        objectAlerDialog.setPositiveButton("Acceptar", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
-    private fun showAlertIncorrect(){
+    private fun showAlertIncorrect() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle("ERROR")
         objectAlerDialog.setMessage("Les dades introduides son incorrectes")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
+        objectAlerDialog.setPositiveButton("Acceptar", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
     private fun showHome() {
         findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToAdminFragment())
+    }
+
+    private fun crearCorrutina() =
+        GlobalScope.launch(
+            Dispatchers.Main
+        ) {
+            val auth: FirebaseAuth = FirebaseAuth.getInstance()
+            db.collection("users")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        if (document.get("email")
+                                .toString() == binding.emailEditText.text.toString()
+                        ) {
+                            if (document.get("active").toString().toBoolean()) {
+                                auth.signOut()
+                                showHome()
+                            } else {
+                                showAlertInactive()
+                            }
+                        }
+                    }
+                }
+
+        }
+
+    suspend fun suspensio(duracio: Long): Boolean {
+        delay(duracio)
+        return true
     }
 
 }
