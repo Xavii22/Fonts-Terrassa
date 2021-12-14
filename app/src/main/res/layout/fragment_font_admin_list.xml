@@ -51,7 +51,7 @@
                         android:layout_height="53dp"
                         android:layout_marginStart="14dp"
                         android:background="@null"
-                        android:entries="@array/spinner_order"
+                        android:entries="@array/spinner_order_admin"
                         android:spinnerMode="dropdown"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

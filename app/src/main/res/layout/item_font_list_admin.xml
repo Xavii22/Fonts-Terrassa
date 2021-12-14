@@ -25,7 +25,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="76dp">
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -39,63 +39,43 @@
 
                 <TextView
                     android:id="@+id/txt_font"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="37dp"
+                    android:layout_width="126dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:maxWidth="200dp"
-                    android:text="Font 1"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txt_carrer"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center_vertical"
-                    android:maxWidth="200dp"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteFont"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_font" />
-
                 <ImageView
                     android:id="@+id/btnDeleteFont"
                     android:layout_width="46dp"
                     android:layout_height="44dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
-                    android:src="@drawable/ic_baseline_location_on_24"
-                    app:layout_constraintBottom_toTopOf="@+id/txt_distance"
+                    android:src="@drawable/ic_delete"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txt_distance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="0 Km"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btnDeleteFont"
-                    app:layout_constraintStart_toStartOf="@+id/btnDeleteFont"
-                    app:layout_constraintTop_toBottomOf="@+id/btnDeleteFont" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="49dp"
                     android:layout_height="49dp"
-                    android:layout_marginTop="2dp"
-                    app:layout_constraintStart_toEndOf="@+id/txt_font"
+                    android:layout_marginEnd="40dp"
+                    android:scaleX="2"
+                    android:scaleY="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteFont"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/gota_1" />
+                    app:layout_constraintVertical_bias="0.407" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
+
 </layout>

@@ -83,6 +83,7 @@ class ListAdminViewModel: ViewModel() {
                 false ->
                     fontType = -1
             }
+            fonts.clear()
             db.collection("fonts").whereEqualTo("type", fontType)
                 .get()
                 .addOnSuccessListener { documents ->
@@ -94,7 +95,7 @@ class ListAdminViewModel: ViewModel() {
                                 document.get("lat").toString().toDouble(),
                                 document.get("lon").toString().toDouble(),
                                 document.get("info").toString(),
-                                fontType,
+                                document.get("type").toString().toInt(),
                                 document.get("address").toString()
                             )
                         )

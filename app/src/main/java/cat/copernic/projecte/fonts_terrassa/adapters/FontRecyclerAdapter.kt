@@ -25,11 +25,6 @@ import kotlin.collections.ArrayList
 class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
     RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
 
-    //var fonts: ArrayList<Font> = ArrayList()
-    //var fontsFiltered: ArrayList<Font> = ArrayList()
-    val initialFontList = ArrayList<Font>().apply {
-        addAll(fonts)
-    }
     var context: Context? = null
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
@@ -57,7 +52,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         with(holder) {
             with(fonts[position]) {
                 binding.txtFont.text = this.fontName
-                this.fontId ?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
+                this.fontId?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
             }
         }
 
@@ -87,21 +82,40 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
             binding.txtFont.text = font.name.trim()
             binding.txtCarrer.text = font.adreca.trim()
             context?.let {
-                this@FontRecyclerAdapter.calculateDistance(font.lat, font.lon, binding,
-                    it)
+                this@FontRecyclerAdapter.calculateDistance(
+                    font.lat, font.lon, binding,
+                    it
+                )
             }
 
             Log.d("tipusf", font.type.toString())
             when (font.type) {
-                1 -> binding.imageView2.setImageResource(R.drawable.gota_1)
-                2 -> binding.imageView2.setImageResource(R.drawable.gota_2)
-                3 -> binding.imageView2.setImageResource(R.drawable.gota_3)
-                4 -> binding.imageView2.setImageResource(R.drawable.gota_4)
-                5 -> binding.imageView2.setImageResource(R.drawable.gota_5)
+                1 -> context?.let { descarregarImatgeGlide2(it, "gota_1") }
+                2 -> context?.let { descarregarImatgeGlide2(it, "gota_2") }
+                3 -> context?.let { descarregarImatgeGlide2(it, "gota_3") }
+                4 -> context?.let { descarregarImatgeGlide2(it, "gota_4") }
+                5 -> context?.let { descarregarImatgeGlide2(it, "gota_5") }
+            }
+        }
+
+        fun descarregarImatgeGlide2(view: Context, fontId: String) {
+            val imgPath = fontId + ".png"
+            val imageRef = storageRef.child(imgPath)
+            imageRef.downloadUrl.addOnSuccessListener { url ->
+
+                Glide.with(view)
+                    .load(url.toString())
+                    .centerInside()
+                    .error(R.drawable.ic_noimage)
+                    .into(binding.imageView2)
+
+            }.addOnFailureListener {
+                binding.imageView2.setImageResource(R.drawable.ic_noimage)
             }
         }
 
         private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
+
         fun descarregarImatgeGlide(view: Context, fontId: String) {
             val imgPath = "images/" + fontId + ".jpg"
             val imageRef = storageRef.child(imgPath)
@@ -110,7 +124,6 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
                 Glide.with(view)
                     .load(url.toString())
                     .centerInside()
-                    .placeholder((R.drawable.loading))
                     .error(R.drawable.ic_noimage)
                     .into(binding.imageView)
 
@@ -120,59 +133,37 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         }
     }
 
-    fun getFilter(): android.widget.Filter {
-        return fontFilter
-    }
-
-    private val fontFilter = object : android.widget.Filter() {
-        override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val filteredList: ArrayList<Font> = ArrayList()
-            if (constraint == null || constraint.isEmpty()) {
-                initialFontList.let { filteredList.addAll(it) }
-            } else {
-                val query = constraint.toString().trim().lowercase(Locale.getDefault())
-                initialFontList.forEach {
-                    if (it.name.lowercase(Locale.ROOT).contains(query)) {
-                        filteredList.add(it)
-                    }
-                }
-            }
-            val results = FilterResults()
-            results.values = filteredList
-            return results
-        }
-
-        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            if (results?.values is ArrayList<*>) {
-                fonts.clear()
-                fonts.addAll(results.values as ArrayList<Font>)
-                notifyDataSetChanged()
-            }
-        }
-    }
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    fun calculateDistance(lat: Double, lon: Double, binding: ItemFontListBinding, mycontext: Context) {
+    fun calculateDistance(
+        lat: Double,
+        lon: Double,
+        binding: ItemFontListBinding,
+        mycontext: Context
+    ) {
         lateinit var myActualPos: Location
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(mycontext)
-        if (ActivityCompat.checkSelfPermission(mycontext,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+        if (ActivityCompat.checkSelfPermission(
                 mycontext,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                mycontext,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
 
         }
         var value: Double = 0.0
         fusedLocationClient.lastLocation
             .addOnSuccessListener {
-                    if (it != null) {
-                        myActualPos = it
-                        val fontLoc = Location("")
-                        fontLoc.latitude = lat
-                        fontLoc.longitude = lon
-                        value = (myActualPos.distanceTo(fontLoc) / 1000).toDouble()
-                        binding.txtDistance.text = (Math.round(value*100) /100.0).toString() + " km"
-                    }
+                if (it != null) {
+                    myActualPos = it
+                    val fontLoc = Location("")
+                    fontLoc.latitude = lat
+                    fontLoc.longitude = lon
+                    value = (myActualPos.distanceTo(fontLoc) / 1000).toDouble()
+                    binding.txtDistance.text = (Math.round(value * 100) / 100.0).toString() + " km"
                 }
+            }
     }
 }

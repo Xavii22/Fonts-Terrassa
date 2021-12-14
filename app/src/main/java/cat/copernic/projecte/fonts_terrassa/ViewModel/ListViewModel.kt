@@ -11,7 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ListViewModel : ViewModel() {
 
     private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter(arrayListOf())
-    private var fonts: ArrayList<Font> = arrayListOf()
+    private var fonts: ArrayList<Font> = arrayListOf() //ArrayList<Font> = arrayListOf() MutableLiveData<Font> = MutableLiveData<Font>()
     private val db = FirebaseFirestore.getInstance()
 
     fun sortFontNameASC(binding: FragmentListBinding, context: Context) {
@@ -98,23 +98,6 @@ class ListViewModel : ViewModel() {
             }
     }
 
-    fun getFontType(
-        fontEnabled: BooleanArray
-    ): Array<Int> {
-        var fontsType: Array<Int> = arrayOf(5)
-        var fontType: Int = -1
-        for (i in 0..4) {
-            when (fontEnabled[i]) {
-                true ->
-                    fontType = i + 1
-                false ->
-                    fontType = -1
-            }
-            fontsType[i] = fontType
-        }
-        return fontsType
-    }
-
     fun filterFontsByType(
         binding: FragmentListBinding,
         context: Context,
@@ -129,6 +112,7 @@ class ListViewModel : ViewModel() {
                 false ->
                     fontType = -1
             }
+            fonts.clear()
             db.collection("fonts").whereEqualTo("type", fontType)
                 .get()
                 .addOnSuccessListener { documents ->

@@ -3,12 +3,14 @@ package cat.copernic.projecte.fonts_terrassa.adapters
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.projecte.fonts_terrassa.FontAdminListFragment
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
@@ -59,7 +61,8 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                                 "Font eliminada correctament",
                                 Toast.LENGTH_SHORT
                             ).show()
-
+                            fontsAdmin.removeAt(position)
+                            notifyDataSetChanged()
                         }.addOnFailureListener { e ->
                             Toast.makeText(context, "ERROR en eliminar la font", Toast.LENGTH_SHORT)
                                 .show()
@@ -96,14 +99,39 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
         return fontsAdmin.size
     }
 
-    class ViewHolder(val binding: ItemFontListAdminBinding) :
+    inner class ViewHolder(val binding: ItemFontListAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(font: Font) {
+            binding.txtFont.text = font.name.trim()
 
+            when (font.type) {
+                1 -> context?.let { descarregarImatgeGlide2(it, "gota_1") }
+                2 -> context?.let { descarregarImatgeGlide2(it, "gota_2") }
+                3 -> context?.let { descarregarImatgeGlide2(it, "gota_3") }
+                4 -> context?.let { descarregarImatgeGlide2(it, "gota_4") }
+                5 -> context?.let { descarregarImatgeGlide2(it, "gota_5") }
+            }
+        }
+
+        fun descarregarImatgeGlide2(view: Context, fontId: String) {
+            val imgPath = fontId + ".png"
+            val imageRef = storageRef.child(imgPath)
+            imageRef.downloadUrl.addOnSuccessListener { url ->
+
+                Glide.with(view)
+                    .load(url.toString())
+                    .centerInside()
+                    .error(R.drawable.ic_noimage)
+                    .into(binding.imageView2)
+
+            }.addOnFailureListener {
+                binding.imageView2.setImageResource(R.drawable.ic_noimage)
+            }
         }
 
         private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
+
         fun descarregarImatgeGlide(view: Context, fontId: String) {
             val imgPath = "images/" + fontId + ".jpg"
             val imageRef = storageRef.child(imgPath)
@@ -112,7 +140,6 @@ class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.V
                 Glide.with(view)
                     .load(url.toString())
                     .centerInside()
-                    .placeholder((R.drawable.loading))
                     .error(R.drawable.ic_noimage)
                     .into(binding.imageView)
 
