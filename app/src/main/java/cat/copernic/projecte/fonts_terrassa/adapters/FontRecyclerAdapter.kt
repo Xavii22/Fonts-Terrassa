@@ -153,7 +153,6 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         ) {
 
         }
-        var value: Double = 0.0
         fusedLocationClient.lastLocation
             .addOnSuccessListener {
                 if (it != null) {
@@ -161,7 +160,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
                     val fontLoc = Location("")
                     fontLoc.latitude = lat
                     fontLoc.longitude = lon
-                    value = (myActualPos.distanceTo(fontLoc) / 1000).toDouble()
+                    val value = (myActualPos.distanceTo(fontLoc) / 1000).toDouble()
                     binding.txtDistance.text = (Math.round(value * 100) / 100.0).toString() + " km"
                 }
             }

@@ -4,23 +4,26 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.databinding.DataBindingUtil
-import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
-import android.view.*
-import kotlin.collections.ArrayList
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
 import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
+import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ListFragment : Fragment() {
 
     private var fonts: ArrayList<Font> = arrayListOf()
     private var matchedFonts: ArrayList<Font> = arrayListOf()
     private var fontAdapter: FontRecyclerAdapter = FontRecyclerAdapter(fonts)
+    private val db = FirebaseFirestore.getInstance()
 
     private lateinit var binding: FragmentListBinding
     private val ViewModel: ListViewModel by viewModels()
@@ -34,7 +37,7 @@ class ListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
 
         binding = DataBindingUtil.inflate(
@@ -89,7 +92,7 @@ class ListFragment : Fragment() {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long
+                id: Long,
             ) {
                 when (binding.spinnerOrder.selectedItem.toString()) {
                     "Nom ASC" ->
@@ -122,7 +125,7 @@ class ListFragment : Fragment() {
 
         initRecyclerView()
         performSearch()
-
+        Log.d("msg", fontAdapter.fonts.size.toString())
         return binding.root
     }
 
@@ -159,17 +162,33 @@ class ListFragment : Fragment() {
 
     private fun search(text: String?) {
         matchedFonts = arrayListOf()
-        text?.let {
-            fonts.forEach { font ->
-                if (font.name.contains(text, true)
-                ) {
-                    matchedFonts.add(font)
+        fonts.clear()
+        db.collection("fonts").get().addOnSuccessListener { documents ->
+            for (document in documents) {
+                fonts.add(
+                    Font(
+                        document.get("id").toString(),
+                        document.get("name").toString(),
+                        document.get("lat").toString().toDouble(),
+                        document.get("lon").toString().toDouble(),
+                        document.get("info").toString(),
+                        document.get("type").toString().toInt(),
+                        document.get("address").toString()
+                    )
+                )
+            }
+            text?.let {
+                fonts.forEach { font ->
+                    if (font.name.contains(text, true)
+                    ) {
+                        matchedFonts.add(font)
+                    }
                 }
+                if (matchedFonts.isEmpty()) {
+                    Log.d("buit", "esta buit")
+                }
+                updateRecyclerView()
             }
-            if (matchedFonts.isEmpty()) {
-                Log.d("buit", "esta buit")
-            }
-            updateRecyclerView()
         }
     }
 
@@ -177,7 +196,7 @@ class ListFragment : Fragment() {
         binding.rvFonts.apply {
             fontAdapter.fonts.clear()
             fontAdapter.fonts.addAll(matchedFonts)
-            context?.let {ViewModel.sortFontNameASC(binding, it)}
+            context?.let { ViewModel.sortFontNameASC(binding, it) }
             fontAdapter.notifyDataSetChanged()
         }
     }
