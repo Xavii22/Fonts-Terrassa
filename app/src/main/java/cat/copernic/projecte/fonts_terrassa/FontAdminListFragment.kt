@@ -56,7 +56,9 @@ class FontAdminListFragment : Fragment() {
 
         }
 
-        context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+        if (fontAdapter.fonts.size == 0) {
+            context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+        }
 
         imageView.setOnClickListener {
 
@@ -123,7 +125,7 @@ class FontAdminListFragment : Fragment() {
         initRecyclerView()
         performSearch()
 
-        binding.addFont.setOnClickListener{
+        binding.addFont.setOnClickListener {
             findNavController().navigate(FontAdminListFragmentDirections.actionFontAdminListFragmentToEditFontFragment2())
         }
 

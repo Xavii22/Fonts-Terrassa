@@ -51,7 +51,9 @@ class ListFragment : Fragment() {
             selectedFont[j] = true
         }
 
-        context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+        if (fontAdapter.fonts.size == 0) {
+            context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+        }
 
         imageView.setOnClickListener {
 
@@ -125,7 +127,6 @@ class ListFragment : Fragment() {
 
         initRecyclerView()
         performSearch()
-        Log.d("msg", fontAdapter.fonts.size.toString())
         return binding.root
     }
 
