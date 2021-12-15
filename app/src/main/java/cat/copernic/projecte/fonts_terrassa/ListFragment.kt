@@ -159,13 +159,11 @@ class ListFragment : Fragment() {
 
     private fun search(text: String?) {
         matchedFonts = arrayListOf()
-
         text?.let {
             fonts.forEach { font ->
                 if (font.name.contains(text, true)
                 ) {
                     matchedFonts.add(font)
-                    updateRecyclerView()
                 }
             }
             if (matchedFonts.isEmpty()) {
@@ -177,9 +175,9 @@ class ListFragment : Fragment() {
 
     private fun updateRecyclerView() {
         binding.rvFonts.apply {
-            //fontAdapter.fonts.clear()
-            //fontAdapter.fonts.addAll(matchedFonts)
-            fontAdapter.fonts = matchedFonts
+            fontAdapter.fonts.clear()
+            fontAdapter.fonts.addAll(matchedFonts)
+            context?.let {ViewModel.sortFontNameASC(binding, it)}
             fontAdapter.notifyDataSetChanged()
         }
     }
