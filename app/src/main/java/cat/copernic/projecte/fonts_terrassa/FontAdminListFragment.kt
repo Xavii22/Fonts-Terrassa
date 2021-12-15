@@ -130,7 +130,7 @@ class FontAdminListFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
-        //fonts = ViewModel.getFonts()
+        fonts = ViewModel.getFonts()
 
         fontAdapter = FontRecyclerAdapter(fonts).also {
             binding.rvFonts.adapter = it
