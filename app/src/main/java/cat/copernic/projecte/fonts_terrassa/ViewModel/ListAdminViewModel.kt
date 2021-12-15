@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ListAdminViewModel: ViewModel() {
 
-    private val myAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter()
+    private val myAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter(arrayListOf())
     private var fonts: ArrayList<Font> = arrayListOf()
     private val db = FirebaseFirestore.getInstance()
 

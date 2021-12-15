@@ -19,13 +19,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class FontAdminRecyclerAdapter : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
-    private var fontsAdmin: MutableList<Font> = ArrayList()
+class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<Font>) : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
     var context: Context? = null
     private val db = FirebaseFirestore.getInstance()
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
-    fun fontsAdminRecyclerAdapter(fontsList: MutableList<Font>, contxt: Context) {
+    fun fontsAdminRecyclerAdapter(fontsList: ArrayList<Font>, contxt: Context) {
         this.fontsAdmin = fontsList
         this.context = contxt
     }

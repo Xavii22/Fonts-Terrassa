@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListAdminViewModel
+import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
@@ -24,7 +25,7 @@ class FontAdminListFragment : Fragment() {
 
     private var fonts: ArrayList<Font> = arrayListOf()
     private var matchedFonts: ArrayList<Font> = arrayListOf()
-    private var fontAdapter: FontRecyclerAdapter = FontRecyclerAdapter(fonts)
+    private var fontAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter(fonts)
     private val db = FirebaseFirestore.getInstance()
 
     private lateinit var binding: FragmentFontAdminListBinding
@@ -56,7 +57,7 @@ class FontAdminListFragment : Fragment() {
 
         }
 
-        if (fontAdapter.fonts.size == 0) {
+        if (fontAdapter.fontsAdmin.size == 0) {
             context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
         }
 
@@ -141,7 +142,7 @@ class FontAdminListFragment : Fragment() {
     private fun initRecyclerView() {
         fonts = ViewModel.getFonts()
 
-        fontAdapter = FontRecyclerAdapter(fonts).also {
+        fontAdapter = FontAdminRecyclerAdapter(fonts).also {
             binding.rvFonts.adapter = it
             binding.rvFonts.adapter!!.notifyDataSetChanged()
         }
@@ -197,8 +198,8 @@ class FontAdminListFragment : Fragment() {
 
     private fun updateRecyclerView() {
         binding.rvFonts.apply {
-            fontAdapter.fonts.clear()
-            fontAdapter.fonts.addAll(matchedFonts)
+            fontAdapter.fontsAdmin.clear()
+            fontAdapter.fontsAdmin.addAll(matchedFonts)
             context?.let { ViewModel.sortFontNameASC(binding, it) }
             fontAdapter.notifyDataSetChanged()
         }
