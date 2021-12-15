@@ -13,6 +13,7 @@ import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListAdminViewModel
 import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
@@ -121,6 +122,10 @@ class FontAdminListFragment : Fragment() {
         }
         initRecyclerView()
         performSearch()
+
+        binding.addFont.setOnClickListener{
+            findNavController().navigate(FontAdminListFragmentDirections.actionFontAdminListFragmentToEditFontFragment2())
+        }
 
         return binding.root
     }

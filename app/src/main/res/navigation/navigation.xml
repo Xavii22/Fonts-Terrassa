@@ -83,7 +83,8 @@
         tools:layout="@layout/fragment_evaluate" >
         <action
             android:id="@+id/action_evaluateFragment_to_viewFontFragment"
-            app:destination="@id/viewFontFragment" />
+            app:destination="@id/viewFontFragment"
+            app:popUpTo="@id/fragment_list" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"

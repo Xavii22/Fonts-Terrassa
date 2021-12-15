@@ -44,7 +44,7 @@ class EditFontFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_font, container, false)
@@ -84,56 +84,54 @@ class EditFontFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
             //Save font data
-            if (binding.inputIdFont.text.isNotEmpty() and binding.txtNomFont.text.isNotEmpty() and binding.editLat.text.isNotEmpty() and binding.editLon.text.isNotEmpty()) {
-                db.collection("fonts")
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        var fontIdFound = false
-                        val myId = binding.inputIdFont.text.toString()
-                        for (document in documents) {
-                            if (document.get("id") == myId && oldFontId == "") {
-                                fontIdFound = true
+            if (binding.txtNomFont.text.isNotEmpty() and binding.editLat.text.isNotEmpty() and binding.editLon.text.isNotEmpty()) {
+                var calulatedStringId = oldFontId
+                    db.collection("fonts")
+                        .get()
+                        .addOnSuccessListener { documents ->
+                            if (oldFontId == "") {
+                                var calculatedId = 0
+                                for (document in documents) {
+                                    val actualId =
+                                        document.get("id").toString().substring(3).toInt()
+                                    if (actualId >= calculatedId) {
+                                        calculatedId = actualId+1
+                                    }
+                                }
+
+                                calulatedStringId = when (calculatedId.toString().length) {
+                                    1 ->
+                                        "FBO00$calculatedId"
+                                    2 ->
+                                        "FBO0$calculatedId"
+                                    else ->
+                                        "FBO$calculatedId"
+                                }
+                            } else {
+                                calulatedStringId = oldFontId
                             }
-                        }
-                        if (!fontIdFound) {
                             //Delete old image
                             deleteImageBeforeUploading(oldFontId)
                             if (hasImage) {
                                 //Upload image
-                                pujarImatge(binding.inputIdFont.text.toString())
+                                pujarImatge(calulatedStringId)
                             }
 
-                            if (binding.inputIdFont.text.toString() != oldFontId) {
-                                db.collection("fonts")
-                                    .get()
-                                    .addOnSuccessListener { documents ->
-                                        for (document in documents) {
-                                            if (document.get("id") == oldFontId) {
-                                                db.collection("fonts").document(oldFontId)
-                                                    .delete()
-                                            }
-                                        }
-                                    }
-                            }
-
-                            db.collection("fonts").document(binding.inputIdFont.text.toString())
+                            db.collection("fonts").document(calulatedStringId)
                                 .set(
                                     hashMapOf(
                                         "lat" to binding.editLat.text.toString().toDouble(),
                                         "lon" to binding.editLon.text.toString().toDouble(),
-                                        "id" to binding.inputIdFont.text.toString(),
+                                        "id" to calulatedStringId,
                                         "name" to binding.txtNomFont.text.toString(),
                                         "info" to binding.txtInformacio.text.toString(),
                                         "address" to binding.editAdreca.text.toString(),
                                         "type" to binding.spinnerType.selectedItemPosition + 1
                                     )
                                 )
-                            findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
-                        }else{
-                            showAlertIdExist()
                         }
-                    }
-            }else{
+                    findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
+            } else {
                 showBlankFields()
             }
         }
@@ -143,20 +141,20 @@ class EditFontFragment : Fragment() {
         return binding.root
     }
 
-    private fun showAlertIdExist(){
+    private fun showAlertIdExist() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle("ERROR")
         objectAlerDialog.setMessage("L'ID de la font intrdoduit ja existeix")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
+        objectAlerDialog.setPositiveButton("Acceptar", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
-    private fun showBlankFields(){
+    private fun showBlankFields() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("Hi ha un o mes camps obligatoris no omplerts, revisa l'Identificador, el nom i/o les coordenades")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
+        objectAlerDialog.setMessage("Hi ha un o mes camps obligatoris no omplerts, revisa el nom i/o les coordenades")
+        objectAlerDialog.setPositiveButton("Acceptar", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
