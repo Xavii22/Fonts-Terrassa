@@ -54,7 +54,6 @@ class FontAdminListFragment : Fragment() {
 
         for (j in 0..4) {
             selectedFont[j] = true
-
         }
 
         if (fontAdapter.fontsAdmin.size == 0) {
@@ -66,7 +65,7 @@ class FontAdminListFragment : Fragment() {
             fontList.clear()
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setTitle("Seleccionar tipus de font")
+            builder.setTitle(R.string.seleccionar_tipus_font)
 
             context?.let { ViewModel.clearFontsByType(binding, it) }
             builder.setCancelable(false)
@@ -76,12 +75,12 @@ class FontAdminListFragment : Fragment() {
 
             }
             builder.setPositiveButton(
-                "Acceptar"
+                R.string.acceptar
             ) { _, _ ->
                 context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
             }
             builder.setNeutralButton(
-                "Seleccionar-ho tot"
+                R.string.seleccionar_tot
             ) { _, _ ->
                 for (j in 0..4) {
                     selectedFont[j] = true

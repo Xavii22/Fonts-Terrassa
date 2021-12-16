@@ -60,7 +60,7 @@ class ListFragment : Fragment() {
             fontList.clear()
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setTitle("Seleccionar tipus de font")
+            builder.setTitle(R.string.seleccionar_tipus_font)
 
             context?.let { ViewModel.clearFontsByType(binding, it) }
             builder.setCancelable(false)
@@ -70,12 +70,12 @@ class ListFragment : Fragment() {
 
             }
             builder.setPositiveButton(
-                "Acceptar"
+                R.string.acceptar
             ) { _, _ ->
                 context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
             }
             builder.setNeutralButton(
-                "Seleccionar-ho tot"
+                R.string.seleccionar_tot
             ) { _, _ ->
                 for (j in 0..4) {
                     selectedFont[j] = true
@@ -186,7 +186,7 @@ class ListFragment : Fragment() {
                     }
                 }
                 if (matchedFonts.isEmpty()) {
-                    Log.d("buit", "esta buit")
+                    Log.d("buit", R.string.buit.toString())
                 }
                 updateRecyclerView()
             }
