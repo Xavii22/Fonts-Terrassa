@@ -31,7 +31,7 @@
     <string name="Error_pujar_foto">ERROR AL PUJAR LA FOTO</string>
     <string name="Exit_pujar_foto">EXIT AL PUJAR LA FOTO</string>
     <string name="accedir">Accedir</string>
-    <string name="carregant_app">Carregant l\'aplicació...</string>
+    <string name="carregant_app">Carregant...</string>
     <string name="dashboard">Dashboard</string>
     <string name="administrar_usuaris">Administrar usuaris</string>
     <string name="administrar_fonts">Administrar fonts</string>
@@ -82,4 +82,28 @@
     <string name="dark">Mode fosc</string>
     <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam</string>
     <string name="llista">llista</string>
+    <string-array name="spinner_language">
+        <item>Català</item>
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="spinner_order">
+        <item>Nom ASC</item>
+        <item>Nom DESC</item>
+        <item>Distancia ASC</item>
+        <item>Distancia DESC</item>
+        <item>Tipus</item>
+    </string-array>
+    <string-array name="spinner_filter">
+        <item>@string/fonts_boca</item>
+        <item>@string/fonts_boca_singulars</item>
+        <item>@string/fonts_ornamentals</item>
+        <item>@string/fonts_naturals</item>
+        <item>@string/fonts_gossos</item>
+    </string-array>
+    <string-array name="spinner_order_admin">
+        <item>Nom ASC</item>
+        <item>Nom DESC</item>
+        <item>Tipus</item>
+    </string-array>
 </resources>
