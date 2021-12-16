@@ -72,7 +72,7 @@
     <string name="gracies_avaluacio">Gràcies per avaular la font</string>
     <string name="no_avaluat">No s\'han evaluat tots els camps</string>
     <string name="imatge_eliminada">Imatge eliminada correctament, recorda guardar canvis</string>
-    <string name="id_font_existeix">L\'ID de la font intrdoduit ja existeix</string>
+    <string name="id_font_existeix">Aqui tenim tota l\'informació de la font que es vulgui afegir des de l\'administració.</string>
     <string name="camps_no_omplerts">Hi ha un o mes camps obligatoris no omplerts, revisa l\'Identificador, el nom i/o les coordenades</string>
     <string name="imatge_pujada_correctament">Imatge pujada correctament, recorda guardar canvis</string>
     <string name="confirmacio">Confirmació</string>
