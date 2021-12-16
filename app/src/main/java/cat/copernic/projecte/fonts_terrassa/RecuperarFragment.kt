@@ -38,7 +38,7 @@ class RecuperarFragment : Fragment() {
                             view?.let { it1 ->
                                 Snackbar.make(
                                     it1,
-                                    "Missatge enviat",
+                                    R.string.missatge_enviat,
                                     BaseTransientBottomBar.LENGTH_SHORT
                                 ).show()
                             }
@@ -46,7 +46,7 @@ class RecuperarFragment : Fragment() {
                             view?.let { it1 ->
                                 Snackbar.make(
                                     it1,
-                                    "Correu incorrecte",
+                                    R.string.correu_incorrecte,
                                     BaseTransientBottomBar.LENGTH_SHORT
                                 ).show()
                             }

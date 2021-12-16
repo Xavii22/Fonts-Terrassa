@@ -1,4 +1,3 @@
-
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
@@ -14,19 +13,22 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 
 class EvaluateFragment : Fragment() {
-    private val db= FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val binding: FragmentEvaluateBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_evaluate, container, false)
+            inflater, R.layout.fragment_evaluate, container, false
+        )
 
         val fontId = arguments?.getString("fontId")
 
         //Valorar Gust
         var gustValue = 0
-        binding.starGustVal1.setOnClickListener{
+        binding.starGustVal1.setOnClickListener {
             gustValue = 1
             binding.starGustVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starGustVal2.setImageResource(R.drawable.ic_starempty)
@@ -34,7 +36,7 @@ class EvaluateFragment : Fragment() {
             binding.starGustVal4.setImageResource(R.drawable.ic_starempty)
             binding.starGustVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starGustVal2.setOnClickListener{
+        binding.starGustVal2.setOnClickListener {
             gustValue = 2
             binding.starGustVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starGustVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -42,7 +44,7 @@ class EvaluateFragment : Fragment() {
             binding.starGustVal4.setImageResource(R.drawable.ic_starempty)
             binding.starGustVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starGustVal3.setOnClickListener{
+        binding.starGustVal3.setOnClickListener {
             gustValue = 3
             binding.starGustVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starGustVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -50,7 +52,7 @@ class EvaluateFragment : Fragment() {
             binding.starGustVal4.setImageResource(R.drawable.ic_starempty)
             binding.starGustVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starGustVal4.setOnClickListener{
+        binding.starGustVal4.setOnClickListener {
             gustValue = 4
             binding.starGustVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starGustVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -58,7 +60,7 @@ class EvaluateFragment : Fragment() {
             binding.starGustVal4.setImageResource(R.drawable.ic_starcomplete)
             binding.starGustVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starGustVal5.setOnClickListener{
+        binding.starGustVal5.setOnClickListener {
             gustValue = 5
             binding.starGustVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starGustVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -69,7 +71,7 @@ class EvaluateFragment : Fragment() {
 
         //Valorar Olor
         var olorValue = 0
-        binding.starOlorVal1.setOnClickListener{
+        binding.starOlorVal1.setOnClickListener {
             olorValue = 1
             binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starOlorVal2.setImageResource(R.drawable.ic_starempty)
@@ -77,7 +79,7 @@ class EvaluateFragment : Fragment() {
             binding.starOlorVal4.setImageResource(R.drawable.ic_starempty)
             binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starOlorVal2.setOnClickListener{
+        binding.starOlorVal2.setOnClickListener {
             olorValue = 2
             binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -85,7 +87,7 @@ class EvaluateFragment : Fragment() {
             binding.starOlorVal4.setImageResource(R.drawable.ic_starempty)
             binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starOlorVal3.setOnClickListener{
+        binding.starOlorVal3.setOnClickListener {
             olorValue = 3
             binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -93,7 +95,7 @@ class EvaluateFragment : Fragment() {
             binding.starOlorVal4.setImageResource(R.drawable.ic_starempty)
             binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starOlorVal4.setOnClickListener{
+        binding.starOlorVal4.setOnClickListener {
             olorValue = 4
             binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -101,7 +103,7 @@ class EvaluateFragment : Fragment() {
             binding.starOlorVal4.setImageResource(R.drawable.ic_starcomplete)
             binding.starOlorVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starOlorVal5.setOnClickListener{
+        binding.starOlorVal5.setOnClickListener {
             olorValue = 5
             binding.starOlorVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starOlorVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -112,7 +114,7 @@ class EvaluateFragment : Fragment() {
 
         //Valorar Transperencia
         var transperenciaValue = 0
-        binding.starTransperenciaVal1.setOnClickListener{
+        binding.starTransperenciaVal1.setOnClickListener {
             transperenciaValue = 1
             binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starempty)
@@ -120,7 +122,7 @@ class EvaluateFragment : Fragment() {
             binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starempty)
             binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starTransperenciaVal2.setOnClickListener{
+        binding.starTransperenciaVal2.setOnClickListener {
             transperenciaValue = 2
             binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -128,7 +130,7 @@ class EvaluateFragment : Fragment() {
             binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starempty)
             binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starTransperenciaVal3.setOnClickListener{
+        binding.starTransperenciaVal3.setOnClickListener {
             transperenciaValue = 3
             binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -136,7 +138,7 @@ class EvaluateFragment : Fragment() {
             binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starempty)
             binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starTransperenciaVal4.setOnClickListener{
+        binding.starTransperenciaVal4.setOnClickListener {
             transperenciaValue = 4
             binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -144,7 +146,7 @@ class EvaluateFragment : Fragment() {
             binding.starTransperenciaVal4.setImageResource(R.drawable.ic_starcomplete)
             binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starempty)
         }
-        binding.starTransperenciaVal5.setOnClickListener{
+        binding.starTransperenciaVal5.setOnClickListener {
             transperenciaValue = 5
             binding.starTransperenciaVal1.setImageResource(R.drawable.ic_starcomplete)
             binding.starTransperenciaVal2.setImageResource(R.drawable.ic_starcomplete)
@@ -169,7 +171,7 @@ class EvaluateFragment : Fragment() {
                 view?.let { it1 ->
                     Snackbar.make(
                         it1,
-                        "Gràcies per avaular la font",
+                        R.string.gracies_avaluacio,
                         BaseTransientBottomBar.LENGTH_SHORT
                     ).show()
                 }
@@ -177,14 +179,16 @@ class EvaluateFragment : Fragment() {
                 //Go to viewFont
                 val bundle = Bundle()
                 bundle.putSerializable("fontId", fontId)
-                findNavController().navigate(R.id.action_evaluateFragment_to_viewFontFragment,
-                    bundle)
-            }else{
+                findNavController().navigate(
+                    R.id.action_evaluateFragment_to_viewFontFragment,
+                    bundle
+                )
+            } else {
                 //Show Snackbar
                 view?.let { it1 ->
                     Snackbar.make(
                         it1,
-                        "No s'han evaluat tots els camps",
+                        R.string.no_avaluat,
                         BaseTransientBottomBar.LENGTH_SHORT
                     ).show()
                 }

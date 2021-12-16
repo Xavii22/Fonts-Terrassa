@@ -14,11 +14,11 @@
 
     <color name="mainText">#2D313D</color>
     <color name="textAlt">#8D8F97</color>
-    <color name="mainBackground">#ffffff</color>
+    <color name="mainBackground">#000000</color>
 
-    <color name="colorPrimary">#00796B</color>
-    <color name="colorPrimaryDark">#00796B</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#2D313D</color>
+    <color name="colorPrimaryDark">#171717</color>
+    <color name="colorAccent">#FFFFFF</color>
 
-    <color name="textColor">#2D313D</color>
+    <color name="textColor">#FFFFFF</color>
 </resources>

@@ -32,15 +32,6 @@ class EditFontFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var storageRef: StorageReference
     private lateinit var binding: FragmentEditFontBinding
-    private var latestTmpUri: Uri? = null
-    private val takeImageResult =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-            if (isSuccess) {
-                latestTmpUri?.let { uri ->
-                    binding.imgFont.setImageURI(uri)
-                }
-            }
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,7 +68,7 @@ class EditFontFragment : Fragment() {
             }
             Snackbar.make(
                 binding.frameLayout,
-                "Imatge eliminada correctament, recorda guardar canvis",
+                R.string.imatge_eliminada,
                 BaseTransientBottomBar.LENGTH_SHORT
             ).show()
         }
@@ -129,11 +120,11 @@ class EditFontFragment : Fragment() {
                                     )
                                 )
                             findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
-                        }else{
+                        } else {
                             showAlertIdExist()
                         }
                     }
-            }else{
+            } else {
                 showBlankFields()
             }
         }
@@ -143,21 +134,21 @@ class EditFontFragment : Fragment() {
         return binding.root
     }
 
-    private fun showAlertIdExist(){
+    private fun showAlertIdExist() {
         val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("L'ID de la font intrdoduit ja existeix")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
-        var alertDialog: AlertDialog = objectAlerDialog.create()
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage(R.string.id_font_existeix)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
+        val alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
-    private fun showBlankFields(){
+    private fun showBlankFields() {
         val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("Hi ha un o mes camps obligatoris no omplerts, revisa l'Identificador, el nom i/o les coordenades")
-        objectAlerDialog.setPositiveButton("Acceptar",null)
-        var alertDialog: AlertDialog = objectAlerDialog.create()
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage(R.string.camps_no_omplerts)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
+        val alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
@@ -166,11 +157,11 @@ class EditFontFragment : Fragment() {
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data?.data
-            binding?.imgFont?.setImageURI(data)
+            binding.imgFont.setImageURI(data)
             hasImage = true
             Snackbar.make(
                 binding.frameLayout,
-                "Imatge pujada correctament, recorda guardar canvis",
+                R.string.imatge_pujada_correctament,
                 BaseTransientBottomBar.LENGTH_SHORT
             ).show()
         }

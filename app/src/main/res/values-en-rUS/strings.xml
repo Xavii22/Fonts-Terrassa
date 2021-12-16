@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fonts_Terrassa</string>
+    <string name="fonts_boca">dedede</string>
+    <string name="mapa">map</string>
+    <string name="info">info</string>
+    <string name="language">Language</string>
+</resources>

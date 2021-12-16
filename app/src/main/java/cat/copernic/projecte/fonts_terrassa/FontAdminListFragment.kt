@@ -50,7 +50,6 @@ class FontAdminListFragment : Fragment() {
 
         for (j in 0..4) {
             selectedFont[j] = true
-
         }
 
         context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
@@ -60,7 +59,7 @@ class FontAdminListFragment : Fragment() {
             fontList.clear()
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setTitle("Seleccionar tipus de font")
+            builder.setTitle(R.string.seleccionar_tipus_font)
 
             context?.let { ViewModel.clearFontsByType(binding, it) }
             builder.setCancelable(false)
@@ -70,12 +69,12 @@ class FontAdminListFragment : Fragment() {
 
             }
             builder.setPositiveButton(
-                "Acceptar"
+                R.string.acceptar
             ) { _, _ ->
                 context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
             }
             builder.setNeutralButton(
-                "Seleccionar-ho tot"
+                R.string.seleccionar_tot
             ) { _, _ ->
                 for (j in 0..4) {
                     selectedFont[j] = true
@@ -130,7 +129,7 @@ class FontAdminListFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
-        //fonts = ViewModel.getFonts()
+        fonts = ViewModel.getFonts()
 
         fontAdapter = FontRecyclerAdapter(fonts).also {
             binding.rvFonts.adapter = it
@@ -166,7 +165,7 @@ class FontAdminListFragment : Fragment() {
                 }
             }
             if (matchedFonts.isEmpty()) {
-                Log.d("buit", "esta buit")
+                Log.d("buit", R.string.buit.toString())
             }
             updateRecyclerView()
         }
@@ -174,8 +173,6 @@ class FontAdminListFragment : Fragment() {
 
     private fun updateRecyclerView() {
         binding.rvFonts.apply {
-            //fontAdapter.fonts.clear()
-            //fontAdapter.fonts.addAll(matchedFonts)
             fontAdapter.fonts = matchedFonts
             fontAdapter.notifyDataSetChanged()
         }

@@ -119,4 +119,8 @@ class ListAdminViewModel: ViewModel() {
                 binding.rvFonts.adapter = myAdapter
             }
     }
+
+    fun getFonts(): ArrayList<Font> {
+        return fonts
+    }
 }

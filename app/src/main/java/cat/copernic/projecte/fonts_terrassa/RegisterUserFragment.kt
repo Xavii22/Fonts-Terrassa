@@ -84,18 +84,18 @@ class RegisterUserFragment : Fragment() {
 
     private fun showAlertExist() {
         val objectAlerDialog = android.app.AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("El correu introduit ja existeix a la base de dades")
-        objectAlerDialog.setPositiveButton("Acceptar", null)
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage(R.string.correu_introduit)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
         var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
     private fun showAlertDifPass() {
         val objectAlerDialog = android.app.AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("Les contrasenyes introduides no son iguals")
-        objectAlerDialog.setPositiveButton("Acceptar", null)
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage(R.string.contrasenya_no_igual)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
         var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }

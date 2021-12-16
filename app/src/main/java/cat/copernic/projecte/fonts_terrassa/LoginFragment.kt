@@ -60,18 +60,18 @@ class Login2Fragment : Fragment() {
 
     private fun showAlertInactive() {
         val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("Usuari inactiu")
-        objectAlerDialog.setPositiveButton("Acceptar", null)
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage("@string/usuari/inactiu")
+        objectAlerDialog.setPositiveButton("@string/acceptar", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
     private fun showAlertIncorrect() {
         val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("ERROR")
-        objectAlerDialog.setMessage("Les dades introduides son incorrectes")
-        objectAlerDialog.setPositiveButton("Acceptar", null)
+        objectAlerDialog.setTitle("@string/error")
+        objectAlerDialog.setMessage("@string/dades_incorrectes")
+        objectAlerDialog.setPositiveButton("@string/acceptar", null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
@@ -101,12 +101,5 @@ class Login2Fragment : Fragment() {
                         }
                     }
                 }
-
         }
-
-    suspend fun suspensio(duracio: Long): Boolean {
-        delay(duracio)
-        return true
-    }
-
 }
