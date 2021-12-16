@@ -106,4 +106,5 @@
         <item>Tipo</item>
     </string-array>
     <string name="info_title">Información</string>
+    <string name="atencio">Advertencia</string>
 </resources>

@@ -56,7 +56,29 @@ class EditFontFragment : Fragment() {
         binding.editLon.setText(arguments?.getString("font_lon"))
         binding.txtInformacio.setText(arguments?.getString("font_info"))
         binding.editAdreca.setText(arguments?.getString("font_adreca"))
-        (arguments?.getInt("font_type"))?.minus(1)?.let { binding.spinnerType.setSelection(it) }
+        var myFontType = 0
+        when(arguments?.getInt("font_type")){
+            1 -> {
+                myFontType = 1
+                binding.btnTypeSel1.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            }
+            2 -> {
+                myFontType = 2
+                binding.btnTypeSel2.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            }
+            3 -> {
+                myFontType = 3
+                binding.btnTypeSel3.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            }
+            4 -> {
+                myFontType = 4
+                binding.btnTypeSel4.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            }
+            5 -> {
+                myFontType = 5
+                binding.btnTypeSel5.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            }
+        }
 
         imageView = binding.imgFont
         storageRef = FirebaseStorage.getInstance().reference
@@ -82,9 +104,51 @@ class EditFontFragment : Fragment() {
             ).show()
         }
 
+
+        binding.btnTypeSel1.setOnClickListener{
+            myFontType = 1
+            binding.btnTypeSel1.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+        }
+        binding.btnTypeSel2.setOnClickListener{
+            myFontType = 2
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
+            binding.btnTypeSel2.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+        }
+        binding.btnTypeSel3.setOnClickListener{
+            myFontType = 3
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
+            binding.btnTypeSel3.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+        }
+        binding.btnTypeSel4.setOnClickListener{
+            myFontType = 4
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
+            binding.btnTypeSel4.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+        }
+        binding.btnTypeSel5.setOnClickListener{
+            myFontType = 5
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
+            binding.btnTypeSel5.setImageResource(R.drawable.ic_baseline_check_circle_24)
+        }
+
         binding.btnSave.setOnClickListener {
             //Save font data
-            if (binding.txtNomFont.text.isNotEmpty() and binding.editLat.text.isNotEmpty() and binding.editLon.text.isNotEmpty()) {
+            if (binding.txtNomFont.text.isNotEmpty() && binding.editLat.text.isNotEmpty() && binding.editLon.text.isNotEmpty() && myFontType != 0) {
                 var calulatedStringId = oldFontId
                     db.collection("fonts")
                         .get()
@@ -126,11 +190,11 @@ class EditFontFragment : Fragment() {
                                         "name" to binding.txtNomFont.text.toString(),
                                         "info" to binding.txtInformacio.text.toString(),
                                         "address" to binding.editAdreca.text.toString(),
-                                        "type" to binding.spinnerType.selectedItemPosition + 1
+                                        "type" to myFontType
                                     )
                                 )
                         }
-                    findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
+                    findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
             } else {
                 showBlankFields()
             }

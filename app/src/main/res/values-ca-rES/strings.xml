@@ -106,4 +106,5 @@
         <item>Nom DESC</item>
         <item>Tipus</item>
     </string-array>
+    <string name="atencio">Atenció</string>
 </resources>

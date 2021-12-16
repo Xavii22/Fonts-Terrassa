@@ -106,4 +106,5 @@
         <item>Name DESC</item>
         <item>Type</item>
     </string-array>
+    <string name="atencio">Warning</string>
 </resources>

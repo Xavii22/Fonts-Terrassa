@@ -79,6 +79,7 @@
     <string name="descartar">Descartar</string>
     <string name="font_no_eliminada">La font no s\'ha eliminat</string>
     <string name="dark">Mode fosc</string>
+    <string name="atencio">Atenció</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Español</item>

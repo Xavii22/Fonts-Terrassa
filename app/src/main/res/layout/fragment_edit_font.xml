@@ -220,31 +220,62 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/img_font" />
 
-        <Spinner
-            android:id="@+id/spinner_type"
-            android:layout_width="207dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="89dp"
-            android:layout_marginBottom="66dp"
-            android:entries="@array/spinner_filter"
-            app:layout_constraintBottom_toTopOf="@+id/txt_informacio"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editLon"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <EditText
+        <TextView
             android:id="@+id/input_id_font"
             android:layout_width="80dp"
             android:layout_height="34dp"
             android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="@string/id"
-            android:inputType="textPersonName"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnTypeSel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:src="@drawable/gota_1"
+            app:layout_constraintBottom_toTopOf="@+id/img_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_accesibilitat" />
+
+        <ImageView
+            android:id="@+id/btnTypeSel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gota_2"
+            app:layout_constraintBottom_toTopOf="@+id/img_info"
+            app:layout_constraintStart_toEndOf="@+id/btnTypeSel1"
+            app:layout_constraintTop_toBottomOf="@+id/img_accesibilitat" />
+
+        <ImageView
+            android:id="@+id/btnTypeSel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gota_3"
+            app:layout_constraintBottom_toTopOf="@+id/img_info"
+            app:layout_constraintStart_toEndOf="@+id/btnTypeSel2"
+            app:layout_constraintTop_toBottomOf="@+id/img_accesibilitat" />
+
+        <ImageView
+            android:id="@+id/btnTypeSel4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gota_4"
+            app:layout_constraintBottom_toTopOf="@+id/img_info"
+            app:layout_constraintStart_toEndOf="@+id/btnTypeSel3"
+            app:layout_constraintTop_toBottomOf="@+id/img_accesibilitat" />
+
+        <ImageView
+            android:id="@+id/btnTypeSel5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gota_5"
+            app:layout_constraintBottom_toTopOf="@+id/img_info"
+            app:layout_constraintStart_toEndOf="@+id/btnTypeSel4"
+            app:layout_constraintTop_toBottomOf="@+id/img_accesibilitat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

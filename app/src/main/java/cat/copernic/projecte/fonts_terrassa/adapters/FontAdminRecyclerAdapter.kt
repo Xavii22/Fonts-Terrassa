@@ -49,27 +49,27 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<Font>) : RecyclerView.A
             //Listener Delete Button
             holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {
                 val objectAlerDialog = AlertDialog.Builder(context)
-                objectAlerDialog.setTitle("@string/")
-                objectAlerDialog.setMessage("@string/eliminar_font")
-                objectAlerDialog.setPositiveButton("@string/acceptar") { dialog, which ->
+                objectAlerDialog.setTitle(R.string.atencio)
+                objectAlerDialog.setMessage(R.string.eliminar_font)
+                objectAlerDialog.setPositiveButton(R.string.acceptar) { dialog, which ->
                     db.collection("fonts").document(fontsAdmin[position].id)
                         .delete()
                         .addOnSuccessListener {
                             Toast.makeText(
                                 context,
-                                "@string/font_eliminada",
+                                R.string.font_eliminada,
                                 Toast.LENGTH_SHORT
                             ).show()
                             fontsAdmin.removeAt(position)
                             notifyDataSetChanged()
                         }.addOnFailureListener { e ->
-                            Toast.makeText(context, "@string/error_eliminar_font", Toast.LENGTH_SHORT)
+                            Toast.makeText(context, R.string.error_eliminar_font, Toast.LENGTH_SHORT)
                                 .show()
                         }
                     fontsAdmin[position].fontId?.let { it1 -> deleteImage(it1) }
                 }
-                objectAlerDialog.setNegativeButton("@string/descartar") { dialog, which ->
-                    Toast.makeText(context, "@string/font_no_eliminada", Toast.LENGTH_SHORT).show()
+                objectAlerDialog.setNegativeButton(R.string.descartar) { dialog, which ->
+                    Toast.makeText(context, R.string.font_no_eliminada, Toast.LENGTH_SHORT).show()
                 }
                 var alertDialog: AlertDialog = objectAlerDialog.create()
                 alertDialog.show()
