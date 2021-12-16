@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+                DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
         loadLocale()
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
+                supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.navView, navController)
 
@@ -43,33 +43,33 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestLocationPermissions() {
         if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+                        this,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
+                    this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
             )
             return
         }
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<String>,
-        grantResults: IntArray
+            requestCode: Int, permissions: Array<String>,
+            grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             1 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED
+                        PackageManager.PERMISSION_GRANTED
                 ) {
                     if ((ContextCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                        ) ==
-                                PackageManager.PERMISSION_GRANTED)
+                                    this,
+                                    Manifest.permission.ACCESS_FINE_LOCATION
+                            ) ==
+                                    PackageManager.PERMISSION_GRANTED)
                     ) {
                         finish()
                         startActivity(intent)
@@ -80,33 +80,45 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setLocale(lang:String){
-        if(lang != getLocale()){
+    fun setLocale(lang: String, value: Int) {
+        if (value == 0) {
             val locale: Locale = Locale(lang)
             Locale.setDefault(locale)
             val config: Configuration = Configuration()
             config.locale = locale
-            baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+            baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
 
-            val editor: SharedPreferences.Editor = getSharedPreferences ("Settings", MODE_PRIVATE).edit()
+            val editor: SharedPreferences.Editor = getSharedPreferences("Settings", MODE_PRIVATE).edit()
             editor.putString("My_Lang", lang)
             editor.apply()
-            reloadActivity()
+        } else {
+            if (lang != getLocale()) {
+                val locale: Locale = Locale(lang)
+                Locale.setDefault(locale)
+                val config: Configuration = Configuration()
+                config.locale = locale
+                baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+                val editor: SharedPreferences.Editor = getSharedPreferences("Settings", MODE_PRIVATE).edit()
+                editor.putString("My_Lang", lang)
+                editor.apply()
+                reloadActivity()
+            }
         }
     }
 
-    fun loadLocale(){
-        val prefs: SharedPreferences = getSharedPreferences ("Settings", Activity.MODE_PRIVATE)
+    fun loadLocale() {
+        val prefs: SharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language: String = prefs.getString("My_Lang", "").toString()
-        setLocale(language)
+        setLocale(language, 0)
     }
 
-    fun getLocale() : String{
-        val prefs: SharedPreferences = getSharedPreferences ("Settings", Activity.MODE_PRIVATE)
+    fun getLocale(): String {
+        val prefs: SharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         return prefs.getString("My_Lang", "").toString()
     }
 
-    fun reloadActivity(){
+    fun reloadActivity() {
         finish()
         startActivity(getIntent())
     }

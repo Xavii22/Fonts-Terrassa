@@ -113,13 +113,13 @@ class InfoFragment : Fragment() {
                 ) {
                     when (binding.spinnerLanguage.selectedItem.toString()) {
                         "Català" -> {
-                            (activity as MainActivity?)?.setLocale("ca")
+                            (activity as MainActivity?)?.setLocale("ca", 1)
                         }
                         "Español" -> {
-                            (activity as MainActivity?)?.setLocale("es")
+                            (activity as MainActivity?)?.setLocale("es", 1)
                         }
                         "English" -> {
-                            (activity as MainActivity?)?.setLocale("en")
+                            (activity as MainActivity?)?.setLocale("en", 1)
                         }
                     }
                 }
