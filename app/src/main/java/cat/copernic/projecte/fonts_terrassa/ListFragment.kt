@@ -27,10 +27,7 @@ class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
     private val ViewModel: ListViewModel by viewModels()
-    private var fontsArray = arrayOf(
-        "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
-        "Fonts naturals", "Fonts de gossos"
-    )
+    private var fontsArray = arrayOf<String>()
     lateinit var imageView: ImageView
     lateinit var selectedFont: BooleanArray
     private var fontList: ArrayList<Int> = ArrayList()
@@ -43,6 +40,10 @@ class ListFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_list, container, false
         )
+
+        fontsArray = arrayOf(resources.getString(R.string.fonts_boca), resources.getString(R.string.fonts_boca_singulars),
+                resources.getString(R.string.fonts_ornamentals), resources.getString(R.string.fonts_naturals),
+                resources.getString(R.string.fonts_gossos))
 
         imageView = binding.imageView
         selectedFont = BooleanArray(fontsArray.size)

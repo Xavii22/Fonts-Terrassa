@@ -37,14 +37,15 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private val db= FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentMapsBinding
     private var mapType = 0
-    var fontsArray = arrayOf(
-        "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
-        "Font naturals", "Fonts de gossos"
-    )
+    var fontsArray = arrayOf<String>()
     lateinit var selectedFont: BooleanArray
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val callback = OnMapReadyCallback { googleMap ->
+
+        fontsArray = arrayOf(resources.getString(R.string.fonts_boca), resources.getString(R.string.fonts_boca_singulars),
+                resources.getString(R.string.fonts_ornamentals), resources.getString(R.string.fonts_naturals),
+                resources.getString(R.string.fonts_gossos))
 
         onMapReady(googleMap)
         selectedFont = BooleanArray(fontsArray.size)

@@ -10,7 +10,7 @@
     <string name="admin">Administrator</string>
     <string name="accedir">Access</string>
     <string name="administrar_usuaris">Manage Users</string>
-    <string name="adreca">Adress</string>
+    <string name="adreca">Address</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>
     <string name="autors">Roger Puig Font and Xavi Carné Plandolit</string>
     <string name="buit">Is Empty</string>
@@ -83,4 +83,28 @@
     <string name="valoracio_mitjana">Average rating</string>
     <string name="version">Application version: 1.0.0</string>
     <string name="zero_km">0 km</string>
+    <string-array name="spinner_language">
+        <item>Català</item>
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="spinner_filter">
+        <item>@string/fonts_boca</item>
+        <item>@string/fonts_boca_singulars</item>
+        <item>@string/fonts_ornamentals</item>
+        <item>@string/fonts_naturals</item>
+        <item>@string/fonts_gossos</item>
+    </string-array>
+    <string-array name="spinner_order">
+        <item>Name ASC</item>
+        <item>Name DESC</item>
+        <item>Distance ASC</item>
+        <item>Distance DESC</item>
+        <item>Type</item>
+    </string-array>
+    <string-array name="spinner_order_admin">
+        <item>Name ASC</item>
+        <item>Name DESC</item>
+        <item>Type</item>
+    </string-array>
 </resources>
