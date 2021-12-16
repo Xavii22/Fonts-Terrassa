@@ -9,7 +9,7 @@
     <string name="info_title">Informació</string>
     <string name="fonts_boca_singulars">Fonts de beure singulars</string>
     <string name="fonts_ornamentals">Fonts ornamentals</string>
-    <string name="fonts_naturals">Fonts naturals (sense garantia sanitària)</string>
+    <string name="fonts_naturals">Fonts naturals</string>
     <string name="fonts_gossos">Fonts de gossos</string>
     <string name="login_admin">Botó inici de sessió administradors</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>

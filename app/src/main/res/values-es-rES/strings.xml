@@ -5,7 +5,6 @@
     <string name="info">info</string>
     <string name="fonts_boca">Fuentes de beber</string>
     <string name="acceptar">Aceptar</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fonts_boca_singulars">Fuentes de beber singulares</string>
     <string name="fonts_ornamentals">Fuentes ornamentales</string>
     <string name="fonts_naturals">Fuentes naturales</string>
@@ -106,4 +105,5 @@
         <item>Nombre DESC</item>
         <item>Tipo</item>
     </string-array>
+    <string name="info_title">Información</string>
 </resources>

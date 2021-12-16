@@ -3,7 +3,6 @@
     <string name="mapa">mapa</string>
     <string name="info">info</string>
     <string name="info_title">Informació</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fonts_boca">Fonts de beure</string>
     <string name="fonts_boca_singulars">Fonts de beure singulars</string>
     <string name="fonts_ornamentals">Fonts ornamentals</string>
@@ -13,10 +12,8 @@
     <string name="ajuntament">Ajuntament de Terrassa</string>
     <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
     <string name="version">Versió de l\'aplicació: 1.0.0</string>
-    <string name="compilation">Versió de compilació: 2021020717</string>
     <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
     <string name="language">Idioma</string>
-    <string name="unit">Unitat</string>
     <string name="admin">Administrador</string>
     <string name="email">Correu electrònic</string>
     <string name="password">Contrasenya</string>
