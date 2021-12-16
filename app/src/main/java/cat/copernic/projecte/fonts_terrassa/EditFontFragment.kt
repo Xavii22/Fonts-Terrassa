@@ -60,23 +60,23 @@ class EditFontFragment : Fragment() {
         when(arguments?.getInt("font_type")){
             1 -> {
                 myFontType = 1
-                binding.btnTypeSel1.setImageResource(R.drawable.ic_baseline_check_circle_24)
+                binding.btnTypeSel1.setImageResource(R.drawable.gota_1_selected)
             }
             2 -> {
                 myFontType = 2
-                binding.btnTypeSel2.setImageResource(R.drawable.ic_baseline_check_circle_24)
+                binding.btnTypeSel2.setImageResource(R.drawable.gota_2_selected)
             }
             3 -> {
                 myFontType = 3
-                binding.btnTypeSel3.setImageResource(R.drawable.ic_baseline_check_circle_24)
+                binding.btnTypeSel3.setImageResource(R.drawable.gota_3_selected)
             }
             4 -> {
                 myFontType = 4
-                binding.btnTypeSel4.setImageResource(R.drawable.ic_baseline_check_circle_24)
+                binding.btnTypeSel4.setImageResource(R.drawable.gota_4_selected)
             }
             5 -> {
                 myFontType = 5
-                binding.btnTypeSel5.setImageResource(R.drawable.ic_baseline_check_circle_24)
+                binding.btnTypeSel5.setImageResource(R.drawable.gota_5_selected)
             }
         }
 
@@ -96,18 +96,18 @@ class EditFontFragment : Fragment() {
             if (hasImage) {
                 deleteImage(binding.inputIdFont.text.toString())
                 hasImage = false
+                Snackbar.make(
+                    binding.frameLayout,
+                    R.string.imatge_eliminada,
+                    BaseTransientBottomBar.LENGTH_SHORT
+                ).show()
             }
-            Snackbar.make(
-                binding.frameLayout,
-                R.string.imatge_eliminada,
-                BaseTransientBottomBar.LENGTH_SHORT
-            ).show()
         }
 
 
         binding.btnTypeSel1.setOnClickListener{
             myFontType = 1
-            binding.btnTypeSel1.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1_selected)
             binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
             binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
             binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
@@ -116,7 +116,7 @@ class EditFontFragment : Fragment() {
         binding.btnTypeSel2.setOnClickListener{
             myFontType = 2
             binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
-            binding.btnTypeSel2.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2_selected)
             binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
             binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
             binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
@@ -125,7 +125,7 @@ class EditFontFragment : Fragment() {
             myFontType = 3
             binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
             binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
-            binding.btnTypeSel3.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3_selected)
             binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
             binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
         }
@@ -134,7 +134,7 @@ class EditFontFragment : Fragment() {
             binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
             binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
             binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
-            binding.btnTypeSel4.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4_selected)
             binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
         }
         binding.btnTypeSel5.setOnClickListener{
@@ -143,7 +143,7 @@ class EditFontFragment : Fragment() {
             binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
             binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
             binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
-            binding.btnTypeSel5.setImageResource(R.drawable.ic_baseline_check_circle_24)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5_selected)
         }
 
         binding.btnSave.setOnClickListener {

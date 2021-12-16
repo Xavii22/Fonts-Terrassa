@@ -61,17 +61,17 @@ class Login2Fragment : Fragment() {
     private fun showAlertInactive() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle(R.string.error)
-        objectAlerDialog.setMessage("@string/usuari/inactiu")
-        objectAlerDialog.setPositiveButton("@string/acceptar", null)
+        objectAlerDialog.setMessage(R.string.usuari_inactiu)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
     private fun showAlertIncorrect() {
         val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle("@string/error")
-        objectAlerDialog.setMessage("@string/dades_incorrectes")
-        objectAlerDialog.setPositiveButton("@string/acceptar", null)
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage(R.string.dades_incorrectes)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
         var alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
