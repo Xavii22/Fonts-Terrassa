@@ -111,13 +111,9 @@ class FontAdminListFragment : Fragment() {
                         context?.let {
                             ViewModel.sortFontNameDESC(binding, it)
                         }
-                    "Tipus ASC" ->
+                    "Tipus" ->
                         context?.let {
                             ViewModel.sortFontTypeASC(binding, it)
-                        }
-                    "Tipus DESC" ->
-                        context?.let {
-                            ViewModel.sortFontTypeDESC(binding, it)
                         }
                 }
             }

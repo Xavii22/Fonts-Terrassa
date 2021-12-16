@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Fonts_Terrassa</string>
     <string name="mapa">mapa</string>
+    <string name="llista">llista</string>
     <string name="info">info</string>
     <string name="info_title">Informació</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -31,57 +32,6 @@
     <string name="repeatPassword">Repetir contrasenya</string>
     <string name="Error_pujar_foto">ERROR AL PUJAR LA FOTO</string>
     <string name="Exit_pujar_foto">EXIT AL PUJAR LA FOTO</string>
-    <string name="accedir">Accedir</string>
-    <string name="carregant_app">Carregant l\'aplicació...</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="administrar_usuaris">Administrar usuaris</string>
-    <string name="administrar_fonts">Administrar fonts</string>
-    <string name="crear_fonts">Crear fonts</string>
-    <string name="crear_usuaris">Crear usuaris</string>
-    <string name="tancar_sessio">Tancar sessió</string>
-    <string name="tipus_font">Tipus de font</string>
-    <string name="info_font_admin">Aqui tenim tota l\'informació de la font que es vulgui afegir des de l\'administració.</string>
-    <string name="nom_font">Nom de la font</string>
-    <string name="coordenades_font">Coordenades de la font</string>
-    <string name="informacio">Informació</string>
-    <string name="lon">lon</string>
-    <string name="latitud">Latitud</string>
-    <string name="longitud">Longitud</string>
-    <string name="adreca">Adreça</string>
-    <string name="id">ID</string>
-    <string name="puntua_gust">1. Puntua el gust de l\'1 al 5</string>
-    <string name="puntua_olor">2. Puntual l\'olor de l\'1 al 5</string>
-    <string name="puntua_transperencia">3. Puntua la transperencia de l\'aigua de l\'1 al 5</string>
-    <string name="valoracio_mitjana">Valoració Mitjana</string>
-    <string name="transperencia">Transperència</string>
-    <string name="olor">Olor</string>
-    <string name="gust">Gust</string>
-    <string name="zero_km">0 Km</string>
-    <string name="uknown">uknown</string>
-    <string name="error">ERROR</string>
-    <string name="correu_introduit">El correu introduit ja existeix a la base de dades</string>
-    <string name="acceptar">Acceptar</string>
-    <string name="contrasenya_no_igual">Les contrasenyes introduides no son iguals</string>
-    <string name="missatge_enviat">Missatge enviat</string>
-    <string name="correu_incorrecte">Correu incorrecte</string>
-    <string name="seleccionar_tipus_font">Seleccionar tipus de font</string>
-    <string name="seleccionar_tot">Seleccionar-ho tot</string>
-    <string name="usuari_inactiu">Usuari inactiu</string>
-    <string name="dades_incorrectes">Les dades introduides son incorrectes</string>
-    <string name="buit">Està buit</string>
-    <string name="gracies_avaluacio">Gràcies per avaular la font</string>
-    <string name="no_avaluat">No s\'han evaluat tots els camps</string>
-    <string name="imatge_eliminada">Imatge eliminada correctament, recorda guardar canvis</string>
-    <string name="id_font_existeix">L\'ID de la font intrdoduit ja existeix</string>
-    <string name="camps_no_omplerts">Hi ha un o mes camps obligatoris no omplerts, revisa l\'Identificador, el nom i/o les coordenades</string>
-    <string name="imatge_pujada_correctament">Imatge pujada correctament, recorda guardar canvis</string>
-    <string name="confirmacio">Confirmació</string>
-    <string name="eliminar_font">Eliminar font</string>
-    <string name="font_eliminada">Font eliminada correctament</string>
-    <string name="error_eliminar_font">Error en eliminar la font</string>
-    <string name="descartar">Descartar</string>
-    <string name="font_no_eliminada">La font no s\'ha eliminat</string>
-    <string name="dark">Mode fosc</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Español</item>
@@ -114,5 +64,5 @@
     non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
     ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
     Curabitur in cursus neque.</string>
-    <string name="llista">llista</string>
+    <string name="accedir">Accedir</string>
 </resources>
