@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="70dp"
-            android:text="1. Puntua el gust de l'1 al 5"
+            android:text="@string/puntua_gust"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -187,7 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="100dp"
-            android:text="2. Puntual l'olor de l'1 al 5"
+            android:text="@string/puntua_olor"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/test_gust" />
@@ -198,7 +198,7 @@
             android:layout_height="58dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="100dp"
-            android:text="3. Puntua la transperencia de l'aigua de l'1 al 5"
+            android:text="@string/puntua_transperencia"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/test_olor" />

@@ -1,19 +1,69 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.CompoundButton
+import android.widget.ImageView
+import android.widget.Switch
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentInfoBinding
+import java.util.*
 
 class InfoFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+
+    var switchCompat: Switch? = null
+    var sharedPreferences: SharedPreferences? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val binding: FragmentInfoBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_info, container, false)
+            inflater, R.layout.fragment_info, container, false
+        )
+
+        switchCompat = binding.switch1
+        sharedPreferences = activity?.getSharedPreferences("night", 0)
+        val booleanValue = sharedPreferences?.getBoolean("night_mode", true)
+        if (booleanValue == true) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            switchCompat!!.setChecked(true)
+        }
+        switchCompat!!.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                switchCompat!!.setChecked(true)
+                val editor = sharedPreferences?.edit()
+                if (editor != null) {
+                    editor.putBoolean("night_mode", true)
+                }
+                if (editor != null) {
+                    editor.commit()
+                }
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                switchCompat!!.setChecked(false)
+                val editor = sharedPreferences?.edit()
+                if (editor != null) {
+                    editor.putBoolean("night_mode", false)
+                }
+                if (editor != null) {
+                    editor.commit()
+                }
+            }
+        })
+
+        changeLanguage(binding)
 
         binding.btnLoginAdmin.setOnClickListener {
             findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToLoginFragment())
@@ -35,5 +85,73 @@ class InfoFragment : Fragment() {
             findNavController().navigate(InfoFragmentDirections.actionFragmentInfoToInfoGosFragment())
         }
         return binding.root
+
+    }
+
+    private fun changeLanguage(binding: FragmentInfoBinding) {
+        val settings: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+        binding.spinnerLanguage.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    when (binding.spinnerLanguage.selectedItem.toString()) {
+                        "Català" -> {
+                            settings.edit().putString("LANG", "ca").apply()
+                        }
+                        "Castellà" -> {
+                            settings.edit().putString("LANG", "es").apply()
+                        }
+
+                        "Anglès" -> {
+                            settings.edit().putString("LANG", "en").apply()
+                        }
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+            }
     }
 }
+/*
+class MainActivity : AppCompatActivity() {
+    var imageView: ImageView? = null
+    var switchCompat: SwitchCompat? = null
+    var sharedPreferences: SharedPreferences? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        imageView = findViewById(R.id.imageView)
+        switchCompat = findViewById(R.id.switchCompat)
+        sharedPreferences = getSharedPreferences("night", 0)
+        val booleanValue = sharedPreferences.getBoolean("night_mode", true)
+        if (booleanValue) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            switchCompat.setChecked(true)
+            imageView.setImageResource(R.drawable.night)
+        }
+        switchCompat.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                switchCompat.setChecked(true)
+                imageView.setImageResource(R.drawable.night)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("night_mode", true)
+                editor.commit()
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                switchCompat.setChecked(false)
+                imageView.setImageResource(R.drawable.night)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("night_mode", false)
+                editor.commit()
+            }
+        })
+    }
+}*/

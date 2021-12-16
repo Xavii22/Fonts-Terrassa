@@ -76,11 +76,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         binding.btnFilter.setOnClickListener{
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setTitle("Seleccionar tipus de font")
+            builder.setTitle(R.string.seleccionar_tipus_font)
 
             googleMap.clear()
 
-            //ClearFontsByType
             builder.setCancelable(false)
             builder.setMultiChoiceItems(
                 fontsArray, selectedFont
@@ -88,12 +87,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             }
             builder.setPositiveButton(
-                "Acceptar"
-            ) { dialogInterface, i ->
+                R.string.acceptar
+            ) { _, _ ->
                 loadMap(googleMap)
             }
             builder.setNeutralButton(
-                "Seleccionar-ho tot"
+                R.string.seleccionar_tot
             ) { _, _ ->
                 for (j in 0..4) {
                     selectedFont[j] = true
@@ -247,7 +246,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             return
         }
         myMap.isMyLocationEnabled = true
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location : Location? ->
                 val mapPos = location?.let { LatLng(it.latitude, location.longitude) }

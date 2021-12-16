@@ -11,7 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ListViewModel : ViewModel() {
 
     private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter(arrayListOf())
-    private var fonts: ArrayList<Font> = arrayListOf() //ArrayList<Font> = arrayListOf() MutableLiveData<Font> = MutableLiveData<Font>()
+    private var fonts: ArrayList<Font> = arrayListOf() //ArrayList<Font> = arrayListOf() | MutableLiveData<Font> = MutableLiveData<Font>()
     private val db = FirebaseFirestore.getInstance()
 
     fun sortFontNameASC(binding: FragmentListBinding, context: Context) {
