@@ -102,7 +102,6 @@ class InfoFragment : Fragment() {
     }
 
     private fun changeLanguage(binding: FragmentInfoBinding) {
-        val settings: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         binding.spinnerLanguage.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
