@@ -95,11 +95,11 @@
         <item>@string/fonts_gossos</item>
     </string-array>
     <string-array name="spinner_order">
-        <item>Name ASC</item>
-        <item>Name DESC</item>
-        <item>Distance ASC</item>
-        <item>Distance DESC</item>
-        <item>Type</item>
+        <item>@string/nom_asc</item>
+        <item>@string/nom_desc</item>
+        <item>@string/distancia_asc</item>
+        <item>@string/distancia_desc</item>
+        <item>@string/tipus</item>
     </string-array>
     <string-array name="spinner_order_admin">
         <item>Name ASC</item>
@@ -107,4 +107,9 @@
         <item>Type</item>
     </string-array>
     <string name="atencio">Warning</string>
+    <string name="nom_asc">Name ASC</string>
+    <string name="nom_desc">Name DESC</string>
+    <string name="distancia_asc">Distance ASC</string>
+    <string name="distancia_desc">Distance DESC</string>
+    <string name="tipus">Type</string>
 </resources>

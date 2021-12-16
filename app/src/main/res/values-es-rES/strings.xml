@@ -87,11 +87,11 @@
         <item>English</item>
     </string-array>
     <string-array name="spinner_order">
-        <item>Nombre ASC</item>
-        <item>Nombre DESC</item>
-        <item>Distancia ASC</item>
-        <item>Distancia DESC</item>
-        <item>Tipo</item>
+        <item>@string/nom_asc</item>
+        <item>@string/nom_desc</item>
+        <item>@string/distancia_asc</item>
+        <item>@string/distancia_desc</item>
+        <item>@string/tipus</item>
     </string-array>
     <string-array name="spinner_filter">
         <item>@string/fonts_boca</item>
@@ -107,4 +107,9 @@
     </string-array>
     <string name="info_title">Información</string>
     <string name="atencio">Advertencia</string>
+    <string name="nom_asc">Nombre ASC</string>
+    <string name="nom_desc">Nombre DESC</string>
+    <string name="distancia_asc">Distancia ASC</string>
+    <string name="distancia_desc">Distancia DESC</string>
+    <string name="tipus">Tipo</string>
 </resources>

@@ -31,10 +31,7 @@ class FontAdminListFragment : Fragment() {
     private lateinit var binding: FragmentFontAdminListBinding
     private val ViewModel: ListAdminViewModel by viewModels()
     var txtBuscar: SearchView? = null
-    var fontsArray = arrayOf(
-        "Fonts de beure", "Fonts de beure singulars", "Fonts ornamentals",
-        "Font naturals", "Fonts de gossos"
-    )
+    private var fontsArray = arrayOf<String>()
     lateinit var imageView: ImageView
     lateinit var selectedFont: BooleanArray
     private var fontList: ArrayList<Int> = ArrayList()
@@ -47,6 +44,10 @@ class FontAdminListFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_font_admin_list, container, false
         )
+
+        fontsArray = arrayOf(resources.getString(R.string.fonts_boca), resources.getString(R.string.fonts_boca_singulars),
+            resources.getString(R.string.fonts_ornamentals), resources.getString(R.string.fonts_naturals),
+            resources.getString(R.string.fonts_gossos))
 
         txtBuscar = binding.svFonts
         imageView = binding.imageView
@@ -102,16 +103,16 @@ class FontAdminListFragment : Fragment() {
                 id: Long,
             ) {
                 when (binding.spinnerOrder.selectedItem.toString()) {
-                    "Nom ASC" ->
+                    resources.getString(R.string.nom_asc) ->
                         context?.let {
                             ViewModel.sortFontNameASC(binding, it)
                         }
 
-                    "Nom DESC" ->
+                    resources.getString(R.string.nom_desc) ->
                         context?.let {
                             ViewModel.sortFontNameDESC(binding, it)
                         }
-                    "Tipus" ->
+                    resources.getString(R.string.tipus) ->
                         context?.let {
                             ViewModel.sortFontTypeASC(binding, it)
                         }

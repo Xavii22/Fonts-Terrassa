@@ -98,23 +98,23 @@ class ListFragment : Fragment() {
                 id: Long,
             ) {
                 when (binding.spinnerOrder.selectedItem.toString()) {
-                    "Nom ASC" ->
+                    resources.getString(R.string.nom_asc) ->
                         context?.let {
                             ViewModel.sortFontNameASC(binding, it)
                         }
-                    "Nom DESC" ->
+                    resources.getString(R.string.nom_desc) ->
                         context?.let {
                             ViewModel.sortFontNameDESC(binding, it)
                         }
-                    "Distancia ASC" ->
+                    resources.getString(R.string.distancia_asc) ->
                         context?.let {
                             ViewModel.sortFontLocationASC(binding, it)
                         }
-                    "Distancia DESC" ->
+                    resources.getString(R.string.distancia_desc) ->
                         context?.let {
                             ViewModel.sortFontLocationDESC(binding, it)
                         }
-                    "Tipus" ->
+                    resources.getString(R.string.tipus) ->
                         context?.let {
                             ViewModel.sortFontTypeASC(binding, it)
                         }
