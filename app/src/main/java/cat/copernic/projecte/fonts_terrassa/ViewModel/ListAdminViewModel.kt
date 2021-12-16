@@ -56,20 +56,6 @@ class ListAdminViewModel: ViewModel() {
             }
     }
 
-    fun sortFontTypeDESC(binding: FragmentFontAdminListBinding, context: Context) {
-        db.collection("fonts")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    fonts.sortByDescending { it.fontType }
-                }
-                binding.rvFonts.setHasFixedSize(true)
-                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                context.let { myAdapter.fontsAdminRecyclerAdapter(fonts, it) }
-                binding.rvFonts.adapter = myAdapter
-            }
-    }
-
     fun filterFontsByType(
         binding: FragmentFontAdminListBinding,
         context: Context,

@@ -84,20 +84,6 @@ class ListViewModel : ViewModel() {
             }
     }
 
-    fun sortFontTypeDESC(binding: FragmentListBinding, context: Context) {
-        db.collection("fonts")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    fonts.sortByDescending { it.fontType }
-                }
-                binding.rvFonts.setHasFixedSize(true)
-                binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                binding.rvFonts.adapter = myAdapter
-            }
-    }
-
     fun filterFontsByType(
         binding: FragmentListBinding,
         context: Context,
