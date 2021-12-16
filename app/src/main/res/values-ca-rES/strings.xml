@@ -4,4 +4,6 @@
     <string name="mapa">mapa</string>
     <string name="info">info</string>
     <string name="language">Idioma</string>
+    <string name="fonts_boca">Fonts de beure</string>
+    <string name="acceptar">Acceptar</string>
 </resources>

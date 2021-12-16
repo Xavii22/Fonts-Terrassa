@@ -1,7 +1,10 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.Manifest
+import android.app.Activity
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
@@ -16,6 +19,7 @@ import androidx.navigation.ui.NavigationUI
 import cat.copernic.projecte.fonts_terrassa.databinding.ActivityMainBinding
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+
+        loadLocale()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
@@ -72,5 +78,36 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
+    }
+
+    fun setLocale(lang:String){
+        if(lang != getLocale()){
+            val locale: Locale = Locale(lang)
+            Locale.setDefault(locale)
+            val config: Configuration = Configuration()
+            config.locale = locale
+            baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+
+            val editor: SharedPreferences.Editor = getSharedPreferences ("Settings", MODE_PRIVATE).edit()
+            editor.putString("My_Lang", lang)
+            editor.apply()
+            reloadActivity()
+        }
+    }
+
+    fun loadLocale(){
+        val prefs: SharedPreferences = getSharedPreferences ("Settings", Activity.MODE_PRIVATE)
+        val language: String = prefs.getString("My_Lang", "").toString()
+        setLocale(language)
+    }
+
+    fun getLocale() : String{
+        val prefs: SharedPreferences = getSharedPreferences ("Settings", Activity.MODE_PRIVATE)
+        return prefs.getString("My_Lang", "").toString()
+    }
+
+    fun reloadActivity(){
+        finish()
+        startActivity(getIntent())
     }
 }

@@ -3,4 +3,6 @@
     <string name="app_name">Fonts_Terrassa</string>
     <string name="mapa">mapa</string>
     <string name="info">info</string>
+    <string name="fonts_boca">Fuentes de beber</string>
+    <string name="acceptar">Aceptar</string>
 </resources>

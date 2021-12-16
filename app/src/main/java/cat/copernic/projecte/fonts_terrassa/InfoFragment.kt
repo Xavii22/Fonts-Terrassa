@@ -1,6 +1,9 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.app.Activity
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentInfoBinding
 import java.util.*
@@ -31,6 +35,15 @@ class InfoFragment : Fragment() {
         val binding: FragmentInfoBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_info, container, false
         )
+
+        when((activity as MainActivity?)?.getLocale()){
+            "ca" ->
+                binding.spinnerLanguage.setSelection(0)
+            "es" ->
+                binding.spinnerLanguage.setSelection(1)
+            "en" ->
+                binding.spinnerLanguage.setSelection(2)
+        }
 
         switchCompat = binding.switch1
         sharedPreferences = activity?.getSharedPreferences("night", 0)
@@ -101,14 +114,13 @@ class InfoFragment : Fragment() {
                 ) {
                     when (binding.spinnerLanguage.selectedItem.toString()) {
                         "Català" -> {
-                            settings.edit().putString("LANG", "ca").apply()
+                            (activity as MainActivity?)?.setLocale("ca")
                         }
-                        "Castellà" -> {
-                            settings.edit().putString("LANG", "es").apply()
+                        "Español" -> {
+                            (activity as MainActivity?)?.setLocale("es")
                         }
-
-                        "Anglès" -> {
-                            settings.edit().putString("LANG", "en").apply()
+                        "English" -> {
+                            (activity as MainActivity?)?.setLocale("en")
                         }
                     }
                 }
@@ -118,40 +130,5 @@ class InfoFragment : Fragment() {
                 }
             }
     }
+
 }
-/*
-class MainActivity : AppCompatActivity() {
-    var imageView: ImageView? = null
-    var switchCompat: SwitchCompat? = null
-    var sharedPreferences: SharedPreferences? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        imageView = findViewById(R.id.imageView)
-        switchCompat = findViewById(R.id.switchCompat)
-        sharedPreferences = getSharedPreferences("night", 0)
-        val booleanValue = sharedPreferences.getBoolean("night_mode", true)
-        if (booleanValue) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            switchCompat.setChecked(true)
-            imageView.setImageResource(R.drawable.night)
-        }
-        switchCompat.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                switchCompat.setChecked(true)
-                imageView.setImageResource(R.drawable.night)
-                val editor = sharedPreferences.edit()
-                editor.putBoolean("night_mode", true)
-                editor.commit()
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                switchCompat.setChecked(false)
-                imageView.setImageResource(R.drawable.night)
-                val editor = sharedPreferences.edit()
-                editor.putBoolean("night_mode", false)
-                editor.commit()
-            }
-        })
-    }
-}*/

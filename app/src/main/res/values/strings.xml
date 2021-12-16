@@ -84,12 +84,8 @@
     <string name="dark">Mode fosc</string>
     <string-array name="spinner_language">
         <item>Català</item>
-        <item>Castellà</item>
-        <item>Anglès</item>
-    </string-array>
-    <string-array name="spinner_unit">
-        <item>Km</item>
-        <item>Mi</item>
+        <item>Español</item>
+        <item>English</item>
     </string-array>
     <string-array name="spinner_filter">
         <item>Fonts de beure</item>
@@ -103,21 +99,12 @@
         <item>Nom DESC</item>
         <item>Distancia ASC</item>
         <item>Distancia DESC</item>
-        <item>Tipus ASC</item>
-        <item>Tipus DESC</item>
+        <item>Tipus</item>
     </string-array>
     <string-array name="spinner_order_admin">
         <item>Nom ASC</item>
         <item>Nom DESC</item>
-        <item>Tipus ASC</item>
-        <item>Tipus DESC</item>
-    </string-array>
-    <string-array name="spinner_testOneToFive">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
+        <item>Tipus</item>
     </string-array>
     <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
     varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,
