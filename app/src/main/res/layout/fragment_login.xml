@@ -15,7 +15,7 @@
             android:layout_marginTop="100dp"
             android:text="@string/admin"
             android:textSize="28sp"
-            android:textColor="@color/black"
+            android:textColor="@color/mainText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

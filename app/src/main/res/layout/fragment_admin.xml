@@ -6,7 +6,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8FF80">
+    android:background="@color/bgDashboard2">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -23,6 +23,7 @@
             android:layout_height="140dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
+            android:textColor="@color/textColor"
             android:gravity="center"
             android:text="@string/dashboard"
             android:textSize="34sp"
