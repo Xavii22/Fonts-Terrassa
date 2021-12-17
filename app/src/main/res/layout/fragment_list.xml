@@ -17,7 +17,7 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="409dp"
                 android:layout_height="82dp"
-                android:background="#FFB03C"
+                android:background="@color/listBar"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
                         android:layout_width="61dp"
                         android:layout_height="57dp"
                         android:layout_centerInParent="true"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:adjustViewBounds="true"
                         android:drawablePadding="16dp"
                         android:padding="12dp"
@@ -63,7 +63,7 @@
                         android:layout_width="61dp"
                         android:layout_height="57dp"
                         android:layout_centerInParent="true"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:drawablePadding="16dp"
                         android:padding="12dp"
@@ -78,13 +78,16 @@
 
                     <SearchView
                         android:id="@+id/svFonts"
-                        android:layout_width="193dp"
-                        android:layout_height="54dp"
+                        android:layout_width="240dp"
+                        android:layout_height="49dp"
+                        android:goIcon="@null"
                         app:iconifiedByDefault="false"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView"
-                        app:layout_constraintStart_toEndOf="@+id/imageViewSort"
+                        app:layout_constraintHorizontal_bias="0.625"
+                        app:layout_constraintStart_toEndOf="@+id/spinner_order"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.484"
                         app:queryHint="Buscar" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
