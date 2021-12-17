@@ -45,7 +45,7 @@
                     android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
                     android:maxWidth="200dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
