@@ -112,4 +112,6 @@
     <string name="distancia_asc">Distancia ASC</string>
     <string name="distancia_desc">Distancia DESC</string>
     <string name="tipus">Tipus</string>
+    <string name="sortir">Sortir</string>
+    <string name="no_internet_con">No hi ha intrnet, es necesari tenir internet per utilitzar l\'apliació</string>
 </resources>

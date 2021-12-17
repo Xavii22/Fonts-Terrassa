@@ -112,4 +112,6 @@
     <string name="distancia_asc">Distance ASC</string>
     <string name="distancia_desc">Distance DESC</string>
     <string name="tipus">Type</string>
+    <string name="sortir">Exit</string>
+    <string name="no_internet_con">No internet connection, you must have internet enabled to use the app</string>
 </resources>
