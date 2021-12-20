@@ -1,7 +1,7 @@
 package cat.copernic.projecte.fonts_terrassa.models
 
-data class Font(val id: String, val name: String, val lat: Double, val lon: Double, val info: String,
-                val type: Int, val adreca: String, val distance: Double) {
+data class FontAdmin(val id: String, val name: String, val lat: Double, val lon: Double, val info: String,
+                     val type: Int, val adreca: String) {
     var fontId: String? = null
     var fontName: String? = null
     var fontLat: Double? = null
@@ -9,7 +9,6 @@ data class Font(val id: String, val name: String, val lat: Double, val lon: Doub
     var fontInfo: String? = null
     var fontType: Int? = null
     var fontAdreca: String? = null
-    var fontDistance: Double? = null
 
     init {
         this.fontId = id
@@ -19,7 +18,6 @@ data class Font(val id: String, val name: String, val lat: Double, val lon: Doub
         this.fontInfo = info
         this.fontType = type
         this.fontAdreca = adreca
-        this.fontDistance = distance
     }
 
 }
