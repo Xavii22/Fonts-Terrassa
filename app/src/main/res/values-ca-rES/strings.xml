@@ -114,4 +114,6 @@
     <string name="tipus">Tipus</string>
     <string name="sortir">Sortir</string>
     <string name="no_internet_con">No hi ha intrnet, es necesari tenir internet per utilitzar l\'apliació</string>
+    <string name="titol_notificacio">Fonts Terrassa</string>
+    <string name="desc_notificacio">Administrador creat correctament</string>
 </resources>

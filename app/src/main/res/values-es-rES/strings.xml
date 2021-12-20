@@ -114,4 +114,6 @@
     <string name="tipus">Tipo</string>
     <string name="sortir">Salir</string>
     <string name="no_internet_con">No hay internet, es necesario tener internet para utilizar la app</string>
+    <string name="titol_notificacio">Fonts Terrassa</string>
+    <string name="desc_notificacio">Administrador creado correctamente</string>
 </resources>
