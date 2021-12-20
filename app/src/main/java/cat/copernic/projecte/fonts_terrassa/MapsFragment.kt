@@ -161,16 +161,41 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         it2)
                 }
             }else{
+                when (nightModeFlags) {
+                    Configuration.UI_MODE_NIGHT_YES -> {
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
+                            DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                                it2)
+                        }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
+                            DrawableCompat.setTint(binding.btnFilter.drawable,
+                                it2)
+                        }
+                    }
+
+                    Configuration.UI_MODE_NIGHT_NO -> {
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                            DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                                it2)
+                        }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                            DrawableCompat.setTint(binding.btnFilter.drawable,
+                                it2)
+                        }
+                    }
+                    Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                            DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                                it2)
+                        }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                            DrawableCompat.setTint(binding.btnFilter.drawable,
+                                it2)
+                        }
+                    }
+                }
                 googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
                 mapType = 0
-                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
-                    DrawableCompat.setTint(binding.btnChangeMap.drawable,
-                        it2)
-                }
-                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
-                    DrawableCompat.setTint(binding.btnFilter.drawable,
-                        it2)
-                }
             }
         }
     }
