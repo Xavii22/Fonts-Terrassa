@@ -2,6 +2,7 @@ package cat.copernic.projecte.fonts_terrassa
 import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Color
 import android.location.Location
 import androidx.fragment.app.Fragment
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -72,6 +74,18 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     bundle.putSerializable("fontId", fontId)
                     findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment, bundle)
             }
+        }
+
+
+        val nightModeFlags = requireContext().resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK
+        when (nightModeFlags) {
+            Configuration.UI_MODE_NIGHT_YES ->
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle_night))
+            Configuration.UI_MODE_NIGHT_NO ->
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle_day))
+            Configuration.UI_MODE_NIGHT_UNDEFINED ->
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle_day))
         }
 
         binding.btnFilter.setOnClickListener{
