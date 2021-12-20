@@ -17,6 +17,7 @@ import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.*
 
 class ListFragment : Fragment() {
 
@@ -122,17 +123,16 @@ class ListFragment : Fragment() {
             }
         }
 
-        initRecyclerView()
+        loadData()
         performSearch()
         return binding.root
     }
 
     override fun onResume() {
-        initRecyclerView()
+        loadData()
         super.onResume()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
         fonts = ViewModel.getFonts()
 
@@ -141,6 +141,28 @@ class ListFragment : Fragment() {
             binding.rvFonts.adapter!!.notifyDataSetChanged()
         }
         binding.svFonts.isSubmitButtonEnabled = true
+    }
+
+    private fun loadData() = GlobalScope.launch(Dispatchers.Main) {
+        val dialogJob = launch {
+            delay(1000)
+            try {
+                showLoadingDialog()
+                coroutineContext.job.join()
+            } finally {
+                hideLoadingDialog()
+            }
+        }
+        initRecyclerView()
+        dialogJob.cancel()
+    }
+
+    private fun showLoadingDialog(){
+        binding.loadingAnimation.visibility = View.VISIBLE
+    }
+
+    private fun hideLoadingDialog(){
+        binding.loadingAnimation.visibility = View.GONE
     }
 
     private fun performSearch() {
