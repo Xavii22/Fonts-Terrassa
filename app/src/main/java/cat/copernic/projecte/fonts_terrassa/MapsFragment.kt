@@ -80,12 +80,43 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         val nightModeFlags = requireContext().resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK
         when (nightModeFlags) {
-            Configuration.UI_MODE_NIGHT_YES ->
-                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle_night))
-            Configuration.UI_MODE_NIGHT_NO ->
-                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle_day))
-            Configuration.UI_MODE_NIGHT_UNDEFINED ->
-                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.mapstyle_day))
+            Configuration.UI_MODE_NIGHT_YES -> {
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),
+                    R.raw.mapstyle_night))
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                        it2)
+                }
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnFilter.drawable,
+                        it2)
+                }
+            }
+
+            Configuration.UI_MODE_NIGHT_NO -> {
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),
+                    R.raw.mapstyle_day))
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                        it2)
+                }
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnFilter.drawable,
+                        it2)
+                }
+            }
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),
+                    R.raw.mapstyle_day))
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                        it2)
+                }
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
+                    DrawableCompat.setTint(binding.btnFilter.drawable,
+                        it2)
+                }
+            }
         }
 
         binding.btnFilter.setOnClickListener{
