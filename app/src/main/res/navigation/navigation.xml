@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_fragment_list_to_viewFontFragment"
-            app:destination="@id/viewFontFragment" />
+            app:destination="@id/viewFontFragment"
+            app:enterAnim="@anim/left_to_right" />
     </fragment>
     <fragment
         android:id="@+id/viewFontFragment"
@@ -49,7 +50,8 @@
             app:destination="@id/fragment_info_gos" />
         <action
             android:id="@+id/action_fragment_info_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/fragment_info_beure"
