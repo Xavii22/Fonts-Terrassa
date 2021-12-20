@@ -81,12 +81,7 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
         fun bind(font: Font) {
             binding.txtFont.text = font.name.trim()
             binding.txtCarrer.text = font.adreca.trim()
-            context?.let {
-                this@FontRecyclerAdapter.calculateDistance(
-                    font.lat, font.lon, binding,
-                    it
-                )
-            }
+            binding.txtDistance.text = font.distance.toString() + " km"
 
             Log.d("tipusf", font.type.toString())
             when (font.type) {
@@ -131,38 +126,5 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
                 binding.imageView.setImageResource(R.drawable.ic_noimage)
             }
         }
-    }
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    fun calculateDistance(
-        lat: Double,
-        lon: Double,
-        binding: ItemFontListBinding,
-        mycontext: Context
-    ) {
-        lateinit var myActualPos: Location
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(mycontext)
-        if (ActivityCompat.checkSelfPermission(
-                mycontext,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                mycontext,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-
-        }
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener {
-                if (it != null) {
-                    myActualPos = it
-                    val fontLoc = Location("")
-                    fontLoc.latitude = lat
-                    fontLoc.longitude = lon
-                    val value = (myActualPos.distanceTo(fontLoc) / 1000).toDouble()
-                    binding.txtDistance.text = (Math.round(value * 100) / 100.0).toString() + " km"
-                }
-            }
     }
 }

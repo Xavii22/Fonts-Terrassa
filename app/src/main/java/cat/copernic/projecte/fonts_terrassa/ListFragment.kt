@@ -171,7 +171,8 @@ class ListFragment : Fragment() {
                         document.get("lon").toString().toDouble(),
                         document.get("info").toString(),
                         document.get("type").toString().toInt(),
-                        document.get("address").toString()
+                        document.get("address").toString(),
+                        0.0
                     )
                 )
             }

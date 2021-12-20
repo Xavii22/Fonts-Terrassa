@@ -12,17 +12,18 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
+import cat.copernic.projecte.fonts_terrassa.models.FontAdmin
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<Font>) : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
+class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
     var context: Context? = null
     private val db = FirebaseFirestore.getInstance()
 
     //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
-    fun fontsAdminRecyclerAdapter(fontsList: ArrayList<Font>, contxt: Context) {
+    fun fontsAdminRecyclerAdapter(fontsList: ArrayList<FontAdmin>, contxt: Context) {
         this.fontsAdmin = fontsList
         this.context = contxt
     }
@@ -99,7 +100,7 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<Font>) : RecyclerView.A
     inner class ViewHolder(val binding: ItemFontListAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(font: Font) {
+        fun bind(font: FontAdmin) {
             binding.txtFont.text = font.name.trim()
 
             when (font.type) {

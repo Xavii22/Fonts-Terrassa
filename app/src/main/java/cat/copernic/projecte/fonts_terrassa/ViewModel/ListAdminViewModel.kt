@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
+import cat.copernic.projecte.fonts_terrassa.models.FontAdmin
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ListAdminViewModel: ViewModel() {
 
     private val myAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter(arrayListOf())
-    private var fonts: ArrayList<Font> = arrayListOf()
+    private var fonts: ArrayList<FontAdmin> = arrayListOf()
     private val db = FirebaseFirestore.getInstance()
 
     fun sortFontNameASC(binding: FragmentFontAdminListBinding, context: Context) {
@@ -75,7 +76,7 @@ class ListAdminViewModel: ViewModel() {
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
                         fonts.add(
-                            Font(
+                            FontAdmin(
                                 document.get("id").toString(),
                                 document.get("name").toString(),
                                 document.get("lat").toString().toDouble(),
@@ -85,6 +86,9 @@ class ListAdminViewModel: ViewModel() {
                                 document.get("address").toString()
                             )
                         )
+                    }
+                    for (document in documents) {
+                        fonts.sortBy { it.fontName }
                     }
                     binding.rvFonts.setHasFixedSize(true)
                     binding.rvFonts.layoutManager = LinearLayoutManager(context)
@@ -106,7 +110,7 @@ class ListAdminViewModel: ViewModel() {
             }
     }
 
-    fun getFonts(): ArrayList<Font> {
+    fun getFonts(): ArrayList<FontAdmin> {
         return fonts
     }
 }

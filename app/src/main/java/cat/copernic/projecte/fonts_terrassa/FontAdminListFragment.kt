@@ -19,12 +19,13 @@ import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
+import cat.copernic.projecte.fonts_terrassa.models.FontAdmin
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FontAdminListFragment : Fragment() {
 
-    private var fonts: ArrayList<Font> = arrayListOf()
-    private var matchedFonts: ArrayList<Font> = arrayListOf()
+    private var fonts: ArrayList<FontAdmin> = arrayListOf()
+    private var matchedFonts: ArrayList<FontAdmin> = arrayListOf()
     private var fontAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter(fonts)
     private val db = FirebaseFirestore.getInstance()
 
@@ -166,7 +167,7 @@ class FontAdminListFragment : Fragment() {
         db.collection("fonts").get().addOnSuccessListener { documents ->
             for (document in documents) {
                 fonts.add(
-                    Font(
+                    FontAdmin(
                         document.get("id").toString(),
                         document.get("name").toString(),
                         document.get("lat").toString().toDouble(),
