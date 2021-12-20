@@ -130,8 +130,8 @@ class RegisterUserFragment : Fragment() {
         val mBuilder = context?.let {
             NotificationCompat.Builder(it, CHANNEL_ID)
                 .setSmallIcon(R.drawable.logo_fonts_2)
-                .setContentTitle("Fonts Terrassa")
-                .setContentText("Administrador creat correctament.")
+                .setContentTitle(resources.getString(R.string.titol_notificacio))
+                .setContentText(resources.getString(R.string.desc_notificacio))
                 .setContentIntent(resultPendingIntent)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

@@ -147,7 +147,7 @@ class ListViewModel : ViewModel() {
                             }
                     }
                     for (document in documents) {
-                        fonts.sortBy { it.fontType }
+                        fonts.sortBy { it.fontName }
                     }
                     binding.rvFonts.setHasFixedSize(true)
                     binding.rvFonts.layoutManager = LinearLayoutManager(context)
