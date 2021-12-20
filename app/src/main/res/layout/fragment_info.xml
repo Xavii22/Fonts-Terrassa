@@ -19,6 +19,7 @@
             android:layout_marginEnd="221dp"
             android:text="@string/ajuntament"
             android:textColor="@color/textColor"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_language" />
@@ -28,8 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="41dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="157dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/oat"
             android:textColor="@color/textColor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,9 +42,10 @@
             android:id="@+id/txt_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="41dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="207dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/version"
             android:textColor="@color/textColor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +57,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="41dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="135dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/autors"
             android:textColor="@color/textColor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,6 +81,7 @@
             android:text="@string/fonts_boca"
             android:textColor="@color/textColor"
             android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -95,6 +100,7 @@
             android:text="@string/fonts_boca_singulars"
             android:textColor="@color/textColor"
             android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_beure" />
@@ -113,6 +119,7 @@
             android:text="@string/fonts_ornamentals"
             android:textColor="@color/textColor"
             android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_singular" />
@@ -131,6 +138,7 @@
             android:text="@string/fonts_naturals"
             android:textColor="@color/textColor"
             android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_ornamental" />
@@ -149,6 +157,7 @@
             android:text="@string/fonts_gossos"
             android:textColor="@color/textColor"
             android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_natural" />
@@ -157,13 +166,12 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="170dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="45dp"
+            android:fontFamily="@font/montserrat"
             android:text="@string/info_title"
             android:textColor="@color/textColor"
             android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_login_admin"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -171,14 +179,12 @@
             android:id="@+id/btn_login_admin"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="15dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="55dp"
+            android:layout_marginEnd="30dp"
             android:background="@null"
             android:contentDescription="@string/login_admin"
             android:src="@drawable/ic_security"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
@@ -188,6 +194,7 @@
             android:layout_marginStart="55dp"
             android:layout_marginTop="10dp"
             android:entries="@array/spinner_language"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_language"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -200,6 +207,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/language"
             android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_gos" />
 
@@ -221,6 +229,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="90dp"
             android:text="@string/dark"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_gos" />
 

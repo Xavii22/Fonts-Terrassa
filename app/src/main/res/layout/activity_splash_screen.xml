@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".SplashScreenActivity">
 
     <ImageView
@@ -12,7 +13,10 @@
         android:layout_height="225dp"
         android:layout_marginTop="250dp"
         android:layout_marginBottom="300dp"
-        android:src="@mipmap/logo_fonts_terrassa_round"
+        android:src="@drawable/logo_fonts"
+        android:background="@null"
+        android:scaleX="1.8"
+        android:scaleY="1.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +30,7 @@
         android:text="@string/carregant_app"
         android:textAlignment="center"
         android:textSize="24sp"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

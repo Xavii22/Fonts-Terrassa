@@ -27,6 +27,7 @@
             android:gravity="center"
             android:text="@string/dashboard"
             android:textSize="34sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
@@ -39,6 +40,7 @@
         android:layout_weight="1"
         android:background="#FF5CD1"
         android:text="@string/administrar_usuaris"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
@@ -52,6 +54,7 @@
         android:layout_weight="1"
         android:background="#FF5CD1"
         android:text="@string/administrar_fonts"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toStartOf="@+id/adminUsers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
@@ -67,6 +70,7 @@
         android:layout_weight="1"
         android:background="#FF5CD1"
         android:text="@string/crear_fonts"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toStartOf="@+id/createUsers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adminFonts" />
@@ -80,6 +84,7 @@
         android:layout_weight="1"
         android:background="#FF5CD1"
         android:text="@string/crear_usuaris"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adminUsers" />
 
@@ -91,6 +96,7 @@
         android:layout_weight="1"
         android:background="#FF4747"
         android:text="@string/tancar_sessio"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"

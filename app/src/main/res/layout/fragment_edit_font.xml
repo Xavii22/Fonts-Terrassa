@@ -21,6 +21,7 @@
             android:layout_marginTop="200dp"
             android:text="@string/tipus_font"
             android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toEndOf="@+id/img_accesibilitat"
             app:layout_constraintTop_toBottomOf="@+id/img_font" />
 
@@ -42,6 +43,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/info_font_admin"
             android:textSize="12sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_titol_informacio" />
 
@@ -74,6 +76,7 @@
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:textSize="16sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_id_font"
@@ -98,6 +101,7 @@
             android:layout_marginTop="47dp"
             android:text="@string/coordenades_font"
             android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toEndOf="@+id/img_accesibilitat"
             app:layout_constraintTop_toBottomOf="@+id/img_font" />
 
@@ -109,6 +113,7 @@
             android:layout_marginTop="323dp"
             android:text="@string/informacio"
             android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toEndOf="@+id/img_info"
             app:layout_constraintTop_toBottomOf="@+id/img_font" />
 
@@ -121,6 +126,7 @@
             android:ems="10"
             android:hint="@string/lon"
             android:inputType="textPersonName"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toEndOf="@+id/editLat"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -132,6 +138,7 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="@string/lon"
+            android:fontFamily="@font/montserrat"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -146,6 +153,7 @@
             android:hint="@string/adreca"
             android:inputType="textPersonName"
             android:textSize="12sp"
+
             app:layout_constraintStart_toEndOf="@+id/editLon"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -156,6 +164,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:text="@string/latitud"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_latLon" />
 
@@ -166,6 +175,7 @@
             android:layout_marginStart="73dp"
             android:layout_marginTop="15dp"
             android:text="@string/longitud"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/img_latLon" />
 
@@ -176,6 +186,7 @@
             android:layout_marginStart="61dp"
             android:layout_marginTop="15dp"
             android:text="@string/adreca"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/img_latLon" />
 
@@ -227,6 +238,7 @@
             android:layout_marginTop="15dp"
             android:ems="10"
             android:textSize="12sp"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

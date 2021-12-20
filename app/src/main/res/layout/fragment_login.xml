@@ -16,6 +16,7 @@
             android:text="@string/admin"
             android:textSize="28sp"
             android:textColor="@color/mainText"
+            android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +44,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/montserrat"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -61,7 +63,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:fontFamily="@font/montserrat"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,7 +82,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/accedir" />
+                    android:text="@string/accedir"
+                    android:fontFamily="@font/montserrat"/>
             </LinearLayout>
 
             <TextView
@@ -91,7 +95,8 @@
                 android:lineSpacingExtra="0sp"
                 android:text="@string/recordar"
                 android:textColor="#808080"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat"/>
         </LinearLayout>
 
 

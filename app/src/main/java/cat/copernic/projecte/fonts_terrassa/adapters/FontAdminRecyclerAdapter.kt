@@ -3,14 +3,12 @@ package cat.copernic.projecte.fonts_terrassa.adapters
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.projecte.fonts_terrassa.FontAdminListFragment
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
