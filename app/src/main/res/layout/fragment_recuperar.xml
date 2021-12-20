@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="@string/admin"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="28sp"
             android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"

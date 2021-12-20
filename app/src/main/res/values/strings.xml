@@ -29,7 +29,7 @@
     <string name="Error_pujar_foto">ERROR AL PUJAR LA FOTO</string>
     <string name="Exit_pujar_foto">EXIT AL PUJAR LA FOTO</string>
     <string name="accedir">Accedir</string>
-    <string name="carregant_app">Carregant l\'aplicació...</string>
+    <string name="carregant_app">Carregant...</string>
     <string name="dashboard">Dashboard</string>
     <string name="administrar_usuaris">Administrar usuaris</string>
     <string name="administrar_fonts">Administrar fonts</string>

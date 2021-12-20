@@ -35,37 +35,6 @@ class InfoFragment : Fragment() {
                 binding.spinnerLanguage.setSelection(2)
         }
 
-        switchCompat = binding.switch1
-        sharedPreferences = activity?.getSharedPreferences("night", 0)
-        val booleanValue = sharedPreferences?.getBoolean("night_mode", true)
-        if (booleanValue == true) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            switchCompat!!.isChecked = true
-        }
-        switchCompat!!.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                switchCompat!!.isChecked = true
-                val editor = sharedPreferences?.edit()
-                if (editor != null) {
-                    editor.putBoolean("night_mode", true)
-                }
-                if (editor != null) {
-                    editor.apply()
-                }
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                switchCompat!!.isChecked = false
-                val editor = sharedPreferences?.edit()
-                if (editor != null) {
-                    editor.putBoolean("night_mode", false)
-                }
-                if (editor != null) {
-                    editor.apply()
-                }
-            }
-        }
-
         changeLanguage(binding)
 
         binding.btnLoginAdmin.setOnClickListener {
