@@ -143,14 +143,6 @@ class ListFragment : Fragment() {
         binding.svFonts.isSubmitButtonEnabled = true
     }
 
-    private fun showLoadingDialog(){
-        binding.loadingAnimation.visibility = View.VISIBLE
-    }
-
-    private fun hideLoadingDialog(){
-        binding.loadingAnimation.visibility = View.GONE
-    }
-
     private fun performSearch() {
         binding.svFonts.setOnQueryTextListener(object :
             android.widget.SearchView.OnQueryTextListener {
