@@ -74,7 +74,6 @@
             android:text="@string/fonts_boca"
             android:textColor="@color/textColor"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -85,6 +84,7 @@
             android:background="@android:color/transparent"
             android:drawableLeft="@drawable/gota_2"
             android:drawablePadding="40dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
             android:inputType="textCapSentences"
             android:paddingStart="20dp"
@@ -92,8 +92,6 @@
             android:text="@string/fonts_boca_singulars"
             android:textColor="@color/textColor"
             android:textSize="15sp"
-            android:fontFamily="@font/montserrat"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_beure" />
 
@@ -104,6 +102,7 @@
             android:background="@android:color/transparent"
             android:drawableLeft="@drawable/gota_3"
             android:drawablePadding="40dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
             android:inputType="textCapSentences"
             android:paddingStart="20dp"
@@ -111,8 +110,6 @@
             android:text="@string/fonts_ornamentals"
             android:textColor="@color/textColor"
             android:textSize="15sp"
-            android:fontFamily="@font/montserrat"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_singular" />
 
@@ -123,6 +120,7 @@
             android:background="@android:color/transparent"
             android:drawableLeft="@drawable/gota_4"
             android:drawablePadding="40dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
             android:inputType="textCapSentences"
             android:paddingStart="20dp"
@@ -130,8 +128,6 @@
             android:text="@string/fonts_naturals"
             android:textColor="@color/textColor"
             android:textSize="15sp"
-            android:fontFamily="@font/montserrat"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_ornamental" />
 
@@ -142,6 +138,7 @@
             android:background="@android:color/transparent"
             android:drawableLeft="@drawable/gota_5"
             android:drawablePadding="40dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
             android:inputType="textCapSentences"
             android:paddingStart="20dp"
@@ -149,8 +146,6 @@
             android:text="@string/fonts_gossos"
             android:textColor="@color/textColor"
             android:textSize="15sp"
-            android:fontFamily="@font/montserrat"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_natural" />
 
