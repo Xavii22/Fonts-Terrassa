@@ -123,13 +123,13 @@ class ListFragment : Fragment() {
             }
         }
 
-        loadData()
+        initRecyclerView()
         performSearch()
         return binding.root
     }
 
     override fun onResume() {
-        loadData()
+        initRecyclerView()
         super.onResume()
     }
 
@@ -141,20 +141,6 @@ class ListFragment : Fragment() {
             binding.rvFonts.adapter!!.notifyDataSetChanged()
         }
         binding.svFonts.isSubmitButtonEnabled = true
-    }
-
-    private fun loadData() = GlobalScope.launch(Dispatchers.Main) {
-        val dialogJob = launch {
-            delay(1000)
-            try {
-                showLoadingDialog()
-                coroutineContext.job.join()
-            } finally {
-                hideLoadingDialog()
-            }
-        }
-        initRecyclerView()
-        dialogJob.cancel()
     }
 
     private fun showLoadingDialog(){
