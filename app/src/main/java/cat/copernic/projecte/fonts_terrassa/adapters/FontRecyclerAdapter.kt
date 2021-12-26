@@ -83,13 +83,18 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
             binding.txtCarrer.text = font.adreca.trim()
             binding.txtDistance.text = font.distance.toString() + " km"
 
-            Log.d("tipusf", font.type.toString())
+
+            /*
+                Download Images from firebase Storage:
+                    context?.let { descarregarImatgeGlide2(it, "gota_5") }
+             */
+
             when (font.type) {
-                1 -> context?.let { descarregarImatgeGlide2(it, "gota_1") }
-                2 -> context?.let { descarregarImatgeGlide2(it, "gota_2") }
-                3 -> context?.let { descarregarImatgeGlide2(it, "gota_3") }
-                4 -> context?.let { descarregarImatgeGlide2(it, "gota_4") }
-                5 -> context?.let { descarregarImatgeGlide2(it, "gota_5") }
+                1 -> binding.imageView2.setImageResource(R.drawable.gota_1)
+                2 -> binding.imageView2.setImageResource(R.drawable.gota_2)
+                3 -> binding.imageView2.setImageResource(R.drawable.gota_3)
+                4 -> binding.imageView2.setImageResource(R.drawable.gota_4)
+                5 -> binding.imageView2.setImageResource(R.drawable.gota_5)
             }
         }
 

@@ -144,15 +144,15 @@ class ListViewModel : ViewModel() {
                                         )
                                     )
                                 }
+                                for (document in documents) {
+                                    fonts.sortBy { it.fontName }
+                                }
+                                binding.rvFonts.setHasFixedSize(true)
+                                binding.rvFonts.layoutManager = LinearLayoutManager(context)
+                                context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
+                                binding.rvFonts.adapter = myAdapter
                             }
                     }
-                    for (document in documents) {
-                        fonts.sortBy { it.fontName }
-                    }
-                    binding.rvFonts.setHasFixedSize(true)
-                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                    context.let { myAdapter.fontsRecyclerAdapter(fonts, it) }
-                    binding.rvFonts.adapter = myAdapter
                 }
         }
     }

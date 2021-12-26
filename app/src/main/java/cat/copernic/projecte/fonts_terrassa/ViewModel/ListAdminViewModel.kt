@@ -86,14 +86,14 @@ class ListAdminViewModel: ViewModel() {
                                 document.get("address").toString()
                             )
                         )
+                        for (document in documents) {
+                            fonts.sortBy { it.fontName }
+                        }
+                        binding.rvFonts.setHasFixedSize(true)
+                        binding.rvFonts.layoutManager = LinearLayoutManager(context)
+                        context.let { myAdapter.fontsAdminRecyclerAdapter(fonts, it) }
+                        binding.rvFonts.adapter = myAdapter
                     }
-                    for (document in documents) {
-                        fonts.sortBy { it.fontName }
-                    }
-                    binding.rvFonts.setHasFixedSize(true)
-                    binding.rvFonts.layoutManager = LinearLayoutManager(context)
-                    context.let { myAdapter.fontsAdminRecyclerAdapter(fonts, it) }
-                    binding.rvFonts.adapter = myAdapter
                 }
         }
     }

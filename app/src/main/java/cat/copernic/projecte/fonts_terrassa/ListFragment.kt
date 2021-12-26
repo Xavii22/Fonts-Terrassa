@@ -42,9 +42,13 @@ class ListFragment : Fragment() {
             inflater, R.layout.fragment_list, container, false
         )
 
-        fontsArray = arrayOf(resources.getString(R.string.fonts_boca), resources.getString(R.string.fonts_boca_singulars),
-                resources.getString(R.string.fonts_ornamentals), resources.getString(R.string.fonts_naturals),
-                resources.getString(R.string.fonts_gossos))
+        fontsArray = arrayOf(
+            resources.getString(R.string.fonts_boca),
+            resources.getString(R.string.fonts_boca_singulars),
+            resources.getString(R.string.fonts_ornamentals),
+            resources.getString(R.string.fonts_naturals),
+            resources.getString(R.string.fonts_gossos)
+        )
 
         imageView = binding.imageView
         selectedFont = BooleanArray(fontsArray.size)
@@ -53,18 +57,15 @@ class ListFragment : Fragment() {
             selectedFont[j] = true
         }
 
-        if (fontAdapter.fonts.size == 0) {
-            context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
-        }
+
+        ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
 
         imageView.setOnClickListener {
-
             fontList.clear()
-
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.seleccionar_tipus_font)
 
-            context?.let { ViewModel.clearFontsByType(binding, it) }
+            ViewModel.clearFontsByType(binding, requireContext())
             builder.setCancelable(false)
             builder.setMultiChoiceItems(
                 fontsArray, selectedFont
@@ -74,15 +75,13 @@ class ListFragment : Fragment() {
             builder.setPositiveButton(
                 R.string.acceptar
             ) { _, _ ->
-                context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+                ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
             }
             builder.setNeutralButton(
                 R.string.seleccionar_tot
             ) { _, _ ->
-                for (j in 0..4) {
-                    selectedFont[j] = true
-                }
-                context?.let { ViewModel.filterFontsByType(binding, it, selectedFont) }
+                selectedFont.fill(true, 0)
+                ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
             }
             builder.show()
         }
@@ -100,25 +99,15 @@ class ListFragment : Fragment() {
             ) {
                 when (binding.spinnerOrder.selectedItem.toString()) {
                     resources.getString(R.string.nom_asc) ->
-                        context?.let {
-                            ViewModel.sortFontNameASC(binding, it)
-                        }
+                        ViewModel.sortFontNameASC(binding, requireContext())
                     resources.getString(R.string.nom_desc) ->
-                        context?.let {
-                            ViewModel.sortFontNameDESC(binding, it)
-                        }
+                        ViewModel.sortFontNameDESC(binding, requireContext())
                     resources.getString(R.string.distancia_asc) ->
-                        context?.let {
-                            ViewModel.sortFontLocationASC(binding, it)
-                        }
+                        ViewModel.sortFontLocationASC(binding, requireContext())
                     resources.getString(R.string.distancia_desc) ->
-                        context?.let {
-                            ViewModel.sortFontLocationDESC(binding, it)
-                        }
+                        ViewModel.sortFontLocationDESC(binding, requireContext())
                     resources.getString(R.string.tipus) ->
-                        context?.let {
-                            ViewModel.sortFontTypeASC(binding, it)
-                        }
+                        ViewModel.sortFontTypeASC(binding, requireContext())
                 }
             }
         }
@@ -158,35 +147,61 @@ class ListFragment : Fragment() {
         })
     }
 
+    /*
     private fun search(text: String?) {
         matchedFonts = arrayListOf()
-        fonts.clear()
-        db.collection("fonts").get().addOnSuccessListener { documents ->
-            for (document in documents) {
-                fonts.add(
-                    Font(
-                        document.get("id").toString(),
-                        document.get("name").toString(),
-                        document.get("lat").toString().toDouble(),
-                        document.get("lon").toString().toDouble(),
-                        document.get("info").toString(),
-                        document.get("type").toString().toInt(),
-                        document.get("address").toString(),
-                        0.0
-                    )
-                )
-            }
-            text?.let {
-                fonts.forEach { font ->
-                    if (font.name.contains(text, true)
-                    ) {
-                        matchedFonts.add(font)
+
+        if (text != null) {
+            if(text.isNotEmpty()) {
+                text?.let {
+                    fonts = ViewModel.getFonts()
+                        fonts.forEach { font ->
+                            if (font.name.contains(text, true)
+                            ) {
+                                matchedFonts.add(font)
+                            }
+                        }
+                        if (matchedFonts.isEmpty()) {
+                            Log.d("buit", R.string.buit.toString())
+                        }
+                        updateRecyclerView()
                     }
+            }
+        }
+    }
+     */
+
+    private fun search(text: String?) {
+        matchedFonts = arrayListOf()
+        if (fonts.size > 0) {
+            fonts.clear()
+            db.collection("fonts").get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    fonts.add(
+                        Font(
+                            document.get("id").toString(),
+                            document.get("name").toString(),
+                            document.get("lat").toString().toDouble(),
+                            document.get("lon").toString().toDouble(),
+                            document.get("info").toString(),
+                            document.get("type").toString().toInt(),
+                            document.get("address").toString(),
+                            0.0
+                        )
+                    )
                 }
-                if (matchedFonts.isEmpty()) {
-                    Log.d("buit", R.string.buit.toString())
+                text?.let {
+                    fonts.forEach { font ->
+                        if (font.name.contains(text, true)
+                        ) {
+                            matchedFonts.add(font)
+                        }
+                    }
+                    if (matchedFonts.isEmpty()) {
+                        Log.d("buit", R.string.buit.toString())
+                    }
+                    updateRecyclerView()
                 }
-                updateRecyclerView()
             }
         }
     }
@@ -195,7 +210,7 @@ class ListFragment : Fragment() {
         binding.rvFonts.apply {
             fontAdapter.fonts.clear()
             fontAdapter.fonts.addAll(matchedFonts)
-            context?.let { ViewModel.sortFontNameASC(binding, it) }
+            ViewModel.sortFontNameASC(binding, requireContext())
             fontAdapter.notifyDataSetChanged()
         }
     }
