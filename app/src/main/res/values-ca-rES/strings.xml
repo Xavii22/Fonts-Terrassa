@@ -49,7 +49,7 @@
     <string name="adreca">Adreça</string>
     <string name="id">ID</string>
     <string name="puntua_gust">1. Puntua el gust de l\'1 al 5</string>
-    <string name="puntua_olor">2. Puntual l\'olor de l\'1 al 5</string>
+    <string name="puntua_olor">2. Puntua l\'olor de l\'1 al 5</string>
     <string name="puntua_transperencia">3. Puntua la transperencia de l\'aigua de l\'1 al 5</string>
     <string name="valoracio_mitjana">Valoració Mitjana</string>
     <string name="transperencia">Transperència</string>
@@ -80,7 +80,7 @@
     <string name="descartar">Descartar</string>
     <string name="font_no_eliminada">La font no s\'ha eliminat</string>
     <string name="dark">Mode fosc</string>
-    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam</string>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo. Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
     <string name="llista">llista</string>
     <string-array name="spinner_language">
         <item>Català</item>
@@ -116,4 +116,6 @@
     <string name="no_internet_con">No hi ha intrnet, es necesari tenir internet per utilitzar l\'apliació</string>
     <string name="titol_notificacio">Fonts Terrassa</string>
     <string name="desc_notificacio">Administrador creat correctament</string>
+    <string name="lat">lat</string>
+    <string name="avalua_aigua">Avalua la qualitat de l\'aigüa</string>
 </resources>

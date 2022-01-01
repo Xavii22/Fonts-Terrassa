@@ -41,28 +41,40 @@
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/drawable/ic_baseline_filter_alt_24.xml" value="0.290625" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/drawable/ic_security.xml" value="0.39692307692307693" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/drawable/ic_sort.xml" value="0.290625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/activity_splash_screen.xml" value="0.41302083333333334" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_admin.xml" value="0.33" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_edit_font.xml" value="0.40572916666666664" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_font_admin_list.xml" value="0.3890625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_info.xml" value="0.41302083333333334" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_info_beure.xml" value="0.41302083333333334" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_list.xml" value="0.33" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_login.xml" value="0.3890625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_recuperar.xml" value="0.3890625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_register_user.xml" value="0.3890625" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout-land/fragment_view_font.xml" value="0.3890625" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/activity_splash_screen.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_admin.xml" value="0.381025641025641" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_edit_font.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_evaluate.xml" value="0.25277777777777777" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_edit_font.xml" value="0.33" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_evaluate.xml" value="0.33" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_font_admin_list.xml" value="0.264" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info.xml" value="0.264" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_beure.xml" value="0.381025641025641" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_beure.xml" value="0.33" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_gos.xml" value="0.381025641025641" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_natural.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_natural.xml" value="0.33" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_ornamental.xml" value="0.381025641025641" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_info_singular.xml" value="0.381025641025641" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_list.xml" value="0.264" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_list.xml" value="0.33" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_login.xml" value="0.381025641025641" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_maps.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_recuperar.xml" value="0.381025641025641" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_register_user.xml" value="0.264" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_users_admin_list.xml" value="0.3574074074074074" />
-        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_view_font.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/fragment_view_font.xml" value="0.33" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/item_font_list.xml" value="0.33425925925925926" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/item_font_list_admin.xml" value="0.27025641025641023" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/layout/item_user_list.xml" value="0.3574074074074074" />
+        <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/menu-v26/bottom_menu.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/menu/bottom_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/menu/item_menu.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Xavi/AndroidStudioProjects/fonts-terrassa-recycler/app/src/main/res/mipmap-anydpi-v26/ic_fonts.xml" value="0.16197916666666667" />

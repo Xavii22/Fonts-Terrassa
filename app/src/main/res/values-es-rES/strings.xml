@@ -80,7 +80,7 @@
     <string name="font_no_eliminada">La fuente no se ha eliminado</string>
     <string name="dark">Modo oscuro</string>
     <string name="llista">Lista</string>
-    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam</string>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo. Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Español</item>
@@ -116,4 +116,6 @@
     <string name="no_internet_con">No hay internet, es necesario tener internet para utilizar la app</string>
     <string name="titol_notificacio">Fonts Terrassa</string>
     <string name="desc_notificacio">Administrador creado correctamente</string>
+    <string name="lat">lat</string>
+    <string name="avalua_aigua">Evalua la calidad del agua</string>
 </resources>

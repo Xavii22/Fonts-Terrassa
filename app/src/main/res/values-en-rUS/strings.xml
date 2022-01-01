@@ -69,7 +69,7 @@
     <string name="registerAdmin">Administrator register</string>
     <string name="repeatPassword">Repeat password</string>
     <string name="restore">Forgot password?</string>
-    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam     varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,     mollis pretium quam. Mauris aliquet a ante rutrum interdum. Suspendisse ut est blandit,     consectetur elit vel, aliquam massa.     Etiam dignissim convallis tempor. Sed vulputate felis     non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec     ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.     Curabitur in cursus neque.</string>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo. Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
     <string name="seleccionar_tipus_font">Select font type</string>
     <string name="seleccionar_tot">Select all</string>
     <string name="surname">Second name</string>
@@ -116,4 +116,6 @@
     <string name="no_internet_con">No internet connection, you must have internet enabled to use the app</string>
     <string name="titol_notificacio">Fonts Terrassa</string>
     <string name="desc_notificacio">Administrator created successfully</string>
+    <string name="lat">lat</string>
+    <string name="avalua_aigua">Evaluate the water quality</string>
 </resources>

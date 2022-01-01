@@ -11,9 +11,9 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="82dp"
-            android:background="#1361FF"
+            android:background="@color/listBar"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

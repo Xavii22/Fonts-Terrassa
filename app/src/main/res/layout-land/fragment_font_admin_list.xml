@@ -82,7 +82,7 @@
 
                     <SearchView
                         android:id="@+id/svFonts"
-                        android:layout_width="240dp"
+                        android:layout_width="550dp"
                         android:layout_height="49dp"
                         app:iconifiedByDefault="false"
                         android:goIcon="@null"

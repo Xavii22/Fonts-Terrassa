@@ -47,7 +47,7 @@
     <string name="adreca">Adreça</string>
     <string name="id">ID</string>
     <string name="puntua_gust">1. Puntua el gust de l\'1 al 5</string>
-    <string name="puntua_olor">2. Puntual l\'olor de l\'1 al 5</string>
+    <string name="puntua_olor">2. Puntua l\'olor de l\'1 al 5</string>
     <string name="puntua_transperencia">3. Puntua la transperencia de l\'aigua de l\'1 al 5</string>
     <string name="valoracio_mitjana">Valoració Mitjana</string>
     <string name="transperencia">Transperència</string>
@@ -89,6 +89,9 @@
     <string name="no_internet_con">No hi ha intrnet, es necesari tenir internet per utilitzar l\'apliació</string>
     <string name="titol_notificacio">Fonts Terrassa</string>
     <string name="desc_notificacio">Administrador creat correctament</string>
+    <string name="llista">llista</string>
+    <string name="lat">lat</string>
+    <string name="avalua_aigua">Avalua l\'aigua</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Español</item>
@@ -113,13 +116,6 @@
         <item>Nom DESC</item>
         <item>Tipus</item>
     </string-array>
-    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-    varius semper ex, a tempor neque imperdiet id. Donec risus orci, faucibus et magna sit amet,
-    mollis pretium quam. Mauris aliquet a ante rutrum interdum. Suspendisse ut est blandit,
-    consectetur elit vel, aliquam massa.
-    Etiam dignissim convallis tempor. Sed vulputate felis
-    non faucibus lobortis. Aenean egestas elementum enim, id ultrices nisi dapibus vitae. Donec
-    ut rhoncus ligula. Sed eu interdum massa. In sed elit sed nibh efficitur scelerisque.
-    Curabitur in cursus neque.</string>
-    <string name="llista">llista</string>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo. Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
+
 </resources>

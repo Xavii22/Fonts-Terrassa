@@ -2,7 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".LoginFragment">
+    tools:context=".ContrasenyaFragment">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/sv_users"
+        android:fillViewport="true"
+        android:isScrollContainer="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="@string/admin"
+            android:textColor="@color/textColor"
             android:textSize="28sp"
-            android:textColor="@color/mainText"
             android:fontFamily="@font/montserrat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,29 +57,11 @@
                     android:fontFamily="@font/montserrat"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:fontFamily="@font/montserrat"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_marginTop="20dp" />
 
             <LinearLayout
                 android:layout_width="300dp"
@@ -79,27 +69,16 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/loginButton"
-                    android:layout_width="10dp"
+                    android:id="@+id/retrieveButton"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_weight="1"
-                    android:text="@string/accedir"
+                    android:text="@string/enviar"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/montserrat"/>
+                    android:fontFamily="@font/montserrat"
+                    android:layout_marginBottom="20dp"/>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textview_contrasenya"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:lineSpacingExtra="0sp"
-                android:text="@string/recordar"
-                android:textColor="#808080"
-                android:textSize="14sp"
-                android:fontFamily="@font/montserrat"/>
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

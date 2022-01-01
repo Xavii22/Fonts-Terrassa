@@ -155,6 +155,10 @@ class EvaluateFragment : Fragment() {
             binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starcomplete)
         }
 
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(EvaluateFragmentDirections.actionEvaluateFragmentToViewFontFragment())
+        }
+
         binding.btnEvaluate.setOnClickListener {
             if (gustValue != 0 || olorValue != 0 || transperenciaValue != 0) {
                 //Send values to DB

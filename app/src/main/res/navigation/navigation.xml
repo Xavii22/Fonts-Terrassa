@@ -13,7 +13,8 @@
         <action
             android:id="@+id/action_fragment_list_to_viewFontFragment"
             app:destination="@id/viewFontFragment"
-            app:enterAnim="@anim/slide_in_right" />
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/viewFontFragment"
@@ -26,7 +27,7 @@
         <action
             android:id="@+id/action_viewFontFragment_to_fragment_list"
             app:destination="@id/fragment_list"
-            app:enterAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_left"
             app:popUpTo="@id/fragment_maps" />
     </fragment>
     <fragment
@@ -36,28 +37,22 @@
         tools:layout="@layout/fragment_info" >
         <action
             android:id="@+id/action_fragment_info_to_infoBeureFragment"
-            app:destination="@id/fragment_info_beure"
-            app:enterAnim="@anim/fade_in" />
+            app:destination="@id/fragment_info_beure" />
         <action
             android:id="@+id/action_fragment_info_to_infoSingularFragment"
-            app:destination="@id/fragment_info_singular"
-            app:enterAnim="@anim/fade_in" />
+            app:destination="@id/fragment_info_singular" />
         <action
             android:id="@+id/action_fragment_info_to_infoOrnamentalFragment"
-            app:destination="@id/fragment_info_ornamental"
-            app:enterAnim="@anim/fade_in" />
+            app:destination="@id/fragment_info_ornamental" />
         <action
             android:id="@+id/action_fragment_info_to_infoNaturalFragment"
-            app:destination="@id/fragment_info_natural"
-            app:enterAnim="@anim/fade_in" />
+            app:destination="@id/fragment_info_natural" />
         <action
             android:id="@+id/action_fragment_info_to_infoGosFragment"
-            app:destination="@id/fragment_info_gos"
-            app:enterAnim="@anim/fade_in" />
+            app:destination="@id/fragment_info_gos" />
         <action
             android:id="@+id/action_fragment_info_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/fade_in" />
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_info_beure"
@@ -155,7 +150,7 @@
         <action
             android:id="@+id/action_editFontFragment_to_fontAdminListFragment"
             app:destination="@id/fontAdminListFragment"
-            app:enterAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_left"
             app:popUpTo="@id/adminFragment" />
         <action
             android:id="@+id/action_editFontFragment_to_adminFragment"
@@ -170,7 +165,8 @@
         <action
             android:id="@+id/action_fontAdminListFragment_to_editFontFragment2"
             app:destination="@id/editFontFragment"
-            app:enterAnim="@anim/slide_in_right" />
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/usersAdminListFragment"
