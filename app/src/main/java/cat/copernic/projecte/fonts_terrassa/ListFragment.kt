@@ -1,6 +1,5 @@
 package cat.copernic.projecte.fonts_terrassa
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +16,6 @@ import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.*
 
 class ListFragment : Fragment() {
 
@@ -56,7 +54,6 @@ class ListFragment : Fragment() {
         for (j in 0..4) {
             selectedFont[j] = true
         }
-
 
         ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
 
@@ -146,30 +143,6 @@ class ListFragment : Fragment() {
             }
         })
     }
-
-    /*
-    private fun search(text: String?) {
-        matchedFonts = arrayListOf()
-
-        if (text != null) {
-            if(text.isNotEmpty()) {
-                text?.let {
-                    fonts = ViewModel.getFonts()
-                        fonts.forEach { font ->
-                            if (font.name.contains(text, true)
-                            ) {
-                                matchedFonts.add(font)
-                            }
-                        }
-                        if (matchedFonts.isEmpty()) {
-                            Log.d("buit", R.string.buit.toString())
-                        }
-                        updateRecyclerView()
-                    }
-            }
-        }
-    }
-     */
 
     private fun search(text: String?) {
         matchedFonts = arrayListOf()

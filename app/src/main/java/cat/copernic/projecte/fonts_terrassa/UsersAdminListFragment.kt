@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
+import cat.copernic.projecte.fonts_terrassa.ViewModel.UsersViewModel
 import cat.copernic.projecte.fonts_terrassa.adapters.UsersRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentUsersAdminListBinding
 import cat.copernic.projecte.fonts_terrassa.models.User
@@ -16,8 +20,7 @@ class UsersAdminListFragment : Fragment() {
 
     private lateinit var binding: FragmentUsersAdminListBinding
     private val myAdapter: UsersRecyclerAdapter = UsersRecyclerAdapter()
-    private val db = FirebaseFirestore.getInstance()
-    private var users: ArrayList<User> = arrayListOf()
+    private val ViewModel: UsersViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,22 +31,7 @@ class UsersAdminListFragment : Fragment() {
             inflater, R.layout.fragment_users_admin_list, container, false
         )
 
-        db.collection("users")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    users.add(
-                        User(
-                            document.get("email").toString()
-                        )
-                    )
-                }
-                binding.rvUsers.setHasFixedSize(true)
-                binding.rvUsers.layoutManager = LinearLayoutManager(context)
-                context?.let { myAdapter.UsersRecyclerAdapter(users, it) }
-                binding.rvUsers.adapter = myAdapter
-            }
-
+        ViewModel.getUsers(binding, requireContext())
 
         return binding.root
     }
