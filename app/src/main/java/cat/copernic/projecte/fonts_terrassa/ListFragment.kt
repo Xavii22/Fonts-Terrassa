@@ -1,6 +1,9 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.Manifest
 import android.app.AlertDialog
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +19,8 @@ import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
 import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentListBinding
 import cat.copernic.projecte.fonts_terrassa.models.Font
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ListFragment : Fragment() {
@@ -55,6 +61,7 @@ class ListFragment : Fragment() {
             selectedFont[j] = true
         }
 
+        performSearch()
         ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
 
         imageView.setOnClickListener {
@@ -110,7 +117,6 @@ class ListFragment : Fragment() {
         }
 
         initRecyclerView()
-        performSearch()
         return binding.root
     }
 
@@ -144,39 +150,60 @@ class ListFragment : Fragment() {
         })
     }
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private fun search(text: String?) {
         matchedFonts = arrayListOf()
-        if (fonts.size > 0) {
-            fonts.clear()
-            db.collection("fonts").get().addOnSuccessListener { documents ->
-                for (document in documents) {
-                    fonts.add(
-                        Font(
-                            document.get("id").toString(),
-                            document.get("name").toString(),
-                            document.get("lat").toString().toDouble(),
-                            document.get("lon").toString().toDouble(),
-                            document.get("info").toString(),
-                            document.get("type").toString().toInt(),
-                            document.get("address").toString(),
-                            0.0
-                        )
-                    )
-                }
-                text?.let {
-                    fonts.forEach { font ->
-                        if (font.name.contains(text, true)
-                        ) {
-                            matchedFonts.add(font)
+        fonts.clear()
+        lateinit var myActualPos: Location
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener {
+                if (it != null) {
+                    myActualPos = it
+                    db.collection("fonts").get().addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            val fontLoc = Location("")
+                            fontLoc.latitude = document.get("lat").toString().toDouble()
+                            fontLoc.longitude = document.get("lon").toString().toDouble()
+                            val value = (myActualPos.distanceTo(fontLoc) / 1000).toDouble()
+                            fonts.add(
+                                Font(
+                                    document.get("id").toString(),
+                                    document.get("name").toString(),
+                                    document.get("lat").toString().toDouble(),
+                                    document.get("lon").toString().toDouble(),
+                                    document.get("info").toString(),
+                                    document.get("type").toString().toInt(),
+                                    document.get("address").toString(),
+                                    (Math.round(value * 100) / 100.0)
+                                )
+                            )
+                        }
+                        text?.let {
+                            fonts.forEach { font ->
+                                if (font.name.contains(text, true)
+                                ) {
+                                    matchedFonts.add(font)
+                                }
+                            }
+                            if (matchedFonts.isEmpty()) {
+                                Log.d("buit", R.string.buit.toString())
+                            }
+                            updateRecyclerView()
                         }
                     }
-                    if (matchedFonts.isEmpty()) {
-                        Log.d("buit", R.string.buit.toString())
-                    }
-                    updateRecyclerView()
                 }
             }
-        }
     }
 
     private fun updateRecyclerView() {

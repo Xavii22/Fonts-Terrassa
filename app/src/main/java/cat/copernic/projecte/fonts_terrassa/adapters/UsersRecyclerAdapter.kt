@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemUserListBinding
@@ -34,7 +36,8 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
 
     //Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        val hexColorActive = "#${Integer.toHexString(ContextCompat.getColor(context, R.color.activeUser))}"
+        val hexColorInactive = "#${Integer.toHexString(ContextCompat.getColor(context, R.color.inactiveUser))}"
         with(holder) {
             with(users[position]) {
                 db.collection("users")
@@ -44,10 +47,11 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                             if (document.get("email").toString() == users[position].email) {
                                 if (document.get("active").toString().toBoolean()) {
                                     binding.txtUser.text = this.email
+                                    binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorActive))
                                 } else {
                                     binding.txtUser.text = this.email
                                     binding.btnDelete.setImageResource(R.drawable.ic_person_add)
-                                    binding.cardViewUser.setCardBackgroundColor(Color.LTGRAY)
+                                    binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorInactive))
                                 }
                             }
                         }
@@ -70,7 +74,7 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                                     )
                                                 binding.txtUser.text = this.email
                                                 binding.btnDelete.setImageResource(R.drawable.ic_person_add)
-                                                binding.cardViewUser.setCardBackgroundColor(Color.LTGRAY)
+                                                binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorInactive))
                                             } else {
                                                 db.collection("users").document(users[position].email).delete()
                                                 db.collection("users").document(users[position].email)
@@ -82,7 +86,7 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                                     )
                                                 binding.txtUser.text = this.email
                                                 binding.btnDelete.setImageResource(R.drawable.ic_person_remove)
-                                                binding.cardViewUser.setCardBackgroundColor(Color.WHITE)
+                                                binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorActive))
                                             }
                                         }
                                     }

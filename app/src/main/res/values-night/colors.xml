@@ -22,4 +22,6 @@
     <color name="listBar">#B366FF</color>
     <color name="bgDashboard1">#a64dff</color>
     <color name="bgDashboard2">#E8FF80</color>
+    <color name="activeUser">#424242</color>
+    <color name="inactiveUser">#8D8F97</color>
 </resources>
