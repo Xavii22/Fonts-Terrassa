@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemFontListAdminBinding
-import cat.copernic.projecte.fonts_terrassa.models.Font
 import cat.copernic.projecte.fonts_terrassa.models.FontAdmin
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore

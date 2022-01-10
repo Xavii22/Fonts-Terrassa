@@ -77,9 +77,9 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
 
 
             /*
-                Download Images from firebase Storage:
-                    context?.let { descarregarImatgeGlide2(it, "gota_5") }
-             */
+            Download Images from firebase Storage:
+            context?.let { descarregarImatgeGlide2(it, "gota_5") }
+            */
 
             when (font.type) {
                 1 -> binding.imageView2.setImageResource(R.drawable.gota_1)

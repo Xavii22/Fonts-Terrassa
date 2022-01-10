@@ -7,19 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.projecte.fonts_terrassa.ViewModel.ListViewModel
 import cat.copernic.projecte.fonts_terrassa.ViewModel.UsersViewModel
-import cat.copernic.projecte.fonts_terrassa.adapters.UsersRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentUsersAdminListBinding
-import cat.copernic.projecte.fonts_terrassa.models.User
-import com.google.firebase.firestore.FirebaseFirestore
 
 class UsersAdminListFragment : Fragment() {
 
     private lateinit var binding: FragmentUsersAdminListBinding
-    private val myAdapter: UsersRecyclerAdapter = UsersRecyclerAdapter()
     private val ViewModel: UsersViewModel by viewModels()
 
     override fun onCreateView(

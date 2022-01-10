@@ -3,22 +3,17 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.graphics.Color
 import android.location.Location
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -228,7 +223,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         MarkerOptions()
                             .position(pos)
                             .title(document.get("name").toString())
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_1))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_1_small))
                             .anchor(0.5F, 0.5F)
                     )
                 }
@@ -245,7 +240,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         MarkerOptions()
                             .position(pos)
                             .title(document.get("name").toString())
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_2))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_2_small))
                             .anchor(0.5F, 0.5F)
                     )
                 }
@@ -262,7 +257,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         MarkerOptions()
                             .position(pos)
                             .title(document.get("name").toString())
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_3))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_3_small))
                             .anchor(0.5F, 0.5F)
                     )
                 }
@@ -279,7 +274,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         MarkerOptions()
                             .position(pos)
                             .title(document.get("name").toString())
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_4))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_4_small))
                             .anchor(0.5F, 0.5F)
                     )
                 }
@@ -296,7 +291,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         MarkerOptions()
                             .position(pos)
                             .title(document.get("name").toString())
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_5))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.gota_5_small))
                             .anchor(0.5F, 0.5F)
                     )
                 }
