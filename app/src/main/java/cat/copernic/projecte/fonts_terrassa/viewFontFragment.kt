@@ -30,6 +30,7 @@ class viewFontFragment : Fragment() {
             inflater, R.layout.fragment_view_font, container, false
         )
 
+        //Agafem els arguments del bundle
         val fontId = arguments?.getString("fontId")
 
         binding.btnTestWater.setOnClickListener {
@@ -42,21 +43,10 @@ class viewFontFragment : Fragment() {
             findNavController().navigate(viewFontFragmentDirections.actionViewFontFragmentToFragmentList())
         }
 
-        when (arguments?.getInt("tipus_font")) {
-            1 -> binding.tipusFontTxt.text =
-                (context?.getString(R.string.fonts_boca) ?: 1) as CharSequence?
-            2 -> binding.tipusFontTxt.text =
-                (context?.getString(R.string.fonts_boca_singulars) ?: 2) as CharSequence?
-            3 -> binding.tipusFontTxt.text =
-                (context?.getString(R.string.fonts_ornamentals) ?: 3) as CharSequence?
-            4 -> binding.tipusFontTxt.text =
-                (context?.getString(R.string.fonts_naturals) ?: 4) as CharSequence?
-            5 -> binding.tipusFontTxt.text =
-                (context?.getString(R.string.fonts_gossos) ?: 5) as CharSequence?
-
-        }
-
-
+        /*
+        * A partir de la fontId, obtenim el font type i depenent del valor canviem text i imatge del tipus de la font
+        * Finalment seleccionem l'ubicació a anar amb el botó del mapa de la pantalla
+        */
         db.collection("fonts")
             .get()
             .addOnSuccessListener { documents ->
@@ -108,12 +98,13 @@ class viewFontFragment : Fragment() {
                 }
             }
 
-        //Valoracions Avg
+        //Inicialitzem mitjana valoracions
         var gustTotal = 0
         var olorTotal = 0
         var transperenciaTotal = 0
         var contador = 0
 
+        //Calculem les 3 valoracions mitjanes a partir de les dades de les based de dades
         db.collection("valoracions")
             .get()
             .addOnSuccessListener { documents ->
@@ -139,6 +130,9 @@ class viewFontFragment : Fragment() {
         return binding.root
     }
 
+    /**
+    * Amb aquesta funció posem l'imatge emagatzemada a l'Storage al lloc que volem (imgFont)
+    */
     private fun descarregarImatgeGlide(fontId: String) {
         val imgPath = "images/" + fontId + ".jpg"
         val imageRef = storageRef.child(imgPath)
@@ -156,6 +150,9 @@ class viewFontFragment : Fragment() {
         }
     }
 
+    /**
+    * Amb aquesta funció posem les estrelles a partir de la valoració mitjana del gust
+    */
     private fun setGustAvg(gustAvg: Int){
         when(gustAvg){
             1 ->{
@@ -186,6 +183,9 @@ class viewFontFragment : Fragment() {
         }
     }
 
+    /**
+    * Amb aquesta funció posem les estrelles a partir de la valoració mitjana de l'olor
+    */
     private fun setOlorAvg(olorAvg: Int){
         when(olorAvg){
             1 ->{
@@ -216,6 +216,9 @@ class viewFontFragment : Fragment() {
         }
     }
 
+    /**
+    * Amb aquesta funció posem les estrelles a partir de la valoració mitjana de la transperencia
+    */
     private fun setTrasperenciaAvg(transperenciaAvg: Int){
         when(transperenciaAvg){
             1 ->{
