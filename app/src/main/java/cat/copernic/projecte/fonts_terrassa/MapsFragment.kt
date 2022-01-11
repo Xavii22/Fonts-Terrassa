@@ -48,10 +48,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         onMapReady(googleMap)
         selectedFont = BooleanArray(fontsArray.size)
 
+        //Seleccionem totes les opcions del filtre un cop carrega el fragment
         for (j in 0..4) {
             selectedFont[j] = true
         }
 
+        //Carreguem les dades per defecte en cas de no poder tenir la ubicació o altres dades que demanem més endevant
         loadMap(googleMap)
         val mapPos = LatLng(41.56321391021604, 2.010025253878396)
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mapPos))
@@ -73,7 +75,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 }
         }
 
-
+        //Canviem el color de les icones depenent si estem en mode clar o fosc
         val nightModeFlags = requireContext().resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK
         when (nightModeFlags) {
@@ -89,7 +91,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                         it2)
                 }
             }
-
             Configuration.UI_MODE_NIGHT_NO -> {
                 googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),
                     R.raw.mapstyle_day))
@@ -116,6 +117,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
+        //Obrim el pop-up de filtre per filtrar les fonts depenent del tipus
         binding.btnFilter.setOnClickListener {
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -145,6 +147,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             builder.show()
         }
 
+        //Canvia el tipus de mapa de Mapa de satellit a "normal" o al revés
         binding.btnChangeMap.setOnClickListener {
             if (mapType == 0) {
                 googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
@@ -219,6 +222,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         mapFragment?.getMapAsync(callback)
     }
 
+    /**
+     * Funció que carrega les icones al mapa depenent del tipus de la font.
+     */
     fun loadMap(googleMap: GoogleMap) {
         if (selectedFont[0]) {
             db.collection("fonts").whereEqualTo("type", 1).get().addOnSuccessListener { documents ->
@@ -307,6 +313,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Funció que li fem "override" per demanar la ubicació i mostrar-la al mapa quan el mapa estigui carregat.
+     */
     override fun onMapReady(myMap: GoogleMap) {
         if (context?.let {
                 ActivityCompat.checkSelfPermission(it,
