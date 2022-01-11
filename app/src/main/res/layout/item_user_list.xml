@@ -28,7 +28,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/img_user_item"
                     android:layout_width="56dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="15dp"
@@ -48,7 +48,7 @@
                     android:fontFamily="@font/montserrat"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/btnDelete"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/img_user_item"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView

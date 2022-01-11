@@ -12,7 +12,6 @@ import cat.copernic.projecte.fonts_terrassa.models.Font
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlin.collections.ArrayList
 
 class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
     RecyclerView.Adapter<FontRecyclerAdapter.ViewHolder>() {
@@ -82,11 +81,11 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
             */
 
             when (font.type) {
-                1 -> binding.imageView2.setImageResource(R.drawable.gota_1)
-                2 -> binding.imageView2.setImageResource(R.drawable.gota_2)
-                3 -> binding.imageView2.setImageResource(R.drawable.gota_3)
-                4 -> binding.imageView2.setImageResource(R.drawable.gota_4)
-                5 -> binding.imageView2.setImageResource(R.drawable.gota_5)
+                1 -> binding.imgFontType.setImageResource(R.drawable.gota_1)
+                2 -> binding.imgFontType.setImageResource(R.drawable.gota_2)
+                3 -> binding.imgFontType.setImageResource(R.drawable.gota_3)
+                4 -> binding.imgFontType.setImageResource(R.drawable.gota_4)
+                5 -> binding.imgFontType.setImageResource(R.drawable.gota_5)
             }
         }
 
@@ -99,10 +98,10 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
                     .load(url.toString())
                     .centerInside()
                     .error(R.drawable.ic_noimage)
-                    .into(binding.imageView2)
+                    .into(binding.imgFontType)
 
             }.addOnFailureListener {
-                binding.imageView2.setImageResource(R.drawable.ic_noimage)
+                binding.imgFontType.setImageResource(R.drawable.ic_noimage)
             }
         }
 
@@ -117,10 +116,10 @@ class FontRecyclerAdapter(var fonts: ArrayList<Font>) :
                     .load(url.toString())
                     .centerInside()
                     .error(R.drawable.ic_noimage)
-                    .into(binding.imageView)
+                    .into(binding.imgFontItem)
 
             }.addOnFailureListener {
-                binding.imageView.setImageResource(R.drawable.ic_noimage)
+                binding.imgFontItem.setImageResource(R.drawable.ic_noimage)
             }
         }
     }

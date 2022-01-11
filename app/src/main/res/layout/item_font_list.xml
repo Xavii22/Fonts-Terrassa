@@ -28,7 +28,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/img_font_item"
                     android:layout_width="56dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="15dp"
@@ -48,7 +48,7 @@
                     android:maxWidth="200dp"
                     android:textColor="@color/textColor"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/img_font_item"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:gravity="center_vertical"
                     android:maxWidth="200dp"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/img_font_item"
                     app:layout_constraintTop_toBottomOf="@+id/txt_font" />
 
                 <ImageView
@@ -89,7 +89,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/btnDeleteFont" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/img_font_type"
                     android:layout_width="49dp"
                     android:layout_height="49dp"
                     android:layout_marginEnd="20dp"
