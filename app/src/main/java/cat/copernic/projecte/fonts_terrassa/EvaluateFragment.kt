@@ -1,11 +1,11 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentEvaluateBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -17,7 +17,7 @@ class EvaluateFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
 
         val binding: FragmentEvaluateBinding = DataBindingUtil.inflate(
@@ -155,7 +155,9 @@ class EvaluateFragment : Fragment() {
             binding.starTransperenciaVal5.setImageResource(R.drawable.ic_starcomplete)
         }
 
+        //Boto enviar valoracions seleccionades a la base de dades
         binding.btnEvaluate.setOnClickListener {
+            //Comprovar si s'han evaluat els 3 camps
             if (gustValue != 0 || olorValue != 0 || transperenciaValue != 0) {
                 //Send values to DB
                 db.collection("valoracions").document()
