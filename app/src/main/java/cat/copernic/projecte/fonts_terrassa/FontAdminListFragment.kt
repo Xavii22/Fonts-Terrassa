@@ -16,9 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.ViewModel.ListAdminViewModel
 import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
-import cat.copernic.projecte.fonts_terrassa.adapters.FontRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
-import cat.copernic.projecte.fonts_terrassa.models.Font
 import cat.copernic.projecte.fonts_terrassa.models.FontAdmin
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -46,14 +44,17 @@ class FontAdminListFragment : Fragment() {
             inflater, R.layout.fragment_font_admin_list, container, false
         )
 
-        fontsArray = arrayOf(resources.getString(R.string.fonts_boca), resources.getString(R.string.fonts_boca_singulars),
-            resources.getString(R.string.fonts_ornamentals), resources.getString(R.string.fonts_naturals),
+        fontsArray = arrayOf(resources.getString(R.string.fonts_boca),
+            resources.getString(R.string.fonts_boca_singulars),
+            resources.getString(R.string.fonts_ornamentals),
+            resources.getString(R.string.fonts_naturals),
             resources.getString(R.string.fonts_gossos))
 
         txtBuscar = binding.svFonts
-        imageView = binding.imageView
+        imageView = binding.imageViewFilter
         selectedFont = BooleanArray(fontsArray.size)
 
+        //Posem el menu de filtres amb totes les opcions seleccionades
         for (j in 0..4) {
             selectedFont[j] = true
         }
@@ -97,6 +98,10 @@ class FontAdminListFragment : Fragment() {
 
             }
 
+            /**
+             * Funció que li fem "override" a la funció pare per re-filtrar les fonts
+             * un cop es selecciona un item al filtre.
+             */
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -135,6 +140,9 @@ class FontAdminListFragment : Fragment() {
         super.onResume()
     }
 
+    /**
+     * Funció que inicialitza el RecyclerView
+     */
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecyclerView() {
         fonts = ViewModel.getFonts()
@@ -146,6 +154,9 @@ class FontAdminListFragment : Fragment() {
         binding.svFonts.isSubmitButtonEnabled = true
     }
 
+    /**
+     * Funció per al buscador on es crida la funció search quan canvia el text del buscardor fer fer la cerca.
+     */
     private fun performSearch() {
         binding.svFonts.setOnQueryTextListener(object :
             android.widget.SearchView.OnQueryTextListener {
@@ -161,6 +172,10 @@ class FontAdminListFragment : Fragment() {
         })
     }
 
+    /**
+     * Funció que cridem un cop es busca algo al buscador i fa la consulta a ala base de dades per
+     * tornar a mostrar-les filtrant per les paraules que s'han buscar al buscador.
+     */
     private fun search(text: String?) {
         matchedFonts = arrayListOf()
         fonts.clear()
@@ -193,6 +208,10 @@ class FontAdminListFragment : Fragment() {
         }
     }
 
+
+    /**
+     * Funció que actualitza els resultats al ViewModel a partir de borrar i actualitzar les llistes.
+     */
     private fun updateRecyclerView() {
         binding.rvFonts.apply {
             fontAdapter.fontsAdmin.clear()
