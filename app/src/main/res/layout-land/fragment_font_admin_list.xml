@@ -62,7 +62,7 @@
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/imageViewFilter"
                         android:layout_width="61dp"
                         android:layout_height="57dp"
                         android:layout_centerInParent="true"
@@ -88,7 +88,7 @@
                         android:goIcon="@null"
                         android:fontFamily="@font/montserrat"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView"
+                        app:layout_constraintEnd_toStartOf="@+id/imageViewFilter"
                         app:layout_constraintHorizontal_bias="0.625"
                         app:layout_constraintStart_toEndOf="@+id/spinner_order"
                         app:layout_constraintTop_toTopOf="parent"

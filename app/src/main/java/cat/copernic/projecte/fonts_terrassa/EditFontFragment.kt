@@ -5,9 +5,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,23 +31,15 @@ class EditFontFragment : Fragment() {
     private lateinit var imageView: ImageView
     private lateinit var storageRef: StorageReference
     private lateinit var binding: FragmentEditFontBinding
-    private var latestTmpUri: Uri? = null
-    private val takeImageResult =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-            if (isSuccess) {
-                latestTmpUri?.let { uri ->
-                    binding.imgFont.setImageURI(uri)
-                }
-            }
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_font, container, false)
 
+        //Introduim les dades als camps que ho necesiten
         binding.inputIdFont.setText(arguments?.getString("id_font"))
         binding.txtNomFont.setText(arguments?.getString("font_name"))
         oldFontId = binding.inputIdFont.text.toString()
@@ -81,22 +71,25 @@ class EditFontFragment : Fragment() {
             }
         }
 
+        //Definim imgFont com a imageView
         imageView = binding.imgFont
         storageRef = FirebaseStorage.getInstance().reference
 
-        binding.btnUpload?.setOnClickListener {
+        //Click al botó de pujar imatge
+        binding.btnUpload.setOnClickListener {
             openGallery()
         }
 
-        binding.btnBack?.setOnClickListener {
+        //Click al botó de tornat endarrera
+        binding.btnBack.setOnClickListener {
             findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToFontAdminListFragment())
         }
 
-        binding?.btnRemoveImg?.setOnClickListener {
+        //Click al botó de borrar imatge
+        binding.btnRemoveImg.setOnClickListener {
             //Delete Image
             if (hasImage) {
-                deleteImage(binding?.inputIdFont?.text.toString())
-                Log.d("msg", "arriba4")
+                deleteImage(binding.inputIdFont.text.toString())
                 hasImage = false
                 Snackbar.make(
                     binding.frameLayout,
@@ -104,9 +97,9 @@ class EditFontFragment : Fragment() {
                     BaseTransientBottomBar.LENGTH_SHORT
                 ).show()
             }
-            Log.d("msg", "arriba5")
         }
 
+        //Selecció de fonts gràfica
         binding.btnTypeSel1.setOnClickListener {
             myFontType = 1
             binding.btnTypeSel1.setImageResource(R.drawable.gota_1_selected)
@@ -148,6 +141,7 @@ class EditFontFragment : Fragment() {
             binding.btnTypeSel5.setImageResource(R.drawable.gota_5_selected)
         }
 
+        //Botó guardar canvis
         binding.btnSave.setOnClickListener {
             //Save font data
             if (binding.txtNomFont.text.isNotEmpty() && binding.editLat.text.isNotEmpty() && binding.editLon.text.isNotEmpty() && myFontType != 0) {
@@ -207,30 +201,27 @@ class EditFontFragment : Fragment() {
         return binding.root
     }
 
-    private fun showAlertIdExist() {
-        val objectAlerDialog = AlertDialog.Builder(context)
-        objectAlerDialog.setTitle(R.string.error)
-        objectAlerDialog.setMessage(R.string.id_font_existeix)
-        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
-        var alertDialog: AlertDialog = objectAlerDialog.create()
-        alertDialog.show()
-    }
-
+    /**
+     * Funció que mostra error si no s'han completat els camps obligatoris per la creació de la font
+     */
     private fun showBlankFields() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle(R.string.error)
         objectAlerDialog.setMessage(R.string.camps_no_omplerts)
         objectAlerDialog.setPositiveButton(R.string.acceptar, null)
-        var alertDialog: AlertDialog = objectAlerDialog.create()
+        val alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
 
+    /**
+     * Funció que mostra l'imatge de la galeria al imageVIew (imgFont)
+     */
     private val startForActivityGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data?.data
-            binding?.imgFont?.setImageURI(data)
+            binding.imgFont.setImageURI(data)
             hasImage = true
             Snackbar.make(
                 binding.frameLayout,
@@ -240,16 +231,20 @@ class EditFontFragment : Fragment() {
         }
     }
 
+    /**
+     * Funció que obre la galeria per poder seleccionar una imatge
+     */
     private fun openGallery() {
-        val intent: Intent? = Intent(Intent.ACTION_PICK)
-        if (intent != null) {
-            intent.type = "image/*"
-        }
-        startForActivityGallery?.launch(intent)
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startForActivityGallery.launch(intent)
     }
 
+    /**
+     * Funció que puja imatges al Firestore Storage
+     */
     private fun pujarImatge(fontId: String?) {
-        val imgPath = "images/" + fontId + ".jpg"
+        val imgPath = "images/$fontId.jpg"
         val pathReference = storageRef.child(imgPath)
         val bitmap: Bitmap? = (imageView.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
@@ -264,8 +259,11 @@ class EditFontFragment : Fragment() {
         }
     }
 
+    /**
+     * FUnció que descarrega imatges del FIrebase Storage al imageView
+     */
     private fun descarregarImatgeGlide(fontId: String?) {
-        val imgPath = "images/" + fontId + ".jpg"
+        val imgPath = "images/$fontId.jpg"
         val imageRef = storageRef.child(imgPath)
         imageRef.downloadUrl.addOnSuccessListener { url ->
 
@@ -283,22 +281,25 @@ class EditFontFragment : Fragment() {
         }
     }
 
+    /**
+     * Funció que borra l'imatge de Firebase Storage i posa com a imatge image = no_image al imageView
+     */
     private fun deleteImage(fontId: String?) {
-        val imgPath = "images/" + fontId + ".jpg"
+        val imgPath = "images/$fontId.jpg"
         val imageRef = storageRef.child(imgPath)
-        Log.d("msg", "arriba1")
         imageRef.delete().addOnSuccessListener {
             // File deleted successfully
         }.addOnFailureListener {
             // Filed to remove the image
         }
-        Log.d("msg", "arriba2")
         binding.imgFont.setImageResource(R.drawable.ic_noimage)
-        Log.d("msg", "arriba3")
     }
 
+    /**
+     * Funció que borra l'imatge de Firebase Storage sense tocar l'imageView
+     */
     private fun deleteImageBeforeUploading(fontId: String) {
-        val imgPath = "images/" + fontId + ".jpg"
+        val imgPath = "images/$fontId.jpg"
         val imageRef = storageRef.child(imgPath)
         imageRef.delete().addOnSuccessListener {
             // File deleted successfully

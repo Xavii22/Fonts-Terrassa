@@ -17,7 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) : RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
+class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
+    RecyclerView.Adapter<FontAdminRecyclerAdapter.ViewHolder>() {
     var context: Context? = null
     private val db = FirebaseFirestore.getInstance()
 
@@ -61,7 +62,9 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) : RecyclerV
                             fontsAdmin.removeAt(position)
                             notifyDataSetChanged()
                         }.addOnFailureListener { e ->
-                            Toast.makeText(context, R.string.error_eliminar_font, Toast.LENGTH_SHORT)
+                            Toast.makeText(context,
+                                R.string.error_eliminar_font,
+                                Toast.LENGTH_SHORT)
                                 .show()
                         }
                     fontsAdmin[position].fontId?.let { it1 -> deleteImage(it1) }
@@ -103,11 +106,11 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) : RecyclerV
             binding.txtFont.text = font.name.trim()
 
             when (font.type) {
-                1 -> binding.imageView2.setImageResource(R.drawable.gota_1)
-                2 -> binding.imageView2.setImageResource(R.drawable.gota_2)
-                3 -> binding.imageView2.setImageResource(R.drawable.gota_3)
-                4 -> binding.imageView2.setImageResource(R.drawable.gota_4)
-                5 -> binding.imageView2.setImageResource(R.drawable.gota_5)
+                1 -> binding.imgFontType.setImageResource(R.drawable.gota_1)
+                2 -> binding.imgFontType.setImageResource(R.drawable.gota_2)
+                3 -> binding.imgFontType.setImageResource(R.drawable.gota_3)
+                4 -> binding.imgFontType.setImageResource(R.drawable.gota_4)
+                5 -> binding.imgFontType.setImageResource(R.drawable.gota_5)
             }
         }
 
@@ -120,10 +123,10 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) : RecyclerV
                     .load(url.toString())
                     .centerInside()
                     .error(R.drawable.ic_noimage)
-                    .into(binding.imageView2)
+                    .into(binding.imgFontType)
 
             }.addOnFailureListener {
-                binding.imageView2.setImageResource(R.drawable.ic_noimage)
+                binding.imgFontType.setImageResource(R.drawable.ic_noimage)
             }
         }
 
@@ -138,10 +141,10 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) : RecyclerV
                     .load(url.toString())
                     .centerInside()
                     .error(R.drawable.ic_noimage)
-                    .into(binding.imageView)
+                    .into(binding.imgFontItem)
 
             }.addOnFailureListener {
-                binding.imageView.setImageResource(R.drawable.ic_noimage)
+                binding.imgFontItem.setImageResource(R.drawable.ic_noimage)
             }
         }
 
