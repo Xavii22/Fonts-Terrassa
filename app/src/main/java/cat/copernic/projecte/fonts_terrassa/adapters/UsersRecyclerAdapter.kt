@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.projecte.fonts_terrassa.R
 import cat.copernic.projecte.fonts_terrassa.databinding.ItemUserListBinding
@@ -18,13 +17,17 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
     lateinit var context: Context
     private val db = FirebaseFirestore.getInstance()
 
-    //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
+    /**
+     * Constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà.
+     */
     fun UsersRecyclerAdapter(usersList: MutableList<User>, contxt: Context) {
         this.users = usersList
         this.context = contxt
     }
 
-    //és l'encarregat de retornar el ViewHolder ja configurat
+    /**
+     * És l'encarregat de retornar el ViewHolder ja configurat.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(
@@ -34,10 +37,15 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
         )
     }
 
-    //Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat
+    /**
+     * Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val hexColorActive = "#${Integer.toHexString(ContextCompat.getColor(context, R.color.activeUser))}"
-        val hexColorInactive = "#${Integer.toHexString(ContextCompat.getColor(context, R.color.inactiveUser))}"
+        val hexColorActive =
+            "#${Integer.toHexString(ContextCompat.getColor(context, R.color.activeUser))}"
+        val hexColorInactive =
+            "#${Integer.toHexString(ContextCompat.getColor(context, R.color.inactiveUser))}"
+        //Per a cada "holder" que tenim li posem l'imatge que coicideix amb l'Id de la base de dades
         with(holder) {
             with(users[position]) {
                 db.collection("users")
@@ -47,11 +55,13 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                             if (document.get("email").toString() == users[position].email) {
                                 if (document.get("active").toString().toBoolean()) {
                                     binding.txtUser.text = this.email
-                                    binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorActive))
+                                    binding.cardViewUser.setCardBackgroundColor(Color.parseColor(
+                                        hexColorActive))
                                 } else {
                                     binding.txtUser.text = this.email
                                     binding.btnDelete.setImageResource(R.drawable.ic_person_add)
-                                    binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorInactive))
+                                    binding.cardViewUser.setCardBackgroundColor(Color.parseColor(
+                                        hexColorInactive))
                                 }
                             }
                         }
@@ -62,10 +72,14 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                 .get()
                                 .addOnSuccessListener { documents ->
                                     for (document in documents) {
-                                        if (document.get("email").toString() == users[position].email) {
+                                        if (document.get("email")
+                                                .toString() == users[position].email
+                                        ) {
                                             if (document.get("active").toString().toBoolean()) {
-                                                db.collection("users").document(users[position].email).delete()
-                                                db.collection("users").document(users[position].email)
+                                                db.collection("users")
+                                                    .document(users[position].email).delete()
+                                                db.collection("users")
+                                                    .document(users[position].email)
                                                     .set(
                                                         hashMapOf(
                                                             "email" to users[position].email,
@@ -74,10 +88,13 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                                     )
                                                 binding.txtUser.text = this.email
                                                 binding.btnDelete.setImageResource(R.drawable.ic_person_add)
-                                                binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorInactive))
+                                                binding.cardViewUser.setCardBackgroundColor(Color.parseColor(
+                                                    hexColorInactive))
                                             } else {
-                                                db.collection("users").document(users[position].email).delete()
-                                                db.collection("users").document(users[position].email)
+                                                db.collection("users")
+                                                    .document(users[position].email).delete()
+                                                db.collection("users")
+                                                    .document(users[position].email)
                                                     .set(
                                                         hashMapOf(
                                                             "email" to users[position].email,
@@ -86,7 +103,8 @@ class UsersRecyclerAdapter : RecyclerView.Adapter<UsersRecyclerAdapter.ViewHolde
                                                     )
                                                 binding.txtUser.text = this.email
                                                 binding.btnDelete.setImageResource(R.drawable.ic_person_remove)
-                                                binding.cardViewUser.setCardBackgroundColor(Color.parseColor(hexColorActive))
+                                                binding.cardViewUser.setCardBackgroundColor(Color.parseColor(
+                                                    hexColorActive))
                                             }
                                         }
                                     }

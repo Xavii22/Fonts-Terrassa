@@ -22,13 +22,17 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
     var context: Context? = null
     private val db = FirebaseFirestore.getInstance()
 
-    //constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà
+    /**
+     * Constructor de la classe on es passa la font de dades i el context sobre el que es mostrarà.
+     */
     fun fontsAdminRecyclerAdapter(fontsList: ArrayList<FontAdmin>, contxt: Context) {
         this.fontsAdmin = fontsList
         this.context = contxt
     }
 
-    //és l'encarregat de retornar el ViewHolder ja configurat
+    /**
+     * És l'encarregat de retornar el ViewHolder ja configurat.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(
@@ -38,14 +42,18 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
         )
     }
 
+    /**
+     * Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+        //Per a cada "holder" que tenim li posem l'imatge que coicideix amb l'Id de la base de dades
         with(holder) {
             with(fontsAdmin[position]) {
                 binding.txtFont.text = this.fontName
                 this.fontId?.let { context?.let { it1 -> descarregarImatgeGlide(it1, it) } }
             }
-            //Listener Delete Button
+            //Listener Delete Button per borrar la font, on hi borrarerm totes les seves dades de la base de dades.
             holder.itemView.findViewById<ImageView>(R.id.btnDeleteFont).setOnClickListener {
                 val objectAlerDialog = AlertDialog.Builder(context)
                 objectAlerDialog.setTitle(R.string.atencio)
@@ -99,12 +107,16 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
         return fontsAdmin.size
     }
 
+    /**
+     * Classe interna que ens permet realitzar funcions amb el binding de l'item del holder.
+     */
     inner class ViewHolder(val binding: ItemFontListAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(font: FontAdmin) {
             binding.txtFont.text = font.name.trim()
 
+            //Depenent del fontType canviem l'imatge del tipus de font
             when (font.type) {
                 1 -> binding.imgFontType.setImageResource(R.drawable.gota_1)
                 2 -> binding.imgFontType.setImageResource(R.drawable.gota_2)
@@ -114,24 +126,17 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
             }
         }
 
-        fun descarregarImatgeGlide2(view: Context, fontId: String) {
-            val imgPath = fontId + ".png"
-            val imageRef = storageRef.child(imgPath)
-            imageRef.downloadUrl.addOnSuccessListener { url ->
-
-                Glide.with(view)
-                    .load(url.toString())
-                    .centerInside()
-                    .error(R.drawable.ic_noimage)
-                    .into(binding.imgFontType)
-
-            }.addOnFailureListener {
-                binding.imgFontType.setImageResource(R.drawable.ic_noimage)
-            }
-        }
-
+        /**
+         * Creem l'instancia de l'StorageRef
+         */
         private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
 
+        /**
+         * Per agafar i descarregar les imatges de FirebaseStorage.
+         * Passem com a parametre:
+         *      - El context, tipus view
+         *      - Id de la font, tipus String
+         */
         fun descarregarImatgeGlide(view: Context, fontId: String) {
             val imgPath = "images/" + fontId + ".jpg"
             val imageRef = storageRef.child(imgPath)
@@ -148,6 +153,11 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
             }
         }
 
+        /**
+         * Per borrar imatges de FirebaseStorage.
+         * Passem com a parametre
+         *      - Id de la font, tipus String
+         */
         fun deleteImage(fontId: String) {
             val imgPath = "images/" + fontId + ".jpg"
             val imageRef = storageRef.child(imgPath)
