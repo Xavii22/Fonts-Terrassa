@@ -24,6 +24,7 @@ class UsersAdminListFragment : Fragment() {
             inflater, R.layout.fragment_users_admin_list, container, false
         )
 
+        //Crida a una funció del ViewModel amb la finalitat d'obtenir la llista d'usuaris.
         ViewModel.getUsers(binding, requireContext())
 
         return binding.root

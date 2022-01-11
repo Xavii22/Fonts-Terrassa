@@ -29,13 +29,13 @@ class ListFragment : Fragment() {
     private var matchedFonts: ArrayList<Font> = arrayListOf()
     private var fontAdapter: FontRecyclerAdapter = FontRecyclerAdapter(fonts)
     private val db = FirebaseFirestore.getInstance()
-
     private lateinit var binding: FragmentListBinding
-    private val ViewModel: ListViewModel by viewModels()
+    private val viewModel: ListViewModel by viewModels()
     private var fontsArray = arrayOf<String>()
     lateinit var imageView: ImageView
-    lateinit var selectedFont: BooleanArray
+    private lateinit var selectedFont: BooleanArray
     private var fontList: ArrayList<Int> = ArrayList()
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,14 +62,14 @@ class ListFragment : Fragment() {
         }
 
         performSearch()
-        ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
+        viewModel.filterFontsByType(binding, requireContext(), selectedFont)
 
         imageView.setOnClickListener {
             fontList.clear()
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.seleccionar_tipus_font)
 
-            ViewModel.clearFontsByType(binding, requireContext())
+            viewModel.clearFontsByType(binding, requireContext())
             builder.setCancelable(false)
             builder.setMultiChoiceItems(
                 fontsArray, selectedFont
@@ -79,17 +79,19 @@ class ListFragment : Fragment() {
             builder.setPositiveButton(
                 R.string.acceptar
             ) { _, _ ->
-                ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
+                viewModel.filterFontsByType(binding, requireContext(), selectedFont)
             }
             builder.setNeutralButton(
                 R.string.seleccionar_tot
             ) { _, _ ->
                 selectedFont.fill(true, 0)
-                ViewModel.filterFontsByType(binding, requireContext(), selectedFont)
+                viewModel.filterFontsByType(binding, requireContext(), selectedFont)
             }
             builder.show()
         }
 
+        //Aquest listener s'encarrega de cridar els mètodes necessaris per ordenar el llistat de
+        //fonts del Recyclerview.
         binding.spinnerOrder.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -103,15 +105,15 @@ class ListFragment : Fragment() {
             ) {
                 when (binding.spinnerOrder.selectedItem.toString()) {
                     resources.getString(R.string.nom_asc) ->
-                        ViewModel.sortFontNameASC(binding, requireContext())
+                        viewModel.sortFontNameASC(binding, requireContext())
                     resources.getString(R.string.nom_desc) ->
-                        ViewModel.sortFontNameDESC(binding, requireContext())
+                        viewModel.sortFontNameDESC(binding, requireContext())
                     resources.getString(R.string.distancia_asc) ->
-                        ViewModel.sortFontLocationASC(binding, requireContext())
+                        viewModel.sortFontLocationASC(binding, requireContext())
                     resources.getString(R.string.distancia_desc) ->
-                        ViewModel.sortFontLocationDESC(binding, requireContext())
+                        viewModel.sortFontLocationDESC(binding, requireContext())
                     resources.getString(R.string.tipus) ->
-                        ViewModel.sortFontTypeASC(binding, requireContext())
+                        viewModel.sortFontTypeASC(binding, requireContext())
                 }
             }
         }
@@ -126,7 +128,7 @@ class ListFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        fonts = ViewModel.getFonts()
+        fonts = viewModel.getFonts()
 
         fontAdapter = FontRecyclerAdapter(fonts).also {
             binding.rvFonts.adapter = it
@@ -150,7 +152,10 @@ class ListFragment : Fragment() {
         })
     }
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    /**
+     * Aquest mètode té la funcionalitat de realitzar un filtre dels elements del Recyclerview
+     * a l'escriure dins del Searchview del fragment.
+     */
     private fun search(text: String?) {
         matchedFonts = arrayListOf()
         fonts.clear()
@@ -206,11 +211,14 @@ class ListFragment : Fragment() {
             }
     }
 
+    /**
+     * Mètode encarregat d'actualitzar els elements del Recycclerview a l'utilitzar la búsqueda.
+     */
     private fun updateRecyclerView() {
         binding.rvFonts.apply {
             fontAdapter.fonts.clear()
             fontAdapter.fonts.addAll(matchedFonts)
-            ViewModel.sortFontNameASC(binding, requireContext())
+            viewModel.sortFontNameASC(binding, requireContext())
             fontAdapter.notifyDataSetChanged()
         }
     }
