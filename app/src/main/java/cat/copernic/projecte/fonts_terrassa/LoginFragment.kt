@@ -1,7 +1,6 @@
 package cat.copernic.projecte.fonts_terrassa
 
 import android.app.AlertDialog
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class Login2Fragment : Fragment() {
@@ -38,6 +36,9 @@ class Login2Fragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Aquesta funció permet l'accés dels usuaris a partir de vàries comprobacions.
+     */
     private fun setup() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -49,7 +50,7 @@ class Login2Fragment : Fragment() {
                     binding.emailEditText.text.toString(), binding.passwordEditText.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        crearCorrutina()
+                        corrutinaLogin()
                     } else {
                         showAlertIncorrect()
                     }
@@ -80,7 +81,11 @@ class Login2Fragment : Fragment() {
         findNavController().navigate(Login2FragmentDirections.actionLoginFragmentToAdminFragment())
     }
 
-    private fun crearCorrutina() =
+    /**
+     * Aquesta corrutina es connecta a Firebase per comprobar si les dades introduides per l'usuari
+     * son correctes.
+     */
+    private fun corrutinaLogin() =
         GlobalScope.launch(
             Dispatchers.Main
         ) {
