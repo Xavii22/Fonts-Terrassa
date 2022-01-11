@@ -250,13 +250,13 @@ class EditFontFragment : Fragment() {
 
     private fun pujarImatge(fontId: String?) {
         val imgPath = "images/" + fontId + ".jpg"
-        val pathReference = storageRef?.child(imgPath)
-        val bitmap: Bitmap? = (imageView?.drawable as BitmapDrawable)?.bitmap
+        val pathReference = storageRef.child(imgPath)
+        val bitmap: Bitmap? = (imageView.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos?.toByteArray()
+        val data = baos.toByteArray()
 
-        val uploadTask = pathReference?.putBytes(data)
+        val uploadTask = pathReference.putBytes(data)
         uploadTask.addOnFailureListener {
             //Error al pujar
         }.addOnSuccessListener {
@@ -266,8 +266,8 @@ class EditFontFragment : Fragment() {
 
     private fun descarregarImatgeGlide(fontId: String?) {
         val imgPath = "images/" + fontId + ".jpg"
-        val imageRef = storageRef?.child(imgPath)
-        imageRef?.downloadUrl?.addOnSuccessListener { url ->
+        val imageRef = storageRef.child(imgPath)
+        imageRef.downloadUrl.addOnSuccessListener { url ->
 
             Glide.with(this)
                 .load(url.toString())
@@ -278,29 +278,29 @@ class EditFontFragment : Fragment() {
             hasImage = true
 
         }.addOnFailureListener {
-            binding.imgFont?.setImageResource(R.drawable.ic_noimage)
+            binding.imgFont.setImageResource(R.drawable.ic_noimage)
             hasImage = false
         }
     }
 
     private fun deleteImage(fontId: String?) {
         val imgPath = "images/" + fontId + ".jpg"
-        val imageRef = storageRef?.child(imgPath)
+        val imageRef = storageRef.child(imgPath)
         Log.d("msg", "arriba1")
-        imageRef?.delete()?.addOnSuccessListener {
+        imageRef.delete().addOnSuccessListener {
             // File deleted successfully
         }.addOnFailureListener {
             // Filed to remove the image
         }
         Log.d("msg", "arriba2")
-        binding?.imgFont?.setImageResource(R.drawable.ic_noimage)
+        binding.imgFont.setImageResource(R.drawable.ic_noimage)
         Log.d("msg", "arriba3")
     }
 
     private fun deleteImageBeforeUploading(fontId: String) {
         val imgPath = "images/" + fontId + ".jpg"
-        val imageRef = storageRef?.child(imgPath)
-        imageRef?.delete().addOnSuccessListener {
+        val imageRef = storageRef.child(imgPath)
+        imageRef.delete().addOnSuccessListener {
             // File deleted successfully
         }.addOnFailureListener {
             // Filed to remove the image

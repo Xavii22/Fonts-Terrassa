@@ -64,12 +64,32 @@ class viewFontFragment : Fragment() {
                     if (fontId == document.get("id").toString()) {
                         binding.txtNomFont.text = document.get("name").toString()
                         binding.txtInformacio.text = document.get("info").toString()
-                        when(document.get("type")){
-                            1 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca)
-                            2 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca_singulars)
-                            3 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_ornamentals)
-                            4 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_naturals)
-                            5 -> binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_gossos)
+                        when(document.get("type").toString().toInt()){
+                            1 -> {
+                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca)
+                                binding.imgFontType?.visibility = View.VISIBLE
+                                binding.imgFontType?.setImageResource(R.drawable.gota_1)
+                            }
+                            2 -> {
+                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca_singulars)
+                                binding.imgFontType?.visibility = View.VISIBLE
+                                binding.imgFontType?.setImageResource(R.drawable.gota_2)
+                            }
+                            3 -> {
+                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_ornamentals)
+                                binding.imgFontType?.visibility = View.VISIBLE
+                                binding.imgFontType?.setImageResource(R.drawable.gota_3)
+                            }
+                            4 -> {
+                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_naturals)
+                                binding.imgFontType?.visibility = View.VISIBLE
+                                binding.imgFontType?.setImageResource(R.drawable.gota_4)
+                            }
+                            5 -> {
+                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_gossos)
+                                binding.imgFontType?.visibility = View.VISIBLE
+                                binding.imgFontType?.setImageResource(R.drawable.gota_5)
+                            }
                         }
                         binding.btnGoToMaps.setOnClickListener {
                             val latitude = document.get("lat").toString().toDouble()

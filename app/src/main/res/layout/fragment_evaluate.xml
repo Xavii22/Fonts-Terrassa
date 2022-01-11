@@ -23,12 +23,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/btnBack"
-            style="@style/btnBackStyle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
             android:id="@+id/star_transperencia_val5"
             android:layout_width="43dp"
             android:layout_height="38dp"
