@@ -8,22 +8,22 @@
     tools:context=".InfoBeureFragment">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txt_titol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="157dp"
         android:layout_marginTop="54dp"
         android:layout_marginEnd="157dp"
-        android:text="@string/fonts_boca_singulars"
-        android:textSize="24sp"
-        android:textColor="@color/textColor"
         android:fontFamily="@font/montserrat"
+        android:text="@string/fonts_boca_singulars"
+        android:textColor="@color/textColor"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txt_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
@@ -36,5 +36,6 @@
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_titol"
+        tools:targetApi="o" />
 </androidx.constraintlayout.widget.ConstraintLayout>
