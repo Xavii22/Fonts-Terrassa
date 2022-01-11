@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.fragment_view_font.*
 
 class viewFontFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
@@ -23,8 +22,8 @@ class viewFontFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+    ): View {
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_view_font, container, false
@@ -54,31 +53,36 @@ class viewFontFragment : Fragment() {
                     if (fontId == document.get("id").toString()) {
                         binding.txtNomFont.text = document.get("name").toString()
                         binding.txtInformacio.text = document.get("info").toString()
-                        when(document.get("type").toString().toInt()){
+                        when (document.get("type").toString().toInt()) {
                             1 -> {
-                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca)
-                                binding.imgFontType?.visibility = View.VISIBLE
-                                binding.imgFontType?.setImageResource(R.drawable.gota_1)
+                                binding.tipusFontTxt.text =
+                                    requireContext().getText(R.string.fonts_boca)
+                                binding.imgFontType.visibility = View.VISIBLE
+                                binding.imgFontType.setImageResource(R.drawable.gota_1)
                             }
                             2 -> {
-                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_boca_singulars)
-                                binding.imgFontType?.visibility = View.VISIBLE
-                                binding.imgFontType?.setImageResource(R.drawable.gota_2)
+                                binding.tipusFontTxt.text =
+                                    requireContext().getText(R.string.fonts_boca_singulars)
+                                binding.imgFontType.visibility = View.VISIBLE
+                                binding.imgFontType.setImageResource(R.drawable.gota_2)
                             }
                             3 -> {
-                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_ornamentals)
-                                binding.imgFontType?.visibility = View.VISIBLE
-                                binding.imgFontType?.setImageResource(R.drawable.gota_3)
+                                binding.tipusFontTxt.text =
+                                    requireContext().getText(R.string.fonts_ornamentals)
+                                binding.imgFontType.visibility = View.VISIBLE
+                                binding.imgFontType.setImageResource(R.drawable.gota_3)
                             }
                             4 -> {
-                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_naturals)
-                                binding.imgFontType?.visibility = View.VISIBLE
-                                binding.imgFontType?.setImageResource(R.drawable.gota_4)
+                                binding.tipusFontTxt.text =
+                                    requireContext().getText(R.string.fonts_naturals)
+                                binding.imgFontType.visibility = View.VISIBLE
+                                binding.imgFontType.setImageResource(R.drawable.gota_4)
                             }
                             5 -> {
-                                binding.tipusFontTxt.text = requireContext().getText(R.string.fonts_gossos)
-                                binding.imgFontType?.visibility = View.VISIBLE
-                                binding.imgFontType?.setImageResource(R.drawable.gota_5)
+                                binding.tipusFontTxt.text =
+                                    requireContext().getText(R.string.fonts_gossos)
+                                binding.imgFontType.visibility = View.VISIBLE
+                                binding.imgFontType.setImageResource(R.drawable.gota_5)
                             }
                         }
                         binding.btnGoToMaps.setOnClickListener {
@@ -109,17 +113,17 @@ class viewFontFragment : Fragment() {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    if(document.get("font") == fontId){
+                    if (document.get("font") == fontId) {
                         contador++
                         gustTotal += document.get("gust").toString().toInt()
                         olorTotal += document.get("olor").toString().toInt()
                         transperenciaTotal += document.get("transperencia").toString().toInt()
                     }
                 }
-                if(contador != 0){
-                    setGustAvg(gustTotal/contador)
-                    setOlorAvg(olorTotal/contador)
-                    setTrasperenciaAvg(transperenciaTotal/contador)
+                if (contador != 0) {
+                    setGustAvg(gustTotal / contador)
+                    setOlorAvg(olorTotal / contador)
+                    setTrasperenciaAvg(transperenciaTotal / contador)
                 }
             }
 
@@ -131,8 +135,8 @@ class viewFontFragment : Fragment() {
     }
 
     /**
-    * Amb aquesta funció posem l'imatge emagatzemada a l'Storage al lloc que volem (imgFont)
-    */
+     * Amb aquesta funció posem l'imatge emagatzemada a l'Storage al lloc que volem (imgFont)
+     */
     private fun descarregarImatgeGlide(fontId: String) {
         val imgPath = "images/" + fontId + ".jpg"
         val imageRef = storageRef.child(imgPath)
@@ -151,11 +155,11 @@ class viewFontFragment : Fragment() {
     }
 
     /**
-    * Amb aquesta funció posem les estrelles a partir de la valoració mitjana del gust
-    */
-    private fun setGustAvg(gustAvg: Int){
-        when(gustAvg){
-            1 ->{
+     * Amb aquesta funció posem les estrelles a partir de la valoració mitjana del gust
+     */
+    private fun setGustAvg(gustAvg: Int) {
+        when (gustAvg) {
+            1 -> {
                 binding.starGust1.setImageResource(R.drawable.ic_starcomplete)
             }
             2 -> {
@@ -184,11 +188,11 @@ class viewFontFragment : Fragment() {
     }
 
     /**
-    * Amb aquesta funció posem les estrelles a partir de la valoració mitjana de l'olor
-    */
-    private fun setOlorAvg(olorAvg: Int){
-        when(olorAvg){
-            1 ->{
+     * Amb aquesta funció posem les estrelles a partir de la valoració mitjana de l'olor
+     */
+    private fun setOlorAvg(olorAvg: Int) {
+        when (olorAvg) {
+            1 -> {
                 binding.starOlor1.setImageResource(R.drawable.ic_starcomplete)
             }
             2 -> {
@@ -217,11 +221,11 @@ class viewFontFragment : Fragment() {
     }
 
     /**
-    * Amb aquesta funció posem les estrelles a partir de la valoració mitjana de la transperencia
-    */
-    private fun setTrasperenciaAvg(transperenciaAvg: Int){
-        when(transperenciaAvg){
-            1 ->{
+     * Amb aquesta funció posem les estrelles a partir de la valoració mitjana de la transperencia
+     */
+    private fun setTrasperenciaAvg(transperenciaAvg: Int) {
+        when (transperenciaAvg) {
+            1 -> {
                 binding.starTransperencia1.setImageResource(R.drawable.ic_starcomplete)
             }
             2 -> {
