@@ -118,4 +118,5 @@
     <string name="desc_notificacio">Administrador creat correctament</string>
     <string name="lat">lat</string>
     <string name="avalua_aigua">Avalua la qualitat de l\'aigüa</string>
+    <string name="min_caracters">La contrasenya ha de tenir com a mínim 6 caracters.</string>
 </resources>

@@ -28,6 +28,10 @@ class RecuperarFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Mètode el qual permet enviar un correu de recuperació de contrasenya al escriure un correu
+     * electrònic correcte.
+     */
     private fun setup() {
         binding.retrieveButton.setOnClickListener {
             val emailAddress = binding.emailEditText.text.toString()

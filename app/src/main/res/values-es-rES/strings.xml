@@ -118,4 +118,5 @@
     <string name="desc_notificacio">Administrador creado correctamente</string>
     <string name="lat">lat</string>
     <string name="avalua_aigua">Evalua la calidad del agua</string>
+    <string name="min_caracters">La contraseña ha de tener como mínimo 6 caracteres</string>
 </resources>

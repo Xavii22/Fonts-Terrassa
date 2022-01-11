@@ -46,57 +46,78 @@ class RegisterUserFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Funció encarregada de registrar usuaris amb correu electrònic i contrasenya.
+     */
     private fun setup() {
 
         binding.registerButton.setOnClickListener {
 
+            //Comprovació que ni el camp de correu electrònic ni el de contrasenya estiguin buits.
             if (binding.emailEditText.text.toString()
                     .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
                 && binding.repeatEditText.text.toString().isNotEmpty()
             ) {
-                if (binding.passwordEditText.text.toString() == binding.repeatEditText.text.toString()) {
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-                        binding.emailEditText.text.toString(),
-                        binding.passwordEditText.text.toString()
-                    ).addOnCompleteListener {
+                //Comprovació que la contrasenya tingui 6 caracters com a mínim.
+                if (binding.passwordEditText.text.toString().length > 5) {
+                    //Comprovació que els dos camps de contrasenya siguin iguals.
+                    if (binding.passwordEditText.text.toString() == binding.repeatEditText.text.toString()) {
+                        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                            binding.emailEditText.text.toString(),
+                            binding.passwordEditText.text.toString()
+                        ).addOnCompleteListener {
 
-                        if (it.isSuccessful) {
-                            creacioCanalNotificacio()
-                            db.collection("users").document(binding.emailEditText.text.toString())
-                                .set(
-                                    hashMapOf(
-                                        "email" to binding.emailEditText.text.toString(),
-                                        "active" to true
+                            if (it.isSuccessful) {
+                                creacioCanalNotificacio()
+                                db.collection("users")
+                                    .document(binding.emailEditText.text.toString())
+                                    .set(
+                                        hashMapOf(
+                                            "email" to binding.emailEditText.text.toString(),
+                                            "active" to true
+                                        )
                                     )
-                                )
-                            enviarNotificacio()
-                            showHome()
-                        } else {
-                            showAlertExist()
+                                enviarNotificacio()
+                                showHome()
+                            } else {
+                                showAlertExist()
+                            }
                         }
+                    } else {
+                        showAlertDifPass()
                     }
                 } else {
-                    showAlertDifPass()
+                    showAlertMin()
                 }
+
             }
         }
     }
 
+    private fun showAlertMin() {
+        val objectAlertDialog = android.app.AlertDialog.Builder(context)
+        objectAlertDialog.setTitle(R.string.error)
+        objectAlertDialog.setMessage(R.string.min_caracters)
+        objectAlertDialog.setPositiveButton(R.string.acceptar, null)
+        var alertDialog: android.app.AlertDialog = objectAlertDialog.create()
+        alertDialog.show()
+    }
+
     private fun showAlertExist() {
-        val objectAlerDialog = android.app.AlertDialog.Builder(context)
-        objectAlerDialog.setTitle(R.string.error)
-        objectAlerDialog.setMessage(R.string.correu_introduit)
-        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
-        var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
+        val objectAlertDialog = android.app.AlertDialog.Builder(context)
+        objectAlertDialog.setTitle(R.string.error)
+        objectAlertDialog.setMessage(R.string.correu_introduit)
+        objectAlertDialog.setPositiveButton(R.string.acceptar, null)
+        var alertDialog: android.app.AlertDialog = objectAlertDialog.create()
         alertDialog.show()
     }
 
     private fun showAlertDifPass() {
-        val objectAlerDialog = android.app.AlertDialog.Builder(context)
-        objectAlerDialog.setTitle(R.string.error)
-        objectAlerDialog.setMessage(R.string.contrasenya_no_igual)
-        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
-        var alertDialog: android.app.AlertDialog = objectAlerDialog.create()
+        val objectAlertDialog = android.app.AlertDialog.Builder(context)
+        objectAlertDialog.setTitle(R.string.error)
+        objectAlertDialog.setMessage(R.string.contrasenya_no_igual)
+        objectAlertDialog.setPositiveButton(R.string.acceptar, null)
+        var alertDialog: android.app.AlertDialog = objectAlertDialog.create()
         alertDialog.show()
     }
 
@@ -104,6 +125,10 @@ class RegisterUserFragment : Fragment() {
         findNavController().navigate(RegisterUserFragmentDirections.actionRegisterUserFragmentToAdminFragment())
     }
 
+    /**
+     * Aquesta funció s'encarrega de crear un canal de notificació, el qual és necessari per poder
+     * enviar notificacions.
+     */
     private fun creacioCanalNotificacio() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val nom = "Titol de la notificació"
@@ -118,6 +143,9 @@ class RegisterUserFragment : Fragment() {
         }
     }
 
+    /**
+     * Una notificació és enviada a l'usuari informant que l'usuari s'ha registrat correctament.
+     */
     private fun enviarNotificacio() {
         val resultIntent: Intent = Intent(context, RegisterUserFragment::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -138,7 +166,8 @@ class RegisterUserFragment : Fragment() {
         }
 
         if (mBuilder != null) {
-            context?.let { NotificationManagerCompat.from(it) }?.notify(notificacioId, mBuilder.build())
+            context?.let { NotificationManagerCompat.from(it) }
+                ?.notify(notificacioId, mBuilder.build())
         }
     }
 }
