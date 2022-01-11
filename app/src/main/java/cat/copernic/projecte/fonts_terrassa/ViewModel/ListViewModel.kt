@@ -17,9 +17,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ListViewModel : ViewModel() {
 
     private val myAdapter: FontRecyclerAdapter = FontRecyclerAdapter(arrayListOf())
-    private var fonts: ArrayList<Font> = arrayListOf() //ArrayList<Font> = arrayListOf() | MutableLiveData<Font> = MutableLiveData<Font>()
+    private var fonts: ArrayList<Font> = arrayListOf()
     private val db = FirebaseFirestore.getInstance()
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per nom ascendenment.
+     */
     fun sortFontNameASC(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -34,6 +37,9 @@ class ListViewModel : ViewModel() {
             }
     }
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per nom descendenment.
+     */
     fun sortFontNameDESC(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -48,6 +54,9 @@ class ListViewModel : ViewModel() {
             }
     }
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per distància ascendenment.
+     */
     fun sortFontLocationASC(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -62,6 +71,9 @@ class ListViewModel : ViewModel() {
             }
     }
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per distància descendenment.
+     */
     fun sortFontLocationDESC(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -76,6 +88,9 @@ class ListViewModel : ViewModel() {
             }
     }
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per tipus.
+     */
     fun sortFontTypeASC(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -92,6 +107,10 @@ class ListViewModel : ViewModel() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    /**
+     * Aquest mètode té la funcionalitat d'obtenir totes les fonts disponibles per afegir-les al
+     * Recyclerview del fragment corresponent.
+     */
     fun filterFontsByType(
         binding: FragmentListBinding,
         context: Context,
@@ -107,12 +126,15 @@ class ListViewModel : ViewModel() {
                     fontType = -1
             }
             fonts.clear()
+
+            //Aquesta sentència té la finalitat d'obtenir els elements desde Firebase.
             db.collection("fonts").whereEqualTo("type", fontType)
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
                         lateinit var myActualPos: Location
-                        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+                        fusedLocationClient =
+                            LocationServices.getFusedLocationProviderClient(context)
                         if (ActivityCompat.checkSelfPermission(
                                 context,
                                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -157,6 +179,9 @@ class ListViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Mètode el qual elimina tots els registres del Recyclerview.
+     */
     fun clearFontsByType(binding: FragmentListBinding, context: Context) {
         db.collection("fonts")
             .get()

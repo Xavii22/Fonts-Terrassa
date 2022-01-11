@@ -5,16 +5,18 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.projecte.fonts_terrassa.adapters.FontAdminRecyclerAdapter
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentFontAdminListBinding
-import cat.copernic.projecte.fonts_terrassa.models.Font
 import cat.copernic.projecte.fonts_terrassa.models.FontAdmin
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ListAdminViewModel: ViewModel() {
+class ListAdminViewModel : ViewModel() {
 
     private val myAdapter: FontAdminRecyclerAdapter = FontAdminRecyclerAdapter(arrayListOf())
     private var fonts: ArrayList<FontAdmin> = arrayListOf()
     private val db = FirebaseFirestore.getInstance()
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per nom ascendentment.
+     */
     fun sortFontNameASC(binding: FragmentFontAdminListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -29,6 +31,9 @@ class ListAdminViewModel: ViewModel() {
             }
     }
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per nom descendenment.
+     */
     fun sortFontNameDESC(binding: FragmentFontAdminListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -43,6 +48,9 @@ class ListAdminViewModel: ViewModel() {
             }
     }
 
+    /**
+     * Mètode encarregat d'ordenar les fonts per tipus.
+     */
     fun sortFontTypeASC(binding: FragmentFontAdminListBinding, context: Context) {
         db.collection("fonts")
             .get()
@@ -57,6 +65,10 @@ class ListAdminViewModel: ViewModel() {
             }
     }
 
+    /**
+     * Aquest mètode té la funcionalitat d'agafar desde el Firebase totes les fonts disponibles per
+     * afegir-les al Recyclerview del fragment corresponent.
+     */
     fun filterFontsByType(
         binding: FragmentFontAdminListBinding,
         context: Context,
@@ -71,6 +83,8 @@ class ListAdminViewModel: ViewModel() {
                     fontType = -1
             }
             fonts.clear()
+
+            //Sentència la qual crida a Firebase per obtenir els elements.
             db.collection("fonts").whereEqualTo("type", fontType)
                 .get()
                 .addOnSuccessListener { documents ->
@@ -98,6 +112,9 @@ class ListAdminViewModel: ViewModel() {
         }
     }
 
+    /**
+     * Funció la qual elimina tots els registres de fonts del Recyclerview.
+     */
     fun clearFontsByType(binding: FragmentFontAdminListBinding, context: Context) {
         db.collection("fonts")
             .get()

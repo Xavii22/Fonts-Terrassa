@@ -16,11 +16,13 @@ class UsersViewModel : ViewModel() {
     private var usersLiveData: MutableLiveData<ArrayList<User>> = MutableLiveData()
     private val myAdapter: UsersRecyclerAdapter = UsersRecyclerAdapter()
 
+    /**
+     * Funció encarregada d'obtenir desde Firebase la llista d'usuaris registrats.
+     */
     fun getUsers(
         binding: FragmentUsersAdminListBinding,
         context: Context
     ) {
-
         db.collection("users")
             .get()
             .addOnSuccessListener { documents ->
@@ -34,7 +36,7 @@ class UsersViewModel : ViewModel() {
                 usersLiveData.value = users
                 binding.rvUsers.setHasFixedSize(true)
                 binding.rvUsers.layoutManager = LinearLayoutManager(context)
-                context?.let { myAdapter.UsersRecyclerAdapter(users, it) }
+                context.let { myAdapter.UsersRecyclerAdapter(users, it) }
                 binding.rvUsers.adapter = myAdapter
             }
     }
