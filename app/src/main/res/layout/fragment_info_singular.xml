@@ -14,10 +14,10 @@
         android:layout_marginStart="157dp"
         android:layout_marginTop="54dp"
         android:layout_marginEnd="157dp"
-        android:text="@string/fonts_boca_singulars"
-        android:textSize="24sp"
-        android:textColor="@color/textColor"
         android:fontFamily="@font/montserrat"
+        android:text="@string/fonts_boca_singulars"
+        android:textColor="@color/textColor"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,5 +36,6 @@
         android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_titol" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_titol"
+        tools:targetApi="o" />
 </androidx.constraintlayout.widget.ConstraintLayout>
