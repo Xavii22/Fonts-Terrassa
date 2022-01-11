@@ -1,11 +1,10 @@
 package cat.copernic.projecte.fonts_terrassa
+
 import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.location.Location
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +13,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -31,7 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
-    private val db= FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentMapsBinding
     private var mapType = 0
     var fontsArray = arrayOf<String>()
@@ -40,9 +39,11 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val callback = OnMapReadyCallback { googleMap ->
 
-        fontsArray = arrayOf(resources.getString(R.string.fonts_boca), resources.getString(R.string.fonts_boca_singulars),
-                resources.getString(R.string.fonts_ornamentals), resources.getString(R.string.fonts_naturals),
-                resources.getString(R.string.fonts_gossos))
+        fontsArray = arrayOf(resources.getString(R.string.fonts_boca),
+            resources.getString(R.string.fonts_boca_singulars),
+            resources.getString(R.string.fonts_ornamentals),
+            resources.getString(R.string.fonts_naturals),
+            resources.getString(R.string.fonts_gossos))
 
         onMapReady(googleMap)
         selectedFont = BooleanArray(fontsArray.size)
@@ -61,14 +62,15 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        if(document.get("name") == it.title){
+                        if (document.get("name") == it.title) {
                             fontId = document.get("id").toString()
                         }
-                }
+                    }
                     val bundle = Bundle()
                     bundle.putSerializable("fontId", fontId)
-                    findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment, bundle)
-            }
+                    findNavController().navigate(R.id.action_mapsFragment_to_viewFontFragment,
+                        bundle)
+                }
         }
 
 
@@ -114,7 +116,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
-        binding.btnFilter.setOnClickListener{
+        binding.btnFilter.setOnClickListener {
 
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.seleccionar_tipus_font)
@@ -143,8 +145,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             builder.show()
         }
 
-        binding.btnChangeMap.setOnClickListener{
-            if(mapType == 0){
+        binding.btnChangeMap.setOnClickListener {
+            if (mapType == 0) {
                 googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE)
                 mapType = 1
                 context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
@@ -155,38 +157,44 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                     DrawableCompat.setTint(binding.btnFilter.drawable,
                         it2)
                 }
-            }else{
+            } else {
                 when (nightModeFlags) {
                     Configuration.UI_MODE_NIGHT_YES -> {
-                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
-                            DrawableCompat.setTint(binding.btnChangeMap.drawable,
-                                it2)
-                        }
-                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }?.let { it2 ->
-                            DrawableCompat.setTint(binding.btnFilter.drawable,
-                                it2)
-                        }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }
+                            ?.let { it2 ->
+                                DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                                    it2)
+                            }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.white) }
+                            ?.let { it2 ->
+                                DrawableCompat.setTint(binding.btnFilter.drawable,
+                                    it2)
+                            }
                     }
 
                     Configuration.UI_MODE_NIGHT_NO -> {
-                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
-                            DrawableCompat.setTint(binding.btnChangeMap.drawable,
-                                it2)
-                        }
-                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
-                            DrawableCompat.setTint(binding.btnFilter.drawable,
-                                it2)
-                        }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }
+                            ?.let { it2 ->
+                                DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                                    it2)
+                            }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }
+                            ?.let { it2 ->
+                                DrawableCompat.setTint(binding.btnFilter.drawable,
+                                    it2)
+                            }
                     }
                     Configuration.UI_MODE_NIGHT_UNDEFINED -> {
-                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
-                            DrawableCompat.setTint(binding.btnChangeMap.drawable,
-                                it2)
-                        }
-                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }?.let { it2 ->
-                            DrawableCompat.setTint(binding.btnFilter.drawable,
-                                it2)
-                        }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }
+                            ?.let { it2 ->
+                                DrawableCompat.setTint(binding.btnChangeMap.drawable,
+                                    it2)
+                            }
+                        context?.let { it1 -> ContextCompat.getColor(it1, R.color.black) }
+                            ?.let { it2 ->
+                                DrawableCompat.setTint(binding.btnFilter.drawable,
+                                    it2)
+                            }
                     }
                 }
                 googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
@@ -211,8 +219,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         mapFragment?.getMapAsync(callback)
     }
 
-    fun loadMap(googleMap: GoogleMap){
-        if(selectedFont[0]) {
+    fun loadMap(googleMap: GoogleMap) {
+        if (selectedFont[0]) {
             db.collection("fonts").whereEqualTo("type", 1).get().addOnSuccessListener { documents ->
                 for (document in documents) {
                     val pos = LatLng(
@@ -229,7 +237,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         }
-        if(selectedFont[1]) {
+        if (selectedFont[1]) {
             db.collection("fonts").whereEqualTo("type", 2).get().addOnSuccessListener { documents ->
                 for (document in documents) {
                     val pos = LatLng(
@@ -246,7 +254,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         }
-        if(selectedFont[2]) {
+        if (selectedFont[2]) {
             db.collection("fonts").whereEqualTo("type", 3).get().addOnSuccessListener { documents ->
                 for (document in documents) {
                     val pos = LatLng(
@@ -263,7 +271,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         }
-        if(selectedFont[3]) {
+        if (selectedFont[3]) {
             db.collection("fonts").whereEqualTo("type", 4).get().addOnSuccessListener { documents ->
                 for (document in documents) {
                     val pos = LatLng(
@@ -280,7 +288,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         }
-        if(selectedFont[4]) {
+        if (selectedFont[4]) {
             db.collection("fonts").whereEqualTo("type", 5).get().addOnSuccessListener { documents ->
                 for (document in documents) {
                     val pos = LatLng(
@@ -314,7 +322,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         myMap.isMyLocationEnabled = true
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         fusedLocationClient.lastLocation
-            .addOnSuccessListener { location : Location? ->
+            .addOnSuccessListener { location: Location? ->
                 val mapPos = location?.let { LatLng(it.latitude, location.longitude) }
                 mapPos?.let { CameraUpdateFactory.newLatLng(it) }?.let { myMap.moveCamera(it) }
                 myMap.moveCamera(CameraUpdateFactory.zoomTo(13.5f))
