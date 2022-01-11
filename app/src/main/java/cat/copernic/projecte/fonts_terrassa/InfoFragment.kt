@@ -1,22 +1,16 @@
 package cat.copernic.projecte.fonts_terrassa
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Switch
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import cat.copernic.projecte.fonts_terrassa.databinding.FragmentInfoBinding
 
 class InfoFragment : Fragment() {
-
-    var switchCompat: Switch? = null
-    var sharedPreferences: SharedPreferences? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +20,7 @@ class InfoFragment : Fragment() {
             inflater, R.layout.fragment_info, container, false
         )
 
-        when((activity as MainActivity?)?.getLocale()){
+        when ((activity as MainActivity?)?.getLocale()) {
             "ca" ->
                 binding.spinnerLanguage.setSelection(0)
             "es" ->
@@ -60,6 +54,9 @@ class InfoFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Funció la qual permet cambiar l'idioma de l'app a partir del spinner del fragment.
+     */
     private fun changeLanguage(binding: FragmentInfoBinding) {
 
         binding.spinnerLanguage.onItemSelectedListener =
