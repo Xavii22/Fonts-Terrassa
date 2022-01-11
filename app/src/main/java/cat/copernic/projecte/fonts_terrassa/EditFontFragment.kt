@@ -107,45 +107,44 @@ class EditFontFragment : Fragment() {
             Log.d("msg", "arriba5")
         }
 
-
         binding.btnTypeSel1.setOnClickListener {
             myFontType = 1
             binding.btnTypeSel1.setImageResource(R.drawable.gota_1_selected)
-            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
-            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
-            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
-            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2_small)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3_small)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4_small)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5_small)
         }
         binding.btnTypeSel2.setOnClickListener {
             myFontType = 2
-            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1_small)
             binding.btnTypeSel2.setImageResource(R.drawable.gota_2_selected)
-            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
-            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
-            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3_small)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4_small)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5_small)
         }
         binding.btnTypeSel3.setOnClickListener {
             myFontType = 3
-            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
-            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1_small)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2_small)
             binding.btnTypeSel3.setImageResource(R.drawable.gota_3_selected)
-            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
-            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4_small)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5_small)
         }
         binding.btnTypeSel4.setOnClickListener {
             myFontType = 4
-            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
-            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
-            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1_small)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2_small)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3_small)
             binding.btnTypeSel4.setImageResource(R.drawable.gota_4_selected)
-            binding.btnTypeSel5.setImageResource(R.drawable.gota_5)
+            binding.btnTypeSel5.setImageResource(R.drawable.gota_5_small)
         }
         binding.btnTypeSel5.setOnClickListener {
             myFontType = 5
-            binding.btnTypeSel1.setImageResource(R.drawable.gota_1)
-            binding.btnTypeSel2.setImageResource(R.drawable.gota_2)
-            binding.btnTypeSel3.setImageResource(R.drawable.gota_3)
-            binding.btnTypeSel4.setImageResource(R.drawable.gota_4)
+            binding.btnTypeSel1.setImageResource(R.drawable.gota_1_small)
+            binding.btnTypeSel2.setImageResource(R.drawable.gota_2_small)
+            binding.btnTypeSel3.setImageResource(R.drawable.gota_3_small)
+            binding.btnTypeSel4.setImageResource(R.drawable.gota_4_small)
             binding.btnTypeSel5.setImageResource(R.drawable.gota_5_selected)
         }
 
