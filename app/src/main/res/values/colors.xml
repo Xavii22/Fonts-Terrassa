@@ -2,16 +2,11 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bn_list">#1b658c</color>
-    <color name="bn_map">#a26caa</color>
-    <color name="bn_info">#40996c</color>
     <color name="mycolor">#808080</color>
-
     <color name="mainText">#000000</color>
     <color name="textAlt">#8D8F97</color>
     <color name="mainBackground">#f5f6fb</color>
@@ -20,8 +15,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="textColor">#1E2025</color>
     <color name="listBar">#FFB03C</color>
-    <color name="bgDashboard1">#D024FF</color>
-    <color name="bgDashboard2">#E8FF80</color>
     <color name="activeUser">#FFFFFF</color>
     <color name="inactiveUser">#808080</color>
 </resources>

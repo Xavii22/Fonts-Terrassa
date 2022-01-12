@@ -28,27 +28,24 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:text="@string/administrar_usuaris"
             android:textColor="@color/textColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/adminFonts"
             app:layout_constraintTop_toBottomOf="@+id/txt_admin" />
 
         <Button
             android:id="@+id/adminFonts"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="51dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:text="@string/administrar_fonts"
             android:textColor="@color/textColor"
-            app:layout_constraintEnd_toStartOf="@+id/adminUsers"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_admin" />
 
@@ -57,14 +54,12 @@
             android:id="@+id/createFonts"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="51dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:text="@string/crear_fonts"
             android:textColor="@color/textColor"
-            app:layout_constraintEnd_toStartOf="@+id/createUsers"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/adminFonts" />
 
@@ -73,13 +68,12 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:text="@string/crear_usuaris"
             android:textColor="@color/textColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/createFonts"
             app:layout_constraintTop_toBottomOf="@+id/adminUsers" />
 
         <Button
