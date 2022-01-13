@@ -56,31 +56,31 @@ class viewFontFragment : Fragment() {
                         when (document.get("type").toString().toInt()) {
                             1 -> {
                                 binding.tipusFontTxt.text =
-                                    requireContext().getText(R.string.fonts_boca)
+                                    requireContext().getText(R.string.font_boca)
                                 binding.imgFontType.visibility = View.VISIBLE
                                 binding.imgFontType.setImageResource(R.drawable.gota_1)
                             }
                             2 -> {
                                 binding.tipusFontTxt.text =
-                                    requireContext().getText(R.string.fonts_boca_singulars)
+                                    requireContext().getText(R.string.font_boca_singular)
                                 binding.imgFontType.visibility = View.VISIBLE
                                 binding.imgFontType.setImageResource(R.drawable.gota_2)
                             }
                             3 -> {
                                 binding.tipusFontTxt.text =
-                                    requireContext().getText(R.string.fonts_ornamentals)
+                                    requireContext().getText(R.string.font_ornamental)
                                 binding.imgFontType.visibility = View.VISIBLE
                                 binding.imgFontType.setImageResource(R.drawable.gota_3)
                             }
                             4 -> {
                                 binding.tipusFontTxt.text =
-                                    requireContext().getText(R.string.fonts_naturals)
+                                    requireContext().getText(R.string.font_natural)
                                 binding.imgFontType.visibility = View.VISIBLE
                                 binding.imgFontType.setImageResource(R.drawable.gota_4)
                             }
                             5 -> {
                                 binding.tipusFontTxt.text =
-                                    requireContext().getText(R.string.fonts_gossos)
+                                    requireContext().getText(R.string.font_gos)
                                 binding.imgFontType.visibility = View.VISIBLE
                                 binding.imgFontType.setImageResource(R.drawable.gota_5)
                             }

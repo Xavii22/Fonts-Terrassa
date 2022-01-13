@@ -119,4 +119,9 @@
     <string name="lat">lat</string>
     <string name="avalua_aigua">Evaluate the water quality</string>
     <string name="min_caracters">The password needs to have at least 6 characters</string>
+    <string name="font_boca">Drinking fountain</string>
+    <string name="font_boca_singular">Unique drinking fountain</string>
+    <string name="font_ornamental">Ornamental fountain</string>
+    <string name="font_natural">Natural fountain</string>
+    <string name="font_gos">Dog fountain</string>
 </resources>

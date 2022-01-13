@@ -93,6 +93,11 @@
     <string name="lat">lat</string>
     <string name="avalua_aigua">Avalua l\'aigua</string>
     <string name="min_caracters">La contrasenya ha de tenir com a mínim 6 caracters.</string>
+    <string name="font_boca">Font de beure</string>
+    <string name="font_boca_singular">Font de beure singulars</string>
+    <string name="font_ornamental">Font ornamentals</string>
+    <string name="font_natural">Font naturals</string>
+    <string name="font_gos">Font de gossos</string>
 
     <string-array name="spinner_language">
         <item>Català</item>

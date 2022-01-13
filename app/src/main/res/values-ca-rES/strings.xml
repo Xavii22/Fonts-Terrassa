@@ -119,4 +119,9 @@
     <string name="lat">lat</string>
     <string name="avalua_aigua">Avalua la qualitat de l\'aigüa</string>
     <string name="min_caracters">La contrasenya ha de tenir com a mínim 6 caracters.</string>
+    <string name="font_boca">Font de beure</string>
+    <string name="font_gos">Font de gos</string>
+    <string name="font_natural">Font natural</string>
+    <string name="font_ornamental">Font ornamental</string>
+    <string name="font_boca_singular">Font de beure singular</string>
 </resources>
