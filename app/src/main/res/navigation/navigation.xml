@@ -14,7 +14,8 @@
             android:id="@+id/action_fragment_list_to_viewFontFragment"
             app:destination="@id/viewFontFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_left" />
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popUpTo="@id/fragment_maps" />
     </fragment>
     <fragment
         android:id="@+id/viewFontFragment"

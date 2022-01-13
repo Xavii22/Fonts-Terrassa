@@ -20,6 +20,9 @@
     - SHA1: 22:77:10:01:7a:6a:f5:12:fc:e4:96:c0:e8:d8:fe:f6:04:61:6f:33
     - MAPS KEY: AIzaSyCVLV591qBv5BZkPx4Nsf_WoIoUD86pOKc
 
+    Clau Google Play
+    - MAPS KEY: AIzaSyDKEAyL5Vt-NUhFZOZ_ICs7dd6vbP1oDlo
+
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=22:77:10:01:7a:6a:f5:12:fc:e4:96:c0:e8:d8:fe:f6:04:61:6f:33%3Bcat.copernic.projecte.fonts_terrassa
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key
@@ -28,5 +31,5 @@
     string in this file.
     -->
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCVLV591qBv5BZkPx4Nsf_WoIoUD86pOKc</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDKEAyL5Vt-NUhFZOZ_ICs7dd6vbP1oDlo</string>
 </resources>
