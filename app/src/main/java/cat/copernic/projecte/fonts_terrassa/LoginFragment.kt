@@ -2,6 +2,7 @@ package cat.copernic.projecte.fonts_terrassa
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,8 +48,9 @@ class Login2Fragment : Fragment() {
                     .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
             ) {
                 auth.signInWithEmailAndPassword(
-                    binding.emailEditText.text.toString(), binding.passwordEditText.text.toString()
+                    binding.emailEditText.text.toString().lowercase(), binding.passwordEditText.text.toString()
                 ).addOnCompleteListener {
+                    Log.d("correu", binding.emailEditText.text.toString().lowercase())
                     if (it.isSuccessful) {
                         corrutinaLogin()
                     } else {
@@ -95,7 +97,7 @@ class Login2Fragment : Fragment() {
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
                         if (document.get("email")
-                                .toString() == binding.emailEditText.text.toString()
+                                .toString() == binding.emailEditText.text.toString().lowercase()
                         ) {
                             if (document.get("active").toString().toBoolean()) {
                                 auth.signOut()
