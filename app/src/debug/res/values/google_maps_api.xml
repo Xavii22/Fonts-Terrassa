@@ -22,6 +22,9 @@
 
     Clau Google Play
     - MAPS KEY: AIzaSyDKEAyL5Vt-NUhFZOZ_ICs7dd6vbP1oDlo
+    AIzaSyDyewHlk7sEQWCCkw7C3UCJMfnfZcrf8gw
+
+    AIzaSyCHkCHhBshVLOLukcK_k0IsLei81uHP3D4
 
     https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=22:77:10:01:7a:6a:f5:12:fc:e4:96:c0:e8:d8:fe:f6:04:61:6f:33%3Bcat.copernic.projecte.fonts_terrassa
     Alternatively, follow the directions here:
@@ -31,5 +34,5 @@
     string in this file.
     -->
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDKEAyL5Vt-NUhFZOZ_ICs7dd6vbP1oDlo</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCHkCHhBshVLOLukcK_k0IsLei81uHP3D4</string>
 </resources>
