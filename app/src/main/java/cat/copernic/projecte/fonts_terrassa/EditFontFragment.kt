@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
+import java.lang.Exception
 
 class EditFontFragment : Fragment() {
 
@@ -171,8 +172,8 @@ class EditFontFragment : Fragment() {
                             calulatedStringId = oldFontId
                         }
                         //Delete old image
-                        deleteImageBeforeUploading(oldFontId)
-                        if (hasImage) {
+                        //deleteImageBeforeUploading(oldFontId)
+                        if (oldFontId.isEmpty()) {
                             //Upload image
                             pujarImatge(calulatedStringId)
                         }
@@ -228,6 +229,9 @@ class EditFontFragment : Fragment() {
                 R.string.imatge_pujada_correctament,
                 BaseTransientBottomBar.LENGTH_SHORT
             ).show()
+            if(oldFontId.isNotEmpty()){
+                pujarImatge(oldFontId)
+            }
         }
     }
 
@@ -246,16 +250,20 @@ class EditFontFragment : Fragment() {
     private fun pujarImatge(fontId: String?) {
         val imgPath = "images/$fontId.jpg"
         val pathReference = storageRef.child(imgPath)
-        val bitmap: Bitmap? = (imageView.drawable as BitmapDrawable).bitmap
-        val baos = ByteArrayOutputStream()
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
+        try {
+            val bitmap: Bitmap? = (imageView.drawable as BitmapDrawable).bitmap
+            val baos = ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
 
-        val uploadTask = pathReference.putBytes(data)
-        uploadTask.addOnFailureListener {
-            //Error al pujar
-        }.addOnSuccessListener {
-            //Pujat correctament
+            val uploadTask = pathReference.putBytes(data)
+            uploadTask.addOnFailureListener {
+                //Error al pujar
+            }.addOnSuccessListener {
+                //Pujat correctament
+            }
+        }catch (e: Exception){
+
         }
     }
 
