@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
+import java.lang.Double.parseDouble
 import java.lang.Exception
 
 class EditFontFragment : Fragment() {
@@ -146,53 +147,64 @@ class EditFontFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             //Save font data
             if (binding.txtNomFont.text.isNotEmpty() && binding.editLat.text.isNotEmpty() && binding.editLon.text.isNotEmpty() && myFontType != 0) {
-                var calulatedStringId = oldFontId
-                db.collection("fonts")
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        if (oldFontId == "") {
-                            var calculatedId = 0
-                            for (document in documents) {
-                                val actualId =
-                                    document.get("id").toString().substring(3).toInt()
-                                if (actualId >= calculatedId) {
-                                    calculatedId = actualId + 1
+                var numeric = true
+
+                try {
+                    val num = parseDouble(binding.editLat.text.toString())
+                } catch (e: NumberFormatException) {
+                    numeric = false
+                }
+                if (numeric) {
+                    var calulatedStringId = oldFontId
+                    db.collection("fonts")
+                        .get()
+                        .addOnSuccessListener { documents ->
+                            if (oldFontId == "") {
+                                var calculatedId = 0
+                                for (document in documents) {
+                                    val actualId =
+                                        document.get("id").toString().substring(3).toInt()
+                                    if (actualId >= calculatedId) {
+                                        calculatedId = actualId + 1
+                                    }
                                 }
+
+                                calulatedStringId = when (calculatedId.toString().length) {
+                                    1 ->
+                                        "FBO00$calculatedId"
+                                    2 ->
+                                        "FBO0$calculatedId"
+                                    else ->
+                                        "FBO$calculatedId"
+                                }
+                            } else {
+                                calulatedStringId = oldFontId
+                            }
+                            //Delete old image
+                            //deleteImageBeforeUploading(oldFontId)
+                            if (oldFontId.isEmpty()) {
+                                //Upload image
+                                pujarImatge(calulatedStringId)
                             }
 
-                            calulatedStringId = when (calculatedId.toString().length) {
-                                1 ->
-                                    "FBO00$calculatedId"
-                                2 ->
-                                    "FBO0$calculatedId"
-                                else ->
-                                    "FBO$calculatedId"
-                            }
-                        } else {
-                            calulatedStringId = oldFontId
-                        }
-                        //Delete old image
-                        //deleteImageBeforeUploading(oldFontId)
-                        if (oldFontId.isEmpty()) {
-                            //Upload image
-                            pujarImatge(calulatedStringId)
-                        }
-
-                        db.collection("fonts").document(calulatedStringId)
-                            .set(
-                                hashMapOf(
-                                    "lat" to binding.editLat.text.toString().toDouble(),
-                                    "lon" to binding.editLon.text.toString().toDouble(),
-                                    "id" to calulatedStringId,
-                                    "name" to binding.txtNomFont.text.toString(),
-                                    "info" to binding.txtInformacio.text.toString(),
-                                    "address" to binding.editAdreca.text.toString(),
-                                    "type" to myFontType
+                            db.collection("fonts").document(calulatedStringId)
+                                .set(
+                                    hashMapOf(
+                                        "lat" to binding.editLat.text.toString().toDouble(),
+                                        "lon" to binding.editLon.text.toString().toDouble(),
+                                        "id" to calulatedStringId,
+                                        "name" to binding.txtNomFont.text.toString(),
+                                        "info" to binding.txtInformacio.text.toString(),
+                                        "address" to binding.editAdreca.text.toString(),
+                                        "type" to myFontType
+                                    )
                                 )
-                            )
-                    }
-                findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
-            } else {
+                        }
+                    findNavController().navigate(EditFontFragmentDirections.actionEditFontFragmentToAdminFragment())
+                } else {
+                    showErrorLatLonNotDouble()
+                }
+            }else{
                 showBlankFields()
             }
         }
@@ -209,6 +221,18 @@ class EditFontFragment : Fragment() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle(R.string.error)
         objectAlerDialog.setMessage(R.string.camps_no_omplerts)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
+        val alertDialog: AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
+    }
+
+    /**
+     * Funció que mostra error si no editLat o editLon no son double
+     */
+    private fun showErrorLatLonNotDouble() {
+        val objectAlerDialog = AlertDialog.Builder(context)
+        objectAlerDialog.setTitle(R.string.error)
+        objectAlerDialog.setMessage(R.string.lat_lon_notDouble)
         objectAlerDialog.setPositiveButton(R.string.acceptar, null)
         val alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
