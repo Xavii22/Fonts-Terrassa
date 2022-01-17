@@ -124,4 +124,5 @@
     <string name="font_ornamental">Ornamental fountain</string>
     <string name="font_natural">Natural fountain</string>
     <string name="font_gos">Dog fountain</string>
+    <string name="lat_lon_notDouble">Lat or lon text must be numeric</string>
 </resources>

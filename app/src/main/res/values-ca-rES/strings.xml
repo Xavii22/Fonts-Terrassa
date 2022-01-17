@@ -124,4 +124,5 @@
     <string name="font_natural">Font natural</string>
     <string name="font_ornamental">Font ornamental</string>
     <string name="font_boca_singular">Font de beure singular</string>
+    <string name="lat_lon_notDouble">El text de latitud o longitud ha de ser númeric.</string>
 </resources>

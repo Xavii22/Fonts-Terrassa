@@ -44,11 +44,12 @@ class Login2Fragment : Fragment() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
         binding.loginButton.setOnClickListener {
-            if (binding.emailEditText.text.toString()
-                    .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
+            if (binding.emailEditText.text.toString().lowercase()
+                    .isNotEmpty() && binding.passwordEditText.text.toString().lowercase().isNotEmpty()
             ) {
                 auth.signInWithEmailAndPassword(
-                    binding.emailEditText.text.toString().lowercase(), binding.passwordEditText.text.toString()
+                    binding.emailEditText.text.toString().lowercase(),
+                    binding.passwordEditText.text.toString()
                 ).addOnCompleteListener {
                     Log.d("correu", binding.emailEditText.text.toString().lowercase())
                     if (it.isSuccessful) {
