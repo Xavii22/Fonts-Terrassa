@@ -125,4 +125,6 @@
     <string name="font_ornamental">Fuente ornamental</string>
     <string name="font_boca_singular">Fuente de beber singular</string>
     <string name="lat_lon_notDouble">El texto de latitud o longitud ha der ser numérico.</string>
+    <string name="guardar">Guardar</string>
+    <string name="anar">Ir</string>
 </resources>

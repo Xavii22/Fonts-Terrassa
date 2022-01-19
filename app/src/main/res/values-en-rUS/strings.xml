@@ -125,4 +125,6 @@
     <string name="font_natural">Natural fountain</string>
     <string name="font_gos">Dog fountain</string>
     <string name="lat_lon_notDouble">Lat or lon text must be numeric</string>
+    <string name="guardar">Save</string>
+    <string name="anar">Go</string>
 </resources>

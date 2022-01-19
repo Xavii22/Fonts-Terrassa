@@ -95,10 +95,12 @@
     <string name="min_caracters">La contrasenya ha de tenir com a mínim 6 caracters.</string>
     <string name="font_boca">Font de beure</string>
     <string name="font_boca_singular">Font de beure singulars</string>
-    <string name="font_ornamental">Font ornamentals</string>
+    <string name="font_ornamental">Font ornamental</string>
     <string name="font_natural">Font naturals</string>
     <string name="font_gos">Font de gossos</string>
     <string name="lat_lon_notDouble">El text de latitud o longitud ha de ser númeric</string>
+    <string name="guardar">Guardar</string>
+    <string name="anar">Anar-hi</string>
 
     <string-array name="spinner_language">
         <item>Català</item>
