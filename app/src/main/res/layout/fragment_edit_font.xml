@@ -134,7 +134,7 @@
                 android:ems="10"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/lon"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 app:layout_constraintEnd_toStartOf="@+id/editAdreca"
                 app:layout_constraintStart_toEndOf="@+id/editLat"
                 app:layout_constraintTop_toBottomOf="@+id/txt_titleLon" />
@@ -148,9 +148,9 @@
                 android:ems="10"
                 android:fontFamily="@font/montserrat"
                 android:hint="@string/lat"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_titleLon" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_titleLon"/>
 
             <EditText
                 android:id="@+id/editAdreca"

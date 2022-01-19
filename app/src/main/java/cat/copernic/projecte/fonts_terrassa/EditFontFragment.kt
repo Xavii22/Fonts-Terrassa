@@ -150,8 +150,9 @@ class EditFontFragment : Fragment() {
                 var numeric = true
 
                 try {
-                    val num = parseDouble(binding.editLat.text.toString())
-                } catch (e: NumberFormatException) {
+                    binding.editLat.text.toString().toDouble()
+                    binding.editLon.text.toString().toDouble()
+                } catch (e: Exception) {
                     numeric = false
                 }
                 if (numeric) {

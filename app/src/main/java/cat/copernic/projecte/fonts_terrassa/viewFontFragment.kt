@@ -102,6 +102,12 @@ class viewFontFragment : Fragment() {
                 }
             }
 
+        if(binding.txtInformacio.text.isEmpty()){
+            binding.imgInfo.visibility = View.GONE
+            binding.txtInformacio.visibility = View.GONE
+            binding.txtTitolInformacio.visibility = View.GONE
+        }
+
         //Inicialitzem mitjana valoracions
         var gustTotal = 0
         var olorTotal = 0
