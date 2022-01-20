@@ -52,7 +52,13 @@ class viewFontFragment : Fragment() {
                 for (document in documents) {
                     if (fontId == document.get("id").toString()) {
                         binding.txtNomFont.text = document.get("name").toString()
-                        binding.txtInformacio.text = document.get("info").toString()
+                        if(document.get("info").toString().isEmpty()){
+                            binding.imgInfo.visibility = View.GONE
+                            binding.txtInformacio.visibility = View.GONE
+                            binding.txtTitolInformacio.visibility = View.GONE
+                        }else{
+                            binding.txtInformacio.text = document.get("info").toString()
+                        }
                         when (document.get("type").toString().toInt()) {
                             1 -> {
                                 binding.tipusFontTxt.text =
@@ -101,12 +107,6 @@ class viewFontFragment : Fragment() {
                     }
                 }
             }
-
-        if(binding.txtInformacio.text.isEmpty()){
-            binding.imgInfo.visibility = View.GONE
-            binding.txtInformacio.visibility = View.GONE
-            binding.txtTitolInformacio.visibility = View.GONE
-        }
 
         //Inicialitzem mitjana valoracions
         var gustTotal = 0
