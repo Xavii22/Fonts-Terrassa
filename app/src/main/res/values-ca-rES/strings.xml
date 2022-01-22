@@ -13,7 +13,7 @@
     <string name="fonts_gossos">Fonts de gossos</string>
     <string name="login_admin">Botó inici de sessió administradors</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>
-    <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
+    <string name="oat">Observatori de l\'Aigua de Terrassa</string>
     <string name="version">Versió de l\'aplicació: 1.0.0</string>
     <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
     <string name="admin">Administrador</string>
@@ -123,7 +123,7 @@
     <string name="titol_notificacio">Fonts Terrassa</string>
     <string name="desc_notificacio">Administrador creat correctament</string>
     <string name="lat">lat</string>
-    <string name="avalua_aigua">Avalua la qualitat de l\'aigüa</string>
+    <string name="avalua_aigua">Avalua la qualitat de l\'aigua</string>
     <string name="min_caracters">La contrasenya ha de tenir com a mínim 6 caracters.</string>
     <string name="font_boca">Font de beure</string>
     <string name="font_gos">Font de gos</string>
@@ -134,6 +134,9 @@
     <string name="guardar">Guardar</string>
     <string name="anar">Anar-hi</string>
     <string name="gps_network_not_enabled">Per carregar les fonts, tindrà que activar la ubicació del dispositiu, activa-la i torna-ho a provar</string>
-    <string name="garentia_sanitaria">Aigua sense garentia sanitària</string>
+    <string name="garentia_sanitaria">Aigua sense garantia sanitària</string>
     <string name="valoracions">valoracions</string>
+    <string name="copernic">Institut Nicolau Copèrnic</string>
+    <string name="avalua">Avalua</string>
+    <string name="nota_login">Nota: no se que posar exactament xd</string>
 </resources>

@@ -11,7 +11,7 @@
     <string name="fonts_gossos">Fuentes de perros</string>
     <string name="login_admin">Botón inicio de sessión administradores</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>
-    <string name="oat">Observatori de l\'aigüa de Terrassa</string>
+    <string name="oat">Observatori de l\'Aigua de Terrassa</string>
     <string name="version">Versión de la aplicación</string>
     <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
     <string name="language">Idioma</string>
@@ -136,4 +136,7 @@
     <string name="no_disponible">NO DISPONIBLE</string>
     <string name="garentia_sanitaria">" Agua sin garantía sanitaria"</string>
     <string name="valoracions">valoraciones</string>
+    <string name="copernic">Institut Nicolau Copèrnic</string>
+    <string name="avalua">Evalúa</string>
+    <string name="nota_login">Nota: no se que posar exactament xd</string>
 </resources>

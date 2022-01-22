@@ -58,7 +58,7 @@
     <string name="missatge_enviat">Message sent</string>
     <string name="no_avaluat">all fields haven\'t been evaluated</string>
     <string name="nom_font">Fountrain name</string>
-    <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
+    <string name="oat">Observatori de l\'Aigua de Terrassa</string>
     <string name="olor">Smell</string>
     <string name="password">Password</string>
     <string name="puntua_gust">1. Rate the taste from 1 to 5</string>
@@ -136,4 +136,7 @@
     <string name="no_disponible">NOT AVAILABLE</string>
     <string name="garentia_sanitaria">Water without sanitary guarantee</string>
     <string name="valoracions">ratings</string>
+    <string name="copernic">Institut Nicolau Copèrnic</string>
+    <string name="avalua">Evaluate</string>
+    <string name="nota_login">Nota: no se que posar exactament xd</string>
 </resources>

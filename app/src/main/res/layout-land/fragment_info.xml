@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="41dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/ajuntament"
                 android:textColor="@color/textColor"
@@ -43,6 +43,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_terrassa" />
 
             <TextView
+                android:id="@+id/txt_copernic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/copernic"
+                android:textColor="@color/textColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_oat" />
+
+            <TextView
                 android:id="@+id/txt_autors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,7 +66,7 @@
                 android:textColor="@color/textColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_oat" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_copernic" />
 
             <Button
                 android:id="@+id/btn_beure"

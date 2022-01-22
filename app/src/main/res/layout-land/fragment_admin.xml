@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/administrar_usuaris"
-                android:textColor="@color/textColor"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/adminFonts"
                 app:layout_constraintTop_toBottomOf="@+id/txt_admin" />
@@ -54,7 +54,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/administrar_fonts"
-                android:textColor="@color/textColor"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/adminUsers"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_admin" />
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/crear_fonts"
-                android:textColor="@color/textColor"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/createUsers"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/adminFonts" />
@@ -84,7 +84,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/crear_usuaris"
-                android:textColor="@color/textColor"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/createFonts"
                 app:layout_constraintTop_toBottomOf="@+id/adminUsers" />
@@ -98,7 +98,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/tancar_sessio"
-                android:textColor="@color/textColor"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"

@@ -15,8 +15,8 @@
 
             <ImageView
                 android:id="@+id/imgFontType"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:scaleX="1.25"
                 android:scaleY="1.25"
@@ -89,6 +89,7 @@
                 android:background="#00FFFFFF"
                 android:backgroundTint="#00FFFFFF"
                 android:src="@drawable/ic_type"
+                android:textColor="@color/textColor"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_tipus_font"
                 app:layout_constraintEnd_toStartOf="@+id/txt_tipus_font"
                 app:layout_constraintTop_toTopOf="@+id/txt_tipus_font" />
@@ -154,6 +155,7 @@
                 android:gravity="center_horizontal"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
+                android:textColor="@color/textColor"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,6 +179,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/valoracio_mitjana"
+                android:textColor="@color/textColor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_tipus_font"
                 app:layout_constraintTop_toBottomOf="@+id/estatText" />
@@ -189,6 +192,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/tipus_font"
+                android:textColor="@color/textColor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/countValoracionsText" />
@@ -199,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:text=""
+                android:textColor="@color/textColor"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_tipus_font"
                 app:layout_constraintTop_toBottomOf="@+id/txt_tipus_font" />
@@ -211,6 +215,7 @@
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/informacio"
+                android:textColor="@color/textColor"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/tipus_font_txt"
                 app:layout_constraintTop_toBottomOf="@+id/tipus_font_txt" />
@@ -232,6 +237,7 @@
                 android:layout_marginTop="105dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/transperencia"
+                android:textColor="@color/textColor"
                 app:layout_constraintEnd_toEndOf="@+id/txt_olor"
                 app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -242,6 +248,7 @@
                 android:layout_marginTop="65dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/olor"
+                android:textColor="@color/textColor"
                 app:layout_constraintEnd_toEndOf="@+id/txtgust"
                 app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -253,6 +260,7 @@
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/gust"
+                android:textColor="@color/textColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
@@ -327,6 +335,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
             <Button
+                android:id="@+id/btn_testWater"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_marginTop="50dp"
+                android:drawableLeft="@drawable/ic_checkquality"
+                android:text="@string/avalua"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/btn_goToMaps"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_informacio" />
+
+            <Button
                 android:id="@+id/btn_goToMaps"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
@@ -335,27 +355,16 @@
                 android:text="@string/anar"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_testWater"
                 app:layout_constraintTop_toBottomOf="@+id/txt_informacio" />
-
-            <ImageView
-                android:id="@+id/btn_testWater"
-                android:layout_width="69dp"
-                android:layout_height="70dp"
-                android:background="#00FFFFFF"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/ic_checkquality"
-                app:layout_constraintBottom_toBottomOf="@+id/star_transperencia_5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/star_olor_5"
-                app:layout_constraintTop_toTopOf="@+id/star_gust_5" />
 
             <TextView
                 android:id="@+id/countValoracionsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="11sp"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/star_transperencia_5"
                 app:layout_constraintStart_toStartOf="@+id/star_transperencia_1"
                 app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
@@ -365,6 +374,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/textColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_font" />

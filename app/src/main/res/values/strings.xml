@@ -10,7 +10,7 @@
     <string name="fonts_gossos">Fonts de gossos</string>
     <string name="login_admin">Botó inici de sessió administradors</string>
     <string name="ajuntament">Ajuntament de Terrassa</string>
-    <string name="oat">Observatori de l\'Aigüa de Terrassa</string>
+    <string name="oat">Observatori de l\'Aigua de Terrassa</string>
     <string name="version">Versió de l\'aplicació: 1.0.0</string>
     <string name="autors">Roger Puig Font i Xavi Carné Plandolit</string>
     <string name="language">Idioma</string>
@@ -102,9 +102,13 @@
     <string name="guardar">Guardar</string>
     <string name="anar">Anar-hi</string>
     <string name="gps_network_not_enabled">Per carregar les fonts, tindrà que activar la ubicació del dispositiu, activa-la i torna-ho a provar</string>
-    <string name="garentia_sanitaria">Aigua sense garentia sanitària</string>
+    <string name="garentia_sanitaria">Aigua sense garantia sanitària</string>
     <string name="valoracions">valoracions</string>
-
+    <string name="disponible">DISPONIBLE</string>
+    <string name="no_disponible">NO DISPONIBLE</string>
+    <string name="copernic">Institut Nicolau Copèrnic</string>
+    <string name="avalua">Avalua</string>
+    <string name="nota_login">Nota: no se que posar exactament xd</string>
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Español</item>
@@ -133,7 +137,11 @@
         <item>Nom DESC</item>
         <item>Tipus</item>
     </string-array>
-    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo. Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
-    <string name="disponible">DISPONIBLE</string>
-    <string name="no_disponible">NO DISPONIBLE</string>
+    <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+        commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem
+        bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit
+        tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum
+        tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo.
+        Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
+
 </resources>
