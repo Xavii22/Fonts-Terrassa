@@ -97,6 +97,7 @@ class FontAdminRecyclerAdapter(var fontsAdmin: ArrayList<FontAdmin>) :
             bundle.putSerializable("font_info", fontsAdmin[position].info)
             bundle.putSerializable("font_adreca", fontsAdmin[position].adreca)
             bundle.putSerializable("font_type", fontsAdmin[position].type)
+            bundle.putSerializable("estat", fontsAdmin[position].estat)
             holder.itemView.findNavController().navigate(
                 R.id.action_fontAdminListFragment_to_editFontFragment2, bundle
             )

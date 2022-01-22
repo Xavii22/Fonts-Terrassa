@@ -6,11 +6,13 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -49,6 +51,12 @@ class EditFontFragment : Fragment() {
         binding.editLon.setText(arguments?.getString("font_lon"))
         binding.txtInformacio.setText(arguments?.getString("font_info"))
         binding.editAdreca.setText(arguments?.getString("font_adreca"))
+        when(arguments?.getInt("estat")){
+            0 ->
+                binding.estatSpinner?.setSelection(0)
+            1 ->
+                binding.estatSpinner?.setSelection(1)
+        }
         var myFontType = 0
         when (arguments?.getInt("font_type")) {
             1 -> {
@@ -187,7 +195,6 @@ class EditFontFragment : Fragment() {
                                 //Upload image
                                 pujarImatge(calulatedStringId)
                             }
-
                             db.collection("fonts").document(calulatedStringId)
                                 .set(
                                     hashMapOf(
@@ -196,6 +203,7 @@ class EditFontFragment : Fragment() {
                                         "id" to calulatedStringId,
                                         "name" to binding.txtNomFont.text.toString(),
                                         "info" to binding.txtInformacio.text.toString(),
+                                        "estat" to binding.estatSpinner?.selectedItemPosition,
                                         "address" to binding.editAdreca.text.toString(),
                                         "type" to myFontType
                                     )

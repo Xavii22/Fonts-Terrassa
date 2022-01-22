@@ -175,23 +175,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="42dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/valoracio_mitjana"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_testWater"
+                app:layout_constraintStart_toStartOf="@+id/txt_tipus_font"
                 app:layout_constraintTop_toBottomOf="@+id/img_font" />
 
             <TextView
                 android:id="@+id/txt_tipus_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="95dp"
                 android:layout_marginTop="34dp"
-                android:layout_marginEnd="86dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/tipus_font"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_testWater"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
 
             <TextView
@@ -305,16 +304,6 @@
                 android:layout_marginTop="102dp"
                 android:src="@drawable/ic_starempty"
                 app:layout_constraintStart_toEndOf="@+id/txt_trasperencia"
-                app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
-
-            <ImageView
-                android:id="@+id/star_gust_"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="22dp"
-                android:src="@drawable/ic_starempty"
-                app:layout_constraintStart_toEndOf="@+id/txtgust"
                 app:layout_constraintTop_toBottomOf="@+id/txt_titol_valoracio" />
 
             <ImageView

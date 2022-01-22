@@ -188,6 +188,7 @@ class FontAdminListFragment : Fragment() {
                         document.get("lat").toString().toDouble(),
                         document.get("lon").toString().toDouble(),
                         document.get("info").toString(),
+                        document.get("estat").toString().toInt(),
                         document.get("type").toString().toInt(),
                         document.get("address").toString()
                     )

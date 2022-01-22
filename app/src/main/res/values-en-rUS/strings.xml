@@ -87,6 +87,10 @@
         <item>Español</item>
         <item>English</item>
     </string-array>
+    <string-array name="spinner_estats">
+        <item>@string/disponible</item>
+        <item>@string/no_disponible</item>
+    </string-array>
     <string-array name="spinner_filter">
         <item>@string/fonts_boca</item>
         <item>@string/fonts_boca_singulars</item>
@@ -127,4 +131,8 @@
     <string name="lat_lon_notDouble">Lat or lon text must be numeric</string>
     <string name="guardar">Save</string>
     <string name="anar">Go</string>
+    <string name="gps_network_not_enabled">To load the feeds, you\'ll need to turn on the device\'s location, turn it on, and try again</string>
+    <string name="disponible">AVAILABLE</string>
+    <string name="no_disponible">NOT AVAILABLE</string>
+    <string name="garentia_sanitaria">Water without sanitary guarantee</string>
 </resources>

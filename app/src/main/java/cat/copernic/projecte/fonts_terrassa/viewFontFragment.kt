@@ -1,5 +1,6 @@
 package cat.copernic.projecte.fonts_terrassa
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -58,6 +59,12 @@ class viewFontFragment : Fragment() {
                             binding.txtTitolInformacio.visibility = View.GONE
                         }else{
                             binding.txtInformacio.text = document.get("info").toString()
+                        }
+                        when (document.get("type").toString().toInt()) {
+                            3,4,5  -> {
+                                showWarningAlert()
+                                hideEvaluate()
+                            }
                         }
                         when (document.get("type").toString().toInt()) {
                             1 -> {
@@ -257,5 +264,36 @@ class viewFontFragment : Fragment() {
                 binding.starTransperencia5.setImageResource(R.drawable.ic_starcomplete)
             }
         }
+    }
+    private fun showWarningAlert() {
+        val objectAlerDialog = AlertDialog.Builder(context)
+        objectAlerDialog.setTitle(R.string.atencio)
+        objectAlerDialog.setMessage(R.string.garentia_sanitaria)
+        objectAlerDialog.setPositiveButton(R.string.acceptar, null)
+        val alertDialog: AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
+    }
+    private fun hideEvaluate(){
+        binding.txtTitolValoracio.visibility = View.GONE
+        binding.imgCheck.visibility = View.GONE
+        binding.txtgust.visibility = View.GONE
+        binding.txtOlor.visibility = View.GONE
+        binding.txtTrasperencia.visibility = View.GONE
+        binding.btnTestWater.visibility = View.GONE
+        binding.starTransperencia5.visibility = View.GONE
+        binding.starTransperencia4.visibility = View.GONE
+        binding.starTransperencia3.visibility = View.GONE
+        binding.starTransperencia2.visibility = View.GONE
+        binding.starTransperencia1.visibility = View.GONE
+        binding.starOlor5.visibility = View.GONE
+        binding.starOlor4.visibility = View.GONE
+        binding.starOlor3.visibility = View.GONE
+        binding.starOlor2.visibility = View.GONE
+        binding.starOlor1.visibility = View.GONE
+        binding.starGust5.visibility = View.GONE
+        binding.starGust4.visibility = View.GONE
+        binding.starGust3.visibility = View.GONE
+        binding.starGust2.visibility = View.GONE
+        binding.starGust1.visibility = View.GONE
     }
 }

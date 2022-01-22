@@ -86,6 +86,10 @@
         <item>Español</item>
         <item>English</item>
     </string-array>
+    <string-array name="spinner_estats">
+        <item>@string/disponible</item>
+        <item>@string/no_disponible</item>
+    </string-array>
     <string-array name="spinner_order">
         <item>@string/nom_asc</item>
         <item>@string/nom_desc</item>
@@ -127,4 +131,8 @@
     <string name="lat_lon_notDouble">El texto de latitud o longitud ha der ser numérico.</string>
     <string name="guardar">Guardar</string>
     <string name="anar">Ir</string>
+    <string name="gps_network_not_enabled">" Para cargar las fuentes, tendrá que activar la ubicación del dispositivo, actívala y vuelva a intentarlo"</string>
+    <string name="disponible">DISPONIBLE</string>
+    <string name="no_disponible">NO DISPONIBLE</string>
+    <string name="garentia_sanitaria">" Agua sin garantía sanitaria"</string>
 </resources>

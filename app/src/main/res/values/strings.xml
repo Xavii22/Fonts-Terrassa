@@ -101,11 +101,17 @@
     <string name="lat_lon_notDouble">El text de latitud o longitud ha de ser númeric</string>
     <string name="guardar">Guardar</string>
     <string name="anar">Anar-hi</string>
+    <string name="gps_network_not_enabled">Per carregar les fonts, tindrà que activar la ubicació del dispositiu, activa-la i torna-ho a provar</string>
+    <string name="garentia_sanitaria">Aigua sense garentia sanitària</string>
 
     <string-array name="spinner_language">
         <item>Català</item>
         <item>Español</item>
         <item>English</item>
+    </string-array>
+    <string-array name="spinner_estats">
+        <item>DISPONIBLE</item>
+        <item>NO DISPONIBLE</item>
     </string-array>
     <string-array name="spinner_filter">
         <item>Fonts de beure</item>
@@ -127,4 +133,6 @@
         <item>Tipus</item>
     </string-array>
     <string name="sampleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo dolor quis luctus dapibus. Aliquam pharetra felis tellus, dictum aliquam lorem bibendum et. Proin vitae ipsum congue, dictum nunc vel, volutpat lacus. Vivamus suscipit tellus arcu, vel pretium sem sagittis ac. Phasellus varius neque leo, quis condimentum tortor tempus in. Vivamus consequat felis in arcu laoreet, sit amet finibus tellus commodo. Mauris suscipit nulla tellus, nec tempus nulla consectetur in. Cras eu odio turpis.</string>
+    <string name="disponible">DISPONIBLE</string>
+    <string name="no_disponible">NO DISPONIBLE</string>
 </resources>

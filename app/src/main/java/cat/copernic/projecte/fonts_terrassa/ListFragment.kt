@@ -2,8 +2,10 @@ package cat.copernic.projecte.fonts_terrassa
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,6 +47,25 @@ class ListFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_list, container, false
         )
+
+        val lm = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        var gps_enabled = false
+        var network_enabled = false
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        } catch (ex: Exception) {
+        }
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        } catch (ex: Exception) {
+        }
+
+        if (!gps_enabled && !network_enabled) {
+            // notify user
+            showErrorLocationNotEnabled()
+        }
 
         fontsArray = arrayOf(
             resources.getString(R.string.fonts_boca),
@@ -137,6 +158,15 @@ class ListFragment : Fragment() {
         binding.svFonts.isSubmitButtonEnabled = true
     }
 
+    private fun showErrorLocationNotEnabled() {
+        val objectAlerDialog = AlertDialog.Builder(context)
+        objectAlerDialog.setTitle(cat.copernic.projecte.fonts_terrassa.R.string.error)
+        objectAlerDialog.setMessage(cat.copernic.projecte.fonts_terrassa.R.string.gps_network_not_enabled)
+        objectAlerDialog.setPositiveButton(cat.copernic.projecte.fonts_terrassa.R.string.acceptar, null)
+        val alertDialog: AlertDialog = objectAlerDialog.create()
+        alertDialog.show()
+    }
+
     private fun performSearch() {
         binding.svFonts.setOnQueryTextListener(object :
             android.widget.SearchView.OnQueryTextListener {
@@ -188,6 +218,7 @@ class ListFragment : Fragment() {
                                     document.get("lat").toString().toDouble(),
                                     document.get("lon").toString().toDouble(),
                                     document.get("info").toString(),
+                                    document.get("estat").toString().toInt(),
                                     document.get("type").toString().toInt(),
                                     document.get("address").toString(),
                                     (Math.round(value * 100) / 100.0)
