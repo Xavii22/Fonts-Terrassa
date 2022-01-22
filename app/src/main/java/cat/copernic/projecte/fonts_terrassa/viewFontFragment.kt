@@ -60,6 +60,14 @@ class viewFontFragment : Fragment() {
                         }else{
                             binding.txtInformacio.text = document.get("info").toString()
                         }
+                        when(document.get("estat").toString().toInt()){
+                            0 -> {
+                                binding.estatText?.text = requireContext().getText(R.string.disponible)
+                            }
+                            1 -> {
+                                binding.estatText?.text = requireContext().getText(R.string.no_disponible)
+                            }
+                        }
                         when (document.get("type").toString().toInt()) {
                             3,4,5  -> {
                                 showWarningAlert()

@@ -174,12 +174,12 @@
                 android:id="@+id/txt_titol_valoracio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/valoracio_mitjana"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_tipus_font"
-                app:layout_constraintTop_toBottomOf="@+id/img_font" />
+                app:layout_constraintTop_toBottomOf="@+id/estatText" />
 
             <TextView
                 android:id="@+id/txt_tipus_font"
@@ -359,6 +359,15 @@
                 app:layout_constraintEnd_toEndOf="@+id/star_transperencia_5"
                 app:layout_constraintStart_toStartOf="@+id/star_transperencia_1"
                 app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
+
+            <TextView
+                android:id="@+id/estatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_font" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
