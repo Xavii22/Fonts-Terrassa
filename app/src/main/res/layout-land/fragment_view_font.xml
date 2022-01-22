@@ -13,6 +13,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/countValoracionsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="husfdig"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@+id/star_transperencia_5"
+                app:layout_constraintStart_toStartOf="@+id/star_transperencia_1"
+                app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
+
+            <TextView
+                android:id="@+id/estatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_font" />
+
             <ImageView
                 android:id="@+id/imgFontType"
                 android:layout_width="49dp"
@@ -74,11 +94,10 @@
             <TextView
                 android:id="@+id/txt_informacio"
                 android:layout_width="287dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="242dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@string/info_font_admin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_titol_informacio" />
 
@@ -87,20 +106,20 @@
                 android:layout_width="47dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="170dp"
-                android:layout_marginTop="37dp"
                 android:src="@drawable/ic_type"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_tipus_font"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
+                app:layout_constraintTop_toTopOf="@+id/txt_tipus_font" />
 
             <ImageView
                 android:id="@+id/img_info"
                 android:layout_width="50dp"
                 android:layout_height="51dp"
                 android:layout_marginStart="170dp"
-                android:layout_marginTop="60dp"
                 android:src="@drawable/ic_baseline_info_24"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_titol_informacio"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_accesibilitat" />
+                app:layout_constraintTop_toTopOf="@+id/txt_titol_informacio" />
 
             <ImageView
                 android:id="@+id/star_olor_3"
@@ -146,10 +165,11 @@
                 android:id="@+id/txt_nom_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center_horizontal"
-                android:text="@string/nom_font"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -171,24 +191,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/montserrat"
                 android:text="@string/valoracio_mitjana"
                 android:textSize="20sp"
-                android:fontFamily="@font/montserrat"
                 app:layout_constraintStart_toEndOf="@+id/img_check"
-                app:layout_constraintTop_toBottomOf="@+id/img_font" />
+                app:layout_constraintTop_toBottomOf="@+id/estatText" />
 
             <TextView
                 android:id="@+id/txt_tipus_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/tipus_font"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/img_accesibilitat"
-                app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
+                app:layout_constraintTop_toBottomOf="@+id/countValoracionsText" />
 
             <TextView
                 android:id="@+id/tipus_font_txt"
@@ -206,7 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/informacio"
                 android:textSize="20sp"
@@ -218,10 +238,10 @@
                 android:layout_width="51dp"
                 android:layout_height="41dp"
                 android:layout_marginStart="166dp"
-                android:layout_marginTop="25dp"
                 android:src="@drawable/ic_baseline_check_circle_24"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_titol_valoracio"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_font" />
+                app:layout_constraintTop_toTopOf="@+id/txt_titol_valoracio" />
 
             <TextView
                 android:id="@+id/txt_trasperencia"
