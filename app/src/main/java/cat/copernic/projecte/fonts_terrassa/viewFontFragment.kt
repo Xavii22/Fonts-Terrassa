@@ -138,6 +138,7 @@ class viewFontFragment : Fragment() {
                     setOlorAvg(olorTotal / contador)
                     setTrasperenciaAvg(transperenciaTotal / contador)
                 }
+                binding.countValoracionsText?.text = contador.toString() + " " + requireContext().getText(R.string.valoracions) + "."
             }
 
         if (fontId != null) {
@@ -295,5 +296,6 @@ class viewFontFragment : Fragment() {
         binding.starGust3.visibility = View.GONE
         binding.starGust2.visibility = View.GONE
         binding.starGust1.visibility = View.GONE
+        binding.countValoracionsText?.visibility = View.GONE
     }
 }

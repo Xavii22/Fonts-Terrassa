@@ -186,12 +186,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="95dp"
-                android:layout_marginTop="34dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/tipus_font"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
+                app:layout_constraintTop_toBottomOf="@+id/countValoracionsText" />
 
             <TextView
                 android:id="@+id/tipus_font_txt"
@@ -349,6 +349,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/star_olor_5"
                 app:layout_constraintTop_toTopOf="@+id/star_gust_5" />
+
+            <TextView
+                android:id="@+id/countValoracionsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@+id/star_transperencia_5"
+                app:layout_constraintStart_toStartOf="@+id/star_transperencia_1"
+                app:layout_constraintTop_toBottomOf="@+id/txt_trasperencia" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

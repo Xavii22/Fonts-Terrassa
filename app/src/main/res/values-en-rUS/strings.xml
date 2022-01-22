@@ -135,4 +135,5 @@
     <string name="disponible">AVAILABLE</string>
     <string name="no_disponible">NOT AVAILABLE</string>
     <string name="garentia_sanitaria">Water without sanitary guarantee</string>
+    <string name="valoracions">ratings</string>
 </resources>

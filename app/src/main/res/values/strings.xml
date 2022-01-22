@@ -103,6 +103,7 @@
     <string name="anar">Anar-hi</string>
     <string name="gps_network_not_enabled">Per carregar les fonts, tindrà que activar la ubicació del dispositiu, activa-la i torna-ho a provar</string>
     <string name="garentia_sanitaria">Aigua sense garentia sanitària</string>
+    <string name="valoracions">valoracions</string>
 
     <string-array name="spinner_language">
         <item>Català</item>
