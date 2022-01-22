@@ -101,6 +101,7 @@ class EditFontFragment : Fragment() {
             if (hasImage) {
                 deleteImage(binding.inputIdFont.text.toString())
                 hasImage = false
+                hideImageDelete()
                 Snackbar.make(
                     binding.frameLayout,
                     R.string.imatge_eliminada,
@@ -257,6 +258,7 @@ class EditFontFragment : Fragment() {
             val data = result.data?.data
             binding.imgFont.setImageURI(data)
             hasImage = true
+            showImageDelete()
             Snackbar.make(
                 binding.frameLayout,
                 R.string.imatge_pujada_correctament,
@@ -315,10 +317,12 @@ class EditFontFragment : Fragment() {
                 .error(R.drawable.ic_noimage)
                 .into(imageView)
             hasImage = true
+            showImageDelete()
 
         }.addOnFailureListener {
             binding.imgFont.setImageResource(R.drawable.ic_noimage)
             hasImage = false
+            hideImageDelete()
         }
     }
 
@@ -347,5 +351,15 @@ class EditFontFragment : Fragment() {
         }.addOnFailureListener {
             // Filed to remove the image
         }
+    }
+
+    private fun showImageDelete(){
+        binding.imgFont.visibility = View.VISIBLE
+        binding.btnRemoveImg.visibility = View.VISIBLE
+    }
+
+    private fun hideImageDelete(){
+        binding.imgFont.visibility = View.INVISIBLE
+        binding.btnRemoveImg.visibility = View.INVISIBLE
     }
 }
