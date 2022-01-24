@@ -158,7 +158,7 @@ class EvaluateFragment : Fragment() {
         //Boto enviar valoracions seleccionades a la base de dades
         binding.btnEvaluate.setOnClickListener {
             //Comprovar si s'han evaluat els 3 camps
-            if (gustValue != 0 || olorValue != 0 || transperenciaValue != 0) {
+            if (gustValue != 0 && olorValue != 0 && transperenciaValue != 0) {
                 //Send values to DB
                 db.collection("valoracions").document()
                     .set(
