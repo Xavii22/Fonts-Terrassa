@@ -162,7 +162,10 @@ class ListFragment : Fragment() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle(cat.copernic.projecte.fonts_terrassa.R.string.error)
         objectAlerDialog.setMessage(cat.copernic.projecte.fonts_terrassa.R.string.gps_network_not_enabled)
-        objectAlerDialog.setPositiveButton(cat.copernic.projecte.fonts_terrassa.R.string.acceptar, null)
+        objectAlerDialog.setPositiveButton(
+            cat.copernic.projecte.fonts_terrassa.R.string.acceptar,
+            null
+        )
         val alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
@@ -251,6 +254,15 @@ class ListFragment : Fragment() {
             fontAdapter.fonts.addAll(matchedFonts)
             viewModel.sortFontNameASC(binding, requireContext())
             fontAdapter.notifyDataSetChanged()
+        }
+    }
+
+    /**
+     * Aquest mètode selecciona tots els tipus de fonts.
+     */
+    fun selectAllFonts() {
+        for (j in 0..4) {
+            selectedFont[j] = true
         }
     }
 }

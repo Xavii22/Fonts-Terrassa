@@ -32,7 +32,7 @@
     <string name="accedir">Acceder</string>
     <string name="carregant_app">Cargando...</string>
     <string name="dashboard">Dashboard</string>
-    <string name="administrar_usuaris">Administrar usuarios</string>
+    <string name="administrar_usuaris">Activar usuarios</string>
     <string name="administrar_fonts">Administrador fuentes</string>
     <string name="crear_fonts">Crear una fuente</string>
     <string name="crear_usuaris">Crear un usuario</string>

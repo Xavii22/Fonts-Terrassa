@@ -14,8 +14,8 @@ android {
         applicationId "cat.copernic.projecte.fonts_terrassa"
         minSdk 23
         targetSdk 31
-        versionCode 18
-        versionName "b0.12"
+        versionCode 20
+        versionName "b0.13.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
