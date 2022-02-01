@@ -53,23 +53,25 @@ class viewFontFragment : Fragment() {
                 for (document in documents) {
                     if (fontId == document.get("id").toString()) {
                         binding.txtNomFont.text = document.get("name").toString()
-                        if(document.get("info").toString().isEmpty()){
+                        if (document.get("info").toString().isEmpty()) {
                             binding.imgInfo.visibility = View.GONE
                             binding.txtInformacio.visibility = View.GONE
                             binding.txtTitolInformacio.visibility = View.GONE
-                        }else{
+                        } else {
                             binding.txtInformacio.text = document.get("info").toString()
                         }
-                        when(document.get("estat").toString().toInt()){
+                        when (document.get("estat").toString().toInt()) {
                             0 -> {
-                                binding.estatText?.text = requireContext().getText(R.string.disponible)
+                                binding.estatText?.text =
+                                    requireContext().getText(R.string.disponible)
                             }
                             1 -> {
-                                binding.estatText?.text = requireContext().getText(R.string.no_disponible)
+                                binding.estatText?.text =
+                                    requireContext().getText(R.string.no_disponible)
                             }
                         }
                         when (document.get("type").toString().toInt()) {
-                            3,4,5  -> {
+                            3, 4, 5 -> {
                                 showWarningAlert()
                                 hideEvaluate()
                             }
@@ -146,11 +148,20 @@ class viewFontFragment : Fragment() {
                     setOlorAvg(olorTotal / contador)
                     setTrasperenciaAvg(transperenciaTotal / contador)
                 }
-                binding.countValoracionsText?.text = contador.toString() + " " + requireContext().getText(R.string.valoracions) + "."
+                binding.countValoracionsText?.text =
+                    contador.toString() + " " + requireContext().getText(R.string.valoracions) + "."
             }
 
         if (fontId != null) {
             descarregarImatgeGlide(fontId)
+        }
+
+        binding.btnIncidencia.setOnClickListener {
+            val uri =
+                Uri.parse("https://play.google.com/store/apps/details?id=com.idasasistemas.terrassacuidem")
+
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
         }
 
         return binding.root
@@ -274,6 +285,7 @@ class viewFontFragment : Fragment() {
             }
         }
     }
+
     private fun showWarningAlert() {
         val objectAlerDialog = AlertDialog.Builder(context)
         objectAlerDialog.setTitle(R.string.atencio)
@@ -282,7 +294,8 @@ class viewFontFragment : Fragment() {
         val alertDialog: AlertDialog = objectAlerDialog.create()
         alertDialog.show()
     }
-    private fun hideEvaluate(){
+
+    private fun hideEvaluate() {
         binding.txtTitolValoracio.visibility = View.GONE
         binding.imgCheck.visibility = View.GONE
         binding.txtgust.visibility = View.GONE

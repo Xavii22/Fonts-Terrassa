@@ -358,6 +358,22 @@
                 app:layout_constraintStart_toEndOf="@+id/btn_testWater"
                 app:layout_constraintTop_toBottomOf="@+id/txt_informacio" />
 
+            <Button
+                android:id="@+id/btn_incidencia"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#FAB54F"
+                android:drawableLeft="@drawable/ic_problem"
+                android:text="@string/incidencia"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_goToMaps" />
+
             <TextView
                 android:id="@+id/countValoracionsText"
                 android:layout_width="wrap_content"

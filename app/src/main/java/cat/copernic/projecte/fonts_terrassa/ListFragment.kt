@@ -265,4 +265,21 @@ class ListFragment : Fragment() {
             selectedFont[j] = true
         }
     }
+
+    fun getItemSelected(): Int {
+        when (binding.spinnerOrder.selectedItem.toString()) {
+            resources.getString(R.string.nom_asc) ->
+                return 0
+            resources.getString(R.string.nom_desc) ->
+                return 1
+            resources.getString(R.string.distancia_asc) ->
+                return 2
+            resources.getString(R.string.distancia_desc) ->
+                return 3
+            resources.getString(R.string.tipus) ->
+                return 4
+        }
+
+        return -1
+    }
 }
